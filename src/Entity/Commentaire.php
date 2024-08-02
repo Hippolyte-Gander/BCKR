@@ -20,6 +20,12 @@ class Commentaire
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    private ?User $poste = null;
+
+    #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    private ?Evenement $appartient = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +51,30 @@ class Commentaire
     public function setMessage(string $message): static
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function getPoste(): ?User
+    {
+        return $this->poste;
+    }
+
+    public function setPoste(?User $poste): static
+    {
+        $this->poste = $poste;
+
+        return $this;
+    }
+
+    public function getAppartient(): ?Evenement
+    {
+        return $this->appartient;
+    }
+
+    public function setAppartient(?Evenement $appartient): static
+    {
+        $this->appartient = $appartient;
 
         return $this;
     }
