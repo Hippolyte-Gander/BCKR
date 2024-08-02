@@ -15,7 +15,7 @@ class UserController extends AbstractController
     #[Route('/user', name: 'app_user')]
     public function index(UserRepository $userRepository): Response
     {
-        $users = $userRepository->findBy([], ["nom"=> "ASC"]);
+        $users = $userRepository->findBy([], ["pseudo"=> "ASC"]);
         return $this->render('user/index.html.twig', [
             'users' => $users
         ]);
