@@ -32,6 +32,9 @@ class Evenement
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateFin = null;
 
+    #[ORM\ManyToOne(inversedBy: 'evenements')]
+    private ?User $cree = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Evenement
     public function setDateFin(?\DateTimeInterface $dateFin): static
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    public function getCree(): ?User
+    {
+        return $this->cree;
+    }
+
+    public function setCree(?User $cree): static
+    {
+        $this->cree = $cree;
 
         return $this;
     }
