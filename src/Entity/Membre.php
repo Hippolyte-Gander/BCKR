@@ -44,6 +44,9 @@ class Membre
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateInscription = null;
 
+    #[ORM\OneToOne(mappedBy: 'est', cascade: ['persist', 'remove'])]
+    private ?User $est = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -165,6 +168,28 @@ class Membre
     public function setDateInscription(?\DateTimeInterface $dateInscription): static
     {
         $this->dateInscription = $dateInscription;
+
+        return $this;
+    }
+
+    public function getEst(): ?User
+    {
+        return $this->est;
+    }
+
+    public function setEst(?User $est): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($est === null && $this->est !== null) {
+            $this->est->setEst(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($est !== null && $est->getEst() !== $this) {
+            $est->setEst($this);
+        }
+
+        $this->est = $est;
 
         return $this;
     }

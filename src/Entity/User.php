@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
+
+    #[ORM\OneToOne(inversedBy: 'est', cascade: ['persist', 'remove'])]
+    private ?Membre $est = null;
     
 
     public function getId(): ?int
@@ -135,6 +138,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPseudo(string $pseudo): static
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getEst(): ?Membre
+    {
+        return $this->est;
+    }
+
+    public function setEst(?Membre $est): static
+    {
+        $this->est = $est;
 
         return $this;
     }
