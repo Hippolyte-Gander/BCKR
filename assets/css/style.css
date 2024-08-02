@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.15rem;
+    color: rgb(255, 255, 255);
+}
+
+/* --------------- NAVBAR ---------------- */
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(22, 22, 22);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    max-height: 80px;
+    min-height: 80px;
+    border-bottom: solid 2px white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.img-logo {
+    max-height: 60px;
+}
+
+nav {
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.liens a:hover {
+    text-decoration: underline;
+    color:  rgb(255, 255, 255);
+}
+
+.liens a {
+    padding: 0 10px;
+}
+
+header .menu-mobile {
+    display: none;
+}
+
+/* --- Bouton barre --- */
+
+.toggle-btn i {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.toggle-btn i:hover {
+    transition: 0.2s;
+    color: red;
+}
+
+/* Menu mobile */
+
+@media (max-width: 1000px) {
+
+    header .menu-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        padding: 20px 0 20px 50px;
+        gap: 0;
+        max-height: none;
+        justify-content: left;
+    }
+
+    header .login,
+    header .logo,
+    nav a,
+    .login a {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+    
+    .mobile-croix {
+        /* display: none; */
+        text-align: end;
+        width: 100%;
+    }
+}
+
+
+/* --- Boutons connexion --- */
+.login {
+    display: flex;
+    gap: 20px;
+}
+
+.deconnexion {
+    background-color: white;
+    color: black;
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.connexion {
+    background-color: rgb(0, 0, 0);
+    border: solid 1px white;
+    border-radius: 5px;
+    padding: 9px 14px;
+}
+
+.inscription {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.deconnexion:hover {
+    text-decoration: none;
+    color:  rgb(0, 0, 0);
+    transition: 0.2s;
+    box-shadow: 0 0 20px rgb(161, 161, 161);
+}
+
+.connexion:hover {
+    text-decoration: none;
+    color:  rgb(255, 255, 255);
+    transition: 0.2s;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
+.inscription:hover {
+    text-decoration: none;
+    color:  rgb(0, 0, 0);
+    transition: 0.2s;
+    box-shadow: 0 0 20px rgb(161, 161, 161);
+}
+
+/* --------------- FOOTER ---------------- */
+
+footer {
+    background: rgb(22, 22, 22);
+    height: 70px;
+    font-size: 1.25rem;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a {
+    color: rgb(255, 255, 255);
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color:  rgb(255, 255, 255);
+}
+
+/* --------------- TITRE PRINCIPAL ---------------- */
+
+.nom-club {
+    width: 100%;
+    padding: 50px 20px;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    padding: 90px 0px;
+    color: rgb(255, 255, 255);
+    font-family: Poppins;
+    font-weight: 800;
+    font-size: clamp(2rem, 7.5vw + .5rem, 4rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 5vw + 0.5rem, 2.25rem);
+}
+
+h5 {
+    font-size: clamp(1rem, 5vw, 1.75rem);
+}
+
+/* --------------- PAGE ACCUEIL ---------------- */
+
+main {
+    display: flex;
+    flex-direction: column;
+    background: url('../img/bg1-terrain-tres-sombre.jpg') no-repeat;
+    background-size: cover;
+}
+
+.accueil {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0px 20px;
+}
+
+.accueil h3, .accueil h5, .accueil p {
+    color: white;
+}
+
+.accueil h3 {
+    text-decoration: underline;
+}
+
+.a-venir {
+    width: 30%;
+    margin: 30px;
+}
+
+.a-venir h3 {
+    margin: 50px 30px;
+}
+
+.boucle-for-evenement h5 {
+    padding: 20px 0;
+}
+
+.boucle-for-evenement {
+    padding: 20px 0;
+}
+
+.club {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 30px;
+    gap: 30px;
+}
+
+.a-venir,
+.club-description,
+.club-entrainements,
+.club-activites {
+    background-color: rgba(24, 25, 29, 0.7);
+    border-radius: 3px;
+}
+
+
+.club-description,
+.club-entrainements,
+.club-activites {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 25px 0 15px;
+}
+
+.titre-texte {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    /* background: rgba(15, 15, 15, 0.555); */
+    font-size: 1.5rem;
+    text-align: justify;
+    gap: 20px;
+}
+
+.titre-texte h3 {
+    padding: 20px 0px;
+}
+
+/* ---------- IMAGES ---------- */
+
+.club-description img,
+.club-entrainements img,
+.club-activites img {
+    margin: 20px;
+    border-radius: 5px;
+    width: 30%;
+    object-fit: cover;
+}
+
+/* --------------- GÉNÉRAL ---------------- */
+
+h4 {
+    color: rgb(255, 255, 255);
+    padding: 100px 20px 20px 20px;
+}
+
+.texte-utilisateur {
+    color: rgb(0, 0, 0);
+}
+
+/* --------------- LISTE UTILISATEUR ---------------- */
+
+.utilisateurs-container {
+    margin-top: 80px;
+    min-height: 100vh;
+    background: url('../img/terrain-bad-sombre.jpg') no-repeat;
+    background-size: cover;
+}
+
+.utilisateurs-container h4 {
+    padding: 60px;
+    margin: 60px;
+    color: white;
+}
+
+.utilisateurs-container p {
+    padding: 60px;
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background: #3a3a3a85;
+    border-radius: 5px;
+}
+
+.utilisateurs-container a {
+    color: white;
+    margin: 10px;
+}
+
+.utilisateurs-container a:hover {
+    text-decoration: underline;
+}
+
+/* --------------- LISTE MEMBRES ---------------- */
+
+.membre-container {
+    margin-top: 80px;
+    min-height: 100vh;
+    background: url('../img/terrain-bad-sombre.jpg') no-repeat;
+    background-size: cover;
+}
+
+.membre-container h4 {
+    padding: 60px;
+    margin: 60px;
+    color: white;
+}
+
+.membre-container p {
+    padding: 60px;
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background: #3a3a3a85;
+    border-radius: 5px;
+}
+
+.membre-container a {
+    color: white;
+    margin: 10px;
+}
+
+.membre-container a:hover {
+    text-decoration: underline;
+}
+
+/* --------------- LISTE ÉVÉNEMENTS ---------------- */
+
+.liste-evenement-background {
+    background: url('../img/volants-sur-terrain-sombre.jpg') no-repeat;
+    background-size: cover;
+    min-height: 90lvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.liste-evenement-background a {
+    color: white;
+    padding: 20px;
+}
+
+table {
+    width: 80%;
+    border: solid 2px white;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.titre-colonne {
+    font-weight: 600;
+}
+
+td, tr {
+    background-color: rgba(39, 39, 39, 0.700);
+    padding: 30px;
+    border: solid 1px white;
+    text-align: center;
+}
+
+.btn-editer {
+    color: black;
+    padding: 10px;
+    background-color: orange;
+    border-radius: 10px;
+}
+
+.btn-supprimer {
+    color: black;
+    padding: 10px;
+    background-color: rgb(226, 0, 0);
+    border-radius: 10px;
+}
+
+/* --------------- DÉTAIL ÉVÉNEMENT ---------------- */
+
+.det-evenement-background {
+    background: url('../img/terrain-bad-sombre.jpg') no-repeat;
+    background-size: cover;
+    min-height: 80lvh;
+}
+
+.det-evenement-background p {
+    padding: 20px;
+}
+
+/* --------------- FORMULAIRE ---------------- */
+
+.formulaire-background {
+    background: url('../img/volant-sur-ligne-sombre.jpg') no-repeat;
+    background-size: cover;
+}
+
+.formulaire {
+    display: flex;
+    padding: 50px;
+}
+
+.formulaire form {
+    width: 100%;
+}
+
+.required {
+    color: rgb(255, 255, 255);
+    padding-right: 20px;
+}
+
+.texte-formulaire {
+    color: rgb(255, 255, 255);
+}
+
+.row-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.col-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.formulaire input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+.formulaire textarea {
+    margin-top: 10px;
+    padding: 10px;
+    min-width: 190%;
+    max-width: 190%;
+    min-height: 15lvh;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+.formulaire input[type=datetime-local] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+.formulaire select {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+.formulaire select option{
+    color: rgb(255, 255, 255);
+}
+
+
+.valider-btn-formulaire {
+    background-color: #04AA6D;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.valider-btn-formulaire:hover {
+    background-color: #08d48a;
+}
+
+/* input[type=text]{
+}
+input[type=date]{
+}
+
+input[type=password]{
+}
+
+input[type=number]{
+} */
