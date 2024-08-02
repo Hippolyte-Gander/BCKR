@@ -44,8 +44,8 @@ class Membre
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateInscription = null;
 
-    #[ORM\OneToOne(mappedBy: 'est', cascade: ['persist', 'remove'])]
-    private ?User $est = null;
+    #[ORM\OneToOne(mappedBy: 'membre', cascade: ['persist', 'remove'])]
+    private ?User $utilisateur = null;
 
     public function getId(): ?int
     {
@@ -172,25 +172,26 @@ class Membre
         return $this;
     }
 
-    public function getEst(): ?User
+    public function getUtilisateur(): ?User
     {
-        return $this->est;
+        return $this->utilisateur;
     }
 
-    public function setEst(?User $est): static
+    public function setUtilisateur(?User $utilisateur): static
     {
-        // unset the owning side of the relation if necessary
-        if ($est === null && $this->est !== null) {
-            $this->est->setEst(null);
+        // Vérifier si l'utilisateur actuel doit être désassocié
+        if ($utilisateur === null && $this->utilisateur !== null) {
+            $this->utilisateur->setMembre(null);
         }
-
-        // set the owning side of the relation if necessary
-        if ($est !== null && $est->getEst() !== $this) {
-            $est->setEst($this);
+    
+        // Vérifier si un nouvel utilisateur est associé et que la relation est cohérente
+        if ($utilisateur !== null && $utilisateur->getMembre() !== $this) {
+            $utilisateur->setMembre($this);
         }
-
-        $this->est = $est;
-
+    
+        // Définir l'utilisateur associé à ce membre
+        $this->utilisateur = $utilisateur;
+    
         return $this;
     }
 }

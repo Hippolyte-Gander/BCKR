@@ -14,8 +14,8 @@
             {% endfor %}
         </p>
 
-        {% if 'ROLE_MEMBRE' in user.roles %}
-            <p>Membre</p>
+        {% if user.membre %}
+            <p> {{ user.membre.nom }} </p>
         {% else %}
             <p>Utilisateur standard, aucune information supplémentaire</p>
         {% endif %}

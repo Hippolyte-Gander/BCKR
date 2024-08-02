@@ -41,8 +41,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\OneToOne(inversedBy: 'est', cascade: ['persist', 'remove'])]
-    private ?Membre $est = null;
+    #[ORM\OneToOne(inversedBy: 'utilisateur', cascade: ['persist', 'remove'])]
+    private ?Membre $membre = null;
 
     /**
      * @var Collection<int, Evenement>
@@ -162,14 +162,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getEst(): ?Membre
+    public function getMembre(): ?Membre
     {
-        return $this->est;
+        return $this->membre;
     }
 
-    public function setEst(?Membre $est): static
+    public function setMembre(?Membre $membre): static
     {
-        $this->est = $est;
+        $this->membre = $membre;
 
         return $this;
     }

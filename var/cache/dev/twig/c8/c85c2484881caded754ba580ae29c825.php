@@ -113,7 +113,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 20), "html", null, true);
             yield "</a></h5>
 
-                        <p class=\"texte-utilisateur\">Début : ";
+                        <p class=\"texte-user\">Début : ";
             // line 22
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 22), "html", null, true);
             yield " à ";
@@ -254,7 +254,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
                     <div class=\"boucle-for-evenement\">
                         <h5> <a href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.titre }}</a></h5>
 
-                        <p class=\"texte-utilisateur\">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
+                        <p class=\"texte-user\">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
                         <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
                         <p>{{ evenement.description }}</p>
                     </div>
