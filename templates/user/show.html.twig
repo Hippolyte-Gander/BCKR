@@ -3,11 +3,23 @@
 {% block title %}Détails utilisateur{% endblock %}
 
 {% block body %}
-<h1>Détails de {{ utilisateur }} </h1>
 
-    <p>Nom : {{ utilisateur.nom}}</p>
-    <p>Prénom : {{ utilisateur.prenom}}</p>
-    <p>Email : {{ utilisateur.email}}</p>
-    <p>Rôle : {{ utilisateur.role}}</p>
+<div class="utilisateurs-container">
+    <h4>Détails de {{ user.pseudo }} </h4>
+
+        <p>Email : {{ user.email}} <br>
+        Rôles : 
+            {% for role in roles %}
+                {{ role }}
+            {% endfor %}
+        </p>
+
+        {% if 'ROLE_MEMBRE' in user.roles %}
+            <p>Membre</p>
+        {% else %}
+            <p>Utilisateur standard, aucune information supplémentaire</p>
+        {% endif %}
+
+</div>
 
 {% endblock %}

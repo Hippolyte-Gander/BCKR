@@ -323,7 +323,7 @@ h4 {
     margin: 60px;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
     background: #3a3a3a85;
     border-radius: 5px;
 }
@@ -336,6 +336,10 @@ h4 {
 .utilisateurs-container a:hover {
     text-decoration: underline;
 }
+
+/* --------------- DETAIL UTILISATEUR ---------------- */
+
+
 
 /* --------------- LISTE MEMBRES ---------------- */
 
@@ -357,7 +361,7 @@ h4 {
     margin: 60px;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
     background: #3a3a3a85;
     border-radius: 5px;
 }
