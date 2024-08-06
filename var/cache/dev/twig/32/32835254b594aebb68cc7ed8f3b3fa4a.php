@@ -120,16 +120,23 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
         // line 17
         if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 17, $this->source); })()), "membre", [], "any", false, false, false, 17)) {
             // line 18
-            yield "            <p> ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 18, $this->source); })()), "membre", [], "any", false, false, false, 18), "nom", [], "any", false, false, false, 18), "html", null, true);
-            yield " </p>
+            yield "            <p>
+                ";
+            // line 19
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 19, $this->source); })()), "membre", [], "any", false, false, false, 19), "nom", [], "any", false, false, false, 19), "html", null, true);
+            yield "
+                ";
+            // line 20
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 20, $this->source); })()), "membre", [], "any", false, false, false, 20), "prenom", [], "any", false, false, false, 20), "html", null, true);
+            yield "
+            </p>
         ";
         } else {
-            // line 20
+            // line 23
             yield "            <p>Utilisateur standard, aucune information supplémentaire</p>
         ";
         }
-        // line 22
+        // line 25
         yield "
 </div>
 
@@ -164,7 +171,7 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  133 => 22,  129 => 20,  123 => 18,  121 => 17,  117 => 15,  108 => 13,  104 => 12,  99 => 10,  94 => 8,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  140 => 25,  136 => 23,  130 => 20,  126 => 19,  123 => 18,  121 => 17,  117 => 15,  108 => 13,  104 => 12,  99 => 10,  94 => 8,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -186,7 +193,10 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
         </p>
 
         {% if user.membre %}
-            <p> {{ user.membre.nom }} </p>
+            <p>
+                {{ user.membre.nom }}
+                {{ user.membre.prenom }}
+            </p>
         {% else %}
             <p>Utilisateur standard, aucune information supplémentaire</p>
         {% endif %}

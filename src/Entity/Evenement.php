@@ -43,6 +43,9 @@ class Evenement
     #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'appartient')]
     private Collection $commentaires;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $visibilite = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -163,6 +166,18 @@ class Evenement
                 $commentaire->setAppartient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVisibilite(): ?string
+    {
+        return $this->visibilite;
+    }
+
+    public function setVisibilite(?string $visibilite): static
+    {
+        $this->visibilite = $visibilite;
 
         return $this;
     }

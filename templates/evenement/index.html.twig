@@ -1,20 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EvenementController!{% endblock %}
+{% block title %}Liste des événements{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="liste-evenement-background">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/Github/BCKR/src/Controller/EvenementController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/Github/BCKR/templates/evenement/index.html.twig</code></li>
-    </ul>
+    <h4>Liste des événements</h4>
+    <a class="texte-utilisateur" href=" {{ path('new_evenement') }} ">Créer un événement</a><br>
+
+
+    <table>
+        <tr class="titre-colonne">
+            <td>Nom événement</td>
+            <td>Date de début</td>
+            <td>Date de fin</td>
+            <td>Éditer</td>
+            <td>Supprimer</td>
+        </tr>
+
+        {% for evenement in evenements %}
+            <tr>
+                <td>
+                    <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
+                </td>
+                <td>
+                    <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
+                </td>
+                <td>
+                    <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
+                </td>
+                <td>
+                    <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
+                </td>
+                <td>
+                    <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
+                </td>
+                
+            </tr>
+        {% endfor %}
+
+    </table>
+
 </div>
 {% endblock %}

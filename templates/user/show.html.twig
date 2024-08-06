@@ -15,7 +15,10 @@
         </p>
 
         {% if user.membre %}
-            <p> {{ user.membre.nom }} </p>
+            <p>
+                {{ user.membre.nom }}
+                {{ user.membre.prenom }}
+            </p>
         {% else %}
             <p>Utilisateur standard, aucune information supplémentaire</p>
         {% endif %}

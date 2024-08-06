@@ -148,7 +148,7 @@ class __TwigTemplate_aaeb81348e8c39813a6a3505bc2feef3 extends Template
         ";
         } else {
             // line 24
-            yield "            Photo : N/A <br>
+            yield "            Photo : Non renseigné <br>
         ";
         }
         // line 26
@@ -214,7 +214,7 @@ class __TwigTemplate_aaeb81348e8c39813a6a3505bc2feef3 extends Template
         {% if membre.photo %}
             Photo : <img src=\"{{ asset('uploads/photos/' ~ membre.photo) }}\" alt=\"Photo de {{ membre.prenom }} {{ membre.nom }}\"> <br>
         {% else %}
-            Photo : N/A <br>
+            Photo : Non renseigné <br>
         {% endif %}
     </p>
 
