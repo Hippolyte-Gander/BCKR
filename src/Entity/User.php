@@ -55,13 +55,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'poste')]
     private Collection $commentaires;
-
+    
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
     }
-    
+
+    public function __toString(): string
+    {
+        return $this->pseudo ?: '';
+    }
 
     public function getId(): ?int
     {

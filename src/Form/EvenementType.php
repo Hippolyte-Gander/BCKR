@@ -63,7 +63,7 @@ class EvenementType extends AbstractType
                     'class'=> 'texte-formulaire'
                 ]
             ])
-            ->add('user', EntityType::class, [
+            ->add('cree', EntityType::class, [
                 'label'=>'Créé par',
                 'class' => User::class,
                 'attr'=> [
