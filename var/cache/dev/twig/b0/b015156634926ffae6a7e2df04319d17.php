@@ -144,7 +144,10 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         yield "
         <footer>
             <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
-            <a href=\"#\" class=\"texte-footer\">Mentions légales</a>
+            <a href=\"";
+        // line 58
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
+        yield "\" class=\"texte-footer\">Mentions légales</a>
             <a href=\"#\" class=\"texte-footer\">Politique de confidentialité</a>
             <a href=\"#\" class=\"texte-footer\">Sécurité</a>
             <a href=\"#\" class=\"texte-footer\">Contact</a>
@@ -270,7 +273,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  234 => 54,  223 => 12,  213 => 11,  200 => 9,  197 => 8,  187 => 7,  167 => 5,  144 => 55,  142 => 54,  128 => 43,  124 => 42,  120 => 41,  116 => 40,  112 => 39,  93 => 23,  89 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  237 => 54,  226 => 12,  216 => 11,  203 => 9,  200 => 8,  190 => 7,  170 => 5,  149 => 58,  144 => 55,  142 => 54,  128 => 43,  124 => 42,  120 => 41,  116 => 40,  112 => 39,  93 => 23,  89 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -332,7 +335,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
 
         <footer>
             <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
-            <a href=\"#\" class=\"texte-footer\">Mentions légales</a>
+            <a href=\"{{ path('mentions_home') }}\" class=\"texte-footer\">Mentions légales</a>
             <a href=\"#\" class=\"texte-footer\">Politique de confidentialité</a>
             <a href=\"#\" class=\"texte-footer\">Sécurité</a>
             <a href=\"#\" class=\"texte-footer\">Contact</a>

@@ -13,6 +13,7 @@
     <table>
         <tr class="titre-colonne">
             <td>Nom événement</td>
+            <td>Description</td>
             <td>Date de début</td>
             <td>Date de fin</td>
             <td>Éditer</td>
@@ -23,6 +24,9 @@
             <tr>
                 <td>
                     <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
+                </td>
+                <td>
+                    <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.description }}</a>
                 </td>
                 <td>
                     <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
