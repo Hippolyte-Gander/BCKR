@@ -1,31 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails membre{% endblock %}
+{% block title %}
+    {% if app.user  and app.user.isAdmin() %}
+        Détails membre
+    {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
 
 {% block body %}
-<div class="membre-container">
-    <h4>Détails de {{ membre.prenom }} {{ membre.nom }}</h4>
 
-    <p>
-        Nom : {{ membre.nom }} <br>
-        Prénom : {{ membre.prenom }} <br>
+{% if app.user  and app.user.isAdmin() %}
+    <div class="membre-container">
+        <h4>Détails de {{ membre.prenom }} {{ membre.nom }}</h4>
 
-        Numéro de Licence : {{ membre.numLicence ? membre.numLicence : 'Non renseigné' }} <br>
-        Date d'Inscription : {{ membre.dateInscription ? membre.dateInscription|date('d/m/Y') : 'Non renseigné' }} <br>
-        Numéro de Téléphone : {{ membre.numTelephone ? membre.numTelephone : 'Non renseigné' }} <br>
-        Adresse : {{ membre.adresse ? membre.adresse : 'Non renseigné' }} <br>
-        Ville : {{ membre.ville ? membre.ville : 'Non renseigné' }} <br>
-        Code Postal : {{ membre.cp ? membre.cp : 'Non renseigné' }} <br>
-        Date de Naissance : {{ membre.dateNaissance ? membre.dateNaissance|date('d/m/Y') : 'Non renseigné' }} <br>
+        <p>
+            Nom : {{ membre.nom }} <br>
+            Prénom : {{ membre.prenom }} <br>
 
-        {% if membre.photo %}
-            Photo : <img src="{{ asset('uploads/photos/' ~ membre.photo) }}" alt="Photo de {{ membre.prenom }} {{ membre.nom }}"> <br>
-        {% else %}
-            Photo : Non renseigné <br>
-        {% endif %}
-    </p>
+            Numéro de Licence : {{ membre.numLicence ? membre.numLicence : 'Non renseigné' }} <br>
+            Date d'Inscription : {{ membre.dateInscription ? membre.dateInscription|date('d/m/Y') : 'Non renseigné' }} <br>
+            Numéro de Téléphone : {{ membre.numTelephone ? membre.numTelephone : 'Non renseigné' }} <br>
+            Adresse : {{ membre.adresse ? membre.adresse : 'Non renseigné' }} <br>
+            Ville : {{ membre.ville ? membre.ville : 'Non renseigné' }} <br>
+            Code Postal : {{ membre.cp ? membre.cp : 'Non renseigné' }} <br>
+            Date de Naissance : {{ membre.dateNaissance ? membre.dateNaissance|date('d/m/Y') : 'Non renseigné' }} <br>
 
-</div>
+            {% if membre.photo %}
+                Photo : <img src="{{ asset('uploads/photos/' ~ membre.photo) }}" alt="Photo de {{ membre.prenom }} {{ membre.nom }}"> <br>
+            {% else %}
+                Photo : Non renseigné <br>
+            {% endif %}
+        </p>
+
+    </div>
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
 {% endblock %}
 
 

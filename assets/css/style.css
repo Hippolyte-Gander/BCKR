@@ -309,6 +309,13 @@ h4 {
     color: rgb(0, 0, 0);
 }
 
+.error {
+    background: rgb(58, 58, 58);
+    color: white;
+    font-size: 40px;
+    padding: 100px;
+}
+
 /* --------------- LISTE UTILISATEUR ---------------- */
 
 .utilisateurs-container {

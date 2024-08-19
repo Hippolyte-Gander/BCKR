@@ -1,28 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails utilisateur{% endblock %}
+{% block title %}
+    {% if app.user  and app.user.isAdmin() %}
+        Détails utilisateur
+    {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
+
 
 {% block body %}
 
-<div class="utilisateurs-container">
-    <h4>Détails de {{ user.pseudo }} </h4>
+{% if app.user  and app.user.isAdmin() %}
+    <div class="utilisateurs-container">
+        <h4>Détails de {{ user.pseudo }} </h4>
 
-        <p>Email : {{ user.email}} <br>
-        Rôles : 
-            {% for role in roles %}
-                {{ role }}
-            {% endfor %}
-        </p>
-
-        {% if user.membre %}
-            <p>
-                {{ user.membre.nom }}
-                {{ user.membre.prenom }}
+            <p>Email : {{ user.email}} <br>
+            Rôles : 
+                {% for role in roles %}
+                    {{ role }}
+                {% endfor %}
             </p>
-        {% else %}
-            <p>Utilisateur standard, aucune information supplémentaire</p>
-        {% endif %}
 
-</div>
+            {% if user.membre %}
+                <p>
+                    {{ user.membre.nom }}
+                    {{ user.membre.prenom }}
+                </p>
+            {% else %}
+                <p>Utilisateur standard, aucune information supplémentaire</p>
+            {% endif %}
+    </div>
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
 
 {% endblock %}

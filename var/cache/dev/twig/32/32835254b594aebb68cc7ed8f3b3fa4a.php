@@ -66,7 +66,17 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Détails utilisateur";
+        // line 4
+        yield "    ";
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 4, $this->source); })()), "user", [], "any", false, false, false, 4) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 4, $this->source); })()), "user", [], "any", false, false, false, 4), "isAdmin", [], "method", false, false, false, 4))) {
+            // line 5
+            yield "        Détails utilisateur
+    ";
+        } else {
+            // line 7
+            yield "        Page introuvable
+    ";
+        }
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -76,7 +86,7 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
         return; yield '';
     }
 
-    // line 5
+    // line 12
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -86,60 +96,72 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 6
+        // line 13
         yield "
-<div class=\"utilisateurs-container\">
-    <h4>Détails de ";
-        // line 8
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 8, $this->source); })()), "pseudo", [], "any", false, false, false, 8), "html", null, true);
-        yield " </h4>
+";
+        // line 14
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "isAdmin", [], "method", false, false, false, 14))) {
+            // line 15
+            yield "    <div class=\"utilisateurs-container\">
+        <h4>Détails de ";
+            // line 16
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 16, $this->source); })()), "pseudo", [], "any", false, false, false, 16), "html", null, true);
+            yield " </h4>
 
-        <p>Email : ";
-        // line 10
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 10, $this->source); })()), "email", [], "any", false, false, false, 10), "html", null, true);
-        yield " <br>
-        Rôles : 
-            ";
-        // line 12
-        $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["roles"]) || array_key_exists("roles", $context) ? $context["roles"] : (function () { throw new RuntimeError('Variable "roles" does not exist.', 12, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
-            // line 13
-            yield "                ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["role"], "html", null, true);
-            yield "
-            ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
-        yield "        </p>
-
-        ";
-        // line 17
-        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 17, $this->source); })()), "membre", [], "any", false, false, false, 17)) {
+            <p>Email : ";
             // line 18
-            yield "            <p>
-                ";
-            // line 19
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 19, $this->source); })()), "membre", [], "any", false, false, false, 19), "nom", [], "any", false, false, false, 19), "html", null, true);
-            yield "
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 18, $this->source); })()), "email", [], "any", false, false, false, 18), "html", null, true);
+            yield " <br>
+            Rôles : 
                 ";
             // line 20
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 20, $this->source); })()), "membre", [], "any", false, false, false, 20), "prenom", [], "any", false, false, false, 20), "html", null, true);
-            yield "
-            </p>
-        ";
-        } else {
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable((isset($context["roles"]) || array_key_exists("roles", $context) ? $context["roles"] : (function () { throw new RuntimeError('Variable "roles" does not exist.', 20, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
+                // line 21
+                yield "                    ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["role"], "html", null, true);
+                yield "
+                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
             // line 23
-            yield "            <p>Utilisateur standard, aucune information supplémentaire</p>
-        ";
-        }
-        // line 25
-        yield "
-</div>
+            yield "            </p>
 
+            ";
+            // line 25
+            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 25, $this->source); })()), "membre", [], "any", false, false, false, 25)) {
+                // line 26
+                yield "                <p>
+                    ";
+                // line 27
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 27, $this->source); })()), "membre", [], "any", false, false, false, 27), "nom", [], "any", false, false, false, 27), "html", null, true);
+                yield "
+                    ";
+                // line 28
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 28, $this->source); })()), "membre", [], "any", false, false, false, 28), "prenom", [], "any", false, false, false, 28), "html", null, true);
+                yield "
+                </p>
+            ";
+            } else {
+                // line 31
+                yield "                <p>Utilisateur standard, aucune information supplémentaire</p>
+            ";
+            }
+            // line 33
+            yield "    </div>
+";
+        } else {
+            // line 35
+            yield "    <div class=\"error\">
+        Page introuvable
+    </div>
+";
+        }
+        // line 39
+        yield "
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -171,37 +193,49 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  140 => 25,  136 => 23,  130 => 20,  126 => 19,  123 => 18,  121 => 17,  117 => 15,  108 => 13,  104 => 12,  99 => 10,  94 => 8,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  164 => 39,  158 => 35,  154 => 33,  150 => 31,  144 => 28,  140 => 27,  137 => 26,  135 => 25,  131 => 23,  122 => 21,  118 => 20,  113 => 18,  108 => 16,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Détails utilisateur{% endblock %}
+{% block title %}
+    {% if app.user  and app.user.isAdmin() %}
+        Détails utilisateur
+    {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
+
 
 {% block body %}
 
-<div class=\"utilisateurs-container\">
-    <h4>Détails de {{ user.pseudo }} </h4>
+{% if app.user  and app.user.isAdmin() %}
+    <div class=\"utilisateurs-container\">
+        <h4>Détails de {{ user.pseudo }} </h4>
 
-        <p>Email : {{ user.email}} <br>
-        Rôles : 
-            {% for role in roles %}
-                {{ role }}
-            {% endfor %}
-        </p>
-
-        {% if user.membre %}
-            <p>
-                {{ user.membre.nom }}
-                {{ user.membre.prenom }}
+            <p>Email : {{ user.email}} <br>
+            Rôles : 
+                {% for role in roles %}
+                    {{ role }}
+                {% endfor %}
             </p>
-        {% else %}
-            <p>Utilisateur standard, aucune information supplémentaire</p>
-        {% endif %}
 
-</div>
+            {% if user.membre %}
+                <p>
+                    {{ user.membre.nom }}
+                    {{ user.membre.prenom }}
+                </p>
+            {% else %}
+                <p>Utilisateur standard, aucune information supplémentaire</p>
+            {% endif %}
+    </div>
+{% else %}
+    <div class=\"error\">
+        Page introuvable
+    </div>
+{% endif %}
 
 {% endblock %}", "user/show.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\user\\show.html.twig");
     }

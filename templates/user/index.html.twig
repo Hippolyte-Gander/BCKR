@@ -1,19 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste utilisateurs{% endblock %}
+{% block title %}
+    {% if app.user  and app.user.isAdmin() %}
+        Liste utilisateurs
+    {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
 
 {% block body %}
 
-<div class="utilisateurs-container">
+{% if app.user  and app.user.isAdmin() %}
+    <div class="utilisateurs-container">
 
-    <h4>Liste des utilisateurs</h4>
+        <h4>Liste des utilisateurs</h4>
 
-    <p>
-        {% for user in users %}
-            <a class="texte-utilisateur" href=" {{ path('show_user', {'id': user.id}) }} ">{{ user.pseudo }}</a>
-        {% endfor %}
-    </p>
+        <p>
+            {% for user in users %}
+                <a class="texte-utilisateur" href=" {{ path('show_user', {'id': user.id}) }} ">{{ user.pseudo }}</a>
+            {% endfor %}
+        </p>
 
-</div>
+    </div>
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
 
 {% endblock %}

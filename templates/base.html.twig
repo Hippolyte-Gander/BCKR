@@ -17,10 +17,12 @@
             <nav>
                     <div class="liens">
                         <a href=" {{ path('app_home') }} ">Home</a>
-                        <a href=" {{ path('app_user') }} ">Liste Users</a>
-                        <a href=" {{ path('app_membre') }} ">Liste Membres</a>
+                        {% if app.user  and app.user.isAdmin() %}
+                            <a href=" {{ path('app_user') }} ">Liste Users</a>
+                            <a href=" {{ path('app_membre') }} ">Liste Membres</a>
+                            <a href=" {{ path('new_evenement') }} ">Créer un événement</a>
+                        {% endif %}
                         <a href=" {{ path('app_evenement') }} ">Liste Événements</a>
-                        <a href=" {{ path('new_evenement') }} ">Créer un événement</a>
                     </div>
             </nav>
             <div class="login">

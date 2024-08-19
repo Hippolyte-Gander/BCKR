@@ -16,8 +16,10 @@
             <td>Description</td>
             <td>Date de début</td>
             <td>Date de fin</td>
-            <td>Éditer</td>
-            <td>Supprimer</td>
+            {% if app.user  and app.user.isAdmin() %}
+                <td>Éditer</td>
+                <td>Supprimer</td>
+            {% endif %}
         </tr>
 
         {% for evenement in evenements %}
@@ -34,13 +36,14 @@
                 <td>
                     <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                 </td>
-                <td>
-                    <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
-                </td>
-                <td>
-                    <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
-                </td>
-                
+                {% if app.user  and app.user.isAdmin() %}
+                    <td>
+                        <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
+                    </td>
+                    <td>
+                        <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
 

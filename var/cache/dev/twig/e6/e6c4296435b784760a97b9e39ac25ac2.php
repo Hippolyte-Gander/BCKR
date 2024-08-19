@@ -88,42 +88,139 @@ class __TwigTemplate_be6829e870639ab6ca52e81976a33339 extends Template
 
         // line 6
         yield "
-<div class=\"det-evenement-background\">
+";
+        // line 7
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 7, $this->source); })()), "visibilite", [], "any", false, false, false, 7) == "tous")) {
+            // line 8
+            yield "
+    <div class=\"det-evenement-background\">
 
-    <h4>Détails de l'événement : ";
-        // line 9
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 9, $this->source); })()), "titre", [], "any", false, false, false, 9), "html", null, true);
-        yield "</h4>
+        <h4>Détails de l'événement : ";
+            // line 11
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 11, $this->source); })()), "titre", [], "any", false, false, false, 11), "html", null, true);
+            yield "</h4>
 
-    <p>
-        Description : <br>
-        ";
-        // line 13
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 13, $this->source); })()), "description", [], "any", false, false, false, 13), "html", null, true);
-        yield "</p>
+        <p>
+            Description : <br>
+            ";
+            // line 15
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 15, $this->source); })()), "description", [], "any", false, false, false, 15), "html", null, true);
+            yield "</p>
 
-    <p>
-        Date de début : ";
-        // line 16
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 16, $this->source); })()), "dateDebutFormatee", [], "any", false, false, false, 16), "html", null, true);
-        yield " à ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 16, $this->source); })()), "heureDebutFormatee", [], "any", false, false, false, 16), "html", null, true);
-        yield " <br>
-        Date de fin : ";
-        // line 17
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 17, $this->source); })()), "dateFinFormatee", [], "any", false, false, false, 17), "html", null, true);
-        yield " à ";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 17, $this->source); })()), "heureFinFormatee", [], "any", false, false, false, 17), "html", null, true);
+        <p>
+            Date de début : ";
+            // line 18
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 18, $this->source); })()), "dateDebutFormatee", [], "any", false, false, false, 18), "html", null, true);
+            yield " à ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 18, $this->source); })()), "heureDebutFormatee", [], "any", false, false, false, 18), "html", null, true);
+            yield " <br>
+            Date de fin : ";
+            // line 19
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 19, $this->source); })()), "dateFinFormatee", [], "any", false, false, false, 19), "html", null, true);
+            yield " à ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 19, $this->source); })()), "heureFinFormatee", [], "any", false, false, false, 19), "html", null, true);
+            yield "
+        </p>
+
+        <p>";
+            // line 22
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 22, $this->source); })()), "contenu", [], "any", false, false, false, 22), "html", null, true);
+            yield "</p>
+
+    </div>
+
+";
+        } elseif ((((CoreExtension::getAttribute($this->env, $this->source,         // line 26
+(isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 26, $this->source); })()), "visibilite", [], "any", false, false, false, 26) == "membres") && CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26)) && (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26), "isMembre", [], "method", false, false, false, 26) || CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26), "isAdmin", [], "method", false, false, false, 26)))) {
+            // line 27
+            yield "
+    <div class=\"det-evenement-background\">
+
+        <h4>Détails de l'événement : ";
+            // line 30
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 30, $this->source); })()), "titre", [], "any", false, false, false, 30), "html", null, true);
+            yield "</h4>
+
+        <p>
+            Description : <br>
+            ";
+            // line 34
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 34, $this->source); })()), "description", [], "any", false, false, false, 34), "html", null, true);
+            yield "</p>
+
+        <p>
+            Date de début : ";
+            // line 37
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 37, $this->source); })()), "dateDebutFormatee", [], "any", false, false, false, 37), "html", null, true);
+            yield " à ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 37, $this->source); })()), "heureDebutFormatee", [], "any", false, false, false, 37), "html", null, true);
+            yield " <br>
+            Date de fin : ";
+            // line 38
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 38, $this->source); })()), "dateFinFormatee", [], "any", false, false, false, 38), "html", null, true);
+            yield " à ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 38, $this->source); })()), "heureFinFormatee", [], "any", false, false, false, 38), "html", null, true);
+            yield "
+        </p>
+
+        <p>";
+            // line 41
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 41, $this->source); })()), "contenu", [], "any", false, false, false, 41), "html", null, true);
+            yield "</p>
+
+    </div>
+
+";
+        } elseif (((CoreExtension::getAttribute($this->env, $this->source,         // line 45
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "user", [], "any", false, false, false, 45) && (CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 45, $this->source); })()), "visibilite", [], "any", false, false, false, 45) == "admins")) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "user", [], "any", false, false, false, 45), "isAdmin", [], "method", false, false, false, 45))) {
+            // line 46
+            yield "
+    <div class=\"det-evenement-background\">
+
+        <h4>Détails de l'événement : ";
+            // line 49
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 49, $this->source); })()), "titre", [], "any", false, false, false, 49), "html", null, true);
+            yield "</h4>
+
+        <p>
+            Description : <br>
+            ";
+            // line 53
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 53, $this->source); })()), "description", [], "any", false, false, false, 53), "html", null, true);
+            yield "</p>
+
+        <p>
+            Date de début : ";
+            // line 56
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 56, $this->source); })()), "dateDebutFormatee", [], "any", false, false, false, 56), "html", null, true);
+            yield " à ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 56, $this->source); })()), "heureDebutFormatee", [], "any", false, false, false, 56), "html", null, true);
+            yield " <br>
+            Date de fin : ";
+            // line 57
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 57, $this->source); })()), "dateFinFormatee", [], "any", false, false, false, 57), "html", null, true);
+            yield " à ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 57, $this->source); })()), "heureFinFormatee", [], "any", false, false, false, 57), "html", null, true);
+            yield "
+        </p>
+
+        <p>";
+            // line 60
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 60, $this->source); })()), "contenu", [], "any", false, false, false, 60), "html", null, true);
+            yield "</p>
+
+    </div>
+
+";
+        } else {
+            // line 65
+            yield "    <div class=\"error\">
+        Page introuvable
+    </div>
+";
+        }
+        // line 69
         yield "
-    </p>
-
-    <p>";
-        // line 20
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 20, $this->source); })()), "contenu", [], "any", false, false, false, 20), "html", null, true);
-        yield "</p>
-
-</div>
-
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -155,7 +252,7 @@ class __TwigTemplate_be6829e870639ab6ca52e81976a33339 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  122 => 20,  114 => 17,  108 => 16,  102 => 13,  95 => 9,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  223 => 69,  217 => 65,  209 => 60,  201 => 57,  195 => 56,  189 => 53,  182 => 49,  177 => 46,  175 => 45,  168 => 41,  160 => 38,  154 => 37,  148 => 34,  141 => 30,  136 => 27,  134 => 26,  127 => 22,  119 => 19,  113 => 18,  107 => 15,  100 => 11,  95 => 8,  93 => 7,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -166,22 +263,68 @@ class __TwigTemplate_be6829e870639ab6ca52e81976a33339 extends Template
 
 {% block body %}
 
-<div class=\"det-evenement-background\">
+{% if (evenement.visibilite == 'tous') %}
 
-    <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+    <div class=\"det-evenement-background\">
 
-    <p>
-        Description : <br>
-        {{ evenement.description }}</p>
+        <h4>Détails de l'événement : {{ evenement.titre }}</h4>
 
-    <p>
-        Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
-        Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
-    </p>
+        <p>
+            Description : <br>
+            {{ evenement.description }}</p>
 
-    <p>{{ evenement.contenu }}</p>
+        <p>
+            Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+            Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+        </p>
 
-</div>
+        <p>{{ evenement.contenu }}</p>
+
+    </div>
+
+{% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
+
+    <div class=\"det-evenement-background\">
+
+        <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+
+        <p>
+            Description : <br>
+            {{ evenement.description }}</p>
+
+        <p>
+            Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+            Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+        </p>
+
+        <p>{{ evenement.contenu }}</p>
+
+    </div>
+
+{% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
+
+    <div class=\"det-evenement-background\">
+
+        <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+
+        <p>
+            Description : <br>
+            {{ evenement.description }}</p>
+
+        <p>
+            Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+            Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+        </p>
+
+        <p>{{ evenement.contenu }}</p>
+
+    </div>
+
+{% else %}
+    <div class=\"error\">
+        Page introuvable
+    </div>
+{% endif %}
 
 {% endblock %}", "evenement/show.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\evenement\\show.html.twig");
     }

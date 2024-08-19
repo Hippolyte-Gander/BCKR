@@ -1,18 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste membres{% endblock %}
+{% block title %}
+    {% if app.user  and app.user.isAdmin() %}
+        Liste membres
+    {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
 
 {% block body %}
 
-<div class="membre-container">
+{% if app.user  and app.user.isAdmin() %}
+    <div class="membre-container">
 
-    <h4>Liste des membres</h4>
+        <h4>Liste des membres</h4>
 
-    <p>
-        {% for membre in membres %}
-            <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.prenom }} {{ membre.nom }}</a>
-        {% endfor %}
-    </p>
-</div>
+        <p>
+            {% for membre in membres %}
+                <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.prenom }} {{ membre.nom }}</a>
+            {% endfor %}
+        </p>
+    </div>
+
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
 
 {% endblock %}

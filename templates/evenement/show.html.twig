@@ -4,21 +4,67 @@
 
 {% block body %}
 
-<div class="det-evenement-background">
+{% if (evenement.visibilite == 'tous') %}
 
-    <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+    <div class="det-evenement-background">
 
-    <p>
-        Description : <br>
-        {{ evenement.description }}</p>
+        <h4>Détails de l'événement : {{ evenement.titre }}</h4>
 
-    <p>
-        Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
-        Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
-    </p>
+        <p>
+            Description : <br>
+            {{ evenement.description }}</p>
 
-    <p>{{ evenement.contenu }}</p>
+        <p>
+            Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+            Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+        </p>
 
-</div>
+        <p>{{ evenement.contenu }}</p>
+
+    </div>
+
+{% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
+
+    <div class="det-evenement-background">
+
+        <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+
+        <p>
+            Description : <br>
+            {{ evenement.description }}</p>
+
+        <p>
+            Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+            Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+        </p>
+
+        <p>{{ evenement.contenu }}</p>
+
+    </div>
+
+{% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
+
+    <div class="det-evenement-background">
+
+        <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+
+        <p>
+            Description : <br>
+            {{ evenement.description }}</p>
+
+        <p>
+            Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+            Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+        </p>
+
+        <p>{{ evenement.contenu }}</p>
+
+    </div>
+
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
 
 {% endblock %}
