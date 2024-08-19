@@ -90,7 +90,7 @@ class __TwigTemplate_be6829e870639ab6ca52e81976a33339 extends Template
         yield "
 <div class=\"det-evenement-background\">
 
-    <h4>Détails de ";
+    <h4>Détails de l'événement : ";
         // line 9
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 9, $this->source); })()), "titre", [], "any", false, false, false, 9), "html", null, true);
         yield "</h4>
@@ -168,7 +168,7 @@ class __TwigTemplate_be6829e870639ab6ca52e81976a33339 extends Template
 
 <div class=\"det-evenement-background\">
 
-    <h4>Détails de {{ evenement.titre }}</h4>
+    <h4>Détails de l'événement : {{ evenement.titre }}</h4>
 
     <p>
         Description : <br>

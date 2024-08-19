@@ -95,9 +95,18 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
                     </div>
             </nav>
             <div class=\"login\">
-                <a href=\"#\" class=\"connexion\">Se connecter</a>
-                <a href=\"#\" class=\"deconnexion\">Se déconnecter</a>
-                <a href=\"#\" class=\"inscription\">S'inscrire</a>
+                <a href=\"";
+        // line 27
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+        yield "\" class=\"connexion\">Se connecter</a>
+                <a href=\"";
+        // line 28
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+        yield "\" class=\"deconnexion\">Se déconnecter</a>
+                <a href=\"";
+        // line 29
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+        yield "\" class=\"inscription\">S'inscrire</a>
             </div>
 
             <div class=\"menu-mobile\">
@@ -273,7 +282,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  237 => 54,  226 => 12,  216 => 11,  203 => 9,  200 => 8,  190 => 7,  170 => 5,  149 => 58,  144 => 55,  142 => 54,  128 => 43,  124 => 42,  120 => 41,  116 => 40,  112 => 39,  93 => 23,  89 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  246 => 54,  235 => 12,  225 => 11,  212 => 9,  209 => 8,  199 => 7,  179 => 5,  158 => 58,  153 => 55,  151 => 54,  137 => 43,  133 => 42,  129 => 41,  125 => 40,  121 => 39,  108 => 29,  104 => 28,  100 => 27,  93 => 23,  89 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -304,9 +313,9 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
                     </div>
             </nav>
             <div class=\"login\">
-                <a href=\"#\" class=\"connexion\">Se connecter</a>
-                <a href=\"#\" class=\"deconnexion\">Se déconnecter</a>
-                <a href=\"#\" class=\"inscription\">S'inscrire</a>
+                <a href=\"{{ path('app_login') }}\" class=\"connexion\">Se connecter</a>
+                <a href=\"{{ path('app_logout') }}\" class=\"deconnexion\">Se déconnecter</a>
+                <a href=\"{{ path('app_register') }}\" class=\"inscription\">S'inscrire</a>
             </div>
 
             <div class=\"menu-mobile\">
