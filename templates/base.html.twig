@@ -24,9 +24,13 @@
                     </div>
             </nav>
             <div class="login">
-                <a href="{{ path('app_login') }}" class="connexion">Se connecter</a>
-                <a href="{{ path('app_logout') }}" class="deconnexion">Se déconnecter</a>
-                <a href="{{ path('app_register') }}" class="inscription">S'inscrire</a>
+                {% if app.user %}
+                    <a href="#" class="pseudo-utilisateur">Bonjour {{ app.user.pseudo }}</a>
+                    <a href="{{ path('app_logout') }}" class="deconnexion">Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="connexion">Se connecter</a>
+                    <a href="{{ path('app_register') }}" class="inscription">S'inscrire</a>
+                {% endif %}
             </div>
 
             <div class="menu-mobile">

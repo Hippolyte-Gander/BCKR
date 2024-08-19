@@ -110,6 +110,12 @@ header .menu-mobile {
     gap: 20px;
 }
 
+.pseudo-utilisateur {
+    color: rgb(0, 174, 255);
+    border:  1px;
+    padding: 9px 14px;
+}
+
 .deconnexion {
     background-color: white;
     color: black;
@@ -484,6 +490,10 @@ td, tr {
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+label {
+    color: black;
 }
 
 .formulaire input[type=text] {
