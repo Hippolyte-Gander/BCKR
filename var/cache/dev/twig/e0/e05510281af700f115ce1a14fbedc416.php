@@ -66,7 +66,7 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Log in!";
+        yield "Connexion";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -87,61 +87,80 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        yield "        <form method=\"post\">
+        yield "
+    <div class=\"login-background\">
+
+        <form method=\"post\">
             ";
-        // line 7
-        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 7, $this->source); })())) {
-            // line 8
+        // line 10
+        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 10, $this->source); })())) {
+            // line 11
             yield "                <div class=\"alert alert-danger\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(CoreExtension::getAttribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 8, $this->source); })()), "messageKey", [], "any", false, false, false, 8), CoreExtension::getAttribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 8, $this->source); })()), "messageData", [], "any", false, false, false, 8), "security"), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(CoreExtension::getAttribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 11, $this->source); })()), "messageKey", [], "any", false, false, false, 11), CoreExtension::getAttribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 11, $this->source); })()), "messageData", [], "any", false, false, false, 11), "security"), "html", null, true);
             yield "</div>
             ";
         }
-        // line 10
+        // line 13
         yield "
             ";
-        // line 11
-        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11)) {
-            // line 12
-            yield "                <div class=\"mb-3\">
-                    You are logged in as ";
-            // line 13
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13), "userIdentifier", [], "any", false, false, false, 13), "html", null, true);
-            yield ", <a href=\"";
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
-            yield "\">Logout</a>
+        // line 14
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14)) {
+            // line 15
+            yield "                <div class=\"logged-container\">
+                    Vous êtes connecté en tant que  <a href=\"#\">";
+            // line 16
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "pseudo", [], "any", false, false, false, 16), "html", null, true);
+            yield "</a>.
                 </div>
             ";
-        }
-        // line 16
-        yield "
-            <h4>Veuillez vous connecter</h4>
+        } else {
+            // line 19
+            yield "
+            <div class=\"login-container\">
 
-            <div class=\"formulaire\">
-                <label for=\"username\">Email</label>
-                <input type=\"email\" value=\"";
-        // line 21
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 21, $this->source); })()), "html", null, true);
-        yield "\" name=\"_username\" id=\"username\" class=\"form-control\" autocomplete=\"email\" required autofocus>
-                <label for=\"password\">Password</label>
-                <input type=\"password\" name=\"_password\" id=\"password\" class=\"form-control\" autocomplete=\"current-password\" required>
+            <h4>Connexion</h4>
 
-                <input type=\"hidden\" name=\"_csrf_token\"
-                    value=\"";
-        // line 26
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
-        yield "\"
-                >
+            <div class=\"input-box\">
+                <input placeholder=\"Email\" type=\"email\" value=\"";
+            // line 25
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 25, $this->source); })()), "html", null, true);
+            yield "\" name=\"_username\" id=\"username\" class=\"form-control\" autocomplete=\"email\" required autofocus>
+
+                <i class=\"fa-regular fa-user\"></i>
+            </div>
+
+            <div class=\"input-box\">
+                <input placeholder=\"Mot de passe\" type=\"password\" name=\"_password\" id=\"password\" class=\"form-control\" autocomplete=\"current-password\" required>
+
+                <i class=\"fa-solid fa-lock\"></i>
+            </div>
+                <input type=\"hidden\" name=\"_csrf_token\" value=\"";
+            // line 35
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
+            yield "\">
 
                 ";
-        // line 38
-        yield "
-                <button class=\"btn btn-lg btn-primary\" type=\"submit\">
-                    Sign in
+            // line 46
+            yield "
+                <button class=\"login-btn\" type=\"submit\">
+                    Se connecter
                 </button>
-            </div>
-        </form>
 
+                <div class=\"register-link\">
+                    <a href=\"";
+            // line 52
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+            yield "\">Créer un compte</a>
+                </div>
+
+            </div>
+
+            ";
+        }
+        // line 58
+        yield "
+        </form>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -173,38 +192,46 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
      */
     public function getDebugInfo()
     {
-        return array (  138 => 38,  132 => 26,  124 => 21,  117 => 16,  109 => 13,  106 => 12,  104 => 11,  101 => 10,  95 => 8,  93 => 7,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  161 => 58,  152 => 52,  144 => 46,  139 => 35,  126 => 25,  118 => 19,  112 => 16,  109 => 15,  107 => 14,  104 => 13,  98 => 11,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
+
+    <div class=\"login-background\">
+
         <form method=\"post\">
             {% if error %}
                 <div class=\"alert alert-danger\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
             {% if app.user %}
-                <div class=\"mb-3\">
-                    You are logged in as {{ app.user.userIdentifier }}, <a href=\"{{ path('app_logout') }}\">Logout</a>
+                <div class=\"logged-container\">
+                    Vous êtes connecté en tant que  <a href=\"#\">{{ app.user.pseudo }}</a>.
                 </div>
-            {% endif %}
+            {% else %}
 
-            <h4>Veuillez vous connecter</h4>
+            <div class=\"login-container\">
 
-            <div class=\"formulaire\">
-                <label for=\"username\">Email</label>
-                <input type=\"email\" value=\"{{ last_username }}\" name=\"_username\" id=\"username\" class=\"form-control\" autocomplete=\"email\" required autofocus>
-                <label for=\"password\">Password</label>
-                <input type=\"password\" name=\"_password\" id=\"password\" class=\"form-control\" autocomplete=\"current-password\" required>
+            <h4>Connexion</h4>
 
-                <input type=\"hidden\" name=\"_csrf_token\"
-                    value=\"{{ csrf_token('authenticate') }}\"
-                >
+            <div class=\"input-box\">
+                <input placeholder=\"Email\" type=\"email\" value=\"{{ last_username }}\" name=\"_username\" id=\"username\" class=\"form-control\" autocomplete=\"email\" required autofocus>
+
+                <i class=\"fa-regular fa-user\"></i>
+            </div>
+
+            <div class=\"input-box\">
+                <input placeholder=\"Mot de passe\" type=\"password\" name=\"_password\" id=\"password\" class=\"form-control\" autocomplete=\"current-password\" required>
+
+                <i class=\"fa-solid fa-lock\"></i>
+            </div>
+                <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token('authenticate') }}\">
 
                 {#
                     Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -216,12 +243,20 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
                     </div>
                 #}
 
-                <button class=\"btn btn-lg btn-primary\" type=\"submit\">
-                    Sign in
+                <button class=\"login-btn\" type=\"submit\">
+                    Se connecter
                 </button>
-            </div>
-        </form>
 
+                <div class=\"register-link\">
+                    <a href=\"{{ path('app_register') }}\">Créer un compte</a>
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </form>
+    </div>
 {% endblock %}
 ", "security/login.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\security\\login.html.twig");
     }
