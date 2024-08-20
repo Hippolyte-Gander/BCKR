@@ -95,7 +95,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
     <div class=\"accueil\">
 
         <div class=\"a-venir\">
-            <h3>Événements à venir</h3>
+            <h2>Événements à venir</h2>
 
             <div class=\"titre-texte\">
 
@@ -105,50 +105,114 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
         $context['_seq'] = CoreExtension::ensureTraversable((isset($context["evenements"]) || array_key_exists("evenements", $context) ? $context["evenements"] : (function () { throw new RuntimeError('Variable "evenements" does not exist.', 18, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["evenement"]) {
             // line 19
-            yield "                    <div class=\"boucle-for-evenement\">
-                        <h5> <a href=\" ";
-            // line 20
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 20)]), "html", null, true);
-            yield " \"> ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 20), "html", null, true);
-            yield "</a></h5>
+            yield "                    ";
+            if ((CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 19) == "tous")) {
+                // line 20
+                yield "                        <div class=\"boucle-for-evenement\">
+                            <h5> <a href=\" ";
+                // line 21
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 21)]), "html", null, true);
+                yield " \"> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 21), "html", null, true);
+                yield "</a></h5>
 
-                        <p class=\"texte-user\">Début : ";
-            // line 22
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 22), "html", null, true);
-            yield " à ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 22), "html", null, true);
-            yield "</p><br>
-                        <p>Fin : ";
-            // line 23
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 23), "html", null, true);
-            yield " à ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 23), "html", null, true);
-            yield "</p><br>
-                        <p>";
-            // line 24
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 24), "html", null, true);
-            yield "</p>
-                    </div>
-                ";
+                            <p class=\"texte-user\">Début : ";
+                // line 23
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 23), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 23), "html", null, true);
+                yield "</p><br>
+                            <p>Fin : ";
+                // line 24
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 24), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 24), "html", null, true);
+                yield "</p><br>
+                            <p>";
+                // line 25
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 25), "html", null, true);
+                yield "</p>
+                        </div>
+                    ";
+            } elseif ((((CoreExtension::getAttribute($this->env, $this->source,             // line 27
+$context["evenement"], "visibilite", [], "any", false, false, false, 27) == "membres") && CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "user", [], "any", false, false, false, 27)) && (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "user", [], "any", false, false, false, 27), "isMembre", [], "method", false, false, false, 27) || CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "user", [], "any", false, false, false, 27), "isAdmin", [], "method", false, false, false, 27)))) {
+                // line 28
+                yield "                        <div class=\"boucle-for-evenement\">
+                            <h5> <a href=\" ";
+                // line 29
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 29)]), "html", null, true);
+                yield " \"> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 29), "html", null, true);
+                yield "</a></h5>
+
+                            <p class=\"texte-user\">Début : ";
+                // line 31
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 31), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 31), "html", null, true);
+                yield "</p><br>
+                            <p>Fin : ";
+                // line 32
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 32), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 32), "html", null, true);
+                yield "</p><br>
+                            <p>";
+                // line 33
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 33), "html", null, true);
+                yield "</p>
+                        </div>
+                    ";
+            } elseif (((CoreExtension::getAttribute($this->env, $this->source,             // line 35
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "user", [], "any", false, false, false, 35) && (CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 35) == "admins")) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "user", [], "any", false, false, false, 35), "isAdmin", [], "method", false, false, false, 35))) {
+                // line 36
+                yield "                        <div class=\"boucle-for-evenement\">
+                            <h5> <a href=\" ";
+                // line 37
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 37)]), "html", null, true);
+                yield " \"> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 37), "html", null, true);
+                yield "</a></h5>
+
+                            <p class=\"texte-user\">Début : ";
+                // line 39
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 39), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 39), "html", null, true);
+                yield "</p><br>
+                            <p>Fin : ";
+                // line 40
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 40), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 40), "html", null, true);
+                yield "</p><br>
+                            <p>";
+                // line 41
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 41), "html", null, true);
+                yield "</p>
+                        </div>
+                    ";
+            }
+            // line 44
+            yield "                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evenement'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
+        // line 45
         yield "            </div>
         </div>
 
         <div class=\"club\">
             <div class=\"club-description\">
                 <div class=\"titre-texte\">
-                    <h3>Le club</h3>
+                    <h2>Le club</h2>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
                         <br>
                         <br>
                         ";
-        // line 40
+        // line 58
         yield "                        Uniquement dotés de sportives et sportifs amateurs, la bonne ambiance et  la bonne humeur sont les premières qualités recherchées pour les futurs  nouveaux membres.
                         <br>
                         <br>
@@ -157,17 +221,17 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
                     </p>
                 </div>
                 <img class=\"img-president\" src=\"";
-        // line 47
+        // line 65
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/discours-president.jpg"), "html", null, true);
         yield "\" alt=\"photo du président du club faisant un discours\">
             </div>
             <div class=\"club-entrainements\">
                 <img class=\"img-entrainement\" src=\"";
-        // line 50
+        // line 68
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/entrainement2.jpg"), "html", null, true);
         yield "\" alt=\"photo d'un entraînement du club\">
                 <div class=\"titre-texte\">
-                    <h3>Les entraînements</h3>
+                    <h2>Les entraînements</h2>
                         <p>
                             Accueillant des joueurs de tout niveau, les entraînements sont sans prises de têtes avec des équipes tirées au sort avec une méthode de tirage absolument unique et totalement impartial !
                             <br>
@@ -180,7 +244,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
             </div>
             <div class=\"club-activites\">
                 <div class=\"titre-texte\">
-                    <h3>Autres activités</h3>
+                    <h2>Autres activités</h2>
                         <p>
                             En plus des entraînements, le club est à l’initiative de divers événements tels que des tournois amicaux internes ou externes, des repas ou des marches en groupe.
                             <br>
@@ -189,7 +253,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
                         </p>
                 </div>
                 <img class=\"img-paella\" src=\"";
-        // line 73
+        // line 91
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/paella.jpg"), "html", null, true);
         yield "\" alt=\"photo d'un membre du club faisant une très grande paëlla\">
             </div>
@@ -228,7 +292,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
      */
     public function getDebugInfo()
     {
-        return array (  193 => 73,  167 => 50,  161 => 47,  152 => 40,  139 => 27,  130 => 24,  124 => 23,  118 => 22,  111 => 20,  108 => 19,  104 => 18,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  257 => 91,  231 => 68,  225 => 65,  216 => 58,  203 => 45,  197 => 44,  191 => 41,  185 => 40,  179 => 39,  172 => 37,  169 => 36,  167 => 35,  162 => 33,  156 => 32,  150 => 31,  143 => 29,  140 => 28,  138 => 27,  133 => 25,  127 => 24,  121 => 23,  114 => 21,  111 => 20,  108 => 19,  104 => 18,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -246,18 +310,36 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
     <div class=\"accueil\">
 
         <div class=\"a-venir\">
-            <h3>Événements à venir</h3>
+            <h2>Événements à venir</h2>
 
             <div class=\"titre-texte\">
 
                 {% for evenement in evenements %}
-                    <div class=\"boucle-for-evenement\">
-                        <h5> <a href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.titre }}</a></h5>
+                    {% if (evenement.visibilite == 'tous') %}
+                        <div class=\"boucle-for-evenement\">
+                            <h5> <a href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.titre }}</a></h5>
 
-                        <p class=\"texte-user\">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
-                        <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
-                        <p>{{ evenement.description }}</p>
-                    </div>
+                            <p class=\"texte-user\">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
+                            <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
+                            <p>{{ evenement.description }}</p>
+                        </div>
+                    {% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
+                        <div class=\"boucle-for-evenement\">
+                            <h5> <a href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.titre }}</a></h5>
+
+                            <p class=\"texte-user\">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
+                            <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
+                            <p>{{ evenement.description }}</p>
+                        </div>
+                    {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
+                        <div class=\"boucle-for-evenement\">
+                            <h5> <a href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.titre }}</a></h5>
+
+                            <p class=\"texte-user\">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
+                            <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
+                            <p>{{ evenement.description }}</p>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -265,7 +347,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
         <div class=\"club\">
             <div class=\"club-description\">
                 <div class=\"titre-texte\">
-                    <h3>Le club</h3>
+                    <h2>Le club</h2>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
                         <br>
@@ -284,7 +366,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
             <div class=\"club-entrainements\">
                 <img class=\"img-entrainement\" src=\"{{ asset('img/entrainement2.jpg')}}\" alt=\"photo d'un entraînement du club\">
                 <div class=\"titre-texte\">
-                    <h3>Les entraînements</h3>
+                    <h2>Les entraînements</h2>
                         <p>
                             Accueillant des joueurs de tout niveau, les entraînements sont sans prises de têtes avec des équipes tirées au sort avec une méthode de tirage absolument unique et totalement impartial !
                             <br>
@@ -297,7 +379,7 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
             </div>
             <div class=\"club-activites\">
                 <div class=\"titre-texte\">
-                    <h3>Autres activités</h3>
+                    <h2>Autres activités</h2>
                         <p>
                             En plus des entraînements, le club est à l’initiative de divers événements tels que des tournois amicaux internes ou externes, des repas ou des marches en groupe.
                             <br>

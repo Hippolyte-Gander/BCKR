@@ -190,16 +190,20 @@ footer a:hover {
 }
 
 h1 {
-    padding: 90px 0px;
+    padding: 100px 0px;
     color: rgb(255, 255, 255);
     font-family: Poppins;
     font-weight: 800;
     font-size: clamp(2rem, 7.5vw + .5rem, 4rem);
 }
 
-h3 {
+h2 {
     font-size: clamp(1.5rem, 5vw + 0.5rem, 2.25rem);
 }
+
+/* h3 {
+    font-size: clamp(1.5rem, 5vw + 0.5rem, 2.25rem);
+} */
 
 h5 {
     font-size: clamp(1rem, 5vw, 1.75rem);
@@ -221,11 +225,11 @@ main {
     padding: 0px 20px;
 }
 
-.accueil h3, .accueil h5, .accueil p {
+.accueil h2, .accueil h5, .accueil p {
     color: white;
 }
 
-.accueil h3 {
+.accueil h2 {
     text-decoration: underline;
 }
 
@@ -234,7 +238,7 @@ main {
     margin: 30px;
 }
 
-.a-venir h3 {
+.a-venir h2 {
     margin: 50px 30px;
 }
 
@@ -283,7 +287,7 @@ main {
     gap: 20px;
 }
 
-.titre-texte h3 {
+.titre-texte h2 {
     padding: 20px 0px;
 }
 
@@ -303,6 +307,10 @@ main {
 h4 {
     color: rgb(255, 255, 255);
     padding: 100px 20px 20px 20px;
+}
+
+h5 {
+    font-size: 25px;
 }
 
 .texte-utilisateur {
@@ -448,6 +456,11 @@ td, tr {
 }
 
 /* --------------- MENTIONS LÉGALES ---------------- */
+
+.mentions-h3 h3 {
+    font-size: 35px;
+    padding: 130px 20px 20px 20px;
+}
 
 .mentions-legales-background {
     background: url('../img/photo-lignes-sombre.jpg') no-repeat;

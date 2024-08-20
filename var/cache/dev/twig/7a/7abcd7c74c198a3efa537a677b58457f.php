@@ -91,7 +91,7 @@ class __TwigTemplate_cbdb5f2bf923cfef3cc978169904add4 extends Template
 <div class=\"mentions-legales-background\">
     <div class=\"mentions-bloc-texte\">
         <div class=\"titre-texte\">
-            <h4>Mentions Légales et utilisation des données</h4>
+            <h3 class=\"mentions-h3\">Mentions Légales et utilisation des données</h3>
             <p>
                 Bienvenue sur le site du BCKR,
                 <br>
@@ -116,7 +116,7 @@ class __TwigTemplate_cbdb5f2bf923cfef3cc978169904add4 extends Template
             <p>
                 Ces données sont utilisées pour gérer les comptes, communiquer et organiser des événements. Les données des membres ont pour but d'aider à la gestion du club.
                 <br>
-                Elles sont traitées sur la base du consentement, resteront internes au club et ne seront partagées qu'en cas d'obiligation légale.
+                Elles sont traitées sur la base du consentement, resteront internes au club et ne seront partagées qu'en cas d'obligation légale.
             </p>
         </div>
         <div class=\"titre-texte\">
@@ -173,7 +173,7 @@ class __TwigTemplate_cbdb5f2bf923cfef3cc978169904add4 extends Template
 <div class=\"mentions-legales-background\">
     <div class=\"mentions-bloc-texte\">
         <div class=\"titre-texte\">
-            <h4>Mentions Légales et utilisation des données</h4>
+            <h3 class=\"mentions-h3\">Mentions Légales et utilisation des données</h3>
             <p>
                 Bienvenue sur le site du BCKR,
                 <br>
@@ -198,7 +198,7 @@ class __TwigTemplate_cbdb5f2bf923cfef3cc978169904add4 extends Template
             <p>
                 Ces données sont utilisées pour gérer les comptes, communiquer et organiser des événements. Les données des membres ont pour but d'aider à la gestion du club.
                 <br>
-                Elles sont traitées sur la base du consentement, resteront internes au club et ne seront partagées qu'en cas d'obiligation légale.
+                Elles sont traitées sur la base du consentement, resteront internes au club et ne seront partagées qu'en cas d'obligation légale.
             </p>
         </div>
         <div class=\"titre-texte\">
