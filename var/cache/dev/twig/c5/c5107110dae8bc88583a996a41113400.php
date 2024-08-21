@@ -131,9 +131,15 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
             yield "    
                 </div>
                 <div class=\"col-form\">
-                ";
+                    ";
             // line 31
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 31, $this->source); })()), "description", [], "any", false, false, false, 31), 'row');
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 31, $this->source); })()), "places", [], "any", false, false, false, 31), 'row');
+            yield "    
+                </div>
+                <div class=\"col-form\">
+                ";
+            // line 34
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 34, $this->source); })()), "description", [], "any", false, false, false, 34), 'row');
             yield "
                 </div>
             </div>
@@ -141,44 +147,44 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
             <div class=\"row-form\">
                 <div class=\"col-form\">
                     ";
-            // line 37
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 37, $this->source); })()), "contenu", [], "any", false, false, false, 37), 'row');
+            // line 40
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 40, $this->source); })()), "contenu", [], "any", false, false, false, 40), 'row');
             yield "
                 </div>
             </div>
 
             <div class=\"row-form\">
-                <div class=\"col-form\">
-                    ";
-            // line 43
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 43, $this->source); })()), "dateDebut", [], "any", false, false, false, 43), 'row');
-            yield "
-                </div>
                 <div class=\"col-form\">
                     ";
             // line 46
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 46, $this->source); })()), "dateFin", [], "any", false, false, false, 46), 'row');
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 46, $this->source); })()), "dateDebut", [], "any", false, false, false, 46), 'row');
+            yield "
+                </div>
+                <div class=\"col-form\">
+                    ";
+            // line 49
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 49, $this->source); })()), "dateFin", [], "any", false, false, false, 49), 'row');
             yield "
                 </div>
             </div>
             <div class=\"row-form\">
                 <div class=\"col-form\">
                     ";
-            // line 51
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 51, $this->source); })()), "visibilite", [], "any", false, false, false, 51), 'row');
+            // line 54
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 54, $this->source); })()), "visibilite", [], "any", false, false, false, 54), 'row');
             yield "
                 </div>
                 <div class=\"col-form\">
                     ";
-            // line 54
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 54, $this->source); })()), "cree", [], "any", false, false, false, 54), 'row');
+            // line 57
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 57, $this->source); })()), "cree", [], "any", false, false, false, 57), 'row');
             yield "
                 </div>
             </div>
             <div class=\"bouton\">
                 ";
-            // line 58
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 58, $this->source); })()), 'form_end');
+            // line 61
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 61, $this->source); })()), 'form_end');
             yield "
             </div>
         </div>
@@ -186,13 +192,13 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
     </div>
 ";
         } else {
-            // line 64
+            // line 67
             yield "    <div class=\"error\">
         Page introuvable
     </div>
 ";
         }
-        // line 68
+        // line 71
         yield "
 ";
         
@@ -225,7 +231,7 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  196 => 68,  190 => 64,  181 => 58,  174 => 54,  168 => 51,  160 => 46,  154 => 43,  145 => 37,  136 => 31,  130 => 28,  124 => 25,  119 => 22,  115 => 20,  111 => 18,  109 => 17,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  202 => 71,  196 => 67,  187 => 61,  180 => 57,  174 => 54,  166 => 49,  160 => 46,  151 => 40,  142 => 34,  136 => 31,  130 => 28,  124 => 25,  119 => 22,  115 => 20,  111 => 18,  109 => 17,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -258,6 +264,9 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
             <div class=\"row-form\">
                 <div class=\"col-form\">
                     {{ form_row(formAddEvenement.titre) }}    
+                </div>
+                <div class=\"col-form\">
+                    {{ form_row(formAddEvenement.places) }}    
                 </div>
                 <div class=\"col-form\">
                 {{ form_row(formAddEvenement.description) }}
