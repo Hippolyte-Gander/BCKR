@@ -163,21 +163,28 @@ header .menu-mobile {
 
 footer {
     background: rgb(22, 22, 22);
-    height: 70px;
+    max-height: 80px;
+    min-height: 80px;
+    border-top: solid 2px white;
     font-size: 1.25rem;
     display: flex;
-    gap: 30px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 20px;
 }
 
-footer a {
-    color: rgb(255, 255, 255);
+.lien-footer a {
+    padding: 0 20px;
 }
 
-footer a:hover {
+.lien-footer a:hover {
     text-decoration: underline;
     color:  rgb(255, 255, 255);
+}
+
+footer a i:hover {
+    color: rgb(4, 4, 143);
+    transition: 0.3s;
 }
 
 /* --------------- TITRE PRINCIPAL ---------------- */

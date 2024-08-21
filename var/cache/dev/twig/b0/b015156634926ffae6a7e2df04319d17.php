@@ -169,14 +169,25 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         // line 61
         yield "
         <footer>
-            <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
             <a href=\"";
-        // line 64
+        // line 63
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
+        yield "\" class=\"logo\"><img src=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo-BCKR.jpg"), "html", null, true);
+        yield "\" alt=\"logo du club\" class=\"img-logo\"></a>
+
+            <div class=\"lien-footer\">
+                <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
+                <a href=\"";
+        // line 67
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
         yield "\" class=\"texte-footer\">Mentions légales</a>
-            <a href=\"#\" class=\"texte-footer\">Politique de confidentialité</a>
-            <a href=\"#\" class=\"texte-footer\">Sécurité</a>
-            <a href=\"#\" class=\"texte-footer\">Contact</a>
+                ";
+        // line 69
+        yield "                <a href=\"#\" class=\"texte-footer\">Contact</a>
+            </div>
+            
+            <a href=\"https://www.facebook.com/people/Badminton-Club-Kriegsheim-Rottelsheim/100068341596055/\" class=\"texte-footer\" target=\"_blank\"><i class=\"fa-brands fa-facebook\"></i></a>
         </footer>
     </body>
 </html>
@@ -299,7 +310,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  263 => 60,  252 => 12,  242 => 11,  229 => 9,  226 => 8,  216 => 7,  196 => 5,  175 => 64,  170 => 61,  168 => 60,  154 => 49,  150 => 48,  146 => 47,  142 => 46,  138 => 45,  127 => 36,  122 => 34,  117 => 33,  112 => 31,  107 => 30,  105 => 29,  97 => 25,  92 => 23,  88 => 22,  83 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  274 => 60,  263 => 12,  253 => 11,  240 => 9,  237 => 8,  227 => 7,  207 => 5,  187 => 69,  183 => 67,  174 => 63,  170 => 61,  168 => 60,  154 => 49,  150 => 48,  146 => 47,  142 => 46,  138 => 45,  127 => 36,  122 => 34,  117 => 33,  112 => 31,  107 => 30,  105 => 29,  97 => 25,  92 => 23,  88 => 22,  83 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -366,11 +377,16 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         {% block body %}{% endblock %}
 
         <footer>
-            <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
-            <a href=\"{{ path('mentions_home') }}\" class=\"texte-footer\">Mentions légales</a>
-            <a href=\"#\" class=\"texte-footer\">Politique de confidentialité</a>
-            <a href=\"#\" class=\"texte-footer\">Sécurité</a>
-            <a href=\"#\" class=\"texte-footer\">Contact</a>
+            <a href=\"{{ path('app_home') }}\" class=\"logo\"><img src=\"{{ asset('img/logo-BCKR.jpg')}}\" alt=\"logo du club\" class=\"img-logo\"></a>
+
+            <div class=\"lien-footer\">
+                <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
+                <a href=\"{{ path('mentions_home') }}\" class=\"texte-footer\">Mentions légales</a>
+                {# <a href=\"#\" class=\"texte-footer\">Sécurité</a> #}
+                <a href=\"#\" class=\"texte-footer\">Contact</a>
+            </div>
+            
+            <a href=\"https://www.facebook.com/people/Badminton-Club-Kriegsheim-Rottelsheim/100068341596055/\" class=\"texte-footer\" target=\"_blank\"><i class=\"fa-brands fa-facebook\"></i></a>
         </footer>
     </body>
 </html>
