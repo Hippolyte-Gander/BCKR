@@ -52,11 +52,12 @@ return [
                         .'|edit(*:232)'
                         .'|suppr(*:245)'
                         .'|participer(*:263)'
+                        .'|ne\\-pas\\-participer(*:290)'
                     .')'
-                    .'|(*:272)'
+                    .'|(*:299)'
                 .')'
-                .'|/membre/([^/]++)(*:297)'
-                .'|/user/([^/]++)(*:319)'
+                .'|/membre/([^/]++)(*:324)'
+                .'|/user/([^/]++)(*:346)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -71,9 +72,10 @@ return [
         232 => [[['_route' => 'edit_evenement', '_controller' => 'App\\Controller\\EvenementController::new_edit'], ['id'], null, null, false, false, null]],
         245 => [[['_route' => 'suppr_evenement', '_controller' => 'App\\Controller\\EvenementController::supprEvenement'], ['id'], null, null, false, false, null]],
         263 => [[['_route' => 'participer_evenement', '_controller' => 'App\\Controller\\EvenementController::participerEvenement'], ['id'], null, null, false, false, null]],
-        272 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
-        297 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
-        319 => [
+        290 => [[['_route' => 'pas_participer_evenement', '_controller' => 'App\\Controller\\EvenementController::nePasParticiperEvenement'], ['id'], null, null, false, false, null]],
+        299 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
+        324 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
+        346 => [
             [['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -89,24 +89,29 @@ class EvenementController extends AbstractController
     {
         // Récupérer id événement
         $evenement = $evenementRepository->find($id);
+
+        // vérifier s'il reste de la place
+
         // Ajouter l'utilisateur comme participant à l'événement
         $evenement->addParticipant($user);
 
         $entityManager->persist($evenement);
         $entityManager->flush();
+
         return $this->redirectToRoute('app_evenement');
     }
-    // ------------- PARTICIPATION A UN EVENEMENT -------------
-    // #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
-    // public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
-    // {
-    //     // Récupérer id événement
-    //     $evenement = $evenementRepository->find($id);
-    //     // Ajouter l'utilisateur comme participant à l'événement
-    //     $evenement->addParticipant($user);
+    // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
+    #[Route('/evenement/{id}/ne-pas-participer', name: 'pas_participer_evenement')]
+    public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
+    {
+        // Récupérer id événement
+        $evenement = $evenementRepository->find($id);
+        // Ajouter l'utilisateur comme participant à l'événement
+        $evenement->removeParticipant($user);
 
-    //     $entityManager->persist($evenement);
-    //     $entityManager->flush();
-    //     return $this->redirectToRoute('app_evenement');
-    // }
+        $entityManager->persist($evenement);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_evenement');
+    }
 }

@@ -249,5 +249,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         public function estCeQueParticipeDeja(Evenement $evenement): bool
         {
             return $this->participe->contains($evenement);
-        } // NE FONCTIONNE PAS
+        }
 }

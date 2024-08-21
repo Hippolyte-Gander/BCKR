@@ -139,57 +139,45 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
                 yield "                    ";
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["evenementpresent"], "html", null, true);
                 yield " <br>
-                    ";
-                // line 27
-                if (CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "estCeQueParticipeDeja", [], "any", false, false, false, 27)) {
-                    // line 28
-                    yield "                        <p>CA MARCHE</p>
-                    ";
-                } else {
-                    // line 30
-                    yield "                        <p>CA MARCHE PAS</p>
-                    ";
-                }
-                // line 32
-                yield "                ";
+                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evenementpresent'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 33
+            // line 28
             yield "            </p>
 
             ";
-            // line 35
-            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 35, $this->source); })()), "membre", [], "any", false, false, false, 35)) {
-                // line 36
+            // line 30
+            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 30, $this->source); })()), "membre", [], "any", false, false, false, 30)) {
+                // line 31
                 yield "                <p>
                     ";
-                // line 37
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 37, $this->source); })()), "membre", [], "any", false, false, false, 37), "nom", [], "any", false, false, false, 37), "html", null, true);
+                // line 32
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 32, $this->source); })()), "membre", [], "any", false, false, false, 32), "nom", [], "any", false, false, false, 32), "html", null, true);
                 yield "
                     ";
-                // line 38
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 38, $this->source); })()), "membre", [], "any", false, false, false, 38), "prenom", [], "any", false, false, false, 38), "html", null, true);
+                // line 33
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 33, $this->source); })()), "membre", [], "any", false, false, false, 33), "prenom", [], "any", false, false, false, 33), "html", null, true);
                 yield "
                 </p>
             ";
             } else {
-                // line 41
+                // line 36
                 yield "                <p>Utilisateur standard, aucune information supplémentaire</p>
             ";
             }
-            // line 43
+            // line 38
             yield "    </div>
 ";
         } else {
-            // line 45
+            // line 40
             yield "    <div class=\"error\">
         Page introuvable
     </div>
 ";
         }
-        // line 49
+        // line 44
         yield "
 ";
         
@@ -222,7 +210,7 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  193 => 49,  187 => 45,  183 => 43,  179 => 41,  173 => 38,  169 => 37,  166 => 36,  164 => 35,  160 => 33,  154 => 32,  150 => 30,  146 => 28,  144 => 27,  139 => 26,  135 => 25,  131 => 23,  122 => 21,  118 => 20,  113 => 18,  108 => 16,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  181 => 44,  175 => 40,  171 => 38,  167 => 36,  161 => 33,  157 => 32,  154 => 31,  152 => 30,  148 => 28,  139 => 26,  135 => 25,  131 => 23,  122 => 21,  118 => 20,  113 => 18,  108 => 16,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -253,11 +241,6 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
             Inscrit aux événements :
                 {% for evenementpresent in user.participe %}
                     {{ evenementpresent }} <br>
-                    {% if evenementpresent.estCeQueParticipeDeja %}
-                        <p>CA MARCHE</p>
-                    {% else %}
-                        <p>CA MARCHE PAS</p>
-                    {% endif %}
                 {% endfor %}
             </p>
 

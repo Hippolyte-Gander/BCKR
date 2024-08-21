@@ -459,7 +459,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.Q.xdLRN"/>
+      <argument type="service" id=".service_locator.5dj0So8"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3356,7 +3356,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.Q.xdLRN"/>
+      <argument type="service" id=".service_locator.5dj0So8"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -7701,10 +7701,11 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.Hz5btge.App\Entity\User"/>
       </argument>
     </service>
-    <service id=".service_locator.Q.xdLRN" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.5dj0So8" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\EvenementController::index" type="service_closure" id=".service_locator.pX4JUuC"/>
+        <argument key="App\Controller\EvenementController::nePasParticiperEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
         <argument key="App\Controller\EvenementController::new_edit" type="service_closure" id=".service_locator.EMuVimD"/>
         <argument key="App\Controller\EvenementController::nextEvents" type="service_closure" id=".service_locator.pX4JUuC"/>
         <argument key="App\Controller\EvenementController::participerEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
@@ -7723,6 +7724,7 @@
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\EvenementController:index" type="service_closure" id=".service_locator.pX4JUuC"/>
+        <argument key="App\Controller\EvenementController:nePasParticiperEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
         <argument key="App\Controller\EvenementController:new_edit" type="service_closure" id=".service_locator.EMuVimD"/>
         <argument key="App\Controller\EvenementController:nextEvents" type="service_closure" id=".service_locator.pX4JUuC"/>
         <argument key="App\Controller\EvenementController:participerEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
@@ -9980,7 +9982,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Q.xdLRN"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.5dj0So8"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -10008,7 +10010,7 @@
     <service id=".service_locator.HuHdp3s" alias=".service_locator.JFCU_Ej"/>
     <service id=".service_locator.82oFuUB" alias=".service_locator.bCdRQ_V"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.Y4BBb8g" alias=".service_locator.Q.xdLRN"/>
+    <service id=".service_locator.cbz6WAZ" alias=".service_locator.5dj0So8"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.7oRM3FY" alias=".service_locator.LFlM1OF"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>

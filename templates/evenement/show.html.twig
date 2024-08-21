@@ -21,7 +21,11 @@
 
         <p>{{ evenement.contenu }}</p>
 
-        {% if evenement.participants %}
+        <p> {{ evenement.placesPrises }} / {{ evenement.places }} places prises.</p>
+
+        {% if evenement.participants|length == 0 %}
+            <p>Aucun inscrit pour le moment</p>
+        {% else %}
             <div class="participants-liste">
                 <h4>Participants inscrits :</h4>
                 <ul>
@@ -51,6 +55,18 @@
 
         <p>{{ evenement.contenu }}</p>
 
+        {% if evenement.participants|length == 0 %}
+            <p>Aucun inscrit pour le moment</p>
+        {% else %}
+            <div class="participants-liste">
+                <h4>Participants inscrits :</h4>
+                <ul>
+                    {% for participant in evenement.participants %}
+                        <li>{{ participant.pseudo }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </div>
 
 {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
@@ -70,6 +86,18 @@
 
         <p>{{ evenement.contenu }}</p>
 
+        {% if evenement.participants|length == 0 %}
+            <p>Aucun inscrit pour le moment</p>
+        {% else %}
+            <div class="participants-liste">
+                <h4>Participants inscrits :</h4>
+                <ul>
+                    {% for participant in evenement.participants %}
+                        <li>{{ participant.pseudo }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </div>
 
 {% else %}

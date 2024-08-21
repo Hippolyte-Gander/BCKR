@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
@@ -53,6 +54,9 @@ class Evenement
      */
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participe')]
     private Collection $participants;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $placesPrises = 0;
 
     public function __construct()
     {
@@ -195,6 +199,18 @@ class Evenement
 
         return $this;
     }
+        
+    public function getPlacesPrises(): ?int
+    {
+        return $this->placesPrises;
+    }
+
+    public function setPlacesPrises(?int $placesPrises): static
+    {
+        $this->placesPrises = $placesPrises;
+
+        return $this;
+    }
 
     /**
      * @return Collection<int, User>
@@ -222,6 +238,7 @@ class Evenement
 
         return $this;
     }
+
     
     // Dates formatées
 
@@ -244,4 +261,23 @@ class Evenement
     {
         return $this->dateFin->format('H:i');
     }
+
+    // compteur de places
+
+    public function placesPriseEvenement()
+    {
+        if ($this->placesPrises < $this->places) {
+            $this->placesPrises += 1;
+        };
+        return $this;
+    }
+
+    public function placesDesisteeEvenement()
+    {
+        if ($this->placesPrises < $this->places) {
+            $this->placesPrises -= 1;
+        };
+        return $this;
+    }
+
 }
