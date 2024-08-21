@@ -76,24 +76,28 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         // line 19
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield " \">Home</a>
-                        ";
+                        <a href=\" ";
         // line 20
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "user", [], "any", false, false, false, 20) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "user", [], "any", false, false, false, 20), "isAdmin", [], "method", false, false, false, 20))) {
-            // line 21
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("club_home");
+        yield " \">Le club</a>
+                        ";
+        // line 21
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21), "isAdmin", [], "method", false, false, false, 21))) {
+            // line 22
             yield "                            <a href=\" ";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user");
             yield " \">Liste Users</a>
                             <a href=\" ";
-            // line 22
+            // line 23
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_membre");
             yield " \">Liste Membres</a>
                             <a href=\" ";
-            // line 23
+            // line 24
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
             yield " \">Créer un événement</a>
                         ";
         }
-        // line 25
+        // line 26
         yield "                        <a href=\" ";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Liste Événements</a>
@@ -101,29 +105,29 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             </nav>
             <div class=\"login\">
                 ";
-        // line 29
-        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29)) {
-            // line 30
+        // line 30
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30)) {
+            // line 31
             yield "                    <a href=\"#\" class=\"pseudo-utilisateur\">Bonjour ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30), "pseudo", [], "any", false, false, false, 30), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31), "pseudo", [], "any", false, false, false, 31), "html", null, true);
             yield "</a>
                     <a href=\"";
-            // line 31
+            // line 32
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             yield "\" class=\"deconnexion\">Se déconnecter</a>
                 ";
         } else {
-            // line 33
+            // line 34
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             yield "\" class=\"connexion\">Se connecter</a>
                     <a href=\"";
-            // line 34
+            // line 35
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             yield "\" class=\"inscription\">S'inscrire</a>
                 ";
         }
-        // line 36
+        // line 37
         yield "            </div>
 
             <div class=\"menu-mobile\">
@@ -134,23 +138,23 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
                     <i class=\"fa-solid fa-x\"></i>
                 </div>
                     <a href=\" ";
-        // line 45
+        // line 46
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield " \">Home</a>
                     <a href=\" ";
-        // line 46
+        // line 47
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user");
         yield " \">Liste Users</a>
                     <a href=\" ";
-        // line 47
+        // line 48
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_membre");
         yield " \">Liste Membres</a>
                     <a href=\" ";
-        // line 48
+        // line 49
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Liste Événements</a>
                     <a href=\" ";
-        // line 49
+        // line 50
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
         yield " \">Créer un événement</a>
                 <div class=\"login\">
@@ -164,13 +168,13 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
 
 
         ";
-        // line 60
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 61
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 62
         yield "
         <footer>
             <a href=\"";
-        // line 63
+        // line 64
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield "\" class=\"logo\"><img src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo-BCKR.jpg"), "html", null, true);
@@ -179,11 +183,11 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             <div class=\"lien-footer\">
                 <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
                 <a href=\"";
-        // line 67
+        // line 68
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
         yield "\" class=\"texte-footer\">Mentions légales</a>
                 ";
-        // line 69
+        // line 70
         yield "                <a href=\"#\" class=\"texte-footer\">Contact</a>
             </div>
             
@@ -270,7 +274,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         return; yield '';
     }
 
-    // line 60
+    // line 61
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -310,7 +314,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  274 => 60,  263 => 12,  253 => 11,  240 => 9,  237 => 8,  227 => 7,  207 => 5,  187 => 69,  183 => 67,  174 => 63,  170 => 61,  168 => 60,  154 => 49,  150 => 48,  146 => 47,  142 => 46,  138 => 45,  127 => 36,  122 => 34,  117 => 33,  112 => 31,  107 => 30,  105 => 29,  97 => 25,  92 => 23,  88 => 22,  83 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  278 => 61,  267 => 12,  257 => 11,  244 => 9,  241 => 8,  231 => 7,  211 => 5,  191 => 70,  187 => 68,  178 => 64,  174 => 62,  172 => 61,  158 => 50,  154 => 49,  150 => 48,  146 => 47,  142 => 46,  131 => 37,  126 => 35,  121 => 34,  116 => 32,  111 => 31,  109 => 30,  101 => 26,  96 => 24,  92 => 23,  87 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -334,6 +338,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             <nav>
                     <div class=\"liens\">
                         <a href=\" {{ path('app_home') }} \">Home</a>
+                        <a href=\" {{ path('club_home') }} \">Le club</a>
                         {% if app.user  and app.user.isAdmin() %}
                             <a href=\" {{ path('app_user') }} \">Liste Users</a>
                             <a href=\" {{ path('app_membre') }} \">Liste Membres</a>

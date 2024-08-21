@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EvenementType extends AbstractType
@@ -28,6 +29,12 @@ class EvenementType extends AbstractType
             ])
             ->add('description', TextType::class, [
                 'label'=>'Description événement',
+                'attr'=> [
+                    'class'=> 'texte-formulaire'
+                ]
+            ])
+            ->add('places', IntegerType::class, [
+                'label'=>'Nombre de places maximum',
                 'attr'=> [
                     'class'=> 'texte-formulaire'
                 ]

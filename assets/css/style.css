@@ -471,6 +471,36 @@ td, tr {
     padding: 20px;
 }
 
+/* --------------- CLUB ---------------- */
+
+.club-background {
+    padding-top: 100px;
+    background: url('../img/volant-sur-ligne-sombre.jpg') no-repeat;
+    background-size: cover;
+    min-height: 90lvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.club-titre-texte {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    text-align: justify;
+    gap: 20px;
+    max-width: 70%;
+    border:  2px solid rgb(0, 0, 0);
+    backdrop-filter: blur(5px);
+    margin: 30px;
+    padding: 30px;
+}
+
+.club-titre-texte h2 {
+    padding: 0 40px 20px 40px;
+}
+
 /* --------------- MENTIONS LÉGALES ---------------- */
 
 .mentions-h3 h3 {

@@ -24,4 +24,10 @@ class HomeController extends AbstractController
         return $this->render('home/mentions.html.twig');
     }
 
+    #[Route('/club', name: 'club_home')]
+    public function club(): Response
+    {
+        return $this->render('home/club.html.twig');
+    }
+
 }

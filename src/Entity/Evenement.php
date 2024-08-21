@@ -47,6 +47,9 @@ class Evenement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $visibilite = null;
 
+    #[ORM\Column]
+    private ?int $places = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -208,5 +211,17 @@ class Evenement
     public function heureFinFormatee(): ?string
     {
         return $this->dateFin->format('H:i');
+    }
+
+    public function getPlaces(): ?int
+    {
+        return $this->places;
+    }
+
+    public function setPlaces(int $places): static
+    {
+        $this->places = $places;
+
+        return $this;
     }
 }
