@@ -71,13 +71,6 @@ class EvenementType extends AbstractType
                     'class'=> 'texte-formulaire'
                 ]
             ])
-            ->add('cree', EntityType::class, [
-                'label'=>'Créé par',
-                'class' => User::class,
-                'attr'=> [
-                    'class'=> 'texte-formulaire'
-                ]
-            ])
             ->add('Valider', SubmitType::class, [
                 'attr'=> [
                     'class'=> 'valider-btn-formulaire'

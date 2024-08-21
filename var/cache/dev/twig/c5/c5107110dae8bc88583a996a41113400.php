@@ -174,13 +174,9 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
             yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 54, $this->source); })()), "visibilite", [], "any", false, false, false, 54), 'row');
             yield "
                 </div>
-                <div class=\"col-form\">
-                    ";
-            // line 57
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["formAddEvenement"]) || array_key_exists("formAddEvenement", $context) ? $context["formAddEvenement"] : (function () { throw new RuntimeError('Variable "formAddEvenement" does not exist.', 57, $this->source); })()), "cree", [], "any", false, false, false, 57), 'row');
-            yield "
-                </div>
-            </div>
+                ";
+            // line 59
+            yield "            </div>
             <div class=\"bouton\">
                 ";
             // line 61
@@ -231,7 +227,7 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  202 => 71,  196 => 67,  187 => 61,  180 => 57,  174 => 54,  166 => 49,  160 => 46,  151 => 40,  142 => 34,  136 => 31,  130 => 28,  124 => 25,  119 => 22,  115 => 20,  111 => 18,  109 => 17,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  198 => 71,  192 => 67,  183 => 61,  179 => 59,  174 => 54,  166 => 49,  160 => 46,  151 => 40,  142 => 34,  136 => 31,  130 => 28,  124 => 25,  119 => 22,  115 => 20,  111 => 18,  109 => 17,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -291,9 +287,9 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
                 <div class=\"col-form\">
                     {{ form_row(formAddEvenement.visibilite) }}
                 </div>
-                <div class=\"col-form\">
+                {# <div class=\"col-form\">
                     {{ form_row(formAddEvenement.cree) }}
-                </div>
+                </div> #}
             </div>
             <div class=\"bouton\">
                 {{ form_end(formAddEvenement) }}
@@ -307,15 +303,6 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
     </div>
 {% endif %}
 
-{% endblock %}
-
-
-
-{# 
-icône utilisateur
-<i class=\"fa-regular fa-user\"></i>
-
-icône cadenas
-<i class=\"fa-solid fa-lock\"></i> #}", "evenement/new.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\evenement\\new.html.twig");
+{% endblock %}", "evenement/new.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\evenement\\new.html.twig");
     }
 }

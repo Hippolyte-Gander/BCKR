@@ -44,11 +44,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'utilisateur', cascade: ['persist', 'remove'])]
     private ?Membre $membre = null;
 
-    /**
-     * @var Collection<int, Evenement>
-     */
-    #[ORM\OneToMany(targetEntity: Evenement::class, mappedBy: 'cree')]
-    private Collection $evenements;
 
     /**
      * @var Collection<int, Commentaire>
@@ -64,7 +59,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     public function __construct()
     {
-        $this->evenements = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->participe = new ArrayCollection();
     }
@@ -181,36 +175,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setMembre(?Membre $membre): static
     {
         $this->membre = $membre;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Evenement>
-     */
-    public function getEvenements(): Collection
-    {
-        return $this->evenements;
-    }
-
-    public function addEvenement(Evenement $evenement): static
-    {
-        if (!$this->evenements->contains($evenement)) {
-            $this->evenements->add($evenement);
-            $evenement->setCree($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvenement(Evenement $evenement): static
-    {
-        if ($this->evenements->removeElement($evenement)) {
-            // set the owning side to null (unless already changed)
-            if ($evenement->getCree() === $this) {
-                $evenement->setCree(null);
-            }
-        }
 
         return $this;
     }
