@@ -190,7 +190,6 @@ footer a:hover {
 }
 
 h1 {
-    padding: 100px 0px;
     color: rgb(255, 255, 255);
     font-family: Poppins;
     font-weight: 800;
@@ -216,6 +215,7 @@ main {
     flex-direction: column;
     background: url('../img/bg1-terrain-tres-sombre.jpg') no-repeat;
     background-size: cover;
+    padding-top: 110px;
 }
 
 .accueil {
@@ -263,8 +263,11 @@ main {
 .club-description,
 .club-entrainements,
 .club-activites {
-    background-color: rgba(24, 25, 29, 0.7);
-    border-radius: 3px;
+    background: transparent;
+    border:  2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -306,7 +309,7 @@ main {
 
 h4 {
     color: rgb(255, 255, 255);
-    padding: 100px 20px 20px 20px;
+    font-size: 25px;
 }
 
 h5 {
@@ -327,16 +330,14 @@ h5 {
 /* --------------- LISTE UTILISATEUR ---------------- */
 
 .utilisateurs-container {
-    margin-top: 80px;
+    padding-top: 110px;
     min-height: 100vh;
     background: url('../img/terrain-bad-sombre.jpg') no-repeat;
     background-size: cover;
 }
 
 .utilisateurs-container h4 {
-    padding: 60px;
-    margin: 60px;
-    color: white;
+    padding: 0 100px;
 }
 
 .utilisateurs-container p {
@@ -351,7 +352,7 @@ h5 {
 
 .utilisateurs-container a {
     color: white;
-    margin: 10px;
+    margin: 5px;
 }
 
 .utilisateurs-container a:hover {
@@ -365,16 +366,14 @@ h5 {
 /* --------------- LISTE MEMBRES ---------------- */
 
 .membre-container {
-    margin-top: 80px;
+    padding-top: 110px;
     min-height: 100vh;
     background: url('../img/terrain-bad-sombre.jpg') no-repeat;
     background-size: cover;
 }
 
 .membre-container h4 {
-    padding: 60px;
-    margin: 60px;
-    color: white;
+    padding: 0 100px;
 }
 
 .membre-container p {
@@ -399,11 +398,20 @@ h5 {
 /* --------------- LISTE ÉVÉNEMENTS ---------------- */
 
 .liste-evenement-background {
+    padding-top: 110px;
     background: url('../img/volants-sur-terrain-sombre.jpg') no-repeat;
     background-size: cover;
     min-height: 90lvh;
     display: flex;
     flex-direction: column;
+}
+
+.liste-evenement-background h4 {
+    padding: 0 100px;
+}
+
+.liste-evenement-background a:hover {
+    text-decoration: underline;
 }
 
 .liste-evenement-background a {
@@ -449,6 +457,7 @@ td, tr {
     background: url('../img/terrain-bad-sombre.jpg') no-repeat;
     background-size: cover;
     min-height: 80lvh;
+    padding-top: 110px;
 }
 
 .det-evenement-background p {
@@ -463,9 +472,10 @@ td, tr {
 }
 
 .mentions-legales-background {
+    padding-top: 100px;
     background: url('../img/photo-lignes-sombre.jpg') no-repeat;
     background-size: cover;
-    min-height: 85lvh;
+    min-height: 90lvh;
 }
 
 .mentions-bloc-texte {
@@ -479,6 +489,11 @@ td, tr {
 .formulaire-background {
     background: url('../img/volant-sur-ligne-sombre.jpg') no-repeat;
     background-size: cover;
+    padding-top: 110px;
+}
+
+.formulaire-background h4 {
+    padding: 0 100px;
 }
 
 .formulaire {
@@ -609,6 +624,10 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+/* --------------- REGISTER ---------------- */
+
+
 
 /* --------------- LOGIN ---------------- */
 
