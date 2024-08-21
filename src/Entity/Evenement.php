@@ -35,9 +35,6 @@ class Evenement
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateFin = null;
 
-    #[ORM\ManyToOne(inversedBy: 'evenements')]
-    private ?User $cree = null;
-
     /**
      * @var Collection<int, Commentaire>
      */
@@ -50,9 +47,16 @@ class Evenement
     #[ORM\Column]
     private ?int $places = null;
 
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participe')]
+    private Collection $participants;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->participants = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -137,18 +141,6 @@ class Evenement
         return $this;
     }
 
-    public function getCree(): ?User
-    {
-        return $this->cree;
-    }
-
-    public function setCree(?User $cree): static
-    {
-        $this->cree = $cree;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Commentaire>
      */
@@ -221,6 +213,33 @@ class Evenement
     public function setPlaces(int $places): static
     {
         $this->places = $places;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(User $participant): static
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants->add($participant);
+            $participant->addParticipe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(User $participant): static
+    {
+        if ($this->participants->removeElement($participant)) {
+            $participant->removeParticipe($this);
+        }
 
         return $this;
     }

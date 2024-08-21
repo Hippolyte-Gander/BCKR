@@ -55,11 +55,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'poste')]
     private Collection $commentaires;
+
+    /**
+     * @var Collection<int, Evenement>
+     */
+    #[ORM\ManyToMany(targetEntity: Evenement::class, inversedBy: 'participants')]
+    private Collection $participe;
     
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->participe = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -248,6 +255,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function isAdmin(): bool
     {
         return in_array('ROLE_ADMIN', $this->getRoles());
+    }
+
+    /**
+     * @return Collection<int, Evenement>
+     */
+    public function getParticipe(): Collection
+    {
+        return $this->participe;
+    }
+
+    public function addParticipe(Evenement $participe): static
+    {
+        if (!$this->participe->contains($participe)) {
+            $this->participe->add($participe);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipe(Evenement $participe): static
+    {
+        $this->participe->removeElement($participe);
+
+        return $this;
     }
 
 }
