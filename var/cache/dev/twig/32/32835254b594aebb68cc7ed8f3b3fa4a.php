@@ -128,39 +128,68 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 23
+            yield "            <br>
+            Inscrit aux événements :
+                ";
+            // line 25
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 25, $this->source); })()), "participe", [], "any", false, false, false, 25));
+            foreach ($context['_seq'] as $context["_key"] => $context["evenementpresent"]) {
+                // line 26
+                yield "                    ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["evenementpresent"], "html", null, true);
+                yield " <br>
+                    ";
+                // line 27
+                if (CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "estCeQueParticipeDeja", [], "any", false, false, false, 27)) {
+                    // line 28
+                    yield "                        <p>CA MARCHE</p>
+                    ";
+                } else {
+                    // line 30
+                    yield "                        <p>CA MARCHE PAS</p>
+                    ";
+                }
+                // line 32
+                yield "                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evenementpresent'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 33
             yield "            </p>
 
             ";
-            // line 25
-            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 25, $this->source); })()), "membre", [], "any", false, false, false, 25)) {
-                // line 26
+            // line 35
+            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 35, $this->source); })()), "membre", [], "any", false, false, false, 35)) {
+                // line 36
                 yield "                <p>
                     ";
-                // line 27
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 27, $this->source); })()), "membre", [], "any", false, false, false, 27), "nom", [], "any", false, false, false, 27), "html", null, true);
+                // line 37
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 37, $this->source); })()), "membre", [], "any", false, false, false, 37), "nom", [], "any", false, false, false, 37), "html", null, true);
                 yield "
                     ";
-                // line 28
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 28, $this->source); })()), "membre", [], "any", false, false, false, 28), "prenom", [], "any", false, false, false, 28), "html", null, true);
+                // line 38
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 38, $this->source); })()), "membre", [], "any", false, false, false, 38), "prenom", [], "any", false, false, false, 38), "html", null, true);
                 yield "
                 </p>
             ";
             } else {
-                // line 31
+                // line 41
                 yield "                <p>Utilisateur standard, aucune information supplémentaire</p>
             ";
             }
-            // line 33
+            // line 43
             yield "    </div>
 ";
         } else {
-            // line 35
+            // line 45
             yield "    <div class=\"error\">
         Page introuvable
     </div>
 ";
         }
-        // line 39
+        // line 49
         yield "
 ";
         
@@ -193,7 +222,7 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  164 => 39,  158 => 35,  154 => 33,  150 => 31,  144 => 28,  140 => 27,  137 => 26,  135 => 25,  131 => 23,  122 => 21,  118 => 20,  113 => 18,  108 => 16,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  193 => 49,  187 => 45,  183 => 43,  179 => 41,  173 => 38,  169 => 37,  166 => 36,  164 => 35,  160 => 33,  154 => 32,  150 => 30,  146 => 28,  144 => 27,  139 => 26,  135 => 25,  131 => 23,  122 => 21,  118 => 20,  113 => 18,  108 => 16,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -219,6 +248,16 @@ class __TwigTemplate_499bd6810ac2f6378c27a8367a2df0b7 extends Template
             Rôles : 
                 {% for role in roles %}
                     {{ role }}
+                {% endfor %}
+            <br>
+            Inscrit aux événements :
+                {% for evenementpresent in user.participe %}
+                    {{ evenementpresent }} <br>
+                    {% if evenementpresent.estCeQueParticipeDeja %}
+                        <p>CA MARCHE</p>
+                    {% else %}
+                        <p>CA MARCHE PAS</p>
+                    {% endif %}
                 {% endfor %}
             </p>
 

@@ -20,6 +20,11 @@
                 {% for role in roles %}
                     {{ role }}
                 {% endfor %}
+            <br>
+            Inscrit aux événements :
+                {% for evenementpresent in user.participe %}
+                    {{ evenementpresent }} <br>
+                {% endfor %}
             </p>
 
             {% if user.membre %}

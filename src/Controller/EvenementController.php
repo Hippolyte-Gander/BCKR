@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EvenementController extends AbstractController
@@ -46,7 +47,7 @@ class EvenementController extends AbstractController
         if (!$evenement) {
             $evenement = new Evenement();
         }
-        
+
         $form = $this->createForm(EvenementType::class, $evenement);
 
         $form->handleRequest($request);
@@ -73,7 +74,7 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('app_evenement');
     }
-
+    
     // ------------- AFFICHER UN EVENEMENT -------------
     #[Route('/evenement/{id}', name: 'show_evenement')]
     public function show(Evenement $evenement): Response
@@ -82,4 +83,30 @@ class EvenementController extends AbstractController
             'evenement' => $evenement
         ]);
     }
+    // ------------- PARTICIPATION A UN EVENEMENT -------------
+    #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
+    public function participerEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
+    {
+        // Récupérer id événement
+        $evenement = $evenementRepository->find($id);
+        // Ajouter l'utilisateur comme participant à l'événement
+        $evenement->addParticipant($user);
+
+        $entityManager->persist($evenement);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_evenement');
+    }
+    // ------------- PARTICIPATION A UN EVENEMENT -------------
+    // #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
+    // public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
+    // {
+    //     // Récupérer id événement
+    //     $evenement = $evenementRepository->find($id);
+    //     // Ajouter l'utilisateur comme participant à l'événement
+    //     $evenement->addParticipant($user);
+
+    //     $entityManager->persist($evenement);
+    //     $entityManager->flush();
+    //     return $this->redirectToRoute('app_evenement');
+    // }
 }

@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
 class Evenement
@@ -183,28 +184,6 @@ class Evenement
         return $this;
     }
 
-    // Dates formatées
-
-    public function dateDebutFormatee(): ?string
-    {
-        return $this->dateDebut->format('d/m/Y');
-    }
-    
-    public function heureDebutFormatee(): ?string
-    {
-        return $this->dateDebut->format('H:i');
-    }
-
-    public function dateFinFormatee(): ?string
-    {
-        return $this->dateFin->format('d/m/Y');
-    }
-
-    public function heureFinFormatee(): ?string
-    {
-        return $this->dateFin->format('H:i');
-    }
-
     public function getPlaces(): ?int
     {
         return $this->places;
@@ -242,5 +221,27 @@ class Evenement
         }
 
         return $this;
+    }
+    
+    // Dates formatées
+
+    public function dateDebutFormatee(): ?string
+    {
+        return $this->dateDebut->format('d/m/Y');
+    }
+    
+    public function heureDebutFormatee(): ?string
+    {
+        return $this->dateDebut->format('H:i');
+    }
+
+    public function dateFinFormatee(): ?string
+    {
+        return $this->dateFin->format('d/m/Y');
+    }
+
+    public function heureFinFormatee(): ?string
+    {
+        return $this->dateFin->format('H:i');
     }
 }

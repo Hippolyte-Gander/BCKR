@@ -209,18 +209,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // vérifier si l'utilisateur est un membre
-    public function isMembre(): bool
-    {
-        return in_array('ROLE_MEMBRE', $this->getRoles());
-    }
-
-    // vérifier si l'utilisateur est un admin
-    public function isAdmin(): bool
-    {
-        return in_array('ROLE_ADMIN', $this->getRoles());
-    }
-
     /**
      * @return Collection<int, Evenement>
      */
@@ -245,4 +233,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+        // vérifier si l'utilisateur est un membre
+        public function isMembre(): bool
+        {
+            return in_array('ROLE_MEMBRE', $this->getRoles());
+        }
+    
+        // vérifier si l'utilisateur est un admin
+        public function isAdmin(): bool
+        {
+            return in_array('ROLE_ADMIN', $this->getRoles());
+        }
+
+            // Vérifier si utilisateur participe déjà à l'événement
+        public function estCeQueParticipeDeja(Evenement $evenement): bool
+        {
+            return $this->participe->contains($evenement);
+        } // NE FONCTIONNE PAS
 }

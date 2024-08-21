@@ -9,7 +9,6 @@
     <h4>Liste des événements</h4>
     <a class="texte-utilisateur" href=" {{ path('new_evenement') }} ">Créer un événement</a><br>
 
-
     <table>
         <tr class="titre-colonne">
             <td>Nom événement</td>
@@ -17,6 +16,7 @@
             <td>Visibilité</td>
             <td>Date de début</td>
             <td>Date de fin</td>
+            <td>Participation</td>
             {% if app.user  and app.user.isAdmin() %}
                 <td>Éditer</td>
                 <td>Supprimer</td>
@@ -40,6 +40,9 @@
                     </td>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
+                    </td>
+                    <td>
+                        <a class="btn-participer" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
                     </td>
                     {% if app.user  and app.user.isAdmin() %}
                         <td>
@@ -68,6 +71,9 @@
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
+                    <td>
+                        <a class="btn-participer" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
+                    </td>
                     {% if app.user  and app.user.isAdmin() %}
                         <td>
                             <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
@@ -95,6 +101,15 @@
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
+                {% if app.user.estCeQueParticipeDeja(evenement) %} // NE MARCHE PAS
+                    <td>
+                        <a class="texte-utilisateur">Ne plus participer</a>
+                    </td>
+                {% else %}
+                    <td>
+                        <a class="valider-btn-formulaire" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
+                    </td>
+                {% endif %}
                     <td>
                         <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
                     </td>

@@ -96,7 +96,6 @@ class __TwigTemplate_f8aac2499c5e724bed4bd2f3baed5e74 extends Template
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
         yield " \">Créer un événement</a><br>
 
-
     <table>
         <tr class=\"titre-colonne\">
             <td>Nom événement</td>
@@ -104,6 +103,7 @@ class __TwigTemplate_f8aac2499c5e724bed4bd2f3baed5e74 extends Template
             <td>Visibilité</td>
             <td>Date de début</td>
             <td>Date de fin</td>
+            <td>Participation</td>
             ";
         // line 20
         if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "user", [], "any", false, false, false, 20) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 20, $this->source); })()), "user", [], "any", false, false, false, 20), "isAdmin", [], "method", false, false, false, 20))) {
@@ -169,46 +169,44 @@ class __TwigTemplate_f8aac2499c5e724bed4bd2f3baed5e74 extends Template
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 42), "html", null, true);
                 yield "</a>
                     </td>
+                    <td>
+                        <a class=\"btn-participer\" href=\"";
+                // line 45
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("participer_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 45)]), "html", null, true);
+                yield "\">Participer</a>
+                    </td>
                     ";
-                // line 44
-                if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 44, $this->source); })()), "user", [], "any", false, false, false, 44) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 44, $this->source); })()), "user", [], "any", false, false, false, 44), "isAdmin", [], "method", false, false, false, 44))) {
-                    // line 45
+                // line 47
+                if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47), "isAdmin", [], "method", false, false, false, 47))) {
+                    // line 48
                     yield "                        <td>
                             <a class=\"btn-editer\" href=\"";
-                    // line 46
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 46)]), "html", null, true);
+                    // line 49
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 49)]), "html", null, true);
                     yield "\">Éditer</a>
                         </td>
                         <td>
                             <a class=\"btn-supprimer\" href=\"";
-                    // line 49
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 49)]), "html", null, true);
+                    // line 52
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 52)]), "html", null, true);
                     yield "\">Supprimer</a>
                         </td>
                     ";
                 }
-                // line 52
+                // line 55
                 yield "                </tr>
 
             ";
-            } elseif ((((CoreExtension::getAttribute($this->env, $this->source,             // line 54
-$context["evenement"], "visibilite", [], "any", false, false, false, 54) == "membres") && CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 54, $this->source); })()), "user", [], "any", false, false, false, 54)) && (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 54, $this->source); })()), "user", [], "any", false, false, false, 54), "isMembre", [], "method", false, false, false, 54) || CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 54, $this->source); })()), "user", [], "any", false, false, false, 54), "isAdmin", [], "method", false, false, false, 54)))) {
-                // line 55
+            } elseif ((((CoreExtension::getAttribute($this->env, $this->source,             // line 57
+$context["evenement"], "visibilite", [], "any", false, false, false, 57) == "membres") && CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 57, $this->source); })()), "user", [], "any", false, false, false, 57)) && (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 57, $this->source); })()), "user", [], "any", false, false, false, 57), "isMembre", [], "method", false, false, false, 57) || CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 57, $this->source); })()), "user", [], "any", false, false, false, 57), "isAdmin", [], "method", false, false, false, 57)))) {
+                // line 58
                 yield "                <tr>
-                    <td>
-                        <a class=\"texte-utilisateur\" href=\" ";
-                // line 57
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 57)]), "html", null, true);
-                yield " \">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 57), "html", null, true);
-                yield "</a>
-                    </td>
                     <td>
                         <a class=\"texte-utilisateur\" href=\" ";
                 // line 60
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 60)]), "html", null, true);
                 yield " \">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 60), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 60), "html", null, true);
                 yield "</a>
                     </td>
                     <td>
@@ -216,17 +214,15 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
                 // line 63
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 63)]), "html", null, true);
                 yield " \">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 63), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 63), "html", null, true);
                 yield "</a>
                     </td>
                     <td>
                         <a class=\"texte-utilisateur\" href=\" ";
                 // line 66
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 66)]), "html", null, true);
-                yield " \"> ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 66), "html", null, true);
-                yield " à ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 66), "html", null, true);
+                yield " \">";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 66), "html", null, true);
                 yield "</a>
                     </td>
                     <td>
@@ -234,103 +230,138 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
                 // line 69
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 69)]), "html", null, true);
                 yield " \"> ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 69), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 69), "html", null, true);
                 yield " à ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 69), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 69), "html", null, true);
                 yield "</a>
                     </td>
+                    <td>
+                        <a class=\"texte-utilisateur\" href=\" ";
+                // line 72
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 72)]), "html", null, true);
+                yield " \"> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 72), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 72), "html", null, true);
+                yield "</a>
+                    </td>
+                    <td>
+                        <a class=\"btn-participer\" href=\"";
+                // line 75
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("participer_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 75)]), "html", null, true);
+                yield "\">Participer</a>
+                    </td>
                     ";
-                // line 71
-                if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 71, $this->source); })()), "user", [], "any", false, false, false, 71) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 71, $this->source); })()), "user", [], "any", false, false, false, 71), "isAdmin", [], "method", false, false, false, 71))) {
-                    // line 72
+                // line 77
+                if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 77, $this->source); })()), "user", [], "any", false, false, false, 77) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 77, $this->source); })()), "user", [], "any", false, false, false, 77), "isAdmin", [], "method", false, false, false, 77))) {
+                    // line 78
                     yield "                        <td>
                             <a class=\"btn-editer\" href=\"";
-                    // line 73
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 73)]), "html", null, true);
+                    // line 79
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 79)]), "html", null, true);
                     yield "\">Éditer</a>
                         </td>
                         <td>
                             <a class=\"btn-supprimer\" href=\"";
-                    // line 76
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 76)]), "html", null, true);
+                    // line 82
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 82)]), "html", null, true);
                     yield "\">Supprimer</a>
                         </td>
                     ";
                 }
-                // line 79
+                // line 85
                 yield "                </tr>
 
             ";
-            } elseif (((CoreExtension::getAttribute($this->env, $this->source,             // line 81
-(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 81, $this->source); })()), "user", [], "any", false, false, false, 81) && (CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 81) == "admins")) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 81, $this->source); })()), "user", [], "any", false, false, false, 81), "isAdmin", [], "method", false, false, false, 81))) {
-                // line 82
+            } elseif (((CoreExtension::getAttribute($this->env, $this->source,             // line 87
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 87, $this->source); })()), "user", [], "any", false, false, false, 87) && (CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 87) == "admins")) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 87, $this->source); })()), "user", [], "any", false, false, false, 87), "isAdmin", [], "method", false, false, false, 87))) {
+                // line 88
                 yield "                <tr>
-                    <td>
-                        <a class=\"texte-utilisateur\" href=\" ";
-                // line 84
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 84)]), "html", null, true);
-                yield " \">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 84), "html", null, true);
-                yield "</a>
-                    </td>
-                    <td>
-                        <a class=\"texte-utilisateur\" href=\" ";
-                // line 87
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 87)]), "html", null, true);
-                yield " \">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 87), "html", null, true);
-                yield "</a>
-                    </td>
                     <td>
                         <a class=\"texte-utilisateur\" href=\" ";
                 // line 90
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 90)]), "html", null, true);
                 yield " \">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 90), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "titre", [], "any", false, false, false, 90), "html", null, true);
                 yield "</a>
                     </td>
                     <td>
                         <a class=\"texte-utilisateur\" href=\" ";
                 // line 93
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 93)]), "html", null, true);
-                yield " \"> ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 93), "html", null, true);
-                yield " à ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 93), "html", null, true);
+                yield " \">";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "description", [], "any", false, false, false, 93), "html", null, true);
                 yield "</a>
                     </td>
                     <td>
                         <a class=\"texte-utilisateur\" href=\" ";
                 // line 96
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 96)]), "html", null, true);
-                yield " \"> ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 96), "html", null, true);
-                yield " à ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 96), "html", null, true);
+                yield " \">";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 96), "html", null, true);
                 yield "</a>
                     </td>
                     <td>
-                        <a class=\"btn-editer\" href=\"";
+                        <a class=\"texte-utilisateur\" href=\" ";
                 // line 99
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 99)]), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 99)]), "html", null, true);
+                yield " \"> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateDebutFormatee", [], "any", false, false, false, 99), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureDebutFormatee", [], "any", false, false, false, 99), "html", null, true);
+                yield "</a>
+                    </td>
+                    <td>
+                        <a class=\"texte-utilisateur\" href=\" ";
+                // line 102
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 102)]), "html", null, true);
+                yield " \"> ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "dateFinFormatee", [], "any", false, false, false, 102), "html", null, true);
+                yield " à ";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "heureFinFormatee", [], "any", false, false, false, 102), "html", null, true);
+                yield "</a>
+                    </td>
+                ";
+                // line 104
+                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 104, $this->source); })()), "user", [], "any", false, false, false, 104), "estCeQueParticipeDeja", [$context["evenement"]], "method", false, false, false, 104)) {
+                    // line 105
+                    yield "                    <td>
+                        <a class=\"texte-utilisateur\">Ne plus participer</a>
+                    </td>
+                ";
+                } else {
+                    // line 109
+                    yield "                    <td>
+                        <a class=\"valider-btn-formulaire\" href=\"";
+                    // line 110
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("participer_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 110)]), "html", null, true);
+                    yield "\">Participer</a>
+                    </td>
+                ";
+                }
+                // line 113
+                yield "                    <td>
+                        <a class=\"btn-editer\" href=\"";
+                // line 114
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 114)]), "html", null, true);
                 yield "\">Éditer</a>
                     </td>
                     <td>
                         <a class=\"btn-supprimer\" href=\"";
-                // line 102
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 102)]), "html", null, true);
+                // line 117
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 117)]), "html", null, true);
                 yield "\">Supprimer</a>
                     </td>
                 </tr>
             ";
             }
-            // line 106
+            // line 121
             yield "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evenement'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 107
+        // line 122
         yield "
     </table>
 
@@ -366,7 +397,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
      */
     public function getDebugInfo()
     {
-        return array (  334 => 107,  328 => 106,  321 => 102,  315 => 99,  305 => 96,  295 => 93,  287 => 90,  279 => 87,  271 => 84,  267 => 82,  265 => 81,  261 => 79,  255 => 76,  249 => 73,  246 => 72,  244 => 71,  235 => 69,  225 => 66,  217 => 63,  209 => 60,  201 => 57,  197 => 55,  195 => 54,  191 => 52,  185 => 49,  179 => 46,  176 => 45,  174 => 44,  165 => 42,  155 => 39,  147 => 36,  139 => 33,  131 => 30,  127 => 28,  124 => 27,  120 => 26,  116 => 24,  111 => 21,  109 => 20,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  365 => 122,  359 => 121,  352 => 117,  346 => 114,  343 => 113,  337 => 110,  334 => 109,  328 => 105,  326 => 104,  317 => 102,  307 => 99,  299 => 96,  291 => 93,  283 => 90,  279 => 88,  277 => 87,  273 => 85,  267 => 82,  261 => 79,  258 => 78,  256 => 77,  251 => 75,  241 => 72,  231 => 69,  223 => 66,  215 => 63,  207 => 60,  203 => 58,  201 => 57,  197 => 55,  191 => 52,  185 => 49,  182 => 48,  180 => 47,  175 => 45,  165 => 42,  155 => 39,  147 => 36,  139 => 33,  131 => 30,  127 => 28,  124 => 27,  120 => 26,  116 => 24,  111 => 21,  109 => 20,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -382,7 +413,6 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
     <h4>Liste des événements</h4>
     <a class=\"texte-utilisateur\" href=\" {{ path('new_evenement') }} \">Créer un événement</a><br>
 
-
     <table>
         <tr class=\"titre-colonne\">
             <td>Nom événement</td>
@@ -390,6 +420,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
             <td>Visibilité</td>
             <td>Date de début</td>
             <td>Date de fin</td>
+            <td>Participation</td>
             {% if app.user  and app.user.isAdmin() %}
                 <td>Éditer</td>
                 <td>Supprimer</td>
@@ -413,6 +444,9 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
                     </td>
                     <td>
                         <a class=\"texte-utilisateur\" href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
+                    </td>
+                    <td>
+                        <a class=\"btn-participer\" href=\"{{ path('participer_evenement', {'id': evenement.id}) }}\">Participer</a>
                     </td>
                     {% if app.user  and app.user.isAdmin() %}
                         <td>
@@ -441,6 +475,9 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
                     <td>
                         <a class=\"texte-utilisateur\" href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
+                    <td>
+                        <a class=\"btn-participer\" href=\"{{ path('participer_evenement', {'id': evenement.id}) }}\">Participer</a>
+                    </td>
                     {% if app.user  and app.user.isAdmin() %}
                         <td>
                             <a class=\"btn-editer\" href=\"{{ path('edit_evenement', {'id': evenement.id}) }}\">Éditer</a>
@@ -468,6 +505,15 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 54) == "mem
                     <td>
                         <a class=\"texte-utilisateur\" href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
+                {% if app.user.estCeQueParticipeDeja(evenement) %}
+                    <td>
+                        <a class=\"texte-utilisateur\">Ne plus participer</a>
+                    </td>
+                {% else %}
+                    <td>
+                        <a class=\"valider-btn-formulaire\" href=\"{{ path('participer_evenement', {'id': evenement.id}) }}\">Participer</a>
+                    </td>
+                {% endif %}
                     <td>
                         <a class=\"btn-editer\" href=\"{{ path('edit_evenement', {'id': evenement.id}) }}\">Éditer</a>
                     </td>
