@@ -30,4 +30,16 @@ class UserController extends AbstractController
             'roles'=> $user->getRoles()
         ]);
     }
+
+    // // ------------- PAGE PERSO -------------
+    // #[Route('/user/{id}', name: 'pageperso_user')]
+    // public function pagePerso(User $user): Response
+    // {
+    //     // accéder à l'utilisateur connecté
+    //     $utilisateurConnecte = $this->getUser();
+
+    //     return $this->render('user/pageperso.html.twig', [
+    //         'utilisateurConnecte' => $utilisateurConnecte
+    //     ]);
+    // }
 }

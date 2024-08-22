@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Espace personnel
+{% endblock %}
+
+
+{% block body %}
+
+{% if app.user %}
+    <div class="utilisateurs-container">
+        <h4> Profil de {{app.user.pseudo}} </h4>
+
+            <p>Email : {{ user.email}}</p><br>
+            
+            {% if user.membre %}
+
+            <p>
+                {{ user.membre.nom }}
+                {{ user.membre.prenom }}
+            </p>
+                Rôles : 
+                    {% for role in roles %}
+                        {{ role }} 
+                    {% endfor %}
+                <br>
+                Inscrit aux événements :
+                    {% for evenementpresent in user.participe %}
+                        {{ evenementpresent }} <br>
+                    {% endfor %}
+                
+
+            {% endif %}
+    </div>
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
+
+{% endblock %}

@@ -29,6 +29,7 @@
             <div class="login">
                 {% if app.user %}
                     <a href="#" class="pseudo-utilisateur">Bonjour {{ app.user.pseudo }}</a>
+                    {# <a href="{{ path('pageperso_user') }}" class="connexion">Espace Personnel</a> #}
                     <a href="{{ path('app_logout') }}" class="deconnexion">Se déconnecter</a>
                 {% else %}
                     <a href="{{ path('app_login') }}" class="connexion">Se connecter</a>
