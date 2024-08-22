@@ -83,6 +83,7 @@ class EvenementController extends AbstractController
             'evenement' => $evenement
         ]);
     }
+
     // ------------- PARTICIPATION A UN EVENEMENT -------------
     #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
     public function participerEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
@@ -91,26 +92,44 @@ class EvenementController extends AbstractController
         $evenement = $evenementRepository->find($id);
 
         // vérifier s'il reste de la place
+        if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
+            // Ajouter l'utilisateur comme participant à l'événement
+            $evenement->addParticipant($user);
 
-        // Ajouter l'utilisateur comme participant à l'événement
-        $evenement->addParticipant($user);
+            // Incrémenter le nombre de places prises
+            $evenement->setPlacesPrises($evenement->getPlacesPrises() + 1);
 
-        $entityManager->persist($evenement);
-        $entityManager->flush();
+            // Passer les changements en BDD
+            $entityManager->persist($evenement);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
+        } else {
+            // Gérer le cas où il n'y a plus de place
+            $this->addFlash('error', 'Cet événement est complet.');
+        }
 
         return $this->redirectToRoute('app_evenement');
     }
+
     // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
     #[Route('/evenement/{id}/ne-pas-participer', name: 'pas_participer_evenement')]
     public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
     {
         // Récupérer id événement
         $evenement = $evenementRepository->find($id);
-        // Ajouter l'utilisateur comme participant à l'événement
+
+        // Supprimer l'utilisateur comme participant à l'événement
         $evenement->removeParticipant($user);
 
+        // Décrémenter le nombre de places prises
+        $evenement->setPlacesPrises($evenement->getPlacesPrises() - 1);
+
+        // Passer les changements en BDD
         $entityManager->persist($evenement);
         $entityManager->flush();
+
+        $this->addFlash('success', 'Vous vous êtes désinscrit de l\'événement.');
 
         return $this->redirectToRoute('app_evenement');
     }

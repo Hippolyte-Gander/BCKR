@@ -9,13 +9,22 @@
     <h4>Liste des événements</h4>
     <a class="texte-utilisateur" href=" {{ path('new_evenement') }} ">Créer un événement</a><br>
 
+    <div class="message-participation">
+        {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+        {% endfor %}
+    </div>
+
     <table>
         <tr class="titre-colonne">
             <td>Nom événement</td>
-            <td>Visibilité</td>
             <td>Date de début</td>
             <td>Date de fin</td>
-            <td>Participation</td>
+            {% if app.user %}
+                <td>Participation</td>
+            {% endif %}
             {% if app.user  and app.user.isAdmin() %}
                 <td>Éditer</td>
                 <td>Supprimer</td>
@@ -29,19 +38,16 @@
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
                     </td>
                     <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.visibilite }}</a>
-                    </td>
-                    <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
                     </td>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
-                    {% if app.user.estCeQueParticipeDeja(evenement) %}
+                    {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
                         <td>
                             <a class="valider-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">paparticiper</a>
                         </td>
-                    {% else %}
+                    {% elseif app.user %}
                         <td>
                             <a class="valider-btn-formulaire" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
                         </td>
@@ -61,9 +67,6 @@
                 <tr>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
-                    </td>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.visibilite }}</a>
                     </td>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
@@ -95,9 +98,6 @@
                 <tr>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
-                    </td>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.visibilite }}</a>
                     </td>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
