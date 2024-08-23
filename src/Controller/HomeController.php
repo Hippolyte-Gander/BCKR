@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+    // ------------- PAGE D'ACCUEIL -------------
     #[Route('/', name: 'app_home')]
     public function index(EvenementRepository $evenementRepository): Response
     {
@@ -18,16 +19,17 @@ class HomeController extends AbstractController
         ]);
     }
 
+    // ------------- PAGE MENTIONS LÉGALES -------------
     #[Route('/mentions', name: 'mentions_home')]
     public function mentions(): Response
     {
         return $this->render('home/mentions.html.twig');
     }
 
+    // ------------- PAGE DU CLUB -------------
     #[Route('/club', name: 'club_home')]
     public function club(): Response
     {
         return $this->render('home/club.html.twig');
     }
-
 }

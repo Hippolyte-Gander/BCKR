@@ -26,6 +26,7 @@ return [
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/user' => [[['_route' => 'app_user', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null]],
+        '/espace-perso' => [[['_route' => 'pageperso_user', '_controller' => 'App\\Controller\\UserController::pagePerso'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

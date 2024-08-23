@@ -43,6 +43,5 @@ class MembreController extends AbstractController
         return $this->render('membre/show.html.twig', [
             'membre' => $membre
         ]);
-    }
-
+    }    
 }

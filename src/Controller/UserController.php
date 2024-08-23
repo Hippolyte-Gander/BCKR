@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Membre;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -31,15 +32,21 @@ class UserController extends AbstractController
         ]);
     }
 
-    // // ------------- PAGE PERSO -------------
-    // #[Route('/user/{id}', name: 'pageperso_user')]
-    // public function pagePerso(User $user): Response
-    // {
-    //     // accéder à l'utilisateur connecté
-    //     $utilisateurConnecte = $this->getUser();
+    // ------------- PAGE PERSO -------------   --> Problème de relation Membre - User
+    #[Route('/espace-perso', name: 'pageperso_user')]
+    public function pagePerso(): Response
+    {
+        $user = $this->getUser();
+        $membre = $user->getMembre();
 
-    //     return $this->render('user/pageperso.html.twig', [
-    //         'utilisateurConnecte' => $utilisateurConnecte
-    //     ]);
-    // }
+        if (!$membre) {
+            // Réponse si l'utilisateur n'est pas membre
+            throw $this->createNotFoundException("Cet utilisateur n'est pas membre.");
+        }
+
+        return $this->render('user/pageperso.html.twig', [
+            'user' => $user,
+            'membre' => $membre,
+        ]);
+    }
 }

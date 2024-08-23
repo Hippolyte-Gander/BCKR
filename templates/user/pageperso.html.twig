@@ -11,26 +11,35 @@
     <div class="utilisateurs-container">
         <h4> Profil de {{app.user.pseudo}} </h4>
 
-            <p>Email : {{ user.email}}</p><br>
+            <p>Email : {{ app.user.email}}<br><br>
             
-            {% if user.membre %}
+            Rôles : 
+                {% for role in app.user.roles %}
+                    {{ role }}, 
+                {% endfor %}
+            <br><br>
 
-            <p>
-                {{ user.membre.nom }}
-                {{ user.membre.prenom }}
-            </p>
-                Rôles : 
-                    {% for role in roles %}
-                        {{ role }} 
-                    {% endfor %}
-                <br>
+            {% if app.user.participe %}
                 Inscrit aux événements :
-                    {% for evenementpresent in user.participe %}
+                    {% for evenementpresent in app.user.participe %}
                         {{ evenementpresent }} <br>
                     {% endfor %}
-                
-
+            {% else %}
+                Inscrit à aucun événement.
             {% endif %}
+            <br>
+            {% if app.user.isMembre() %}
+                Nom : {{ app.user.membre.nom }}<br>
+                Prénom : {{ app.user.membre.prenom }}<br>
+                {% if app.user.membre.numLicence %}
+                    Numéro de licence : {{ app.user.membre.numLicence }}<br>
+                {% else %}
+                    Pas de numéro de licence renseigné<br>
+                {% endif %}
+                Numéro de téléphone : {{ app.user.membre.numTelephone }}<br>
+                Date de naissance : {{ app.user.membre.dateNaissanceFormatee }}<br>
+            {% endif %}
+        </p>
     </div>
 {% else %}
     <div class="error">

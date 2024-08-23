@@ -111,9 +111,12 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             yield "                    <a href=\"#\" class=\"pseudo-utilisateur\">Bonjour ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31), "pseudo", [], "any", false, false, false, 31), "html", null, true);
             yield "</a>
-                    ";
+                    <a href=\"";
+            // line 32
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pageperso_user");
+            yield "\" class=\"connexion\">Espace Personnel</a>
+                    <a href=\"";
             // line 33
-            yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             yield "\" class=\"deconnexion\">Se déconnecter</a>
                 ";
@@ -315,7 +318,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  279 => 62,  268 => 12,  258 => 11,  245 => 9,  242 => 8,  232 => 7,  212 => 5,  192 => 71,  188 => 69,  179 => 65,  175 => 63,  173 => 62,  159 => 51,  155 => 50,  151 => 49,  147 => 48,  143 => 47,  132 => 38,  127 => 36,  122 => 35,  116 => 33,  111 => 31,  109 => 30,  101 => 26,  96 => 24,  92 => 23,  87 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  282 => 62,  271 => 12,  261 => 11,  248 => 9,  245 => 8,  235 => 7,  215 => 5,  195 => 71,  191 => 69,  182 => 65,  178 => 63,  176 => 62,  162 => 51,  158 => 50,  154 => 49,  150 => 48,  146 => 47,  135 => 38,  130 => 36,  125 => 35,  120 => 33,  116 => 32,  111 => 31,  109 => 30,  101 => 26,  96 => 24,  92 => 23,  87 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -351,7 +354,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             <div class=\"login\">
                 {% if app.user %}
                     <a href=\"#\" class=\"pseudo-utilisateur\">Bonjour {{ app.user.pseudo }}</a>
-                    {# <a href=\"{{ path('pageperso_user') }}\" class=\"connexion\">Espace Personnel</a> #}
+                    <a href=\"{{ path('pageperso_user') }}\" class=\"connexion\">Espace Personnel</a>
                     <a href=\"{{ path('app_logout') }}\" class=\"deconnexion\">Se déconnecter</a>
                 {% else %}
                     <a href=\"{{ path('app_login') }}\" class=\"connexion\">Se connecter</a>
