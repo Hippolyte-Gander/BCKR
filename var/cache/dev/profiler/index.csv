@@ -1180,3 +1180,12 @@ dd4503,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1724405996,,200,request
 44ed5c,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1724406194,,200,request
 2d3167,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1724406216,,200,request
 32458c,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1724406654,,200,request
+e0ea31,127.0.0.1,GET,http://127.0.0.1:8000/,1724603514,,200,request
+606a36,127.0.0.1,GET,http://127.0.0.1:8000/login,1724603515,,200,request
+931e7d,127.0.0.1,POST,http://127.0.0.1:8000/login,1724603523,,302,request
+12b0a9,127.0.0.1,GET,http://127.0.0.1:8000/,1724603523,,200,request
+a5a257,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1724603526,,200,request
+d06e88,127.0.0.1,GET,http://127.0.0.1:8000/evenement/5,1724603531,,200,request
+aac241,127.0.0.1,GET,http://127.0.0.1:8000/evenement/new,1724604014,,200,request
+a59c7f,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1724604015,,200,request
+c0bc22,127.0.0.1,GET,http://127.0.0.1:8000/evenement/5,1724604016,,200,request
