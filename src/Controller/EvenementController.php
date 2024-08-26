@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Evenement;
+use App\Entity\Commentaire;
 use App\Form\EvenementType;
+use App\Form\CommentaireType;
 use Doctrine\ORM\EntityManager;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,11 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+// use Symfony\Component\DependencyInjection\Loader\Configurator\request;
 
 class EvenementController extends AbstractController
 {
 
     // ------------- AFFICHER LISTE DES EVENEMENTS -------------
+
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $evenementRepository): Response
     {
@@ -40,6 +45,7 @@ class EvenementController extends AbstractController
 
 
     // ------------- FORMULAIRE CREATION NOUVEL EVENEMENT -------------
+
     #[Route('/evenement/new', name: 'new_evenement')]
     #[Route('/evenement/{id}/edit', name: 'edit_evenement')]
     public function new_edit(Evenement $evenement = null, Request $request, EntityManagerInterface $entityManager): Response
@@ -66,6 +72,7 @@ class EvenementController extends AbstractController
         ]);
     }
     // ------------- SUPRIMER UN EVENEMENT -------------
+
     #[Route('/evenement/{id}/suppr', name: 'suppr_evenement')]
     public function supprEvenement(Evenement $evenement, EntityManagerInterface $entityManager)
     {
@@ -75,16 +82,38 @@ class EvenementController extends AbstractController
         return $this->redirectToRoute('app_evenement');
     }
     
-    // ------------- AFFICHER UN EVENEMENT -------------
+    // ------------- AFFICHER DÉTAIL EVENEMENT -------------
+
     #[Route('/evenement/{id}', name: 'show_evenement')]
-    public function show(Evenement $evenement): Response
+    public function show(Evenement $evenement, User $user, Request $request, EntityManagerInterface $entityManager): Response
     {
+        // poster commentaire
+        $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+
+        $commentaire->setAppartient($evenement);
+        $commentaire->setPoste($user);
+        $commentaire->setDatePoste(new \DateTime());
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $commentaire = $form->getData();
+            $entityManager->persist($commentaire);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('show_evenement', ['id' => $evenement->getId()]);
+        }
+        // fin form commentaire
+        
         return $this->render('evenement/show.html.twig', [
-            'evenement' => $evenement
+            'evenement' => $evenement,
+            'formAddCommentaire'=> $form
         ]);
     }
 
     // ------------- PARTICIPATION A UN EVENEMENT -------------
+
     #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
     public function participerEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
     {
@@ -113,6 +142,7 @@ class EvenementController extends AbstractController
     }
 
     // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
+
     #[Route('/evenement/{id}/ne-pas-participer', name: 'pas_participer_evenement')]
     public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
     {

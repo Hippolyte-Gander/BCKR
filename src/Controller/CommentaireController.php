@@ -22,29 +22,5 @@ class CommentaireController extends AbstractController
 
 
     // ------------- FORMULAIRE CREATION NOUVEAU COMMENTAIRE ------------- fonction à compléter
-    #[Route('/evenement/{id}', name: 'show_evenement')]
-    #[Route('/commentaire/new', name: 'new_commentaire')]
-    public function new_edit(Commentaire $commentaire = null, Request $request, EntityManagerInterface $entityManager): Response
-    {
-        if (!$commentaire) {
-            $commentaire = new Commentaire();
-        }
 
-        $form = $this->createForm(CommentaireType::class, $commentaire);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $commentaire = $form->getData();
-            $entityManager->persist($commentaire);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_commentaire');
-        }
-        
-        return $this->render('commentaire/new.html.twig',[
-            'formAddCommentaire'=> $form,
-            'edit'=> $commentaire->getId()
-        ]);
-    }
 }

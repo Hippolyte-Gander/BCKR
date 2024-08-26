@@ -37,6 +37,38 @@
             </div>
         {% endif %}
 
+    {#  section commentaires #}
+        {% if evenement.commentaires | length > 0 %}
+            <h4>Commentaires</h4>
+            {% for commentaire in evenement.commentaires %}
+                <div>
+                    <p>
+                        {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
+                    </p>
+                    <p>
+                        {{ commentaire.message }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+                <p>Soyez le premier à commenter !</p>
+        {% endif %}
+
+    {#  formulaire commentaire #}
+        <div class="commentaire">
+            <div class="formulaire">
+                {{ form_start(formAddCommentaire) }}
+
+                <div class="col-form">
+                    {{ form_row(formAddCommentaire.message) }}    
+                </div>
+                <div class="bouton">
+                    {{ form_row(formAddCommentaire.valider) }}    
+                </div>
+
+                {{ form_end(formAddCommentaire) }}
+            </div>
+        </div>
     </div>
 
 {% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
@@ -68,6 +100,41 @@
                 </ul>
             </div>
         {% endif %}
+
+        {#  section commentaires #}
+        {% if evenement.commentaires | length > 0 %}
+            <h4>Commentaires</h4>
+            {% for commentaire in evenement.commentaires %}
+                <div>
+                    <p>
+                        {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
+                    </p>
+                    <p>
+                        {{ commentaire.message }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+                <p>Soyez le premier à commenter !</p>
+        {% endif %}
+
+            {#  formulaire commentaire #}
+            <div class="commentaire">
+                <div class="formulaire">
+                    {{ form_start(formAddCommentaire) }}
+
+                    <div class="col-form">
+                        {{ form_row(formAddCommentaire.message) }}    
+                    </div>
+                    <div class="bouton">
+                        {{ form_row(formAddCommentaire.valider) }}    
+                    </div>
+
+                    {{ form_end(formAddCommentaire) }}
+                </div>
+            </div>
+        </div>
+
     </div>
 
 {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
@@ -99,6 +166,41 @@
                 </ul>
             </div>
         {% endif %}
+
+        {#  section commentaires #}
+        {% if evenement.commentaires | length > 0 %}
+            <h4>Commentaires</h4>
+            {% for commentaire in evenement.commentaires %}
+                <div>
+                    <p>
+                        {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
+                    </p>
+                    <p>
+                        {{ commentaire.message }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+                <p>Soyez le premier à commenter !</p>
+        {% endif %}
+
+        {#  formulaire commentaire #}
+        <div class="commentaire">
+            <div class="formulaire">
+                {{ form_start(formAddCommentaire) }}
+
+                <div class="col-form">
+                    {{ form_row(formAddCommentaire.message) }}    
+                </div>
+                <div class="bouton">
+                    {{ form_row(formAddCommentaire.valider) }}    
+                </div>
+
+                {{ form_end(formAddCommentaire) }}
+            </div>
+        </div>
+    </div>
+
     </div>
 
 {% else %}

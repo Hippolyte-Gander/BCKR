@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CommentaireType extends AbstractType
@@ -21,6 +22,11 @@ class CommentaireType extends AbstractType
                 'required'=> true,
                 'attr'=> [
                     'class'=> 'texte-formulaire'
+                ]
+                ])
+            ->add('valider', SubmitType::class, [
+                'attr'=> [
+                    'class'=> 'valider-btn-formulaire'
                 ]
                 ]);
     }
