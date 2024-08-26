@@ -167,11 +167,12 @@ class EvenementController extends AbstractController
 
         // ------------- Supprimer un commentaire -------------
         #[Route('/commentaire/{id}', name: 'suppr_commentaire')]
-        public function supprCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager, Evenement $evenement)
+        public function supprCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager)
         {
+            $idEvent = $commentaire->getAppartient()->getId();
             $entityManager->remove($commentaire);
             $entityManager->flush();
     
-            return $this->redirectToRoute('show_evenement', ['id' => $evenement->getId()]);
+            return $this->redirectToRoute('show_evenement', ['id' => $idEvent]);
         }
 }
