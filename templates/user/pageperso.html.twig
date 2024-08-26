@@ -8,38 +8,101 @@
 {% block body %}
 
 {% if app.user %}
-    <div class="utilisateurs-container">
-        <h4> Profil de {{app.user.pseudo}} </h4>
+    <div class="pagePerso-container">
+        
+        <h4>Espace personnel : {{app.user.pseudo}}</h4>
 
-            <p>Email : {{ app.user.email}}<br><br>
-            
-            Rôles : 
-                {% for role in app.user.roles %}
-                    {{ role }}, 
-                {% endfor %}
-            <br><br>
+        <div class="pagePerso-contenu">
 
-            {% if app.user.participe %}
-                Inscrit aux événements :
-                    {% for evenementpresent in app.user.participe %}
-                        {{ evenementpresent }} <br>
-                    {% endfor %}
-            {% else %}
-                Inscrit à aucun événement.
-            {% endif %}
-            <br>
-            {% if app.user.isMembre() %}
-                Nom : {{ app.user.membre.nom }}<br>
-                Prénom : {{ app.user.membre.prenom }}<br>
-                {% if app.user.membre.numLicence %}
-                    Numéro de licence : {{ app.user.membre.numLicence }}<br>
+            <div class="infos-pagePerso">
+
+                    <p>Email : {{ app.user.email}}</p>
+                    {# <p>
+                        Rôles : 
+                            {% for role in app.user.roles %}
+                                {{ role }}, 
+                            {% endfor %}
+                    </p> #}
+                    <table>
+                        <tr>
+                            <td>
+                                Nom
+                            </td>
+                            <td>
+                                {{ app.user.membre.nom }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Prénom
+                            </td>
+                            <td>
+                                {{ app.user.membre.prenom }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Numéro de licence
+                            </td>
+                            <td>
+                                {% if app.user.membre.numLicence %}
+                                    {{ app.user.membre.numLicence }}
+                                {% else %}
+                                    Numéro de  licence non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Numéro de téléphone
+                            </td>
+                            <td>
+                                {% if app.user.membre.numTelephone %}
+                                    {{ app.user.membre.numTelephone }}
+                                {% else %}
+                                    Numéro de  téléphone non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Date de naissance
+                            </td>
+                            <td>
+                                {% if app.user.membre.dateNaissanceFormatee %}
+                                    {{ app.user.membre.dateNaissanceFormatee }}
+                                {% else %}
+                                Date de naissance non renseignée
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </table>
+            </div>
+
+            <div class="evenements-pagePerso">
+                
+                {% if app.user.participe|length > 0 %}
+                    <h5>Inscrit aux événements :</h5>
+                        <ul>
+                            {% for evenementpresent in app.user.participe %}
+                                <li>
+                                    <h6>{{ evenementpresent }}</h6>
+                                    {{ evenementpresent.description }} <br>
+                                    Du {{ evenementpresent.dateDebutFormatee }} à {{ evenementpresent.heureDebutFormatee }}<br>
+                                    Au {{ evenementpresent.dateFinFormatee }} à {{ evenementpresent.heureFinFormatee }}<br>
+                                </li>
+                            {% endfor %}
+                        </ul>
                 {% else %}
-                    Pas de numéro de licence renseigné<br>
+                    Inscrit à aucun événement.
                 {% endif %}
-                Numéro de téléphone : {{ app.user.membre.numTelephone }}<br>
-                Date de naissance : {{ app.user.membre.dateNaissanceFormatee }}<br>
-            {% endif %}
-        </p>
+            </div>
+        </div>
     </div>
 {% else %}
     <div class="error">

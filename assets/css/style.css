@@ -402,6 +402,65 @@ h5 {
     text-decoration: underline;
 }
 
+/* --------------- ESPACE PERSO ---------------- */
+
+.pagePerso-container {
+    padding-top: 110px;
+    min-height: 100vh;
+    background: url('../img/terrain-bad-sombre.jpg') no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagePerso-container h4 {
+    padding: 20px;
+}
+
+.pagePerso-contenu {
+    display: flex;
+    width: 100%;
+}
+
+.infos-pagePerso p {
+    padding: 10px;
+    margin: 5px;
+    background: #3a3a3ade;
+    width: max-content;
+    border-radius: 5px;
+}
+
+.infos-pagePerso {
+    padding: 60px;
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background: #3a3a3a85;
+    border-radius: 5px;
+    backdrop-filter: blur(2px);
+}
+
+.evenements-pagePerso {
+    padding: 60px;
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background: #3a3a3a85;
+    border-radius: 5px;
+    backdrop-filter: blur(2px);
+}
+
+/* .evenements-pagePerso li {
+    list-style: none;
+} */
+
+.evenements-pagePerso h6 {
+    padding: 15px;
+}
+
 /* --------------- LISTE ÉVÉNEMENTS ---------------- */
 
 .liste-evenement-background {
