@@ -7,7 +7,7 @@ namespace Proxies\__CG__\App\Entity;
  */
 class Membre extends \App\Entity\Membre implements \Doctrine\ORM\Proxy\InternalProxy
 {
-    use \Symfony\Component\VarExporter\LazyGhostTrait {
+     use \Symfony\Component\VarExporter\LazyGhostTrait {
         initializeLazyObject as private;
         setLazyObjectAsInitialized as public __setInitialized;
         isLazyObjectInitialized as private;
@@ -46,7 +46,7 @@ class Membre extends \App\Entity\Membre implements \Doctrine\ORM\Proxy\InternalP
         'prenom' => [parent::class, 'prenom', null],
         'utilisateur' => [parent::class, 'utilisateur', null],
         'ville' => [parent::class, 'ville', null],
-    ];
+    ];
 
     public function __isInitialized(): bool
     {

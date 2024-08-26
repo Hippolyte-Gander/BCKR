@@ -32,21 +32,24 @@ class UserController extends AbstractController
         ]);
     }
 
-    // ------------- PAGE PERSO -------------   --> Problème de relation Membre - User
+    // ------------- PAGE PERSO ------------- 
     #[Route('/espace-perso', name: 'pageperso_user')]
     public function pagePerso(): Response
     {
         $user = $this->getUser();
         $membre = $user->getMembre();
-
-        if (!$membre) {
-            // Réponse si l'utilisateur n'est pas membre
-            throw $this->createNotFoundException("Cet utilisateur n'est pas membre.");
+        
+        if ($membre) {
+            return $this->render('user/pageperso.html.twig', [
+                'user' => $user,
+                'membre' => $membre,
+            ]);
+        } elseif ($user) {
+            return $this->render('user/pageperso.html.twig', [
+                'user' => $user
+            ]);
+        } else {
+            return $this->render('home/club.html.twig');
         }
-
-        return $this->render('user/pageperso.html.twig', [
-            'user' => $user,
-            'membre' => $membre,
-        ]);
     }
 }
