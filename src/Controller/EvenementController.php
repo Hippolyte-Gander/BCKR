@@ -90,10 +90,11 @@ class EvenementController extends AbstractController
         // poster commentaire
         $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire);
+        $timezone = new \DateTimeZone('Europe/Paris');
 
         $commentaire->setAppartient($evenement);
         $commentaire->setPoste($user);
-        $commentaire->setDatePoste(new \DateTime());
+        $commentaire->setDatePoste(new \DateTime('now', $timezone));
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -163,4 +164,14 @@ class EvenementController extends AbstractController
 
         return $this->redirectToRoute('app_evenement');
     }
+
+        // ------------- Supprimer un commentaire -------------
+        #[Route('/commentaire/{id}', name: 'suppr_commentaire')]
+        public function supprCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager, Evenement $evenement)
+        {
+            $entityManager->remove($commentaire);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('show_evenement', ['id' => $evenement->getId()]);
+        }
 }

@@ -48,6 +48,9 @@
                     <p>
                         {{ commentaire.message }}
                     </p>
+                    {% if app.user.isAdmin() %}
+                        <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
+                    {% endif %}
                 </div>
             {% endfor %}
         {% else %}
@@ -175,6 +178,7 @@
                     <p>
                         {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
                     </p>
+                    <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
                     <p>
                         {{ commentaire.message }}
                     </p>

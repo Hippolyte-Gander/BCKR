@@ -56,8 +56,9 @@ return [
                     .')'
                     .'|(*:299)'
                 .')'
-                .'|/membre/([^/]++)(*:324)'
-                .'|/user/([^/]++)(*:346)'
+                .'|/commentaire/([^/]++)(*:329)'
+                .'|/membre/([^/]++)(*:353)'
+                .'|/user/([^/]++)(*:375)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -74,8 +75,9 @@ return [
         263 => [[['_route' => 'participer_evenement', '_controller' => 'App\\Controller\\EvenementController::participerEvenement'], ['id'], null, null, false, false, null]],
         290 => [[['_route' => 'pas_participer_evenement', '_controller' => 'App\\Controller\\EvenementController::nePasParticiperEvenement'], ['id'], null, null, false, false, null]],
         299 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
-        324 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
-        346 => [
+        329 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
+        353 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
+        375 => [
             [['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

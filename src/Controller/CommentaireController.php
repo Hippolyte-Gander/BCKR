@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Commentaire;
+use App\Entity\Evenement;
 use App\Form\CommentaireType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,5 @@ class CommentaireController extends AbstractController
     // }
 
 
-    // ------------- FORMULAIRE CREATION NOUVEAU COMMENTAIRE ------------- fonction à compléter
 
 }

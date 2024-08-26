@@ -7,7 +7,7 @@ namespace Proxies\__CG__\App\Entity;
  */
 class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
 {
-    use \Symfony\Component\VarExporter\LazyGhostTrait {
+     use \Symfony\Component\VarExporter\LazyGhostTrait {
         initializeLazyObject as private;
         setLazyObjectAsInitialized as public __setInitialized;
         isLazyObjectInitialized as private;
@@ -24,23 +24,23 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\InternalProxy
     private const LAZY_OBJECT_PROPERTY_SCOPES = [
         "\0".parent::class."\0".'commentaires' => [parent::class, 'commentaires', null],
         "\0".parent::class."\0".'email' => [parent::class, 'email', null],
-        "\0".parent::class."\0".'evenements' => [parent::class, 'evenements', null],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null],
         "\0".parent::class."\0".'isVerified' => [parent::class, 'isVerified', null],
         "\0".parent::class."\0".'membre' => [parent::class, 'membre', null],
+        "\0".parent::class."\0".'participe' => [parent::class, 'participe', null],
         "\0".parent::class."\0".'password' => [parent::class, 'password', null],
         "\0".parent::class."\0".'pseudo' => [parent::class, 'pseudo', null],
         "\0".parent::class."\0".'roles' => [parent::class, 'roles', null],
         'commentaires' => [parent::class, 'commentaires', null],
         'email' => [parent::class, 'email', null],
-        'evenements' => [parent::class, 'evenements', null],
         'id' => [parent::class, 'id', null],
         'isVerified' => [parent::class, 'isVerified', null],
         'membre' => [parent::class, 'membre', null],
+        'participe' => [parent::class, 'participe', null],
         'password' => [parent::class, 'password', null],
         'pseudo' => [parent::class, 'pseudo', null],
         'roles' => [parent::class, 'roles', null],
-    ];
+    ];
 
     public function __isInitialized(): bool
     {
