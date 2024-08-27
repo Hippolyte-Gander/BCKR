@@ -40,7 +40,7 @@ class Evenement
     /**
      * @var Collection<int, Commentaire>
      */
-    #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'appartient')]
+    #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'appartient', orphanRemoval:true, cascade:['persist'])]
     private Collection $commentaires;
 
     #[ORM\Column(length: 255, nullable: true)]

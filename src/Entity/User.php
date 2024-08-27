@@ -65,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string
     {
-        return $this->pseudo ?: '';
+        return $this->pseudo;
     }
 
     public function getId(): ?int
@@ -250,4 +250,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         {
             return $this->participe->contains($evenement);
         }
+
 }

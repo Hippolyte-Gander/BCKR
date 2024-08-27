@@ -32,6 +32,7 @@
         </tr>
 
         {% for evenement in evenements %}
+        {{ dump(evenement) }}
             {% if (evenement.visibilite == 'tous') %}
                 <tr>
                     <td>

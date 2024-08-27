@@ -121,8 +121,9 @@ class EvenementController extends AbstractController
         // Récupérer id événement
         $evenement = $evenementRepository->find($id);
 
+        // dd($user);
         // vérifier s'il reste de la place
-        if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
+        // if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
             // Ajouter l'utilisateur comme participant à l'événement
             $evenement->addParticipant($user);
 
@@ -134,10 +135,10 @@ class EvenementController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
-        } else {
-            // Gérer le cas où il n'y a plus de place
-            $this->addFlash('error', 'Cet événement est complet.');
-        }
+        // } else {
+        //     // Gérer le cas où il n'y a plus de place
+        //     $this->addFlash('error', 'Cet événement est complet.');
+        // }
 
         return $this->redirectToRoute('app_evenement');
     }
