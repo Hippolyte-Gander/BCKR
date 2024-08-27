@@ -303,6 +303,6 @@ class __TwigTemplate_53811bd0d4a108fbbed6a6342cbb5734 extends Template
     </div>
 {% endif %}
 
-{% endblock %}", "evenement/new.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\evenement\\new.html.twig");
+{% endblock %}", "evenement/new.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\evenement\\new.html.twig");
     }
 }

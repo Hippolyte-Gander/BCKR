@@ -997,6 +997,6 @@ class __TwigTemplate_4cad6d9cfdd8785b2e189ac9927ef6ba extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "C:\\laragon\\www\\Github\\BCKR\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
     }
 }

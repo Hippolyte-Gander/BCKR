@@ -558,6 +558,6 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 66) == "mem
     </table>
 
 </div>
-{% endblock %}", "evenement/index.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\evenement\\index.html.twig");
+{% endblock %}", "evenement/index.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\evenement\\index.html.twig");
     }
 }

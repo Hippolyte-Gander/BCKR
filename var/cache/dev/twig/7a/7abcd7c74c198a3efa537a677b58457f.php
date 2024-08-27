@@ -210,6 +210,6 @@ class __TwigTemplate_cbdb5f2bf923cfef3cc978169904add4 extends Template
     </div>
 </div>
 
-{% endblock %}", "home/mentions.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\home\\mentions.html.twig");
+{% endblock %}", "home/mentions.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\home\\mentions.html.twig");
     }
 }

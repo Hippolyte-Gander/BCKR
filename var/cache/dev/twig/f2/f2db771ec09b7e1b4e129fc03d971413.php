@@ -100,6 +100,10 @@ class __TwigTemplate_fea05aaf6e083059d6a4295c115ad51c extends Template
             Cela va des rencontres sportives amicales avec d'autres clubs jusqu'à l'organisation grands repas dans la convivialité.
         </p>
     </div>
+    <img class=\"img-president\" src=\"";
+        // line 19
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/discours-president.jpg"), "html", null, true);
+        yield "\" alt=\"photo du président du club faisant un discours\">
     <div class=\"club-titre-texte\">
         <h2>Entraînements</h2>
         <p>
@@ -145,7 +149,7 @@ class __TwigTemplate_fea05aaf6e083059d6a4295c115ad51c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  105 => 19,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -168,6 +172,7 @@ class __TwigTemplate_fea05aaf6e083059d6a4295c115ad51c extends Template
             Cela va des rencontres sportives amicales avec d'autres clubs jusqu'à l'organisation grands repas dans la convivialité.
         </p>
     </div>
+    <img class=\"img-president\" src=\"{{ asset('img/discours-president.jpg')}}\" alt=\"photo du président du club faisant un discours\">
     <div class=\"club-titre-texte\">
         <h2>Entraînements</h2>
         <p>
@@ -182,6 +187,6 @@ class __TwigTemplate_fea05aaf6e083059d6a4295c115ad51c extends Template
     </div>
 </div>
 
-{% endblock %}", "home/club.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\home\\club.html.twig");
+{% endblock %}", "home/club.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\home\\club.html.twig");
     }
 }

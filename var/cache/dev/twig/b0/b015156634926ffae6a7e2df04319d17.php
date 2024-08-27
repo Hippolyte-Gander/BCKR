@@ -411,6 +411,6 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
 
 - photo terrain + raquette : Photo de SHVETS production: https://www.pexels.com/fr-fr/photo/sport-lignes-court-terrain-8007493/
 
-#}", "base.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\base.html.twig");
+#}", "base.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\base.html.twig");
     }
 }

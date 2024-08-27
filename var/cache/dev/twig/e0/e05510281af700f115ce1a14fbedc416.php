@@ -258,6 +258,6 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
         </form>
     </div>
 {% endblock %}
-", "security/login.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\security\\login.html.twig");
+", "security/login.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\security\\login.html.twig");
     }
 }

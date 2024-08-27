@@ -17,82 +17,99 @@
             <div class="infos-pagePerso">
 
                     <p>Email : {{ app.user.email}}</p>
-                    {# <p>
-                        Rôles : 
-                            {% for role in app.user.roles %}
-                                {{ role }}, 
-                            {% endfor %}
-                    </p> #}
-                    <table>
-                        <tr>
-                            <td>
-                                Nom
-                            </td>
-                            <td>
-                                {{ app.user.membre.nom }}
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>
-                                Prénom
-                            </td>
-                            <td>
-                                {{ app.user.membre.prenom }}
-                            </td>
-                        </tr>
+                    {% if app.user.isMembre() or app.user.isAdmin() %}
+                        <p>
+                            Rôles : 
+                                {% for role in app.user.roles %}
+                                    {% if role == 'ROLE_ADMIN' %}
+                                        Administrateur, 
+                                    {% elseif role == 'ROLE_MEMBRE' %}
+                                        Membre, 
+                                    {% elseif role == 'ROLE_USER' %}
+                                        Utilisateur
+                                    {% endif %}
+                                {% endfor %}
+                        </p>
+                    {% endif %}
 
-                        <tr>
-                            <td>
-                                Numéro de licence
-                            </td>
-                            <td>
-                                {% if app.user.membre.numLicence %}
-                                    {{ app.user.membre.numLicence }}
-                                {% else %}
-                                    Numéro de  licence non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
+                    {% if app.user.isMembre() %}
+                        
+                        <table>
+                            <tr>
+                                <td>
+                                    Nom
+                                </td>
+                                <td>
+                                    {{ app.user.membre.nom }}
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                Numéro de téléphone
-                            </td>
-                            <td>
-                                {% if app.user.membre.numTelephone %}
-                                    {{ app.user.membre.numTelephone }}
-                                {% else %}
-                                    Numéro de  téléphone non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    Prénom
+                                </td>
+                                <td>
+                                    {{ app.user.membre.prenom }}
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                Date de naissance
-                            </td>
-                            <td>
-                                {% if app.user.membre.dateNaissanceFormatee %}
-                                    {{ app.user.membre.dateNaissanceFormatee }}
-                                {% else %}
-                                Date de naissance non renseignée
-                                {% endif %}
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    Numéro de licence
+                                </td>
+                                <td>
+                                    {% if app.user.membre.numLicence %}
+                                        {{ app.user.membre.numLicence }}
+                                    {% else %}
+                                        Numéro de  licence non renseigné
+                                    {% endif %}
+                                </td>
+                            </tr>
 
-                    </table>
+                            <tr>
+                                <td>
+                                    Numéro de téléphone
+                                </td>
+                                <td>
+                                    {% if app.user.membre.numTelephone %}
+                                        {{ app.user.membre.numTelephone }}
+                                    {% else %}
+                                        Numéro de  téléphone non renseigné
+                                    {% endif %}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Date de naissance
+                                </td>
+                                <td>
+                                    {% if app.user.membre.dateNaissance %}
+                                        {{ app.user.membre.dateNaissanceFormatee }}
+                                    {% else %}
+                                        Date de naissance non renseignée
+                                    {% endif %}
+                                </td>
+                            </tr>
+
+                        </table>
+                    {% endif %}
             </div>
 
             <div class="evenements-pagePerso">
                 
+                {% if app.user.isMembre() and app.user.membre.photo %}
+                    {{ app.user.membre.photo }}
+                {% endif %}
+
                 {% if app.user.participe|length > 0 %}
                     <h5>Inscrit aux événements :</h5>
                         <ul>
                             {% for evenementpresent in app.user.participe %}
                                 <li>
-                                    <h6>{{ evenementpresent }}</h6>
-                                    {{ evenementpresent.description }} <br>
+                                    <h6><a href=" {{ path('show_evenement', {'id': evenementpresent.id}) }} ">{{ evenementpresent }}</a></h6>
+                                    {{ evenementpresent.description }}<br>
                                     Du {{ evenementpresent.dateDebutFormatee }} à {{ evenementpresent.heureDebutFormatee }}<br>
                                     Au {{ evenementpresent.dateFinFormatee }} à {{ evenementpresent.heureFinFormatee }}<br>
                                 </li>

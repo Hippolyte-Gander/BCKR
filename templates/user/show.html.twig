@@ -11,35 +11,63 @@
 
 {% block body %}
 
-{% if app.user  and app.user.isAdmin() %}
-    <div class="utilisateurs-container">
-        <h4>Détails de {{ user.pseudo }} </h4>
+    {% if app.user  and app.user.isAdmin() %}
+        <div class="utilisateurs-container">
 
-            <p>Email : {{ user.email}} <br>
-            Rôles : 
-                {% for role in roles %}
-                    {{ role }}
-                {% endfor %}
-            <br>
-            Inscrit aux événements :
-                {% for evenementpresent in user.participe %}
-                    {{ evenementpresent }} <br>
-                {% endfor %}
-            </p>
+            <h4>Détails de {{ user.pseudo }} </h4>
 
-            {% if user.membre %}
+            <div class="utilisateur-content">
                 <p>
-                    {{ user.membre.nom }}
-                    {{ user.membre.prenom }}
+                    Email : {{ user.email}}
                 </p>
-            {% else %}
-                <p>Utilisateur standard, aucune information supplémentaire</p>
-            {% endif %}
-    </div>
-{% else %}
-    <div class="error">
-        Page introuvable
-    </div>
-{% endif %}
+                <br>
+                <p>
+                    {% if user.roles|length == 1 %}
+                        Rôle : 
+                    {% else %}
+                        Rôles : 
+                    {% endif %}
+
+                    {% for role in user.roles %}
+                        {% if role == 'ROLE_ADMIN' %}
+                            Administrateur
+                        {% elseif role == 'ROLE_MEMBRE' %}
+                            Membre 
+                        {% elseif role == 'ROLE_USER' %}
+                            Utilisateur
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <br>
+                <p>
+                    {% if user.participe|length == 1 %}
+                        Inscrit à aucun événement.
+                    {% elseif user.participe|length > 1 %}
+                        Inscrit aux événements :
+                        {% for evenementpresent in user.participe %}
+                            <li>
+                                <a href=" {{ path('show_evenement', {'id': evenementpresent.id}) }} ">{{ evenementpresent }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+
+                {% if user.membre %}
+                    <br>
+                    <p>
+                        {{ user.membre.nom }}
+                        {{ user.membre.prenom }}
+                    </p>
+                {% else %}
+                    <br>
+                    <p>Utilisateur standard, aucune information supplémentaire</p>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="error">
+            Page introuvable
+        </div>
+    {% endif %}
 
 {% endblock %}
