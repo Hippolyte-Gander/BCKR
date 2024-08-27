@@ -105,6 +105,6 @@ class __TwigTemplate_859d2d2fa1a47598b32c1fd023245040 extends Template
 <p>
     Cheers!
 </p>
-", "registration/confirmation_email.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\registration\\confirmation_email.html.twig");
+", "registration/confirmation_email.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\registration\\confirmation_email.html.twig");
     }
 }

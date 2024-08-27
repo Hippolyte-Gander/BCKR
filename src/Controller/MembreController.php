@@ -23,14 +23,6 @@ class MembreController extends AbstractController
 
     // ------------- AFFICHER DÉTAIL MEMBRE ------------- ne fonctionne pas
 
-    // #[Route('/membre/{id}', name: 'show_membre')]
-    // public function show(Membre $membre): Response
-    // {
-    //     return $this->render('membre/show.html.twig', [
-    //         'membre' => $membre
-    //     ]);
-    // }
-
     #[Route('/membre/{id}', name: 'show_membre')]
     public function show(int $id, MembreRepository $membreRepository): Response
     {
@@ -43,5 +35,33 @@ class MembreController extends AbstractController
         return $this->render('membre/show.html.twig', [
             'membre' => $membre
         ]);
-    }    
+    }
+
+    // ------------- EDIT MEMBRE -------------
+
+    // #[Route('/membre/new', name: 'new_membre')]
+    // #[Route('/membre/{id}/edit', name: 'edit_membre')]
+    // public function new_edit(Membre $membre = null, Request $request, EntityManagerInterface $entityManager): Response
+    // {
+    //     if (!$membre) {
+    //         $membre = new Membre();
+    //     }
+
+    //     $form = $this->createForm(MembreType::class, $membre);
+
+    //     $form->handleRequest($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+
+    //         $membre = $form->getData();
+    //         $entityManager->persist($membre);
+    //         $entityManager->flush();
+
+    //         return $this->redirectToRoute('app_membre');
+    //     }
+        
+    //     return $this->render('membre/new.html.twig',[
+    //         'formAddMembre'=> $form,
+    //         'edit'=> $membre->getId()
+    //     ]);
+    // }
 }

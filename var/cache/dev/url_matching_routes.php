@@ -58,7 +58,10 @@ return [
                 .')'
                 .'|/commentaire/([^/]++)(*:329)'
                 .'|/membre/([^/]++)(*:353)'
-                .'|/user/([^/]++)(*:375)'
+                .'|/user/([^/]++)(?'
+                    .'|(*:378)'
+                    .'|/suppr(*:392)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -77,8 +80,9 @@ return [
         299 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
         329 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
         353 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
-        375 => [
-            [['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null],
+        378 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
+        392 => [
+            [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

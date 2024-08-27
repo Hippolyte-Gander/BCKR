@@ -155,10 +155,8 @@ class __TwigTemplate_f8aac2499c5e724bed4bd2f3baed5e74 extends Template
         foreach ($context['_seq'] as $context["_key"] => $context["evenement"]) {
             // line 35
             yield "        ";
-            yield $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, $context["evenement"]);
-            yield "
-            ";
             // line 36
+            yield "            ";
             if ((CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "visibilite", [], "any", false, false, false, 36) == "tous")) {
                 // line 37
                 yield "                <tr>
@@ -426,7 +424,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 67) == "mem
      */
     public function getDebugInfo()
     {
-        return array (  394 => 129,  388 => 128,  381 => 124,  375 => 121,  371 => 119,  365 => 116,  362 => 115,  356 => 112,  353 => 111,  351 => 110,  341 => 107,  331 => 104,  323 => 101,  319 => 99,  317 => 98,  313 => 96,  307 => 93,  301 => 90,  298 => 89,  296 => 88,  293 => 87,  287 => 84,  284 => 83,  278 => 80,  275 => 79,  273 => 78,  264 => 76,  254 => 73,  246 => 70,  242 => 68,  240 => 67,  236 => 65,  230 => 62,  224 => 59,  221 => 58,  219 => 57,  216 => 56,  210 => 53,  207 => 52,  205 => 51,  200 => 49,  197 => 48,  195 => 47,  186 => 45,  176 => 42,  168 => 39,  164 => 37,  162 => 36,  157 => 35,  153 => 34,  149 => 32,  144 => 29,  141 => 28,  137 => 26,  135 => 25,  126 => 18,  120 => 17,  111 => 15,  106 => 14,  102 => 13,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  392 => 129,  386 => 128,  379 => 124,  373 => 121,  369 => 119,  363 => 116,  360 => 115,  354 => 112,  351 => 111,  349 => 110,  339 => 107,  329 => 104,  321 => 101,  317 => 99,  315 => 98,  311 => 96,  305 => 93,  299 => 90,  296 => 89,  294 => 88,  291 => 87,  285 => 84,  282 => 83,  276 => 80,  273 => 79,  271 => 78,  262 => 76,  252 => 73,  244 => 70,  240 => 68,  238 => 67,  234 => 65,  228 => 62,  222 => 59,  219 => 58,  217 => 57,  214 => 56,  208 => 53,  205 => 52,  203 => 51,  198 => 49,  195 => 48,  193 => 47,  184 => 45,  174 => 42,  166 => 39,  162 => 37,  159 => 36,  157 => 35,  153 => 34,  149 => 32,  144 => 29,  141 => 28,  137 => 26,  135 => 25,  126 => 18,  120 => 17,  111 => 15,  106 => 14,  102 => 13,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -465,7 +463,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 67) == "mem
         </tr>
 
         {% for evenement in evenements %}
-        {{ dump(evenement) }}
+        {# {{ dump(evenement.participants) }} #}
             {% if (evenement.visibilite == 'tous') %}
                 <tr>
                     <td>

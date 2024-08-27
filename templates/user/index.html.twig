@@ -15,12 +15,35 @@
 
         <h4>Liste des utilisateurs</h4>
 
-        <p>
+            <table>
             {% for user in users %}
-                <a class="texte-utilisateur" href=" {{ path('show_user', {'id': user.id}) }} ">{{ user.pseudo }}</a>
-            {% endfor %}
-        </p>
-
+                    <tr>
+                        <td>
+                            <a href=" {{ path('show_user', {'id': user.id}) }} ">{{ user.pseudo }}</a>
+                        </td>
+                        <td>
+                            <a href=" {{ path('show_user', {'id': user.id}) }} ">{{ user.email }}</a>
+                        </td>
+                        <td>
+                            {% for role in user.roles %}
+                                {% if role == 'ROLE_ADMIN' %}
+                                    Administrateur, 
+                                {% elseif role == 'ROLE_MEMBRE' %}
+                                    Membre, 
+                                {% elseif role == 'ROLE_USER' %}
+                                    Utilisateur
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        {# <td>
+                            <a class="btn-editer" href="{{ path('edit_user', {'id': user.id}) }}">Éditer</a>
+                        </td> #}
+                        <td>
+                            <a class="btn-supprimer" href="{{ path('suppr_user', {'id': user.id}) }}">Supprimer</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
     </div>
 {% else %}
     <div class="error">

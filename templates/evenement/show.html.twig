@@ -5,7 +5,7 @@
 {% block body %}
 
 {% if (evenement.visibilite == 'tous') %}
-
+{# {{ dump(evenement) }} #}
     <div class="det-evenement-background">
 
         <h4>Détails de l'événement : {{ evenement.titre }}</h4>
@@ -24,9 +24,9 @@
 
         <p> {{ evenement.placesPrises }} / {{ evenement.places }} places prises.</p>
 
-        {# {% if evenement.participants|length == 0 %} #}
+        {% if evenement.participants|length == 0 %}
             <p>Aucun inscrit pour le moment</p>
-        {# {% else %} #}
+        {% else %}
             <div class="participants-liste">
                 <h4>Participants inscrits :</h4>
                 <ul>
@@ -35,10 +35,10 @@
                     {% endfor %}
                 </ul>
             </div>
-        {# {% endif %} #}
+        {% endif %}
 
-    {#  section commentaires #}
-        {# {% if evenement.commentaires | length > 0 %}
+     {# section commentaires #}
+        {% if evenement.commentaires | length > 0 %}
             <h4>Commentaires</h4>
             {% for commentaire in evenement.commentaires %}
                 <div>
@@ -55,10 +55,10 @@
             {% endfor %}
         {% else %}
                 <p>Soyez le premier à commenter !</p>
-        {% endif %} #}
+        {% endif %}
 
     {#  formulaire commentaire #}
-        {# <div class="commentaire">
+        <div class="commentaire">
             <div class="formulaire">
                 {{ form_start(formAddCommentaire) }}
 
@@ -71,7 +71,7 @@
 
                 {{ form_end(formAddCommentaire) }}
             </div>
-        </div> #}
+        </div>
     </div>
 
 {% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
@@ -90,10 +90,10 @@
         </p>
 
         <p>{{ evenement.contenu }}</p>
-
-        {# {% if evenement.participants|length == 0 %} #}
+{#  #}
+        {% if evenement.participants|length == 0 %}
             <p>Aucun inscrit pour le moment</p>
-        {# {% else %} #}
+        {% else %}
             <div class="participants-liste">
                 <h4>Participants inscrits :</h4>
                 <ul>
@@ -102,10 +102,10 @@
                     {% endfor %}
                 </ul>
             </div>
-        {# {% endif %} #}
+        {% endif %}
 
         {#  section commentaires #}
-        {# {% if evenement.commentaires | length > 0 %}
+        {% if evenement.commentaires | length > 0 %}
             <h4>Commentaires</h4>
             {% for commentaire in evenement.commentaires %}
                 <div>
@@ -119,10 +119,10 @@
             {% endfor %}
         {% else %}
                 <p>Soyez le premier à commenter !</p>
-        {% endif %} #}
+        {% endif %}
 
             {#  formulaire commentaire #}
-            {# <div class="commentaire">
+            <div class="commentaire">
                 <div class="formulaire">
                     {{ form_start(formAddCommentaire) }}
 
@@ -136,8 +136,7 @@
                     {{ form_end(formAddCommentaire) }}
                 </div>
             </div>
-        </div> #}
-
+        </div>
     </div>
 
 {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
@@ -157,7 +156,7 @@
 
         <p>{{ evenement.contenu }}</p>
 
-        {# {% if evenement.participants|length == 0 %}
+        {% if evenement.participants|length == 0 %}
             <p>Aucun inscrit pour le moment</p>
         {% else %}
             <div class="participants-liste">
@@ -168,10 +167,10 @@
                     {% endfor %}
                 </ul>
             </div>
-        {% endif %} #}
+        {% endif %}
 
         {#  section commentaires #}
-        {# {% if evenement.commentaires | length > 0 %}
+        {% if evenement.commentaires | length > 0 %}
             <h4>Commentaires</h4>
             {% for commentaire in evenement.commentaires %}
                 <div>
@@ -186,10 +185,10 @@
             {% endfor %}
         {% else %}
                 <p>Soyez le premier à commenter !</p>
-        {% endif %} #}
+        {% endif %}
 
         {#  formulaire commentaire #}
-        {# <div class="commentaire">
+        <div class="commentaire">
             <div class="formulaire">
                 {{ form_start(formAddCommentaire) }}
 
@@ -202,7 +201,7 @@
 
                 {{ form_end(formAddCommentaire) }}
             </div>
-        </div> #}
+        </div>
     </div>
 
     </div>

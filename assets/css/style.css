@@ -490,6 +490,7 @@ h5 {
 .liste-evenement-background a {
     color: white;
     padding: 20px;
+    width: max-content;
 }
 
 .message-participation {

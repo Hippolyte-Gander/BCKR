@@ -85,7 +85,7 @@ class EvenementController extends AbstractController
     // ------------- AFFICHER DÉTAIL EVENEMENT -------------
 
     #[Route('/evenement/{id}', name: 'show_evenement')]
-    public function show(Evenement $evenement, User $user, Request $request, EntityManagerInterface $entityManager): Response
+    public function show(Evenement $evenement, Request $request, EntityManagerInterface $entityManager): Response
     {
         // poster commentaire
         $commentaire = new Commentaire();
@@ -93,7 +93,7 @@ class EvenementController extends AbstractController
         $timezone = new \DateTimeZone('Europe/Paris');
 
         $commentaire->setAppartient($evenement);
-        $commentaire->setPoste($user);
+        $commentaire->setPoste($this->getUser());
         $commentaire->setDatePoste(new \DateTime('now', $timezone));
 
         $form->handleRequest($request);
@@ -123,7 +123,7 @@ class EvenementController extends AbstractController
 
         // dd($user);
         // vérifier s'il reste de la place
-        // if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
+        if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
             // Ajouter l'utilisateur comme participant à l'événement
             $evenement->addParticipant($user);
 
@@ -135,10 +135,10 @@ class EvenementController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
-        // } else {
-        //     // Gérer le cas où il n'y a plus de place
-        //     $this->addFlash('error', 'Cet événement est complet.');
-        // }
+        } else {
+            // Gérer le cas où il n'y a plus de place
+            $this->addFlash('error', 'Cet événement est complet.');
+        }
 
         return $this->redirectToRoute('app_evenement');
     }
