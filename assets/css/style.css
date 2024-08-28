@@ -848,8 +848,23 @@ button {
     box-shadow: 0 0 20px rgb(161, 161, 161);
 }
 
+.mot-de-passe-oublie {
+    text-align: center;
+    margin: 20px 15px;
+}
+
+.mot-de-passe-oublie a {
+    color: white;
+    text-decoration: none;
+    font-weight: 200;
+}
+
+.mot-de-passe-oublie a:hover {
+    text-decoration:  underline;
+}
+
 .register-link {
-    font-size: 14px;
+    /* font-size: 14px; */
     text-align: center;
     margin: 20px 15px;
 }
