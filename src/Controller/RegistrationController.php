@@ -113,7 +113,7 @@ class RegistrationController extends AbstractController
 
             // On vérifie qu'on a bien un user et qu'il n'est pas déjà activé
             if($user && !$user->isVerified()){
-                $user->setIsVerified(true);
+                $user->setVerified(true);
                 $em->flush();
 
                 $this->addFlash('success', 'Utilisateur activé');

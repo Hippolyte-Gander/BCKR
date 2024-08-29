@@ -14,6 +14,11 @@
             {% if app.user %}
                 <div class="logged-container">
                     Vous êtes connecté en tant que  <a href="#">{{ app.user.pseudo }}</a>.
+                            {% for messages in app.flashes %}
+            {% for message in messages %}
+                <p>{{ message|raw }}</p>
+            {% endfor %}
+        {% endfor %}
                 </div>
             {% else %}
 

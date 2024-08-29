@@ -111,10 +111,36 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
             // line 16
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "pseudo", [], "any", false, false, false, 16), "html", null, true);
             yield "</a>.
-                </div>
+                    ";
+            // line 17
+            $context['_parent'] = $context;
+            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "flashes", [], "any", false, false, false, 17));
+            foreach ($context['_seq'] as $context["_key"] => $context["messages"]) {
+                // line 18
+                yield "                    ";
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable($context["messages"]);
+                foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+                    // line 19
+                    yield "                        <p>";
+                    yield $context["message"];
+                    yield "</p>
+                    ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 21
+                yield "                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['messages'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 22
+            yield "                </div>
             ";
         } else {
-            // line 19
+            // line 24
             yield "
             <div class=\"login-container\">
 
@@ -122,8 +148,8 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
 
             <div class=\"input-box\">
                 <input placeholder=\"Email\" type=\"email\" value=\"";
-            // line 25
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 25, $this->source); })()), "html", null, true);
+            // line 30
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 30, $this->source); })()), "html", null, true);
             yield "\" name=\"_username\" id=\"username\" class=\"form-control\" autocomplete=\"email\" required autofocus>
 
                 <i class=\"fa-regular fa-user\"></i>
@@ -135,20 +161,22 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
                 <i class=\"fa-solid fa-lock\"></i>
             </div>
                 <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-            // line 35
+            // line 40
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
             yield "\">
 
                 ";
-            // line 46
-            yield "
+            // line 51
+            yield "                <div class=\"mot-de-passe-oublie\">
+                    <a href=\"\">Mot de passe oublié ?</a>
+                </div>
                 <button class=\"login-btn\" type=\"submit\">
                     Se connecter
                 </button>
 
                 <div class=\"register-link\">
                     <a href=\"";
-            // line 52
+            // line 59
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             yield "\">Créer un compte</a>
                 </div>
@@ -157,7 +185,7 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
 
             ";
         }
-        // line 58
+        // line 65
         yield "
         </form>
     </div>
@@ -192,7 +220,7 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
      */
     public function getDebugInfo()
     {
-        return array (  161 => 58,  152 => 52,  144 => 46,  139 => 35,  126 => 25,  118 => 19,  112 => 16,  109 => 15,  107 => 14,  104 => 13,  98 => 11,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  189 => 65,  180 => 59,  170 => 51,  165 => 40,  152 => 30,  144 => 24,  140 => 22,  134 => 21,  125 => 19,  120 => 18,  116 => 17,  112 => 16,  109 => 15,  107 => 14,  104 => 13,  98 => 11,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -213,6 +241,11 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
             {% if app.user %}
                 <div class=\"logged-container\">
                     Vous êtes connecté en tant que  <a href=\"#\">{{ app.user.pseudo }}</a>.
+                    {% for messages in app.flashes %}
+                    {% for message in messages %}
+                        <p>{{ message|raw }}</p>
+                    {% endfor %}
+                {% endfor %}
                 </div>
             {% else %}
 
@@ -242,7 +275,9 @@ class __TwigTemplate_4040e4fc0150928f7e2ccf521b3b027b extends Template
                         <label for=\"_remember_me\">Remember me</label>
                     </div>
                 #}
-
+                <div class=\"mot-de-passe-oublie\">
+                    <a href=\"\">Mot de passe oublié ?</a>
+                </div>
                 <button class=\"login-btn\" type=\"submit\">
                     Se connecter
                 </button>
