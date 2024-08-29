@@ -22,6 +22,7 @@
                     <td>Nom</td>
                     <td>Prénom</td>
                     <td>Numéro de téléphone</td>
+                    <td>Pseudo</td>
                     <td>Modifier</td>
                     <td>Supprimer</td>
                 {% for membre in membres %}
@@ -34,6 +35,9 @@
                         </td>
                         <td>
                             <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.numTelephone }}</a>
+                        </td>
+                        <td>
+                            <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.utilisateur }}</a>
                         </td>
                         <td>
                             <a class="btn-editer" href="{{ path('edit_membre', {'id': membre.id}) }}">Éditer</a>
