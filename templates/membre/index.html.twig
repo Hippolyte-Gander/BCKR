@@ -10,22 +10,42 @@
 
 {% block body %}
 
-{% if app.user  and app.user.isAdmin() %}
-    <div class="membre-container">
+    {% if app.user  and app.user.isAdmin() %}
+        <div class="membre-container">
 
-        <h4>Liste des membres</h4>
+            <h4>Liste des membres</h4>
 
-        <p>
-            {% for membre in membres %}
-                <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.prenom }} {{ membre.nom }}</a>
-            {% endfor %}
-        </p>
-    </div>
+            <table>
+                <tr class="titre-colonne">
+                    <td>Nom</td>
+                    <td>Prénom</td>
+                    <td>Numéro de téléphone</td>
+                {% for membre in membres %}
+                    <tr>
+                        <td>
+                            <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.nom }}</a>
+                        </td>
+                        <td>
+                            <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.prenom }}</a>
+                        </td>
+                        <td>
+                            <a class="texte-membre" href=" {{ path('show_membre', {'id': membre.id}) }} ">{{ membre.numTelephone }}</a>
+                        </td>
+                        <td>
+                            <a class="btn-editer" href="{{ path('edit_membre', {'id': membre.id}) }}">Éditer</a>
+                        </td>
+                        <td>
+                            <a class="btn-supprimer" href="{{ path('suppr_membre', {'id': membre.id}) }}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </p>
+        </div>
 
-{% else %}
-    <div class="error">
-        Page introuvable
-    </div>
-{% endif %}
+    {% else %}
+        <div class="error">
+            Page introuvable
+        </div>
+    {% endif %}
 
 {% endblock %}

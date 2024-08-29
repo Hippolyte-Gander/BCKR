@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if app.user  and app.user.isAdmin() %}
+        Ajouter un événement
+    {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+
+{% if app.user  and app.user.isAdmin() %}
+    <div class="formulaire-background">
+
+        {% if edit %}
+            <h4>Modifier les informations d'un membre</h4>
+        {% else %}
+            <h4>Ajouter un membre</h4>
+        {% endif %}
+
+
+        <div class="formulaire">
+            {{ form_start(formAddMembre) }}
+            <div class="row-form">
+                <div class="col-form">
+                    {{ form_row(formAddMembre.prenom) }}    
+                </div>
+                <div class="col-form">
+                    {{ form_row(formAddMembre.nom) }}    
+                </div>
+                <div class="col-form">
+                {{ form_row(formAddMembre.numLicence) }}
+                </div>
+            </div>
+
+            <div class="row-form">
+                <div class="col-form">
+                    {{ form_row(formAddMembre.numTelephone) }}
+                </div>
+            </div>
+
+            <div class="row-form">
+                <div class="col-form">
+                    {{ form_row(formAddMembre.dateNaissance) }}
+                </div>
+                <div class="col-form">
+                    {{ form_row(formAddMembre.cp) }}
+                </div>
+            </div>
+            <div class="row-form">
+
+                <div class="col-form">
+                    {{ form_row(formAddMembre.adresse) }}
+                </div>
+                <div class="col-form">
+                    {{ form_row(formAddMembre.ville) }}
+                </div>
+            </div>
+
+                <div class="col-form">
+                    {{ form_row(formAddMembre.dateInscription) }}
+                </div>
+                <div class="col-form">
+                    {{ form_row(formAddMembre.photo) }}
+                </div>
+            </div>
+
+            <div class="bouton">
+                {{ form_end(formAddMembre) }}
+            </div>
+        </div>
+
+    </div>
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
+
+{% endblock %}

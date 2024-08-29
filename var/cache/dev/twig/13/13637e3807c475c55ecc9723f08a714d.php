@@ -135,37 +135,48 @@ class __TwigTemplate_38742262cee4da82976989eb1a7c5765 extends Template
                 <h4>Réinitialisation de mot de passe</h4>
 
                 ";
-            // line 24
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 24, $this->source); })()), 'form_start');
+            // line 32
             yield "
+                ";
+            // line 33
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 33, $this->source); })()), 'form_start');
+            yield "
+
                 <div class=\"input-box\">
                     ";
-            // line 26
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 26, $this->source); })()), "plainPassword", [], "any", false, false, false, 26), "first", [], "any", false, false, false, 26), 'row');
+            // line 36
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 36, $this->source); })()), "plainPassword", [], "any", false, false, false, 36), "first", [], "any", false, false, false, 36), 'widget', ["attr" => ["class" => "password-field"]]);
+            yield "
+                    ";
+            // line 37
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 37, $this->source); })()), "plainPassword", [], "any", false, false, false, 37), "first", [], "any", false, false, false, 37), 'errors');
             yield "
                 </div>
+
                 <div class=\"input-box\">
                     ";
-            // line 29
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 29, $this->source); })()), "plainPassword", [], "any", false, false, false, 29), "second", [], "any", false, false, false, 29), 'row');
+            // line 41
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 41, $this->source); })()), "plainPassword", [], "any", false, false, false, 41), "second", [], "any", false, false, false, 41), 'widget', ["attr" => ["class" => "password-field"]]);
+            yield "
+                    ";
+            // line 42
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 42, $this->source); })()), "plainPassword", [], "any", false, false, false, 42), "second", [], "any", false, false, false, 42), 'errors');
             yield "
                 </div>
                 
+                <!-- Submit Button -->
                 <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
 
                 ";
-            // line 34
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 34, $this->source); })()), 'form_end');
+            // line 48
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["passForm"]) || array_key_exists("passForm", $context) ? $context["passForm"] : (function () { throw new RuntimeError('Variable "passForm" does not exist.', 48, $this->source); })()), 'form_end');
             yield "
 
-                ";
-            // line 52
-            yield "
             </div>
 
             ";
         }
-        // line 56
+        // line 53
         yield "
     </div>
 ";
@@ -199,7 +210,7 @@ class __TwigTemplate_38742262cee4da82976989eb1a7c5765 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  169 => 56,  163 => 52,  158 => 34,  150 => 29,  144 => 26,  139 => 24,  132 => 19,  128 => 17,  122 => 16,  113 => 14,  108 => 13,  104 => 12,  100 => 11,  97 => 10,  95 => 9,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  180 => 53,  172 => 48,  163 => 42,  159 => 41,  152 => 37,  148 => 36,  142 => 33,  139 => 32,  132 => 19,  128 => 17,  122 => 16,  113 => 14,  108 => 13,  104 => 12,  100 => 11,  97 => 10,  95 => 9,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -227,19 +238,16 @@ class __TwigTemplate_38742262cee4da82976989eb1a7c5765 extends Template
 
                 <h4>Réinitialisation de mot de passe</h4>
 
-                {{ form_start(passForm) }}
+                {# {{ form_start(passForm) }}
                 <div class=\"input-box\">
-                    {{ form_row(passForm.plainPassword.first) }}
-                </div>
-                <div class=\"input-box\">
-                    {{ form_row(passForm.plainPassword.second) }}
+                    {{ form_row(passForm.plainPassword) }}
                 </div>
                 
                 <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
 
-                {{ form_end(passForm) }}
+                {{ form_end(passForm) }} #}
 
-                {# {{ form_start(passForm) }}
+                {{ form_start(passForm) }}
 
                 <div class=\"input-box\">
                     {{ form_widget(passForm.plainPassword.first, {'attr': {'class': 'password-field'}}) }}
@@ -254,7 +262,7 @@ class __TwigTemplate_38742262cee4da82976989eb1a7c5765 extends Template
                 <!-- Submit Button -->
                 <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
 
-                {{ form_end(passForm) }} #}
+                {{ form_end(passForm) }}
 
             </div>
 
