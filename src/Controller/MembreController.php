@@ -26,7 +26,7 @@ class MembreController extends AbstractController
 
     // ------------- AFFICHER DÉTAIL MEMBRE ------------- ne fonctionne pas
 
-    #[Route('/membre/{id}', name: 'show_membre')]
+    #[Route('/membre/{id<\d+>}', name: 'show_membre')]
     public function show(int $id, MembreRepository $membreRepository): Response
     {
         $membre = $membreRepository->find($id);
@@ -43,7 +43,7 @@ class MembreController extends AbstractController
     // ------------- EDIT MEMBRE -------------
 
     #[Route('/membre/new', name: 'new_membre')]
-    #[Route('/membre/{id}/edit', name: 'edit_membre')]
+    #[Route('/membre/{id}/edit', name: 'edit_membre', requirements: ['id' => '\d+'])]
     public function new_editMembre(Membre $membre = null, Request $request, EntityManagerInterface $entityManager): Response
     {
         if (!$membre) {
@@ -73,8 +73,18 @@ class MembreController extends AbstractController
     #[Route('/membre/{id}/suppr', name: 'suppr_membre')]
     public function supprMembre(Membre $membre, EntityManagerInterface $entityManager)
     {
-        $entityManager->remove($membre);
-        $entityManager->flush();
+    // Get the associated User
+    $utilisateur = $membre->getUtilisateur();
+    
+    if ($utilisateur) {
+        // Break the association by setting the foreign key to NULL
+        $utilisateur->setMembre(null); // This will set the `membre_id` in the `User` table to NULL
+        $entityManager->persist($utilisateur); // Persist changes to the User entity
+    }
+
+    // Now remove the Membre
+    $entityManager->remove($membre);
+    $entityManager->flush();
 
         return $this->redirectToRoute('app_membre');
     }

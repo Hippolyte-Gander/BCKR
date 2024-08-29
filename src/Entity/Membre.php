@@ -44,7 +44,7 @@ class Membre
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateInscription = null;
 
-    #[ORM\OneToOne(mappedBy: 'membre', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'membre', cascade: ['persist'])]
     private ?User $utilisateur = null;
 
     public function getId(): ?int

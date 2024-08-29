@@ -20,6 +20,7 @@ return [
         '/mentions' => [[['_route' => 'mentions_home', '_controller' => 'App\\Controller\\HomeController::mentions'], null, null, null, false, false, null]],
         '/club' => [[['_route' => 'club_home', '_controller' => 'App\\Controller\\HomeController::club'], null, null, null, false, false, null]],
         '/membre' => [[['_route' => 'app_membre', '_controller' => 'App\\Controller\\MembreController::index'], null, null, null, false, false, null]],
+        '/membre/new' => [[['_route' => 'new_membre', '_controller' => 'App\\Controller\\MembreController::new_editMembre'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
@@ -59,19 +60,16 @@ return [
                 .'|/commentaire/([^/]++)(*:329)'
                 .'|/m(?'
                     .'|embre/(?'
-                        .'|([^/]++)(*:359)'
-                        .'|new(*:370)'
-                        .'|([^/]++)/(?'
-                            .'|edit(*:394)'
-                            .'|suppr(*:407)'
-                        .')'
+                        .'|(\\d+)(*:356)'
+                        .'|(\\d+)/edit(*:374)'
+                        .'|([^/]++)/suppr(*:396)'
                     .')'
-                    .'|ot\\-de\\-passe\\-oublie/([^/]++)(*:447)'
+                    .'|ot\\-de\\-passe\\-oublie/([^/]++)(*:435)'
                 .')'
-                .'|/verif/([^/]++)(*:471)'
+                .'|/verif/([^/]++)(*:459)'
                 .'|/user/([^/]++)(?'
-                    .'|(*:496)'
-                    .'|/suppr(*:510)'
+                    .'|(*:484)'
+                    .'|/suppr(*:498)'
                 .')'
             .')/?$}sDu',
     ],
@@ -90,14 +88,13 @@ return [
         290 => [[['_route' => 'pas_participer_evenement', '_controller' => 'App\\Controller\\EvenementController::nePasParticiperEvenement'], ['id'], null, null, false, false, null]],
         299 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
         329 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
-        359 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
-        370 => [[['_route' => 'new_membre', '_controller' => 'App\\Controller\\MembreController::new_editMembre'], [], null, null, false, false, null]],
-        394 => [[['_route' => 'edit_membre', '_controller' => 'App\\Controller\\MembreController::new_editMembre'], ['id'], null, null, false, false, null]],
-        407 => [[['_route' => 'suppr_membre', '_controller' => 'App\\Controller\\MembreController::supprMembre'], ['id'], null, null, false, false, null]],
-        447 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
-        471 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
-        496 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
-        510 => [
+        356 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
+        374 => [[['_route' => 'edit_membre', '_controller' => 'App\\Controller\\MembreController::new_editMembre'], ['id'], null, null, false, false, null]],
+        396 => [[['_route' => 'suppr_membre', '_controller' => 'App\\Controller\\MembreController::supprMembre'], ['id'], null, null, false, false, null]],
+        435 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
+        459 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
+        484 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
+        498 => [
             [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
