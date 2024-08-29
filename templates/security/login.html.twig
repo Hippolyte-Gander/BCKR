@@ -7,22 +7,26 @@
     <div class="login-background">
 
         <form method="post">
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-
+            
             {% if app.user %}
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
                 <div class="logged-container">
                     Vous êtes connecté en tant que  <a href="#">{{ app.user.pseudo }}</a>.
-                            {% for messages in app.flashes %}
-            {% for message in messages %}
-                <p>{{ message|raw }}</p>
-            {% endfor %}
-        {% endfor %}
+                    {% for messages in app.flashes %}
+                        {% for message in messages %}
+                            <p>{{ message|raw }}</p>
+                        {% endfor %}
+                    {% endfor %}
                 </div>
+
             {% else %}
 
             <div class="login-container">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
             <h4>Connexion</h4>
 
@@ -49,7 +53,7 @@
                     </div>
                 #}
                 <div class="mot-de-passe-oublie">
-                    <a href="">Mot de passe oublié ?</a>
+                    <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
                 </div>
                 <button class="login-btn" type="submit">
                     Se connecter
