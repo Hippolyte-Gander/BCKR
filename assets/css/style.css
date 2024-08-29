@@ -643,8 +643,10 @@ td, tr {
     width: 50%;
 }
 
-label {
-    color: black;
+.col-form label {
+    color: rgb(255, 255, 255);
+    display: block;
+    margin-bottom: 5px;
 }
 
 .formulaire input[type=text] {

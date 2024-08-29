@@ -14,12 +14,16 @@
         <div class="membre-container">
 
             <h4>Liste des membres</h4>
+            
+            <a class="texte-utilisateur" href=" {{ path('new_membre') }} ">Ajouter un membre</a><br>
 
             <table>
                 <tr class="titre-colonne">
                     <td>Nom</td>
                     <td>Prénom</td>
                     <td>Numéro de téléphone</td>
+                    <td>Modifier</td>
+                    <td>Supprimer</td>
                 {% for membre in membres %}
                     <tr>
                         <td>
@@ -39,7 +43,7 @@
                         </td>
                     </tr>
                 {% endfor %}
-            </p>
+            </table>
         </div>
 
     {% else %}

@@ -30,12 +30,12 @@
                 <div class="col-form">
                     {{ form_row(formAddMembre.nom) }}    
                 </div>
+            </div>
+            
+            <div class="row-form">
                 <div class="col-form">
                 {{ form_row(formAddMembre.numLicence) }}
                 </div>
-            </div>
-
-            <div class="row-form">
                 <div class="col-form">
                     {{ form_row(formAddMembre.numTelephone) }}
                 </div>
@@ -46,27 +46,32 @@
                     {{ form_row(formAddMembre.dateNaissance) }}
                 </div>
                 <div class="col-form">
-                    {{ form_row(formAddMembre.cp) }}
+                    {{ form_row(formAddMembre.dateInscription) }}
                 </div>
             </div>
-            <div class="row-form">
 
+            <div class="row-form">
                 <div class="col-form">
                     {{ form_row(formAddMembre.adresse) }}
                 </div>
                 <div class="col-form">
-                    {{ form_row(formAddMembre.ville) }}
+                    {{ form_row(formAddMembre.cp) }}
                 </div>
             </div>
-
+            
+            <div class="row-form">
                 <div class="col-form">
-                    {{ form_row(formAddMembre.dateInscription) }}
+                    {{ form_row(formAddMembre.ville) }}
                 </div>
                 <div class="col-form">
                     {{ form_row(formAddMembre.photo) }}
                 </div>
             </div>
 
+            <div class="row-form">
+                {{ form_row(formAddMembre.utilisateur) }}
+            </div>
+            
             <div class="bouton">
                 {{ form_end(formAddMembre) }}
             </div>
