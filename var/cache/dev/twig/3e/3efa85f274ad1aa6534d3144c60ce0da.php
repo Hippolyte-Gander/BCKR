@@ -145,7 +145,7 @@ class __TwigTemplate_8be712bb1bae7b7ec4c5bea06b443661 extends Template
             yield "
                 </div>
                 
-                <button type=\"submit\" class=\"login-btn\">Envoyer</button>
+                <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
 
                 ";
             // line 31
@@ -222,7 +222,7 @@ class __TwigTemplate_8be712bb1bae7b7ec4c5bea06b443661 extends Template
                     {{ form_row(requestPassForm.email) }}
                 </div>
                 
-                <button type=\"submit\" class=\"login-btn\">Envoyer</button>
+                <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
 
                 {{ form_end(requestPassForm) }}
             </div>

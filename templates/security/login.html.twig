@@ -19,6 +19,7 @@
                             <p>{{ message|raw }}</p>
                         {% endfor %}
                     {% endfor %}
+                    
                 </div>
 
             {% else %}
@@ -28,40 +29,45 @@
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
 
-            <h4>Connexion</h4>
+                {% for messages in app.flashes %}
+                    {% for message in messages %}
+                        <p>{{ message|raw }}</p>
+                    {% endfor %}
+                {% endfor %}
+                <h4>Connexion</h4>
 
-            <div class="input-box">
-                <input placeholder="Email" type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                <div class="input-box">
+                    <input placeholder="Email" type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
 
-                <i class="fa-regular fa-user"></i>
-            </div>
+                    <i class="fa-regular fa-user"></i>
+                </div>
 
-            <div class="input-box">
-                <input placeholder="Mot de passe" type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                <div class="input-box">
+                    <input placeholder="Mot de passe" type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
 
-                <i class="fa-solid fa-lock"></i>
-            </div>
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                {#
-                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                    See https://symfony.com/doc/current/security/remember_me.html
+                    {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
 
-                    <div class="checkbox mb-3">
-                        <input type="checkbox" name="_remember_me" id="_remember_me">
-                        <label for="_remember_me">Remember me</label>
+                        <div class="checkbox mb-3">
+                            <input type="checkbox" name="_remember_me" id="_remember_me">
+                            <label for="_remember_me">Remember me</label>
+                        </div>
+                    #}
+                    <div class="mot-de-passe-oublie">
+                        <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
                     </div>
-                #}
-                <div class="mot-de-passe-oublie">
-                    <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
-                </div>
-                <button class="login-btn" type="submit">
-                    Se connecter
-                </button>
+                    <button class="login-btn" type="submit">
+                        Se connecter
+                    </button>
 
-                <div class="register-link">
-                    <a href="{{ path('app_register') }}">Créer un compte</a>
-                </div>
+                    <div class="register-link">
+                        <a href="{{ path('app_register') }}">Créer un compte</a>
+                    </div>
 
             </div>
 

@@ -130,7 +130,7 @@ class SecurityController extends AbstractController
 
                 if($form->isSubmitted() && $form->isValid()){
                     $user->setPassword(
-                        $passwordHasher->hashPassword($user, $form->get('password')->getData())
+                        $passwordHasher->hashPassword($user, $form->get('plainPassword')->getData())
                     );
 
                     $em->flush();

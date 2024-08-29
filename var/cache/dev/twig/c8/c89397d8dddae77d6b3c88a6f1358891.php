@@ -103,7 +103,7 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
         // line 9
         yield "
 <div class=\"formulaire-background\">
-    <h4>Register</h4>
+    <h4>S'inscrire</h4>
 
     ";
         // line 13
@@ -199,7 +199,7 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
     {% endfor %}
 
 <div class=\"formulaire-background\">
-    <h4>Register</h4>
+    <h4>S'inscrire</h4>
 
     {{ form_errors(registrationForm) }}
     <div class=\"formulaire\">
