@@ -64,19 +64,15 @@ class UserController extends AbstractController
     // ------------- MODIFIER USER EN SESSION -------------
 
     #[Route('/user/{id}/edit', name: 'edit_user')]
-    public function editCurrentUser(User $user, Request $request, EntityManagerInterface $entityManager): Response
+    public function editCurrentUser(User $user, Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository): Response
     {
-        $user = $this->getUser();
-        // // récupérer l'id de l'user dans l'url et on récupère avec un findBy un utilisateur qui correspond à cet ID
-        // $databaseID = $userRepository->findBy(['id' => $id]);
-        // // si le $user correspond à l'ID du User 
-        // if ($user->getId() == $databaseID) {
-        //     // sinon on redirige vers ailleurs
-        // } else {
-        //     return $this->redirectToRoute('app_login');
-        // }
+        $userSession = $this->getUser();
+        // récupérer l'id de l'user dans l'url et on récupère avec un findBy un utilisateur qui correspond à cet ID
+        $user = $userRepository->findOneBy(['id' => $user->getId()]);
+        
+        // si le $user correspond à l'ID du User 
+        if ($userSession->getId() == $user->getId()) {
 
-        if ($user) {
             $form = $this->createForm(UserEditType::class, $user);
 
             $form->handleRequest($request);
@@ -92,6 +88,7 @@ class UserController extends AbstractController
                 'formEditUser'=> $form,
                 'edit'=> $user->getId()
             ]);
+
         } else {
             return $this->redirectToRoute('app_login');
 
