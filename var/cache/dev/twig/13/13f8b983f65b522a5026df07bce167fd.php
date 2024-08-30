@@ -182,6 +182,6 @@ class __TwigTemplate_9e10f4097162675378f42ba647dd291c extends Template
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "C:\\laragon\\www\\Github\\BCKR\\vendor\\doctrine\\doctrine-bundle\\templates\\Collector\\explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\vendor\\doctrine\\doctrine-bundle\\templates\\Collector\\explain.html.twig");
     }
 }

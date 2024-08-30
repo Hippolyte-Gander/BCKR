@@ -9,7 +9,7 @@
 
 {% if app.user %}
     <div class="pagePerso-container">
-        
+        <a class="btn-editer" href="{{ path('edit_user', {'id': app.user.id}) }}">Éditer</a>
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
 
         <div class="pagePerso-contenu">

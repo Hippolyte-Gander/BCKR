@@ -69,7 +69,10 @@ return [
                 .'|/verif/([^/]++)(*:459)'
                 .'|/user/([^/]++)(?'
                     .'|(*:484)'
-                    .'|/suppr(*:498)'
+                    .'|/(?'
+                        .'|edit(*:500)'
+                        .'|suppr(*:513)'
+                    .')'
                 .')'
             .')/?$}sDu',
     ],
@@ -94,7 +97,8 @@ return [
         435 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
         459 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
         484 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
-        498 => [
+        500 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
+        513 => [
             [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

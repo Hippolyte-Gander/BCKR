@@ -95,7 +95,10 @@ class __TwigTemplate_cf91d64b3006bef448dc8a8c471aa04b extends Template
         if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10)) {
             // line 11
             yield "    <div class=\"pagePerso-container\">
-        
+        <a class=\"btn-editer\" href=\"";
+            // line 12
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_user", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "id", [], "any", false, false, false, 12)]), "html", null, true);
+            yield "\">Éditer</a>
         <h4>Espace personnel : ";
             // line 13
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 13, $this->source); })()), "user", [], "any", false, false, false, 13), "pseudo", [], "any", false, false, false, 13), "html", null, true);
@@ -359,7 +362,7 @@ $context["role"] == "ROLE_USER")) {
      */
     public function getDebugInfo()
     {
-        return array (  330 => 129,  324 => 125,  318 => 121,  314 => 119,  310 => 117,  299 => 114,  293 => 113,  289 => 112,  283 => 111,  280 => 110,  276 => 109,  272 => 107,  270 => 106,  267 => 105,  261 => 103,  259 => 102,  253 => 98,  246 => 93,  242 => 91,  236 => 89,  234 => 88,  224 => 80,  220 => 78,  214 => 76,  212 => 75,  202 => 67,  198 => 65,  192 => 63,  190 => 62,  178 => 53,  166 => 44,  157 => 37,  155 => 36,  152 => 35,  148 => 33,  142 => 32,  138 => 30,  136 => 29,  133 => 28,  131 => 27,  128 => 26,  125 => 25,  121 => 24,  117 => 22,  115 => 21,  110 => 19,  101 => 13,  97 => 11,  95 => 10,  92 => 9,  82 => 8,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  333 => 129,  327 => 125,  321 => 121,  317 => 119,  313 => 117,  302 => 114,  296 => 113,  292 => 112,  286 => 111,  283 => 110,  279 => 109,  275 => 107,  273 => 106,  270 => 105,  264 => 103,  262 => 102,  256 => 98,  249 => 93,  245 => 91,  239 => 89,  237 => 88,  227 => 80,  223 => 78,  217 => 76,  215 => 75,  205 => 67,  201 => 65,  195 => 63,  193 => 62,  181 => 53,  169 => 44,  160 => 37,  158 => 36,  155 => 35,  151 => 33,  145 => 32,  141 => 30,  139 => 29,  136 => 28,  134 => 27,  131 => 26,  128 => 25,  124 => 24,  120 => 22,  118 => 21,  113 => 19,  104 => 13,  100 => 12,  97 => 11,  95 => 10,  92 => 9,  82 => 8,  70 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -375,7 +378,7 @@ $context["role"] == "ROLE_USER")) {
 
 {% if app.user %}
     <div class=\"pagePerso-container\">
-        
+        <a class=\"btn-editer\" href=\"{{ path('edit_user', {'id': app.user.id}) }}\">Éditer</a>
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
 
         <div class=\"pagePerso-contenu\">

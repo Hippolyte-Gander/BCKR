@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Membre;
+use App\Form\UserEditType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -56,6 +58,43 @@ class UserController extends AbstractController
             ]);
         } else {
             return $this->render('home/club.html.twig');
+        }
+    }
+
+    // ------------- MODIFIER USER EN SESSION -------------
+
+    #[Route('/user/{id}/edit', name: 'edit_user')]
+    public function editCurrentUser(User $user, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        // // récupérer l'id de l'user dans l'url et on récupère avec un findBy un utilisateur qui correspond à cet ID
+        // $databaseID = $userRepository->findBy(['id' => $id]);
+        // // si le $user correspond à l'ID du User 
+        // if ($user->getId() == $databaseID) {
+        //     // sinon on redirige vers ailleurs
+        // } else {
+        //     return $this->redirectToRoute('app_login');
+        // }
+
+        if ($user) {
+            $form = $this->createForm(UserEditType::class, $user);
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $user = $form->getData();
+
+                $entityManager->persist($user);
+
+                $entityManager->flush();
+            }
+            return $this->render('user/edit.html.twig',[
+                'formEditUser'=> $form,
+                'edit'=> $user->getId()
+            ]);
+        } else {
+            return $this->redirectToRoute('app_login');
+
         }
     }
 

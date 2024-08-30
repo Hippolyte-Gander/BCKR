@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if app.user %}
+        Modification de profil
+        {% else %}
+        Page introuvable
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+{% if app.user %}
+    <div class="formulaire-background">
+
+        <h4>Modifier votre profil</h4>
+
+        <div class="formulaire">
+            {{ form_start(formEditUser) }}
+            <div class="row-form">
+                <div class="col-form">
+                    {{ form_row(formEditUser.pseudo) }}    
+                </div>
+                <div class="col-form">
+                {{ form_row(formEditUser.email) }}
+                </div>
+            </div>
+
+            <div class="row-form">
+                <div class="col-form">
+                    {{ form_row(formEditUser.valider) }}
+                </div>
+            </div>
+
+            <div class="bouton">
+                {{ form_end(formEditUser) }}
+            </div>
+        </div>
+
+    </div>
+{% else %}
+    <div class="error">
+        Page introuvable
+    </div>
+{% endif %}
+
+{% endblock %}

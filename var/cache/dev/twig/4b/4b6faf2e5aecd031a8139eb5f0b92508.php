@@ -70,7 +70,7 @@ class __TwigTemplate_7aecdfb63c8c753f8d8b9f0b0a04e876 extends Template
         yield "    ";
         if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 4, $this->source); })()), "user", [], "any", false, false, false, 4) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 4, $this->source); })()), "user", [], "any", false, false, false, 4), "isAdmin", [], "method", false, false, false, 4))) {
             // line 5
-            yield "        Ajouter un événement
+            yield "        Ajouter un membre
     ";
         } else {
             // line 7
@@ -264,7 +264,7 @@ class __TwigTemplate_7aecdfb63c8c753f8d8b9f0b0a04e876 extends Template
 
 {% block title %}
     {% if app.user  and app.user.isAdmin() %}
-        Ajouter un événement
+        Ajouter un membre
     {% else %}
         Page introuvable
     {% endif %}
