@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Membre;
 use App\Form\UserEditType;
 use App\Repository\UserRepository;
+use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -98,8 +99,16 @@ class UserController extends AbstractController
     // ------------- SUPRIMER UN USER -------------
 
     #[Route('/user/{id}/suppr', name: 'suppr_user')]
-    public function supprUser(User $user, EntityManagerInterface $entityManager)
+    public function supprUser(User $user, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager)
     {
+        // mettre à jour le compteur de places libres
+        $participation = $user->getParticipe();
+        foreach ($participation as $evenement) {
+            $id = $evenement->getId();
+            $evenementToUpdate = $evenementRepository->find($id);
+            $evenementToUpdate->setPlacesPrises($evenementToUpdate->getPlacesPrises() - 1);
+        }
+
         $entityManager->remove($user);
         $entityManager->flush();
 
