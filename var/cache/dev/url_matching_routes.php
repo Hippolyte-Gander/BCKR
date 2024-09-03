@@ -14,6 +14,10 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/entrainements' => [
+            [['_route' => 'app_entrainements', '_controller' => 'App\\Controller\\EntrainementController::listEntrainements'], null, null, null, false, false, null],
+            [['_route' => 'entrainements_home', '_controller' => 'App\\Controller\\HomeController::entrainement'], null, null, null, false, false, null],
+        ],
         '/evenement' => [[['_route' => 'app_evenement', '_controller' => 'App\\Controller\\EvenementController::index'], null, null, null, false, false, null]],
         '/evenement/new' => [[['_route' => 'new_evenement', '_controller' => 'App\\Controller\\EvenementController::new_edit'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],

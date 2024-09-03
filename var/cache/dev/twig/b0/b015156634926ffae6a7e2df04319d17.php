@@ -75,7 +75,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
                         <a href=\" ";
         // line 19
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
-        yield " \">Home</a>
+        yield " \">Accueil</a>
                         <a href=\" ";
         // line 20
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("club_home");
@@ -100,38 +100,42 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         // line 26
         yield "                        <a href=\" ";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
-        yield " \">Liste Événements</a>
+        yield " \">Les événements</a>
+                        <a href=\" ";
+        // line 27
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("entrainements_home");
+        yield " \">Les entraînements</a>
                     </div>
             </nav>
             <div class=\"login\">
                 ";
-        // line 30
-        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30)) {
-            // line 31
+        // line 31
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) {
+            // line 32
             yield "                    <a href=\"#\" class=\"pseudo-utilisateur\">Bonjour ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31), "pseudo", [], "any", false, false, false, 31), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "pseudo", [], "any", false, false, false, 32), "html", null, true);
             yield "</a>
                     <a href=\"";
-            // line 32
+            // line 33
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pageperso_user");
             yield "\" class=\"connexion\">Espace Personnel</a>
                     <a href=\"";
-            // line 33
+            // line 34
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             yield "\" class=\"deconnexion\">Se déconnecter</a>
                 ";
         } else {
-            // line 35
+            // line 36
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             yield "\" class=\"connexion\">Se connecter</a>
                     <a href=\"";
-            // line 36
+            // line 37
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             yield "\" class=\"inscription\">S'inscrire</a>
                 ";
         }
-        // line 38
+        // line 39
         yield "            </div>
 
             <div class=\"menu-mobile\">
@@ -142,23 +146,23 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
                     <i class=\"fa-solid fa-x\"></i>
                 </div>
                     <a href=\" ";
-        // line 47
+        // line 48
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield " \">Home</a>
                     <a href=\" ";
-        // line 48
+        // line 49
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user");
         yield " \">Liste Users</a>
                     <a href=\" ";
-        // line 49
+        // line 50
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_membre");
         yield " \">Liste Membres</a>
                     <a href=\" ";
-        // line 50
+        // line 51
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Liste Événements</a>
                     <a href=\" ";
-        // line 51
+        // line 52
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
         yield " \">Créer un événement</a>
                 <div class=\"login\">
@@ -172,13 +176,13 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
 
 
         ";
-        // line 62
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 63
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 64
         yield "
         <footer>
             <a href=\"";
-        // line 65
+        // line 66
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield "\" class=\"logo\"><img src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo-BCKR.jpg"), "html", null, true);
@@ -187,11 +191,11 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             <div class=\"lien-footer\">
                 <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
                 <a href=\"";
-        // line 69
+        // line 70
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
         yield "\" class=\"texte-footer\">Mentions légales</a>
                 ";
-        // line 71
+        // line 72
         yield "                <a href=\"#\" class=\"texte-footer\">Contact</a>
             </div>
             
@@ -278,7 +282,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
         return; yield '';
     }
 
-    // line 62
+    // line 63
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -318,7 +322,7 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  282 => 62,  271 => 12,  261 => 11,  248 => 9,  245 => 8,  235 => 7,  215 => 5,  195 => 71,  191 => 69,  182 => 65,  178 => 63,  176 => 62,  162 => 51,  158 => 50,  154 => 49,  150 => 48,  146 => 47,  135 => 38,  130 => 36,  125 => 35,  120 => 33,  116 => 32,  111 => 31,  109 => 30,  101 => 26,  96 => 24,  92 => 23,  87 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  286 => 63,  275 => 12,  265 => 11,  252 => 9,  249 => 8,  239 => 7,  219 => 5,  199 => 72,  195 => 70,  186 => 66,  182 => 64,  180 => 63,  166 => 52,  162 => 51,  158 => 50,  154 => 49,  150 => 48,  139 => 39,  134 => 37,  129 => 36,  124 => 34,  120 => 33,  115 => 32,  113 => 31,  106 => 27,  101 => 26,  96 => 24,  92 => 23,  87 => 22,  85 => 21,  81 => 20,  77 => 19,  69 => 16,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -341,14 +345,15 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
             <a href=\"{{ path('app_home') }}\" class=\"logo\"><img src=\"{{ asset('img/logo-BCKR.jpg')}}\" alt=\"logo du club\" class=\"img-logo\"></a>
             <nav>
                     <div class=\"liens\">
-                        <a href=\" {{ path('app_home') }} \">Home</a>
+                        <a href=\" {{ path('app_home') }} \">Accueil</a>
                         <a href=\" {{ path('club_home') }} \">Le club</a>
                         {% if app.user  and app.user.isAdmin() %}
                             <a href=\" {{ path('app_user') }} \">Liste Users</a>
                             <a href=\" {{ path('app_membre') }} \">Liste Membres</a>
                             <a href=\" {{ path('new_evenement') }} \">Créer un événement</a>
                         {% endif %}
-                        <a href=\" {{ path('app_evenement') }} \">Liste Événements</a>
+                        <a href=\" {{ path('app_evenement') }} \">Les événements</a>
+                        <a href=\" {{ path('entrainements_home') }} \">Les entraînements</a>
                     </div>
             </nav>
             <div class=\"login\">
@@ -410,6 +415,9 @@ class __TwigTemplate_3199933a94c03b43f8f75370938f0bf7 extends Template
 - photo de court (background) : Photo de <a href=\"https://unsplash.com/fr/@vishwanth07?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Vishwanth Pindiboina</a> sur <a href=\"https://unsplash.com/fr/photos/couloir-en-beton-gris-sans-personne-eBnKgT__Bsg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash\">Unsplash</a>
 
 - photo terrain + raquette : Photo de SHVETS production: https://www.pexels.com/fr-fr/photo/sport-lignes-court-terrain-8007493/
+
+- photo-terrain-et-raquettes-sombre : Photo de eric anada sur Pexels: https://www.pexels.com/fr-fr/photo/terrain-vert-et-blanc-avec-raquettes-de-badminton-3660204/
+
 
 #}", "base.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\base.html.twig");
     }

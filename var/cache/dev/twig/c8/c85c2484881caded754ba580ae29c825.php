@@ -95,7 +95,10 @@ class __TwigTemplate_e1b932efe80f07fe2442c90a2a71c42a extends Template
     <div class=\"accueil\">
 
         <div class=\"a-venir\">
-            <h2>Événements à venir</h2>
+            <a href=\" ";
+        // line 14
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
+        yield " \"><h2>Événements à venir</h2></a>
 
             <div class=\"titre-texte\">
 
@@ -206,7 +209,10 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
         <div class=\"club\">
             <div class=\"club-description\">
                 <div class=\"titre-texte\">
-                    <h2>Le club</h2>
+                    <a href=\" ";
+        // line 51
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("club_home");
+        yield " \"><h2>Le club</h2></a>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
                         <br>
@@ -231,7 +237,10 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/entrainement2.jpg"), "html", null, true);
         yield "\" alt=\"photo d'un entraînement du club\">
                 <div class=\"titre-texte\">
-                    <h2>Les entraînements</h2>
+                    <a href=\" ";
+        // line 70
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_entrainements");
+        yield " \"><h2>Les entraînements</h2></a>
                         <p>
                             Accueillant des joueurs de tout niveau, les entraînements sont sans prises de têtes avec des équipes tirées au sort avec une méthode de tirage absolument unique et totalement impartial !
                             <br>
@@ -244,7 +253,10 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
             </div>
             <div class=\"club-activites\">
                 <div class=\"titre-texte\">
-                    <h2>Autres activités</h2>
+                    <a href=\" ";
+        // line 83
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
+        yield " \"><h2>Autres activités</h2></a>
                         <p>
                             En plus des entraînements, le club est à l’initiative de divers événements tels que des tournois amicaux internes ou externes, des repas ou des marches en groupe.
                             <br>
@@ -292,7 +304,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
      */
     public function getDebugInfo()
     {
-        return array (  257 => 91,  231 => 68,  225 => 65,  216 => 58,  203 => 45,  197 => 44,  191 => 41,  185 => 40,  179 => 39,  172 => 37,  169 => 36,  167 => 35,  162 => 33,  156 => 32,  150 => 31,  143 => 29,  140 => 28,  138 => 27,  133 => 25,  127 => 24,  121 => 23,  114 => 21,  111 => 20,  108 => 19,  104 => 18,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  269 => 91,  258 => 83,  242 => 70,  237 => 68,  231 => 65,  222 => 58,  214 => 51,  206 => 45,  200 => 44,  194 => 41,  188 => 40,  182 => 39,  175 => 37,  172 => 36,  170 => 35,  165 => 33,  159 => 32,  153 => 31,  146 => 29,  143 => 28,  141 => 27,  136 => 25,  130 => 24,  124 => 23,  117 => 21,  114 => 20,  111 => 19,  107 => 18,  100 => 14,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -310,7 +322,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
     <div class=\"accueil\">
 
         <div class=\"a-venir\">
-            <h2>Événements à venir</h2>
+            <a href=\" {{ path('app_evenement') }} \"><h2>Événements à venir</h2></a>
 
             <div class=\"titre-texte\">
 
@@ -347,7 +359,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
         <div class=\"club\">
             <div class=\"club-description\">
                 <div class=\"titre-texte\">
-                    <h2>Le club</h2>
+                    <a href=\" {{ path('club_home') }} \"><h2>Le club</h2></a>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
                         <br>
@@ -366,7 +378,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
             <div class=\"club-entrainements\">
                 <img class=\"img-entrainement\" src=\"{{ asset('img/entrainement2.jpg')}}\" alt=\"photo d'un entraînement du club\">
                 <div class=\"titre-texte\">
-                    <h2>Les entraînements</h2>
+                    <a href=\" {{ path('app_entrainements') }} \"><h2>Les entraînements</h2></a>
                         <p>
                             Accueillant des joueurs de tout niveau, les entraînements sont sans prises de têtes avec des équipes tirées au sort avec une méthode de tirage absolument unique et totalement impartial !
                             <br>
@@ -379,7 +391,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
             </div>
             <div class=\"club-activites\">
                 <div class=\"titre-texte\">
-                    <h2>Autres activités</h2>
+                    <a href=\" {{ path('app_evenement') }} \"><h2>Autres activités</h2></a>
                         <p>
                             En plus des entraînements, le club est à l’initiative de divers événements tels que des tournois amicaux internes ou externes, des repas ou des marches en groupe.
                             <br>

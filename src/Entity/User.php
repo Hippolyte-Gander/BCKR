@@ -56,11 +56,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\ManyToMany(targetEntity: Evenement::class, inversedBy: 'participants')]
     private Collection $participe;
+
+    /**
+     * @var Collection<int, ParticipantEntrainement>
+     */
+    #[ORM\OneToMany(targetEntity: ParticipantEntrainement::class, mappedBy: 'utilisateur')]
+    private Collection $participantEntrainements;
     
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
         $this->participe = new ArrayCollection();
+        $this->participantEntrainements = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -249,5 +256,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function estCeQueParticipeDeja(Evenement $evenement): bool
     {
         return $this->participe->contains($evenement);
+    }
+
+    /**
+     * @return Collection<int, ParticipantEntrainement>
+     */
+    public function getParticipantEntrainements(): Collection
+    {
+        return $this->participantEntrainements;
+    }
+
+    public function addParticipantEntrainement(ParticipantEntrainement $participantEntrainement): static
+    {
+        if (!$this->participantEntrainements->contains($participantEntrainement)) {
+            $this->participantEntrainements->add($participantEntrainement);
+            $participantEntrainement->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipantEntrainement(ParticipantEntrainement $participantEntrainement): static
+    {
+        if ($this->participantEntrainements->removeElement($participantEntrainement)) {
+            // set the owning side to null (unless already changed)
+            if ($participantEntrainement->getUtilisateur() === $this) {
+                $participantEntrainement->setUtilisateur(null);
+            }
+        }
+
+        return $this;
     }
 }

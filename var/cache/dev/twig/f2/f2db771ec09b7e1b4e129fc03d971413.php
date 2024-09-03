@@ -187,6 +187,6 @@ class __TwigTemplate_fea05aaf6e083059d6a4295c115ad51c extends Template
     </div>
 </div>
 
-{% endblock %}", "home/club.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\home\\club.html.twig");
+{% endblock %}", "home/club.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\home\\club.html.twig");
     }
 }

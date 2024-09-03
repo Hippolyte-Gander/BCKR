@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(EvenementRepository $evenementRepository): Response
     {
-        $evenements = $evenementRepository->findBy([], ["dateDebut"=> "DESC"]);
+        $evenements = $evenementRepository->evenementsFuturs();
         return $this->render('home/index.html.twig', [
             'evenements' => $evenements
         ]);
@@ -31,5 +31,12 @@ class HomeController extends AbstractController
     public function club(): Response
     {
         return $this->render('home/club.html.twig');
+    }
+
+    // ------------- PAGE ENTRAINEMENTS -------------
+    #[Route('/entrainements', name: 'entrainements_home')]
+    public function entrainement(): Response
+    {
+        return $this->render('home/entrainements.html.twig');
     }
 }

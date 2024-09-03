@@ -4,6 +4,7 @@
 
 {% block body %}
 
+{# ============= version tous ============= #}
 {% if (evenement.visibilite == 'tous') %}
 {# {{ dump(evenement) }} #}
     <div class="det-evenement-background">
@@ -26,55 +27,61 @@
 
         {% if evenement.participants|length == 0 %}
             <p>Aucun inscrit pour le moment</p>
-            {{ dump(evenement.participants) }}
         {% else %}
-            <div class="participants-liste">
-                <h4>Participants inscrits :</h4>
-                <ul>
-                    {% for participant in evenement.participants %}
-                        <li>{{ participant.pseudo }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+            {% if app.user %}
+                <div class="participants-liste">
+                    <h4>Participants inscrits :</h4>
+                    <ul>
+                        {% for participant in evenement.participants %}
+                            <a href=" {{ path('show_user', {'id': participant.id}) }} ">{{ participant.pseudo }}</a>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
         {% endif %}
 
-     {# section commentaires #}
-        {% if evenement.commentaires | length > 0 %}
-            <h4>Commentaires</h4>
-            {% for commentaire in evenement.commentaires %}
-                <div>
-                    <p>
-                        {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
-                    </p>
-                    <p>
-                        {{ commentaire.message }}
-                    </p>
-                    {% if app.user.isAdmin() %}
-                        <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
-                    {% endif %}
-                </div>
-            {% endfor %}
-        {% else %}
-                <p>Soyez le premier à commenter !</p>
-        {% endif %}
+        {# ============= section commentaires ============= #}
+        {% if app.user %}
+            {% if evenement.commentaires | length > 0 %}
+                <h4>Commentaires</h4>
+                {% for commentaire in evenement.commentaires %}
+                    <div>
+                        <p>
+                            {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
+                        </p>
+                        <p>
+                            {{ commentaire.message }}
+                        </p>
+                        {% if app.user.isAdmin() %}
+                            <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <p>Soyez le premier à commenter !</p>
+            {% endif %}
 
-    {#  formulaire commentaire #}
-        <div class="commentaire">
-            <div class="formulaire">
-                {{ form_start(formAddCommentaire) }}
+            {# ============= formulaire commentaire ============= #}
+            <div class="commentaire">
+                <div class="formulaire">
+                    {{ form_start(formAddCommentaire) }}
 
-                <div class="col-form">
-                    {{ form_row(formAddCommentaire.message) }}    
-                </div>
-                <div class="bouton">
-                    {{ form_row(formAddCommentaire.valider) }}    
-                </div>
+                    <div class="col-form">
+                        {{ form_row(formAddCommentaire.message) }}    
+                    </div>
+                    <div class="bouton">
+                        {{ form_row(formAddCommentaire.valider) }}    
+                    </div>
 
-                {{ form_end(formAddCommentaire) }}
+                    {{ form_end(formAddCommentaire) }}
+                </div>
             </div>
-        </div>
+        {% else %}
+            <p>Connectez-vous pour laisser un commentaire !</p>
+        {% endif %}
     </div>
 
+{# ============= version membre ============= #}
 {% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
 
     <div class="det-evenement-background">
@@ -91,7 +98,7 @@
         </p>
 
         <p>{{ evenement.contenu }}</p>
-{#  #}
+
         {% if evenement.participants|length == 0 %}
             <p>Aucun inscrit pour le moment</p>
         {% else %}
@@ -105,7 +112,7 @@
             </div>
         {% endif %}
 
-        {#  section commentaires #}
+        {# ============= section commentaires ============= #}
         {% if evenement.commentaires | length > 0 %}
             <h4>Commentaires</h4>
             {% for commentaire in evenement.commentaires %}
@@ -122,7 +129,7 @@
                 <p>Soyez le premier à commenter !</p>
         {% endif %}
 
-            {#  formulaire commentaire #}
+            {# ============= formulaire commentaire ============= #}
             <div class="commentaire">
                 <div class="formulaire">
                     {{ form_start(formAddCommentaire) }}
@@ -140,6 +147,7 @@
         </div>
     </div>
 
+{# ============= version admin ============= #}
 {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
 
     <div class="det-evenement-background">
@@ -170,7 +178,7 @@
             </div>
         {% endif %}
 
-        {#  section commentaires #}
+        {# ============= section commentaires ============= #}
         {% if evenement.commentaires | length > 0 %}
             <h4>Commentaires</h4>
             {% for commentaire in evenement.commentaires %}
@@ -188,7 +196,7 @@
                 <p>Soyez le premier à commenter !</p>
         {% endif %}
 
-        {#  formulaire commentaire #}
+        {# ============= formulaire commentaire ============= #}
         <div class="commentaire">
             <div class="formulaire">
                 {{ form_start(formAddCommentaire) }}

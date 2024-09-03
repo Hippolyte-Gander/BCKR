@@ -200,8 +200,8 @@ class __TwigTemplate_f8aac2499c5e724bed4bd2f3baed5e74 extends Template
                     yield "\">Ne plus participer</a>
                         </td>
                     ";
-                } elseif ((CoreExtension::getAttribute($this->env, $this->source,                 // line 52
-$context["evenement"], "placesPrises", [], "any", false, false, false, 52) == CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "places", [], "any", false, false, false, 52))) {
+                } elseif (((CoreExtension::getAttribute($this->env, $this->source,                 // line 52
+$context["evenement"], "placesPrises", [], "any", false, false, false, 52) == CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "places", [], "any", false, false, false, 52)) && CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 52, $this->source); })()), "user", [], "any", false, false, false, 52))) {
                     // line 53
                     yield "                        <td>
                             <p>Événement complet</p>
@@ -488,7 +488,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 72) == "mem
                         <td>
                             <a class=\"suppr-btn-formulaire\" href=\"{{ path('pas_participer_evenement', {'id': evenement.id}) }}\">Ne plus participer</a>
                         </td>
-                    {% elseif evenement.placesPrises == evenement.places %}
+                    {% elseif evenement.placesPrises == evenement.places and app.user %}
                         <td>
                             <p>Événement complet</p>
                         </td>

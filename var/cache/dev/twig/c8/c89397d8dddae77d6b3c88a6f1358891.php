@@ -102,7 +102,7 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 9
         yield "
-<div class=\"formulaire-background\">
+<div class=\"register-formulaire-background\">
     <h4>S'inscrire</h4>
 
     ";
@@ -139,17 +139,26 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
         </div>
 
         <div class=\"row-form\">
-            ";
+            <label for=\"";
         // line 33
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 33, $this->source); })()), "agreeTerms", [], "any", false, false, false, 33), 'row');
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 33, $this->source); })()), "agreeTerms", [], "any", false, false, false, 33), "vars", [], "any", false, false, false, 33), "id", [], "any", false, false, false, 33), "html", null, true);
+        yield "\">
+                J'accepte les <a href=\"";
+        // line 34
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
+        yield "\" target=\"_blank\">conditions d'utilisation</a> du site.
+                ";
+        // line 35
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 35, $this->source); })()), "agreeTerms", [], "any", false, false, false, 35), 'widget');
         yield "
+        </label>
         </div>
 
         <button type=\"submit\" class=\"btn\">Register</button>
         
         ";
-        // line 38
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 38, $this->source); })()), 'form_end');
+        // line 41
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 41, $this->source); })()), 'form_end');
         yield "
     </div>
 </div>
@@ -184,7 +193,7 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  152 => 38,  144 => 33,  138 => 29,  136 => 27,  129 => 23,  122 => 19,  116 => 16,  110 => 13,  104 => 9,  95 => 7,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  161 => 41,  152 => 35,  148 => 34,  144 => 33,  138 => 29,  136 => 27,  129 => 23,  122 => 19,  116 => 16,  110 => 13,  104 => 9,  95 => 7,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -198,7 +207,7 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
         <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>
     {% endfor %}
 
-<div class=\"formulaire-background\">
+<div class=\"register-formulaire-background\">
     <h4>S'inscrire</h4>
 
     {{ form_errors(registrationForm) }}
@@ -221,7 +230,10 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
         </div>
 
         <div class=\"row-form\">
-            {{ form_row(registrationForm.agreeTerms) }}
+            <label for=\"{{ registrationForm.agreeTerms.vars.id }}\">
+                J'accepte les <a href=\"{{ path('mentions_home') }}\" target=\"_blank\">conditions d'utilisation</a> du site.
+                {{ form_widget(registrationForm.agreeTerms) }}
+        </label>
         </div>
 
         <button type=\"submit\" class=\"btn\">Register</button>
@@ -230,6 +242,8 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
     </div>
 </div>
 {% endblock %}
+
+{# \"J'accepte les <a href='{{ path('mentions_home') target='_blank' }}'>conditions d'utilisation</a> du site\" #}
 ", "registration/register.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\registration\\register.html.twig");
     }
 }

@@ -500,6 +500,6 @@ $context["role"] == "ROLE_USER")) {
     </div>
 {% endif %}
 
-{% endblock %}", "user/pageperso.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\user\\pageperso.html.twig");
+{% endblock %}", "user/pageperso.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\user\\pageperso.html.twig");
     }
 }

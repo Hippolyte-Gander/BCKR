@@ -233,6 +233,6 @@ class __TwigTemplate_05bc5da2c528377090ed3e053e2d0942 extends Template
     </div>
 {% endif %}
 
-{% endblock %}", "user/edit.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\user\\edit.html.twig");
+{% endblock %}", "user/edit.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\user\\edit.html.twig");
     }
 }

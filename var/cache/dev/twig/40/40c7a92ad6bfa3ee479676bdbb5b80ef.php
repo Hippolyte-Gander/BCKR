@@ -90,6 +90,6 @@ class __TwigTemplate_40e2de9dda20a3b37326958b59a77397 extends Template
         return new Source("<p>Bonjour {{ user.pseudo }},</p>
 <p>Pour votre demande de réinitialisation de mot de passe, veuillez cliquer sur le lien ci-dessous.</p>
 <p><a href=\"{{ url|raw }}\">{{ url|raw }}</a></p>
-<p>Merci</p>", "emails/password_reset.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\emails\\password_reset.html.twig");
+<p>Merci</p>", "emails/password_reset.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\emails\\password_reset.html.twig");
     }
 }

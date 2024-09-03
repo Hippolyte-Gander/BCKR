@@ -341,6 +341,6 @@ $context["role"] == "ROLE_USER")) {
         </div>
     {% endif %}
 
-{% endblock %}", "user/show.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\user\\show.html.twig");
+{% endblock %}", "user/show.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\user\\show.html.twig");
     }
 }

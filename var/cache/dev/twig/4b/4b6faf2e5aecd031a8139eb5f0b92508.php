@@ -346,6 +346,6 @@ class __TwigTemplate_7aecdfb63c8c753f8d8b9f0b0a04e876 extends Template
     </div>
 {% endif %}
 
-{% endblock %}", "membre/new.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\membre\\new.html.twig");
+{% endblock %}", "membre/new.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\membre\\new.html.twig");
     }
 }

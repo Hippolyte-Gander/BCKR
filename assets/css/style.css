@@ -237,6 +237,11 @@ main {
 }
 
 .accueil h2 {
+    text-decoration: none;
+    max-width: fit-content;
+}
+
+.accueil h2:hover {
     text-decoration: underline;
 }
 
@@ -586,6 +591,18 @@ td, tr {
     padding: 0 40px 20px 40px;
 }
 
+/* --------------- ENTRAINEMENTS ---------------- */
+
+.entrainement-background {
+    padding-top: 100px;
+    background: url('../img/photo-terrain-et-raquettes-sombre.jpg') no-repeat;
+    background-size: cover;
+    min-height: 90lvh;
+    display: flex;
+    flex-direction: column;
+}
+
+
 /* --------------- MENTIONS LÉGALES ---------------- */
 
 .mentions-h3 h3 {
@@ -773,7 +790,19 @@ button {
 
 /* --------------- REGISTER ---------------- */
 
+.register-formulaire-background {
+    background: url('../img/volant-sur-ligne-sombre.jpg') no-repeat;
+    background-size: cover;
+    padding-top: 110px;
+}
 
+.register-formulaire-background a {
+    color: #049faa;
+}
+
+.register-formulaire-background a:hover {
+    text-decoration: underline;
+}
 
 /* --------------- LOGIN ---------------- */
 

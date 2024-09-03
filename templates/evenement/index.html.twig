@@ -49,7 +49,7 @@
                         <td>
                             <a class="suppr-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">Ne plus participer</a>
                         </td>
-                    {% elseif evenement.placesPrises == evenement.places %}
+                    {% elseif evenement.placesPrises == evenement.places and app.user %}
                         <td>
                             <p>Événement complet</p>
                         </td>

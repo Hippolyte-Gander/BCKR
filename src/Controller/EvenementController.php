@@ -25,24 +25,12 @@ class EvenementController extends AbstractController
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $evenementRepository): Response
     {
-        $evenements = $evenementRepository->findBy([], ["dateDebut"=> "ASC"]);
-        return $this->render('evenement/index.html.twig', [
-            'evenements' => $evenements
-        ]);
-    }
-
-    // ------------- AFFICHER LISTE DES 4 PROCHAINS EVENEMENTS -------------
-    
-    #[Route('/', name: 'app_home')]
-    public function nextEvents(EvenementRepository $evenementRepository): Response
-    {
-        $evenements = $evenementRepository->findNextEvents(4);
+        $evenements = $evenementRepository->evenementsFuturs();
 
         return $this->render('evenement/index.html.twig', [
             'evenements' => $evenements
         ]);
     }
-
 
     // ------------- FORMULAIRE CREATION NOUVEL EVENEMENT -------------
 

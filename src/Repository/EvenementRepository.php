@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Evenement;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -31,13 +32,25 @@ class EvenementRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Evenement
-    //    {
-    //        return $this->createQueryBuilder('e')
-    //            ->andWhere('e.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+       public function evenementsFuturs() 
+       {
+           return $this->createQueryBuilder('e')
+               ->andWhere('e.dateDebut >= :today')
+               ->setParameter('today', new DateTime())
+               ->orderBy('e.dateDebut', 'DESC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+
+       public function evenementsPasses() 
+       {
+           return $this->createQueryBuilder('e')
+               ->andWhere('e.dateDebut <= :today')
+               ->setParameter('today', new DateTime())
+               ->orderBy('e.dateDebut', 'DESC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 }

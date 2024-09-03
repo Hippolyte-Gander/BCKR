@@ -270,6 +270,6 @@ class __TwigTemplate_38742262cee4da82976989eb1a7c5765 extends Template
 
     </div>
 {% endblock %}
-", "security/reset_password.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\security\\reset_password.html.twig");
+", "security/reset_password.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\security\\reset_password.html.twig");
     }
 }
