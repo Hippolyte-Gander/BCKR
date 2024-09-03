@@ -393,6 +393,6 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
     </div>
 </main>
 
-{% endblock %}", "home/index.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\home\\index.html.twig");
+{% endblock %}", "home/index.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\home\\index.html.twig");
     }
 }

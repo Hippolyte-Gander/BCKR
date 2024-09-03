@@ -44,9 +44,14 @@
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
+
                     {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
                         <td>
-                            <a class="valider-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">paparticiper</a>
+                            <a class="suppr-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">Ne plus participer</a>
+                        </td>
+                    {% elseif evenement.placesPrises == evenement.places %}
+                        <td>
+                            <p>Événement complet</p>
                         </td>
                     {% elseif app.user %}
                         <td>

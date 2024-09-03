@@ -230,6 +230,6 @@ class __TwigTemplate_a961e06860b4f884d6daca9f58f70797 extends Template
     </div>
 </div>
 {% endblock %}
-", "registration/register.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\registration\\register.html.twig");
+", "registration/register.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\registration\\register.html.twig");
     }
 }

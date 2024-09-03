@@ -26,6 +26,7 @@
 
         {% if evenement.participants|length == 0 %}
             <p>Aucun inscrit pour le moment</p>
+            {{ dump(evenement.participants) }}
         {% else %}
             <div class="participants-liste">
                 <h4>Participants inscrits :</h4>

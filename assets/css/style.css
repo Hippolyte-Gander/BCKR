@@ -743,6 +743,17 @@ td, tr {
     margin: 4px 2px;
     cursor: pointer;
 }
+/* bouton non participation événement */
+.suppr-btn-formulaire {
+    background-color: #881602;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 .valider-btn-formulaire:hover {
     background-color: #08d48a;

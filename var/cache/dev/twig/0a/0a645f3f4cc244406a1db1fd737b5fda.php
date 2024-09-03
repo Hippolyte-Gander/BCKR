@@ -91,6 +91,6 @@ class __TwigTemplate_ddd9f2d1ff5122e99b143e1f76c96d23 extends Template
 <p>Bonjour {{ user.pseudo }},</p>
 <p>Pour activer votre compte sur le site du BCKR cliquez sur le lien ci-dessous.</p>
 <p><a href=\"{{ absolute_url(path('verify_user', {token: token})) }}\">Lien</a></p>
-<p>Merci</p>", "emails/register.html.twig", "C:\\laragon\\www\\Github\\BCKR\\BCKR\\templates\\emails\\register.html.twig");
+<p>Merci</p>", "emails/register.html.twig", "C:\\laragon\\www\\Github\\BCKR\\templates\\emails\\register.html.twig");
     }
 }
