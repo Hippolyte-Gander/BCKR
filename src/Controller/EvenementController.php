@@ -10,6 +10,7 @@ use App\Form\CommentaireType;
 use Doctrine\ORM\EntityManager;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -23,12 +24,18 @@ class EvenementController extends AbstractController
     // ------------- AFFICHER LISTE DES EVENEMENTS -------------
 
     #[Route('/evenement', name: 'app_evenement')]
-    public function index(EvenementRepository $evenementRepository): Response
+    public function index(EvenementRepository $evenementRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $evenements = $evenementRepository->evenementsFuturs();
 
+        $pagination = $paginator->paginate(
+            $evenements, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+
         return $this->render('evenement/index.html.twig', [
-            'evenements' => $evenements
+            'pagination' => $pagination
         ]);
     }
 

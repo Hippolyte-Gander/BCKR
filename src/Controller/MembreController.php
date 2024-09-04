@@ -40,7 +40,7 @@ class MembreController extends AbstractController
         ]);
     }
 
-    // ------------- EDIT MEMBRE -------------
+    // ------------- AJOUT / EDIT MEMBRE -------------
 
     #[Route('/membre/new', name: 'new_membre')]
     #[Route('/membre/{id}/edit', name: 'edit_membre', requirements: ['id' => '\d+'])]

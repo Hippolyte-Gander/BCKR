@@ -512,6 +512,16 @@ table {
     margin: 0 auto;
 }
 
+.navigation {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* .pagination {
+    max-width: 200px;
+} */
+
 .titre-colonne {
     font-weight: 600;
 }

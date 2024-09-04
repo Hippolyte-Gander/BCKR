@@ -16,6 +16,10 @@
                 {% endfor %}
         {% endfor %}
     </div>
+    {# début image pagination #}
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
 
     <table>
         <tr class="titre-colonne">
@@ -31,7 +35,7 @@
             {% endif %}
         </tr>
 
-        {% for evenement in evenements %}
+        {% for evenement in pagination %}
         {# {{ dump(evenement.participants) }} #}
             {% if (evenement.visibilite == 'tous') %}
                 <tr>
@@ -131,8 +135,10 @@
                 </tr>
             {% endif %}
         {% endfor %}
-
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
 </div>
 {% endblock %}
