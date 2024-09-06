@@ -61,21 +61,21 @@ return [
                     .')'
                     .'|(*:299)'
                 .')'
-                .'|/commentaire/([^/]++)(*:329)'
+                .'|/commentaire/delete/([^/]++)(*:336)'
                 .'|/m(?'
                     .'|embre/(?'
-                        .'|(\\d+)(*:356)'
-                        .'|(\\d+)/edit(*:374)'
-                        .'|([^/]++)/suppr(*:396)'
+                        .'|(\\d+)(*:363)'
+                        .'|(\\d+)/edit(*:381)'
+                        .'|([^/]++)/suppr(*:403)'
                     .')'
-                    .'|ot\\-de\\-passe\\-oublie/([^/]++)(*:435)'
+                    .'|ot\\-de\\-passe\\-oublie/([^/]++)(*:442)'
                 .')'
-                .'|/verif/([^/]++)(*:459)'
+                .'|/verif/([^/]++)(*:466)'
                 .'|/user/([^/]++)(?'
-                    .'|(*:484)'
+                    .'|(*:491)'
                     .'|/(?'
-                        .'|edit(*:500)'
-                        .'|suppr(*:513)'
+                        .'|edit(*:507)'
+                        .'|suppr(*:520)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -94,15 +94,15 @@ return [
         263 => [[['_route' => 'participer_evenement', '_controller' => 'App\\Controller\\EvenementController::participerEvenement'], ['id'], null, null, false, false, null]],
         290 => [[['_route' => 'pas_participer_evenement', '_controller' => 'App\\Controller\\EvenementController::nePasParticiperEvenement'], ['id'], null, null, false, false, null]],
         299 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
-        329 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
-        356 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
-        374 => [[['_route' => 'edit_membre', '_controller' => 'App\\Controller\\MembreController::new_editMembre'], ['id'], null, null, false, false, null]],
-        396 => [[['_route' => 'suppr_membre', '_controller' => 'App\\Controller\\MembreController::supprMembre'], ['id'], null, null, false, false, null]],
-        435 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
-        459 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
-        484 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
-        500 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
-        513 => [
+        336 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
+        363 => [[['_route' => 'show_membre', '_controller' => 'App\\Controller\\MembreController::show'], ['id'], null, null, false, true, null]],
+        381 => [[['_route' => 'edit_membre', '_controller' => 'App\\Controller\\MembreController::new_editMembre'], ['id'], null, null, false, false, null]],
+        403 => [[['_route' => 'suppr_membre', '_controller' => 'App\\Controller\\MembreController::supprMembre'], ['id'], null, null, false, false, null]],
+        442 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
+        466 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
+        491 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
+        507 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
+        520 => [
             [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -71,10 +71,20 @@ class EvenementController extends AbstractController
     #[Route('/evenement/{id}/suppr', name: 'suppr_evenement')]
     public function supprEvenement(Evenement $evenement, EntityManagerInterface $entityManager)
     {
-        $entityManager->remove($evenement);
-        $entityManager->flush();
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_home');
+        }
 
-        return $this->redirectToRoute('app_evenement');
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $entityManager->remove($evenement);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('app_evenement');
+        } else {
+            return $this->redirectToRoute('app_home');
+        }
+
     }
     
     // ------------- AFFICHER DÉTAIL EVENEMENT -------------
@@ -161,14 +171,30 @@ class EvenementController extends AbstractController
         return $this->redirectToRoute('app_evenement');
     }
 
+    
+/**
+ *
+ * @use User<User>
+ */
         // ------------- Supprimer un commentaire -------------
-        #[Route('/commentaire/{id}', name: 'suppr_commentaire')]
+        #[Route('/commentaire/delete/{id}', name: 'suppr_commentaire')]
         public function supprCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager)
         {
-            $idEvent = $commentaire->getAppartient()->getId();
-            $entityManager->remove($commentaire);
-            $entityManager->flush();
-    
-            return $this->redirectToRoute('show_evenement', ['id' => $idEvent]);
+            $user = $this->getUser();
+            if (!$user) {
+                return $this->redirectToRoute('app_home');
+            }
+
+
+            if ($this->isGranted('ROLE_ADMIN')) {
+                $idEvent = $commentaire->getAppartient()->getId();
+                $entityManager->remove($commentaire);
+                $entityManager->flush();
+        
+                return $this->redirectToRoute('show_evenement', ['id' => $idEvent]);
+            } else {
+                return $this->redirectToRoute('app_home');
+            }
+
         }
 }
