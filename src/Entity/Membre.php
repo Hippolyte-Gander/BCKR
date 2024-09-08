@@ -7,13 +7,8 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MembreRepository::class)]
-class Membre
+class Membre extends User
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $numLicence = null;
 
@@ -47,10 +42,6 @@ class Membre
     #[ORM\OneToOne(mappedBy: 'membre', cascade: ['persist'])]
     private ?User $utilisateur = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getNumLicence(): ?string
     {
@@ -177,23 +168,23 @@ class Membre
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(?User $utilisateur): static
-    {
-        // Vérifier si l'utilisateur actuel doit être désassocié
-        if ($utilisateur === null && $this->utilisateur !== null) {
-            $this->utilisateur->setMembre(null);
-        }
+    // public function setUtilisateur(?User $utilisateur): static
+    // {
+    //     // Vérifier si l'utilisateur actuel doit être désassocié
+    //     if ($utilisateur === null && $this->utilisateur !== null) {
+    //         $this->utilisateur->setMembre(null);
+    //     }
     
-        // Vérifier si un nouvel utilisateur est associé et que la relation est cohérente
-        if ($utilisateur !== null && $utilisateur->getMembre() !== $this) {
-            $utilisateur->setMembre($this);
-        }
+    //     // Vérifier si un nouvel utilisateur est associé et que la relation est cohérente
+    //     if ($utilisateur !== null && $utilisateur->getMembre() !== $this) {
+    //         $utilisateur->setMembre($this);
+    //     }
     
-        // Définir l'utilisateur associé à ce membre
-        $this->utilisateur = $utilisateur;
+    //     // Définir l'utilisateur associé à ce membre
+    //     $this->utilisateur = $utilisateur;
     
-        return $this;
-    }
+    //     return $this;
+    // }
 
     // Date de naissance format jj/mm/aaaa
     public function dateNaissanceFormatee(): ?string
