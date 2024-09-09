@@ -146,4 +146,29 @@ class SecurityController extends AbstractController
         $this->addFlash('danger', 'Le token est invalide ou a expiré');
         return $this->redirectToRoute('app_login');
     }
+
+
+    // =============== RESET PASSWORD DEPUIS ESPACE PERSO ===============
+    // #[Route(path: '/modifier_mot_de_passe', name: 'change_password')]
+    // public function resetPasswordEspacePerso(JWTService $jwt)
+    // {
+    //     // résupérer utilisateur en session
+    //     $user = $this->getUser();
+    //     // préparer le token
+    //     $header = [
+    //         'typ' => 'JWT',
+    //         'alg' => 'HS256'
+    //     ];
+    //     // Payload
+    //     $payload = [
+    //         'user_id' => $user->getId()
+    //     ];
+    //     // générer le token
+    //     $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
+
+    //     // On génère l'URL vers reset_password
+    //     $url = $this->generateUrl('reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
+
+    //     return $url;
+    // }
 }

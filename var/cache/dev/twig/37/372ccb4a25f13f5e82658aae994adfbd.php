@@ -131,9 +131,13 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
             // line 37
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             yield "\" class=\"inscription\">S'inscrire</a>
+                    <a href=\"";
+            // line 38
+            yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register_membre");
+            yield "\" class=\"inscription\">S'inscrire en tant que membre</a>
                 ";
         }
-        // line 39
+        // line 40
         yield "            </div>
 
             <div class=\"menu-mobile\">
@@ -144,19 +148,19 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
                     <i class=\"fa-solid fa-x\"></i>
                 </div>
                     <a href=\" ";
-        // line 48
+        // line 49
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield " \">Home</a>
                     <a href=\" ";
-        // line 49
+        // line 50
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user");
         yield " \">Liste Users</a>
                     <a href=\" ";
-        // line 50
+        // line 51
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Liste Événements</a>
                     <a href=\" ";
-        // line 51
+        // line 52
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
         yield " \">Créer un événement</a>
                 <div class=\"login\">
@@ -170,13 +174,13 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
 
 
         ";
-        // line 62
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 63
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 64
         yield "
         <footer>
             <a href=\"";
-        // line 65
+        // line 66
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield "\" class=\"logo\"><img src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo-BCKR.jpg"), "html", null, true);
@@ -185,11 +189,11 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
             <div class=\"lien-footer\">
                 <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
                 <a href=\"";
-        // line 69
+        // line 70
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
         yield "\" class=\"texte-footer\">Mentions légales</a>
                 ";
-        // line 71
+        // line 72
         yield "                <a href=\"#\" class=\"texte-footer\">Contact</a>
             </div>
             
@@ -276,7 +280,7 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
         return; yield '';
     }
 
-    // line 62
+    // line 63
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -316,7 +320,7 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
      */
     public function getDebugInfo()
     {
-        return array (  280 => 62,  269 => 12,  259 => 11,  246 => 9,  243 => 8,  233 => 7,  213 => 5,  193 => 71,  189 => 69,  180 => 65,  176 => 63,  174 => 62,  160 => 51,  156 => 50,  152 => 49,  148 => 48,  137 => 39,  132 => 37,  127 => 36,  122 => 34,  118 => 33,  113 => 32,  111 => 31,  104 => 27,  99 => 26,  94 => 24,  89 => 23,  87 => 22,  83 => 21,  79 => 20,  71 => 17,  66 => 14,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  284 => 63,  273 => 12,  263 => 11,  250 => 9,  247 => 8,  237 => 7,  217 => 5,  197 => 72,  193 => 70,  184 => 66,  180 => 64,  178 => 63,  164 => 52,  160 => 51,  156 => 50,  152 => 49,  141 => 40,  136 => 38,  132 => 37,  127 => 36,  122 => 34,  118 => 33,  113 => 32,  111 => 31,  104 => 27,  99 => 26,  94 => 24,  89 => 23,  87 => 22,  83 => 21,  79 => 20,  71 => 17,  66 => 14,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -358,6 +362,7 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
                 {% else %}
                     <a href=\"{{ path('app_login') }}\" class=\"connexion\">Se connecter</a>
                     <a href=\"{{ path('app_register') }}\" class=\"inscription\">S'inscrire</a>
+                    <a href=\"{{ path('app_register_membre') }}\" class=\"inscription\">S'inscrire en tant que membre</a>
                 {% endif %}
             </div>
 

@@ -10,6 +10,7 @@ use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Symfony\Component\Mime\Address;
 use App\Security\UsersAuthenticator;
+use App\Form\MembreRegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,19 +49,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // ------ partie auto générée ------
-            // generate a signed url and email it to the user 
-            // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-            //     (new TemplatedEmail())
-            //         ->from(new Address('bot.bckr@gmail.com', 'BCKR Mail Bot'))
-            //         ->to($user->getEmail())
-            //         ->subject('Please Confirm your Email')
-            //         ->htmlTemplate('registration/confirmation_email.html.twig')
-            // );
-            // ------ fin partie auto générée ------
-            
-            // do anything else you need here, like send an email
 
             // Générer le token
             // Header
@@ -101,11 +89,11 @@ class RegistrationController extends AbstractController
     }
     
     //   ============ S'ENREGISTRER EN TANT QUE MEMBRE ============
-    #[Route('/register/membre', name: 'app_register_membre')]
+    #[Route('/register_membre', name: 'app_register_membre')]
     public function registerMembre(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator, EntityManagerInterface $entityManager, JWTService $jwt, SendEmailService $mail): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(MembreRegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -122,19 +110,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // ------ partie auto générée ------
-            // generate a signed url and email it to the user 
-            // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-            //     (new TemplatedEmail())
-            //         ->from(new Address('bot.bckr@gmail.com', 'BCKR Mail Bot'))
-            //         ->to($user->getEmail())
-            //         ->subject('Please Confirm your Email')
-            //         ->htmlTemplate('registration/confirmation_email.html.twig')
-            // );
-            // ------ fin partie auto générée ------
-            
-            // do anything else you need here, like send an email
 
             // Générer le token
             // Header
@@ -169,8 +144,8 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+        return $this->render('registration/register_membre.html.twig', [
+            'registrationMembreForm' => $form,
         ]);
     }
 

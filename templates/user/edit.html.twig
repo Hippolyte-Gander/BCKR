@@ -21,8 +21,38 @@
                 <div class="col-form">
                     {{ form_row(formEditUser.pseudo) }}    
                 </div>
+            </div>
+
+            <div class="row-form">
                 <div class="col-form">
-                {{ form_row(formEditUser.email) }}
+                {{ form_row(formEditUser.nom) }}
+                </div>
+                <div class="col-form">
+                {{ form_row(formEditUser.prenom) }}
+                </div>
+            </div>
+
+            <div class="row-form">
+                <div class="col-form">
+                {{ form_row(formEditUser.numTelephone) }}
+                </div>
+                <div class="col-form">
+                {{ form_row(formEditUser.dateNaissance) }}
+                </div>
+            </div>
+
+            <div class="row-form">
+                <div class="col-form">
+                {{ form_row(formEditUser.adresse) }}
+                </div>
+            </div>
+
+            <div class="row-form">
+                <div class="col-form">
+                {{ form_row(formEditUser.ville) }}
+                </div>
+                <div class="col-form">
+                {{ form_row(formEditUser.cp) }}
                 </div>
             </div>
 

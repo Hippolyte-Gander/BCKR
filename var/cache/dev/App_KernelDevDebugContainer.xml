@@ -423,6 +423,9 @@
     <service id="App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\MembreRegistrationFormType" class="App\Form\MembreRegistrationFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\ParticipantEntrainementType" class="App\Form\ParticipantEntrainementType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -497,7 +500,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.8BkJ0o7"/>
+      <argument type="service" id=".service_locator.KTpY2QW"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1413,6 +1416,7 @@
       <argument type="collection">
         <argument>App\Form\CommentaireType</argument>
         <argument>App\Form\EvenementType</argument>
+        <argument>App\Form\MembreRegistrationFormType</argument>
         <argument>App\Form\ParticipantEntrainementType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Form\ResetPasswordFormType</argument>
@@ -3487,7 +3491,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.8BkJ0o7"/>
+      <argument type="service" id=".service_locator.KTpY2QW"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3976,7 +3980,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.WM9d1T0"/>
+      <argument type="service" id=".service_locator.bjj_Fle"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -7417,6 +7421,8 @@
     <service id=".abstract.instanceof.App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MembreRegistrationFormType" class="App\Form\MembreRegistrationFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MembreRegistrationFormType" class="App\Form\MembreRegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ParticipantEntrainementType" class="App\Form\ParticipantEntrainementType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ParticipantEntrainementType" class="App\Form\ParticipantEntrainementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
@@ -7977,7 +7983,7 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.d_UY3kt.App\Entity\User"/>
       </argument>
     </service>
-    <service id=".service_locator.8BkJ0o7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.KTpY2QW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\EntrainementController::listEntrainements" type="service_closure" id=".service_locator.CsMkqUa"/>
@@ -7990,6 +7996,7 @@
         <argument key="App\Controller\EvenementController::supprEvenement" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.pX4JUuC"/>
         <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.Tj7FrpL"/>
+        <argument key="App\Controller\RegistrationController::registerMembre" type="service_closure" id=".service_locator.Tj7FrpL"/>
         <argument key="App\Controller\RegistrationController::verifUser" type="service_closure" id=".service_locator.yoflbtf"/>
         <argument key="App\Controller\SecurityController::forgottenPassword" type="service_closure" id=".service_locator.t9aPEVW"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.rSTd.nA"/>
@@ -8012,6 +8019,7 @@
         <argument key="App\Controller\EvenementController:supprEvenement" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.pX4JUuC"/>
         <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.Tj7FrpL"/>
+        <argument key="App\Controller\RegistrationController:registerMembre" type="service_closure" id=".service_locator.Tj7FrpL"/>
         <argument key="App\Controller\RegistrationController:verifUser" type="service_closure" id=".service_locator.yoflbtf"/>
         <argument key="App\Controller\SecurityController:forgottenPassword" type="service_closure" id=".service_locator.t9aPEVW"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.rSTd.nA"/>
@@ -8181,11 +8189,12 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.WM9d1T0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.bjj_Fle" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
         <argument key="App\Form\EvenementType" type="service_closure" id="App\Form\EvenementType"/>
+        <argument key="App\Form\MembreRegistrationFormType" type="service_closure" id="App\Form\MembreRegistrationFormType"/>
         <argument key="App\Form\ParticipantEntrainementType" type="service_closure" id="App\Form\ParticipantEntrainementType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="App\Form\ResetPasswordFormType" type="service_closure" id="App\Form\ResetPasswordFormType"/>
@@ -10279,7 +10288,7 @@
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.8BkJ0o7"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.KTpY2QW"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -10313,9 +10322,9 @@
     <service id=".service_locator.4ntabyc" alias=".service_locator.kuUfZEq"/>
     <service id=".service_locator.gjt7tHW" alias=".service_locator.pbtqkCT"/>
     <service id=".service_locator.UfbavBN" alias=".service_locator.d_UY3kt"/>
-    <service id=".service_locator.p_dGXBF" alias=".service_locator.8BkJ0o7"/>
+    <service id=".service_locator.j.PllyW" alias=".service_locator.KTpY2QW"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.UFKezDR" alias=".service_locator.WM9d1T0"/>
+    <service id=".service_locator.dNOsz3R" alias=".service_locator.bjj_Fle"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>

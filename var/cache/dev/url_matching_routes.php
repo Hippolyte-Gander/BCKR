@@ -24,6 +24,7 @@ return [
         '/mentions' => [[['_route' => 'mentions_home', '_controller' => 'App\\Controller\\HomeController::mentions'], null, null, null, false, false, null]],
         '/club' => [[['_route' => 'club_home', '_controller' => 'App\\Controller\\HomeController::club'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
+        '/register_membre' => [[['_route' => 'app_register_membre', '_controller' => 'App\\Controller\\RegistrationController::registerMembre'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/mot-de-passe-oublie' => [[['_route' => 'forgotten_password', '_controller' => 'App\\Controller\\SecurityController::forgottenPassword'], null, null, null, false, false, null]],

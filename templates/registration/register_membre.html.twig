@@ -8,37 +8,69 @@
     {% endfor %}
 
 <div class="register-formulaire-background">
-    <h4>S'inscrire</h4>
+    <h4>S'inscrire en tant que membre</h4>
 
-    {{ form_errors(registrationForm) }}
+    {{ form_errors(registrationMembreForm) }}
     <div class="formulaire">
 
-        {{ form_start(registrationForm) }}
+        {{ form_start(registrationMembreForm) }}
         
         <div class="row-form">
-            {{ form_row(registrationForm.email) }}
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.email) }}
+            </div>
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.pseudo) }}
+            </div>
         </div>
 
         <div class="row-form">
-            {{ form_row(registrationForm.pseudo) }}
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.nom) }}
+            </div>
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.prenom) }}
+            </div>
         </div>
 
         <div class="row-form">
-            {{ form_row(registrationForm.plainPassword, {
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.numTelephone) }}
+            </div>
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.dateNaissance) }}
+            </div>
+        </div>
+
+        <div class="row-form">
+                {{ form_row(registrationMembreForm.adresse) }}
+        </div>
+
+        <div class="row-form">
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.cp) }}
+            </div>
+            <div class="col-form">
+                {{ form_row(registrationMembreForm.ville) }}
+            </div>
+        </div>
+
+        <div class="row-form">
+            {{ form_row(registrationMembreForm.plainPassword, {
                 label: 'Password'
             }) }}
         </div>
 
         <div class="row-form">
-            <label for="{{ registrationForm.agreeTerms.vars.id }}">
+            <label for="{{ registrationMembreForm.agreeTerms.vars.id }}">
                 J'accepte les <a href="{{ path('mentions_home') }}" target="_blank">conditions d'utilisation</a> du site.
-                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_widget(registrationMembreForm.agreeTerms) }}
         </label>
         </div>
 
         <button type="submit" class="btn">Register</button>
         
-        {{ form_end(registrationForm) }}
+        {{ form_end(registrationMembreForm) }}
     </div>
 </div>
 {% endblock %}

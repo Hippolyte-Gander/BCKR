@@ -745,6 +745,16 @@ td, tr {
     border-radius: 5px;
 }
 
+.formulaire input[type=date] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
 .formulaire select {
     width: 90%;
     padding: 12px 20px;

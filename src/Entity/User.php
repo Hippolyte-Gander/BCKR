@@ -410,4 +410,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    // Date de naissance format jj/mm/aaaa
+    public function dateNaissanceFormatee(): ?string
+    {
+        return $this->dateNaissance->format('d/m/Y');
+    }
 }

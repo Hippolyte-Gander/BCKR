@@ -15,94 +15,165 @@
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
 
         <div class="pagePerso-contenu">
+            {# <a href="{{ path('app_reset_password') }}" class="reset_password">Changer mot de passe</a> #}
 
             <div class="infos-pagePerso">
 
-                    <p>Email : {{ app.user.email}}</p>
-
-                    {% if app.user.isMembre() or app.user.isAdmin() %}
-                        <p>
-                            Rôles : 
+                    <table>
+                        {% if app.user.isAdmin() %}
+                        <tr>
+                            <td>
+                                Rôles
+                            </td>
+                            <td>
                                 {% for role in app.user.roles %}
                                     {% if role == 'ROLE_ADMIN' %}
-                                        , Administrateur 
+                                        Administrateur 
                                     {% elseif role == 'ROLE_MEMBRE' %}
-                                        Membre
+                                        Membre 
                                     {% elseif role == 'ROLE_USER' %}
-                                        Utilisateur, 
+                                        Utilisateur 
                                     {% endif %}
                                 {% endfor %}
-                        </p>
-                    {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
 
-                    {% if app.user.isMembre() %}
-                        
-                        <table>
-                            <tr>
-                                <td>
-                                    Nom
-                                </td>
-                                <td>
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                {{ app.user.email }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Nom
+                            </td>
+                            <td>
+                                {% if app.user.nom %}
                                     {{ app.user.nom }}
-                                </td>
-                            </tr>
+                                {% else %}
+                                    Nom non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    Prénom
-                                </td>
-                                <td>
+                        <tr>
+                            <td>
+                                Nom
+                            </td>
+                            <td>
+                                {% if app.user.nom %}
+                                    {{ app.user.nom }}
+                                {% else %}
+                                    Nom non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Préom
+                            </td>
+                            <td>
+                                {% if app.user.prenom %}
                                     {{ app.user.prenom }}
-                                </td>
-                            </tr>
+                                {% else %}
+                                    Prénom non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    Numéro de licence
-                                </td>
-                                <td>
-                                    {% if app.user.numLicence %}
-                                        {{ app.user.numLicence }}
-                                    {% else %}
-                                        Numéro de  licence non renseigné
-                                    {% endif %}
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                Numéro de licence
+                            </td>
+                            <td>
+                                {% if app.user.numLicence %}
+                                    {{ app.user.numLicence }}
+                                {% else %}
+                                    Numéro de  licence non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    Numéro de téléphone
-                                </td>
-                                <td>
-                                    {% if app.user.numTelephone %}
-                                        {{ app.user.numTelephone }}
-                                    {% else %}
-                                        Numéro de  téléphone non renseigné
-                                    {% endif %}
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                Numéro de téléphone
+                            </td>
+                            <td>
+                                {% if app.user.numTelephone %}
+                                    {{ app.user.numTelephone }}
+                                {% else %}
+                                    Numéro de  téléphone non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    Date de naissance
-                                </td>
-                                <td>
-                                    {% if app.user.dateNaissance %}
-                                        {{ app.user.dateNaissanceFormatee }}
-                                    {% else %}
-                                        Date de naissance non renseignée
-                                    {% endif %}
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                Date de naissance
+                            </td>
+                            <td>
+                                {% if app.user.dateNaissance %}
+                                    {{ app.user.dateNaissanceFormatee }}
+                                {% else %}
+                                    Date de naissance non renseignée
+                                {% endif %}
+                            </td>
+                        </tr>
 
-                        </table>
-                    {% endif %}
+                        <tr>
+                            <td>
+                                Adresse
+                            </td>
+                            <td>
+                                {% if app.user.adresse %}
+                                    {{ app.user.adresse }}
+                                {% else %}
+                                Adresse non renseignée
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Ville
+                            </td>
+                            <td>
+                                {% if app.user.ville %}
+                                    {{ app.user.ville }}
+                                {% else %}
+                                Ville non renseignée
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Code Postal
+                            </td>
+                            <td>
+                                {% if app.user.cp %}
+                                    {{ app.user.cp }}
+                                {% else %}
+                                    Code Postal non renseignée
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </table>
             </div>
 
             <div class="evenements-pagePerso">
                 
-                {% if app.user.isMembre() and app.user.photo %}
-                    {{ app.user.photo }}
+                {% if app.user.photo %}
+                    <div class="photo-pagePerso">
+                        {{ app.user.photo }}
+                    </div>
                 {% endif %}
 
                 {% if app.user.participe|length > 0 %}

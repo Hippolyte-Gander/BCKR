@@ -17,20 +17,42 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class RegistrationFormType extends AbstractType
+class MembreRegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('pseudo', TextType::class)
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('numTelephone', TextType::class)
-            ->add('dateNaissance', DateType::class)
-            ->add('adresse', TextType::class)
-            ->add('ville', TextType::class)
-            ->add('cp', TextType::class)
+            ->add('email', EmailType::class, [
+                'label'=>'Email'
+            ])
+            ->add('pseudo', TextType::class, [
+                'label'=>'Pseudo'
+            ])
+            ->add('nom', TextType::class, [
+                'label'=>'Nom'
+            ])
+            ->add('prenom', TextType::class, [
+                'label'=>'Prénom'
+            ])
+            ->add('numTelephone', TextType::class, [
+                'label'=>'Numéro de téléphone'
+            ])
+            ->add('dateNaissance', DateType::class,[
+                'label'=>'Date de début',
+                'widget'=>'single_text',
+                'attr'=> [
+                    'class'=> 'texte-formulaire'
+                ]
+            ])
+            ->add('adresse', TextType::class, [
+                'label'=>'Adresse'
+            ])
+            ->add('ville', TextType::class, [
+                'label'=>'Ville'
+            ])
+            ->add('cp', TextType::class, [
+                'label'=>'Code Postal'
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => false,
                 'label_html'=> true,
