@@ -171,11 +171,6 @@ class EvenementController extends AbstractController
         return $this->redirectToRoute('app_evenement');
     }
 
-    
-/**
- *
- * @use User<User>
- */
         // ------------- Supprimer un commentaire -------------
         #[Route('/commentaire/delete/{id}', name: 'suppr_commentaire')]
         public function supprCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager)
