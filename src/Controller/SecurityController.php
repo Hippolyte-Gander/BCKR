@@ -58,7 +58,6 @@ class SecurityController extends AbstractController
 
             // On vérifie si on a un utilisateur
             if($user){
-                // On a un utilisateur
                 // On génère un JWT
                 // Header
                 $header = [
@@ -150,7 +149,7 @@ class SecurityController extends AbstractController
 
     // =============== RESET PASSWORD DEPUIS ESPACE PERSO ===============
     // #[Route(path: '/modifier_mot_de_passe', name: 'change_password')]
-    // public function resetPasswordEspacePerso(JWTService $jwt)
+    // public function resetPasswordEspacePerso(JWTService $jwt): Response
     // {
     //     // résupérer utilisateur en session
     //     $user = $this->getUser();
@@ -169,6 +168,8 @@ class SecurityController extends AbstractController
     //     // On génère l'URL vers reset_password
     //     $url = $this->generateUrl('reset_password', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
 
-    //     return $url;
+    //     return $this->render('pageperso.html.twig', [
+    //         'url' => $url, // Pass the URL to the template
+    //     ]);
     // }
 }

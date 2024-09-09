@@ -502,7 +502,7 @@ $context["role"] == "ROLE_USER")) {
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
 
         <div class=\"pagePerso-contenu\">
-            {# <a href=\"{{ path('app_reset_password') }}\" class=\"reset_password\">Changer mot de passe</a> #}
+            {# <a href=\"{{ url }}\" class=\"reset_password\" target=\"_blank\">Changer mot de passe</a> #}
 
             <div class=\"infos-pagePerso\">
 

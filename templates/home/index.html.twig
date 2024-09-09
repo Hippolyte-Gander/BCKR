@@ -10,7 +10,7 @@
 
     <div class="accueil">
 
-        <div class="a-venir">
+        <section class="a-venir">
             <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
 
             <div class="titre-texte">
@@ -43,28 +43,32 @@
                     {% endif %}
                 {% endfor %}
             </div>
-        </div>
+        </section>
 
-        <div class="club">
-            <div class="club-description">
+        <section class="club">
+            <article class="club-description">
                 <div class="titre-texte">
                     <a href=" {{ path('club_home') }} "><h2>Le club</h2></a>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
-                        <br>
-                        <br>
+                    </p>
+                    <p>
                         {# Chez nous, pas de prise de tête, tout le monde joue avec tout le monde, avec comme objectif principal de transpirer.
                         <br> #}
                         Uniquement dotés de sportives et sportifs amateurs, la bonne ambiance et  la bonne humeur sont les premières qualités recherchées pour les futurs  nouveaux membres.
-                        <br>
-                        <br>
-                        
+                    </p>
+                    <p>                       
                         Mouiller le maillot est notre devise !
                     </p>
+                    <p class="p_underline">
+                        Retrouvez-nous aussi sur Facebook 
+                        <a href="https://www.facebook.com/people/Badminton-Club-Kriegsheim-Rottelsheim/100068341596055/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    </p>
+
                 </div>
                 <img class="img-president" src="{{ asset('img/discours-president.jpg')}}" alt="photo du président du club faisant un discours">
-            </div>
-            <div class="club-entrainements">
+            </article>
+            <article class="club-entrainements">
                 <img class="img-entrainement" src="{{ asset('img/entrainement2.jpg')}}" alt="photo d'un entraînement du club">
                 <div class="titre-texte">
                     <a href=" {{ path('app_entrainements') }} "><h2>Les entraînements</h2></a>
@@ -77,8 +81,8 @@
                             Les entraînements commencent à 20h30 mais ne se terminent qu’à l’épuisement (ou l’apéro selon les envies).
                         </p>
                 </div>
-            </div>
-            <div class="club-activites">
+            </article>
+            <article class="club-activites">
                 <div class="titre-texte">
                     <a href=" {{ path('app_evenement') }} "><h2>Autres activités</h2></a>
                         <p>
@@ -89,8 +93,8 @@
                         </p>
                 </div>
                 <img class="img-paella" src="{{ asset('img/paella.jpg')}}" alt="photo d'un membre du club faisant une très grande paëlla">
-            </div>
-        </div>
+            </article>
+        </section>
     </div>
 </main>
 

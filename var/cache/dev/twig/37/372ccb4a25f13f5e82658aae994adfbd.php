@@ -99,11 +99,9 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
         yield "                        <a href=\" ";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Les événements</a>
-                        <a href=\" ";
-        // line 27
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("entrainements_home");
-        yield " \">Les entraînements</a>
-                    </div>
+                        ";
+        // line 28
+        yield "                    </div>
             </nav>
             <div class=\"login\">
                 ";
@@ -320,7 +318,7 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
      */
     public function getDebugInfo()
     {
-        return array (  284 => 63,  273 => 12,  263 => 11,  250 => 9,  247 => 8,  237 => 7,  217 => 5,  197 => 72,  193 => 70,  184 => 66,  180 => 64,  178 => 63,  164 => 52,  160 => 51,  156 => 50,  152 => 49,  141 => 40,  136 => 38,  132 => 37,  127 => 36,  122 => 34,  118 => 33,  113 => 32,  111 => 31,  104 => 27,  99 => 26,  94 => 24,  89 => 23,  87 => 22,  83 => 21,  79 => 20,  71 => 17,  66 => 14,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  282 => 63,  271 => 12,  261 => 11,  248 => 9,  245 => 8,  235 => 7,  215 => 5,  195 => 72,  191 => 70,  182 => 66,  178 => 64,  176 => 63,  162 => 52,  158 => 51,  154 => 50,  150 => 49,  139 => 40,  134 => 38,  130 => 37,  125 => 36,  120 => 34,  116 => 33,  111 => 32,  109 => 31,  104 => 28,  99 => 26,  94 => 24,  89 => 23,  87 => 22,  83 => 21,  79 => 20,  71 => 17,  66 => 14,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -351,7 +349,7 @@ class __TwigTemplate_f7525dad270807f4ce69a90db76e78aa extends Template
                             <a href=\" {{ path('new_evenement') }} \">Créer un événement</a>
                         {% endif %}
                         <a href=\" {{ path('app_evenement') }} \">Les événements</a>
-                        <a href=\" {{ path('entrainements_home') }} \">Les entraînements</a>
+                        {# <a href=\" {{ path('entrainements_home') }} \">Les entraînements</a> #}
                     </div>
             </nav>
             <div class=\"login\">

@@ -94,7 +94,7 @@ class __TwigTemplate_e8d0e4c94f3a4c4663d723570576f347 extends Template
 
     <div class=\"accueil\">
 
-        <div class=\"a-venir\">
+        <section class=\"a-venir\">
             <a href=\" ";
         // line 14
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
@@ -204,10 +204,10 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 45
         yield "            </div>
-        </div>
+        </section>
 
-        <div class=\"club\">
-            <div class=\"club-description\">
+        <section class=\"club\">
+            <article class=\"club-description\">
                 <div class=\"titre-texte\">
                     <a href=\" ";
         // line 51
@@ -215,30 +215,34 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
         yield " \"><h2>Le club</h2></a>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
-                        <br>
-                        <br>
+                    </p>
+                    <p>
                         ";
         // line 58
         yield "                        Uniquement dotés de sportives et sportifs amateurs, la bonne ambiance et  la bonne humeur sont les premières qualités recherchées pour les futurs  nouveaux membres.
-                        <br>
-                        <br>
-                        
+                    </p>
+                    <p>                       
                         Mouiller le maillot est notre devise !
                     </p>
+                    <p class=\"p_underline\">
+                        Retrouvez-nous aussi sur Facebook 
+                        <a href=\"https://www.facebook.com/people/Badminton-Club-Kriegsheim-Rottelsheim/100068341596055/\" target=\"_blank\"><i class=\"fa-brands fa-facebook\"></i></a>   
+                    </p>
+
                 </div>
                 <img class=\"img-president\" src=\"";
-        // line 65
+        // line 69
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/discours-president.jpg"), "html", null, true);
         yield "\" alt=\"photo du président du club faisant un discours\">
-            </div>
-            <div class=\"club-entrainements\">
+            </article>
+            <article class=\"club-entrainements\">
                 <img class=\"img-entrainement\" src=\"";
-        // line 68
+        // line 72
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/entrainement2.jpg"), "html", null, true);
         yield "\" alt=\"photo d'un entraînement du club\">
                 <div class=\"titre-texte\">
                     <a href=\" ";
-        // line 70
+        // line 74
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_entrainements");
         yield " \"><h2>Les entraînements</h2></a>
                         <p>
@@ -250,11 +254,11 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
                             Les entraînements commencent à 20h30 mais ne se terminent qu’à l’épuisement (ou l’apéro selon les envies).
                         </p>
                 </div>
-            </div>
-            <div class=\"club-activites\">
+            </article>
+            <article class=\"club-activites\">
                 <div class=\"titre-texte\">
                     <a href=\" ";
-        // line 83
+        // line 87
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \"><h2>Autres activités</h2></a>
                         <p>
@@ -265,11 +269,11 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
                         </p>
                 </div>
                 <img class=\"img-paella\" src=\"";
-        // line 91
+        // line 95
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/paella.jpg"), "html", null, true);
         yield "\" alt=\"photo d'un membre du club faisant une très grande paëlla\">
-            </div>
-        </div>
+            </article>
+        </section>
     </div>
 </main>
 
@@ -304,7 +308,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
      */
     public function getDebugInfo()
     {
-        return array (  269 => 91,  258 => 83,  242 => 70,  237 => 68,  231 => 65,  222 => 58,  214 => 51,  206 => 45,  200 => 44,  194 => 41,  188 => 40,  182 => 39,  175 => 37,  172 => 36,  170 => 35,  165 => 33,  159 => 32,  153 => 31,  146 => 29,  143 => 28,  141 => 27,  136 => 25,  130 => 24,  124 => 23,  117 => 21,  114 => 20,  111 => 19,  107 => 18,  100 => 14,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  273 => 95,  262 => 87,  246 => 74,  241 => 72,  235 => 69,  222 => 58,  214 => 51,  206 => 45,  200 => 44,  194 => 41,  188 => 40,  182 => 39,  175 => 37,  172 => 36,  170 => 35,  165 => 33,  159 => 32,  153 => 31,  146 => 29,  143 => 28,  141 => 27,  136 => 25,  130 => 24,  124 => 23,  117 => 21,  114 => 20,  111 => 19,  107 => 18,  100 => 14,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -321,7 +325,7 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
 
     <div class=\"accueil\">
 
-        <div class=\"a-venir\">
+        <section class=\"a-venir\">
             <a href=\" {{ path('app_evenement') }} \"><h2>Événements à venir</h2></a>
 
             <div class=\"titre-texte\">
@@ -354,28 +358,32 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
                     {% endif %}
                 {% endfor %}
             </div>
-        </div>
+        </section>
 
-        <div class=\"club\">
-            <div class=\"club-description\">
+        <section class=\"club\">
+            <article class=\"club-description\">
                 <div class=\"titre-texte\">
                     <a href=\" {{ path('club_home') }} \"><h2>Le club</h2></a>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de badminton en loisir et compte actuellement une soixantaine de membres.
-                        <br>
-                        <br>
+                    </p>
+                    <p>
                         {# Chez nous, pas de prise de tête, tout le monde joue avec tout le monde, avec comme objectif principal de transpirer.
                         <br> #}
                         Uniquement dotés de sportives et sportifs amateurs, la bonne ambiance et  la bonne humeur sont les premières qualités recherchées pour les futurs  nouveaux membres.
-                        <br>
-                        <br>
-                        
+                    </p>
+                    <p>                       
                         Mouiller le maillot est notre devise !
                     </p>
+                    <p class=\"p_underline\">
+                        Retrouvez-nous aussi sur Facebook 
+                        <a href=\"https://www.facebook.com/people/Badminton-Club-Kriegsheim-Rottelsheim/100068341596055/\" target=\"_blank\"><i class=\"fa-brands fa-facebook\"></i></a>   
+                    </p>
+
                 </div>
                 <img class=\"img-president\" src=\"{{ asset('img/discours-president.jpg')}}\" alt=\"photo du président du club faisant un discours\">
-            </div>
-            <div class=\"club-entrainements\">
+            </article>
+            <article class=\"club-entrainements\">
                 <img class=\"img-entrainement\" src=\"{{ asset('img/entrainement2.jpg')}}\" alt=\"photo d'un entraînement du club\">
                 <div class=\"titre-texte\">
                     <a href=\" {{ path('app_entrainements') }} \"><h2>Les entraînements</h2></a>
@@ -388,8 +396,8 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
                             Les entraînements commencent à 20h30 mais ne se terminent qu’à l’épuisement (ou l’apéro selon les envies).
                         </p>
                 </div>
-            </div>
-            <div class=\"club-activites\">
+            </article>
+            <article class=\"club-activites\">
                 <div class=\"titre-texte\">
                     <a href=\" {{ path('app_evenement') }} \"><h2>Autres activités</h2></a>
                         <p>
@@ -400,8 +408,8 @@ $context["evenement"], "visibilite", [], "any", false, false, false, 27) == "mem
                         </p>
                 </div>
                 <img class=\"img-paella\" src=\"{{ asset('img/paella.jpg')}}\" alt=\"photo d'un membre du club faisant une très grande paëlla\">
-            </div>
-        </div>
+            </article>
+        </section>
     </div>
 </main>
 

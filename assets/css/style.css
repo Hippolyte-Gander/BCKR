@@ -306,6 +306,10 @@ main {
     padding: 20px 0px;
 }
 
+.p_underline {
+    text-decoration: underline;
+}
+
 /* ---------- IMAGES ---------- */
 
 .club-description img,
