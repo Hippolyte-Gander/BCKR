@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+<div class="register-formulaire-background">
+    <h4>S'inscrire</h4>
+
+    {{ form_errors(registrationForm) }}
+    <div class="formulaire">
+
+        {{ form_start(registrationForm) }}
+        
+        <div class="row-form">
+            {{ form_row(registrationForm.email) }}
+        </div>
+
+        <div class="row-form">
+            {{ form_row(registrationForm.pseudo) }}
+        </div>
+
+        <div class="row-form">
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+        </div>
+
+        <div class="row-form">
+            <label for="{{ registrationForm.agreeTerms.vars.id }}">
+                J'accepte les <a href="{{ path('mentions_home') }}" target="_blank">conditions d'utilisation</a> du site.
+                {{ form_widget(registrationForm.agreeTerms) }}
+        </label>
+        </div>
+
+        <button type="submit" class="btn">Register</button>
+        
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}

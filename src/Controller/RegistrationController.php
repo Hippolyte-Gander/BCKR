@@ -26,7 +26,7 @@ class RegistrationController extends AbstractController
     public function __construct(private EmailVerifier $emailVerifier)
     {
     }
-
+//   ============ S'ENREGISTRER EN TANT QU'UTILISATEUR ============
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator, EntityManagerInterface $entityManager, JWTService $jwt, SendEmailService $mail): Response
     {
@@ -35,6 +35,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // role par défaut
+            $user->setRoles(['ROLE_USER']);
+            
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -91,8 +94,80 @@ class RegistrationController extends AbstractController
                 $request
             );
         }
-        //     return $this->redirectToRoute('app_home');
-        // }
+
+        return $this->render('registration/register.html.twig', [
+            'registrationForm' => $form,
+        ]);
+    }
+    
+    //   ============ S'ENREGISTRER EN TANT QUE MEMBRE ============
+    #[Route('/register/membre', name: 'app_register_membre')]
+    public function registerMembre(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator, EntityManagerInterface $entityManager, JWTService $jwt, SendEmailService $mail): Response
+    {
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // role par défaut
+            $user->setRoles(['ROLE_USER']);
+            
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            // ------ partie auto générée ------
+            // generate a signed url and email it to the user 
+            // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            //     (new TemplatedEmail())
+            //         ->from(new Address('bot.bckr@gmail.com', 'BCKR Mail Bot'))
+            //         ->to($user->getEmail())
+            //         ->subject('Please Confirm your Email')
+            //         ->htmlTemplate('registration/confirmation_email.html.twig')
+            // );
+            // ------ fin partie auto générée ------
+            
+            // do anything else you need here, like send an email
+
+            // Générer le token
+            // Header
+            $header = [
+                'typ' => 'JWT',
+                'alg' => 'HS256'
+            ];
+
+            // Payload
+            $payload = [
+                'user_id' => $user->getId()
+            ];
+
+            // On génère le token
+            $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
+
+            // Envoyer l'e-mail
+            $mail->send(
+                'no-reply@bckr.test',
+                $user->getEmail(),
+                'Activation de votre compte sur le site du BCKR',
+                'register',
+                compact('user', 'token') // ['user' => $user, 'token'=>$token]
+            );
+
+            $this->addFlash('success', 'Utilisateur inscrit, veuillez cliquer sur le lien reçu pour confirmer votre adresse e-mail');
+
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+        }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,

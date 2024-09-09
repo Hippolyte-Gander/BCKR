@@ -130,17 +130,17 @@ class __TwigTemplate_5b62e172410a8bdcd5e5f01642efda6c extends Template
                     yield "                                    ";
                     if (($context["role"] == "ROLE_ADMIN")) {
                         // line 28
-                        yield "                                        Administrateur, 
+                        yield "                                        , Administrateur 
                                     ";
                     } elseif ((                    // line 29
 $context["role"] == "ROLE_MEMBRE")) {
                         // line 30
-                        yield "                                        Membre, 
+                        yield "                                        Membre
                                     ";
                     } elseif ((                    // line 31
 $context["role"] == "ROLE_USER")) {
                         // line 32
-                        yield "                                        Utilisateur
+                        yield "                                        Utilisateur, 
                                     ";
                     }
                     // line 34
@@ -396,11 +396,11 @@ $context["role"] == "ROLE_USER")) {
                             Rôles : 
                                 {% for role in app.user.roles %}
                                     {% if role == 'ROLE_ADMIN' %}
-                                        Administrateur, 
+                                        , Administrateur 
                                     {% elseif role == 'ROLE_MEMBRE' %}
-                                        Membre, 
+                                        Membre
                                     {% elseif role == 'ROLE_USER' %}
-                                        Utilisateur
+                                        Utilisateur, 
                                     {% endif %}
                                 {% endfor %}
                         </p>

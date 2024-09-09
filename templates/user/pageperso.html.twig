@@ -25,11 +25,11 @@
                             Rôles : 
                                 {% for role in app.user.roles %}
                                     {% if role == 'ROLE_ADMIN' %}
-                                        Administrateur, 
+                                        , Administrateur 
                                     {% elseif role == 'ROLE_MEMBRE' %}
-                                        Membre, 
+                                        Membre
                                     {% elseif role == 'ROLE_USER' %}
-                                        Utilisateur
+                                        Utilisateur, 
                                     {% endif %}
                                 {% endfor %}
                         </p>
