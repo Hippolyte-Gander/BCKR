@@ -43,7 +43,7 @@
                                     Nom
                                 </td>
                                 <td>
-                                    {{ app.user.membre.nom }}
+                                    {{ app.user.nom }}
                                 </td>
                             </tr>
 
@@ -52,7 +52,7 @@
                                     Prénom
                                 </td>
                                 <td>
-                                    {{ app.user.membre.prenom }}
+                                    {{ app.user.prenom }}
                                 </td>
                             </tr>
 
@@ -61,8 +61,8 @@
                                     Numéro de licence
                                 </td>
                                 <td>
-                                    {% if app.user.membre.numLicence %}
-                                        {{ app.user.membre.numLicence }}
+                                    {% if app.user.numLicence %}
+                                        {{ app.user.numLicence }}
                                     {% else %}
                                         Numéro de  licence non renseigné
                                     {% endif %}
@@ -74,8 +74,8 @@
                                     Numéro de téléphone
                                 </td>
                                 <td>
-                                    {% if app.user.membre.numTelephone %}
-                                        {{ app.user.membre.numTelephone }}
+                                    {% if app.user.numTelephone %}
+                                        {{ app.user.numTelephone }}
                                     {% else %}
                                         Numéro de  téléphone non renseigné
                                     {% endif %}
@@ -87,8 +87,8 @@
                                     Date de naissance
                                 </td>
                                 <td>
-                                    {% if app.user.membre.dateNaissance %}
-                                        {{ app.user.membre.dateNaissanceFormatee }}
+                                    {% if app.user.dateNaissance %}
+                                        {{ app.user.dateNaissanceFormatee }}
                                     {% else %}
                                         Date de naissance non renseignée
                                     {% endif %}
@@ -101,8 +101,8 @@
 
             <div class="evenements-pagePerso">
                 
-                {% if app.user.isMembre() and app.user.membre.photo %}
-                    {{ app.user.membre.photo }}
+                {% if app.user.isMembre() and app.user.photo %}
+                    {{ app.user.photo }}
                 {% endif %}
 
                 {% if app.user.participe|length > 0 %}

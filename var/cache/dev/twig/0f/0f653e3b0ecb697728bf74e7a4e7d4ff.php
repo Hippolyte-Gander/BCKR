@@ -168,7 +168,7 @@ $context["role"] == "ROLE_USER")) {
                                 <td>
                                     ";
                 // line 46
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46), "membre", [], "any", false, false, false, 46), "nom", [], "any", false, false, false, 46), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46), "nom", [], "any", false, false, false, 46), "html", null, true);
                 yield "
                                 </td>
                             </tr>
@@ -180,7 +180,7 @@ $context["role"] == "ROLE_USER")) {
                                 <td>
                                     ";
                 // line 55
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 55, $this->source); })()), "user", [], "any", false, false, false, 55), "membre", [], "any", false, false, false, 55), "prenom", [], "any", false, false, false, 55), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 55, $this->source); })()), "user", [], "any", false, false, false, 55), "prenom", [], "any", false, false, false, 55), "html", null, true);
                 yield "
                                 </td>
                             </tr>
@@ -192,10 +192,10 @@ $context["role"] == "ROLE_USER")) {
                                 <td>
                                     ";
                 // line 64
-                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 64, $this->source); })()), "user", [], "any", false, false, false, 64), "membre", [], "any", false, false, false, 64), "numLicence", [], "any", false, false, false, 64)) {
+                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 64, $this->source); })()), "user", [], "any", false, false, false, 64), "numLicence", [], "any", false, false, false, 64)) {
                     // line 65
                     yield "                                        ";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 65, $this->source); })()), "user", [], "any", false, false, false, 65), "membre", [], "any", false, false, false, 65), "numLicence", [], "any", false, false, false, 65), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 65, $this->source); })()), "user", [], "any", false, false, false, 65), "numLicence", [], "any", false, false, false, 65), "html", null, true);
                     yield "
                                     ";
                 } else {
@@ -214,10 +214,10 @@ $context["role"] == "ROLE_USER")) {
                                 <td>
                                     ";
                 // line 77
-                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 77, $this->source); })()), "user", [], "any", false, false, false, 77), "membre", [], "any", false, false, false, 77), "numTelephone", [], "any", false, false, false, 77)) {
+                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 77, $this->source); })()), "user", [], "any", false, false, false, 77), "numTelephone", [], "any", false, false, false, 77)) {
                     // line 78
                     yield "                                        ";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 78, $this->source); })()), "user", [], "any", false, false, false, 78), "membre", [], "any", false, false, false, 78), "numTelephone", [], "any", false, false, false, 78), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 78, $this->source); })()), "user", [], "any", false, false, false, 78), "numTelephone", [], "any", false, false, false, 78), "html", null, true);
                     yield "
                                     ";
                 } else {
@@ -236,10 +236,10 @@ $context["role"] == "ROLE_USER")) {
                                 <td>
                                     ";
                 // line 90
-                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 90, $this->source); })()), "user", [], "any", false, false, false, 90), "membre", [], "any", false, false, false, 90), "dateNaissance", [], "any", false, false, false, 90)) {
+                if (CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 90, $this->source); })()), "user", [], "any", false, false, false, 90), "dateNaissance", [], "any", false, false, false, 90)) {
                     // line 91
                     yield "                                        ";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 91, $this->source); })()), "user", [], "any", false, false, false, 91), "membre", [], "any", false, false, false, 91), "dateNaissanceFormatee", [], "any", false, false, false, 91), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 91, $this->source); })()), "user", [], "any", false, false, false, 91), "dateNaissanceFormatee", [], "any", false, false, false, 91), "html", null, true);
                     yield "
                                     ";
                 } else {
@@ -261,10 +261,10 @@ $context["role"] == "ROLE_USER")) {
                 
                 ";
             // line 104
-            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 104, $this->source); })()), "user", [], "any", false, false, false, 104), "isMembre", [], "method", false, false, false, 104) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 104, $this->source); })()), "user", [], "any", false, false, false, 104), "membre", [], "any", false, false, false, 104), "photo", [], "any", false, false, false, 104))) {
+            if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 104, $this->source); })()), "user", [], "any", false, false, false, 104), "isMembre", [], "method", false, false, false, 104) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 104, $this->source); })()), "user", [], "any", false, false, false, 104), "photo", [], "any", false, false, false, 104))) {
                 // line 105
                 yield "                    ";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 105, $this->source); })()), "user", [], "any", false, false, false, 105), "membre", [], "any", false, false, false, 105), "photo", [], "any", false, false, false, 105), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 105, $this->source); })()), "user", [], "any", false, false, false, 105), "photo", [], "any", false, false, false, 105), "html", null, true);
                 yield "
                 ";
             }
@@ -414,7 +414,7 @@ $context["role"] == "ROLE_USER")) {
                                     Nom
                                 </td>
                                 <td>
-                                    {{ app.user.membre.nom }}
+                                    {{ app.user.nom }}
                                 </td>
                             </tr>
 
@@ -423,7 +423,7 @@ $context["role"] == "ROLE_USER")) {
                                     Prénom
                                 </td>
                                 <td>
-                                    {{ app.user.membre.prenom }}
+                                    {{ app.user.prenom }}
                                 </td>
                             </tr>
 
@@ -432,8 +432,8 @@ $context["role"] == "ROLE_USER")) {
                                     Numéro de licence
                                 </td>
                                 <td>
-                                    {% if app.user.membre.numLicence %}
-                                        {{ app.user.membre.numLicence }}
+                                    {% if app.user.numLicence %}
+                                        {{ app.user.numLicence }}
                                     {% else %}
                                         Numéro de  licence non renseigné
                                     {% endif %}
@@ -445,8 +445,8 @@ $context["role"] == "ROLE_USER")) {
                                     Numéro de téléphone
                                 </td>
                                 <td>
-                                    {% if app.user.membre.numTelephone %}
-                                        {{ app.user.membre.numTelephone }}
+                                    {% if app.user.numTelephone %}
+                                        {{ app.user.numTelephone }}
                                     {% else %}
                                         Numéro de  téléphone non renseigné
                                     {% endif %}
@@ -458,8 +458,8 @@ $context["role"] == "ROLE_USER")) {
                                     Date de naissance
                                 </td>
                                 <td>
-                                    {% if app.user.membre.dateNaissance %}
-                                        {{ app.user.membre.dateNaissanceFormatee }}
+                                    {% if app.user.dateNaissance %}
+                                        {{ app.user.dateNaissanceFormatee }}
                                     {% else %}
                                         Date de naissance non renseignée
                                     {% endif %}
@@ -472,8 +472,8 @@ $context["role"] == "ROLE_USER")) {
 
             <div class=\"evenements-pagePerso\">
                 
-                {% if app.user.isMembre() and app.user.membre.photo %}
-                    {{ app.user.membre.photo }}
+                {% if app.user.isMembre() and app.user.photo %}
+                    {{ app.user.photo }}
                 {% endif %}
 
                 {% if app.user.participe|length > 0 %}

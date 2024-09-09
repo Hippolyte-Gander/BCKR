@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Membre;
 use App\Form\UserEditType;
 use App\Repository\UserRepository;
 use App\Repository\EvenementRepository;
@@ -46,14 +45,8 @@ class UserController extends AbstractController
     public function pagePerso(): Response
     {
         $user = $this->getUser();
-        $membre = $user->getMembre();
         
-        if ($membre) {
-            return $this->render('user/pageperso.html.twig', [
-                'user' => $user,
-                'membre' => $membre,
-            ]);
-        } elseif ($user) {
+        if ($user) {
             return $this->render('user/pageperso.html.twig', [
                 'user' => $user
             ]);
