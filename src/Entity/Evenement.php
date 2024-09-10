@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use Doctrine\ORM\Mapping\Id;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
 class Evenement
@@ -31,10 +32,20 @@ class Evenement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    // private ?\DateTimeInterface $dateDebut = null;
+
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    // private ?\DateTimeInterface $dateFin = null;
+
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotNull(message: 'The start date is required.')]
+    #[Assert\GreaterThanOrEqual("tomorrow", message: 'The start date must be at least tomorrow.')]
     private ?\DateTimeInterface $dateDebut = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Assert\NotNull(message: 'The end date is required.')]
+    #[Assert\Callback([self::class, 'validateDateFin'])]
     private ?\DateTimeInterface $dateFin = null;
 
     /**
@@ -55,8 +66,11 @@ class Evenement
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participe')]
     private Collection $participants;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
     private ?int $placesPrises = 0;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $affiche = null;
 
     public function __construct()
     {
@@ -68,7 +82,7 @@ class Evenement
     {
         return $this->titre ?: '';
     }
-
+    // ==================================== Début get et set ====================================
     public function getId(): ?int
     {
         return $this->id;
@@ -154,28 +168,6 @@ class Evenement
         return $this->commentaires;
     }
 
-    public function addCommentaire(Commentaire $commentaire): static
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires->add($commentaire);
-            $commentaire->setAppartient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaire $commentaire): static
-    {
-        if ($this->commentaires->removeElement($commentaire)) {
-            // set the owning side to null (unless already changed)
-            if ($commentaire->getAppartient() === $this) {
-                $commentaire->setAppartient(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getVisibilite(): ?string
     {
         return $this->visibilite;
@@ -212,6 +204,18 @@ class Evenement
         return $this;
     }
 
+    public function getAffiche(): ?string
+    {
+        return $this->affiche;
+    }
+
+    public function setAffiche(?string $affiche): static
+    {
+        $this->affiche = $affiche;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, User>
      */
@@ -219,6 +223,36 @@ class Evenement
     {
         return $this->participants;
     }
+
+    // ==================================== Fin get et set ====================================
+
+
+    // =============== Add / remove commentaire ===============
+
+    public function addCommentaire(Commentaire $commentaire): static
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setAppartient($this);
+        }
+
+        return $this;
+    }
+
+
+    public function removeCommentaire(Commentaire $commentaire): static
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getAppartient() === $this) {
+                $commentaire->setAppartient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    // =============== Add / remove participant ===============
 
     public function addParticipant(User $participant): static
     {
@@ -239,8 +273,21 @@ class Evenement
         return $this;
     }
 
-    
-    // Dates formatées
+    // =============== Validation dates ===============
+
+    public static function validateDateFin(?\DateTimeInterface $dateFin, ExecutionContextInterface $context)
+    {
+        $object = $context->getObject(); // Access the current Evenement object
+        $dateDebut = $object->getDateDebut();
+
+        if ($dateFin !== null && $dateDebut !== null && $dateFin <= $dateDebut) {
+            $context->buildViolation('The end date must be after the start date.')
+                ->atPath('dateFin')
+                ->addViolation();
+        }
+    }
+
+    // =============== Dates formatées ===============
 
     public function dateDebutFormatee(): ?string
     {
@@ -262,7 +309,7 @@ class Evenement
         return $this->dateFin->format('H:i');
     }
 
-    // compteur de places
+    // =============== compteur de places ===============
 
     public function placesPriseEvenement()
     {

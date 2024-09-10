@@ -50,7 +50,8 @@ class EvenementType extends AbstractType
                 'label'=>'Date de début',
                 'widget'=>'single_text',
                 'attr'=> [
-                    'class'=> 'texte-formulaire'
+                    'class'=> 'texte-formulaire',
+                    'min'=> (new \DateTime('tomorrow'))->format('Y-m-d\TH:i'), // date minimum = demain
                 ]
             ])
             ->add('dateFin', DateTimeType::class,[
