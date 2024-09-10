@@ -32,11 +32,39 @@ class EvenementRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-       public function evenementsFuturs() 
+       public function evenementsFutursAdmin() 
        {
            return $this->createQueryBuilder('e')
                ->andWhere('e.dateDebut >= :today')
+               ->andWhere('e.visibilite IN (:visibilites)')
                ->setParameter('today', new DateTime())
+               ->setParameter('visibilites', ['admins', 'membres', 'tous'])
+               ->orderBy('e.dateDebut', 'DESC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+
+       public function evenementsFutursMembre() 
+       {
+           return $this->createQueryBuilder('e')
+               ->andWhere('e.dateDebut >= :today')
+               ->andWhere('e.visibilite IN (:visibilites)')
+               ->setParameter('today', new DateTime())
+               ->setParameter('visibilites', ['membres', 'tous'])
+               ->orderBy('e.dateDebut', 'DESC')
+               ->getQuery()
+               ->getResult()
+           ;
+       }
+
+       public function evenementsFutursTous() 
+       {
+           return $this->createQueryBuilder('e')
+               ->andWhere('e.dateDebut >= :today')
+               ->andWhere('e.visibilite = :visibilite')
+               ->setParameter('today', new DateTime())
+               ->setParameter('visibilite', 'tous')
                ->orderBy('e.dateDebut', 'DESC')
                ->getQuery()
                ->getResult()

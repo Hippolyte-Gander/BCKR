@@ -26,9 +26,22 @@ class EvenementController extends AbstractController
     #[Route('/evenement', name: 'app_evenement')]
     public function index(EvenementRepository $evenementRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $evenements = $evenementRepository->evenementsFuturs();
+        $user = $this->getUser();
 
-        $pagination = $paginator->paginate(
+        if ($user) {
+            // chercher les events en fonction de leur visibilité
+            if ($user->isAdmin()) {
+                $evenements = $evenementRepository->evenementsFutursAdmin();
+            } elseif ($user->isMembre()) {
+                $evenements = $evenementRepository->evenementsFutursMembre();
+            } else {
+                $evenements = $evenementRepository->evenementsFutursTous();
+            }
+        } else {
+            $evenements = $evenementRepository->evenementsFutursTous();
+        }
+            
+            $pagination = $paginator->paginate(
             $evenements, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             5 /*limit per page*/

@@ -13,7 +13,21 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(EvenementRepository $evenementRepository): Response
     {
-        $evenements = $evenementRepository->evenementsFuturs();
+        $user = $this->getUser();
+
+        if ($user) {
+            // chercher les events en fonction de leur visibilité
+            if ($user->isAdmin()) {
+                $evenements = $evenementRepository->evenementsFutursAdmin();
+            } elseif ($user->isMembre()) {
+                $evenements = $evenementRepository->evenementsFutursMembre();
+            } else {
+                $evenements = $evenementRepository->evenementsFutursTous();
+            }
+        } else {
+            $evenements = $evenementRepository->evenementsFutursTous();
+        }
+
         return $this->render('home/index.html.twig', [
             'evenements' => $evenements
         ]);
