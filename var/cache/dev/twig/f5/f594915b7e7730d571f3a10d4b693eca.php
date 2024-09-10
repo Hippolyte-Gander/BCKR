@@ -28,6 +28,7 @@ class __TwigTemplate_6a1ce6924792de5ad9dc6b9601e7b3c2 extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
+            'javascripts' => [$this, 'block_javascripts'],
         ];
     }
 
@@ -206,6 +207,30 @@ class __TwigTemplate_6a1ce6924792de5ad9dc6b9601e7b3c2 extends Template
         return; yield '';
     }
 
+    // line 74
+    public function block_javascripts($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 75
+        yield "    <script src=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/dateFinEvent.js"), "html", null, true);
+        yield "\"></script>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        return; yield '';
+    }
+
     /**
      * @codeCoverageIgnore
      */
@@ -227,7 +252,7 @@ class __TwigTemplate_6a1ce6924792de5ad9dc6b9601e7b3c2 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  198 => 71,  192 => 67,  183 => 61,  179 => 59,  174 => 54,  166 => 49,  160 => 46,  151 => 40,  142 => 34,  136 => 31,  130 => 28,  124 => 25,  119 => 22,  115 => 20,  111 => 18,  109 => 17,  105 => 15,  103 => 14,  100 => 13,  90 => 12,  77 => 7,  73 => 5,  70 => 4,  60 => 3,  37 => 1,);
+        return array (  221 => 75,  211 => 74,  199 => 71,  193 => 67,  184 => 61,  180 => 59,  175 => 54,  167 => 49,  161 => 46,  152 => 40,  143 => 34,  137 => 31,  131 => 28,  125 => 25,  120 => 22,  116 => 20,  112 => 18,  110 => 17,  106 => 15,  104 => 14,  101 => 13,  91 => 12,  78 => 7,  74 => 5,  71 => 4,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -303,6 +328,10 @@ class __TwigTemplate_6a1ce6924792de5ad9dc6b9601e7b3c2 extends Template
     </div>
 {% endif %}
 
+{% endblock %}
+
+{% block javascripts %}
+    <script src=\"{{ asset('js/dateFinEvent.js') }}\"></script>
 {% endblock %}", "evenement/new.html.twig", "C:\\laragon\\www\\hippolyte G\\Github\\BCKR\\templates\\evenement\\new.html.twig");
     }
 }
