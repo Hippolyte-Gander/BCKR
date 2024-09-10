@@ -20,8 +20,8 @@ final class Version20240909070416 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE membre');
-        $this->addSql('ALTER TABLE user ADD num_licence VARCHAR(50) DEFAULT NULL, ADD nom VARCHAR(255) DEFAULT NULL, ADD prenom VARCHAR(255) DEFAULT NULL, ADD num_telephone VARCHAR(50) DEFAULT NULL, ADD date_naissance DATE DEFAULT NULL COMMENT \'(DC2Type:date_immutable)\', ADD photo VARCHAR(255) DEFAULT NULL, ADD adresse VARCHAR(255) DEFAULT NULL, ADD ville VARCHAR(255) DEFAULT NULL, ADD cp VARCHAR(50) DEFAULT NULL, DROP membre_id, CHANGE roles roles JSON NOT NULL');
+        // $this->addSql('DROP TABLE membre');
+        $this->addSql('ALTER TABLE user ADD num_licence VARCHAR(50) DEFAULT NULL, ADD nom VARCHAR(255) DEFAULT NULL, ADD prenom VARCHAR(255) DEFAULT NULL, ADD num_telephone VARCHAR(50) DEFAULT NULL, ADD date_naissance DATE DEFAULT NULL COMMENT \'(DC2Type:date_immutable)\', ADD photo VARCHAR(255) DEFAULT NULL, ADD adresse VARCHAR(255) DEFAULT NULL, ADD ville VARCHAR(255) DEFAULT NULL, ADD cp VARCHAR(50) DEFAULT NULL, CHANGE roles roles JSON NOT NULL');
     }
 
     public function down(Schema $schema): void
