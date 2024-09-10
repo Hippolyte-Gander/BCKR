@@ -56,3 +56,6 @@ e97c43,127.0.0.1,GET,http://127.0.0.1:8000/evenement/2/edit,1725960235,,200,requ
 3d4e6d,127.0.0.1,POST,http://127.0.0.1:8000/evenement/2/edit,1725960260,,302,request
 acdcae,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1725960260,,200,request
 cfda83,127.0.0.1,GET,http://127.0.0.1:8000/evenement/2/edit,1725960297,,200,request
+896660,127.0.0.1,GET,http://127.0.0.1:8000/user,1725960556,,200,request
+57df17,127.0.0.1,GET,http://127.0.0.1:8000/evenement/new,1725960558,,200,request
+f6c5ef,127.0.0.1,GET,http://127.0.0.1:8000/evenement/new,1725960645,,200,request

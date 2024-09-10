@@ -35,6 +35,7 @@ class EvenementType extends AbstractType
             ])
             ->add('places', IntegerType::class, [
                 'label'=>'Nombre de places maximum',
+                'data' => 1,
                 'attr'=> [
                     'class'=> 'texte-formulaire',
                     'min'=> 1,
