@@ -49,12 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $commentaires;
 
     /**
-     * @var Collection<int, Evenement>
-     */
-    #[ORM\ManyToMany(targetEntity: Evenement::class, inversedBy: 'participants')]
-    private Collection $participe;
-
-    /**
      * @var Collection<int, ParticipantEntrainement>
      */
     #[ORM\OneToMany(targetEntity: ParticipantEntrainement::class, mappedBy: 'utilisateur')]
@@ -87,11 +81,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $cp = null;
 
+    /**
+     * @var Collection<int, Participations>
+     */
+    #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'inscrit')]
+    private Collection $participationsEvenement;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
-        $this->participe = new ArrayCollection();
         $this->participantEntrainements = new ArrayCollection();
+        $this->participationsEvenement = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -228,30 +228,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Evenement>
-     */
-    public function getParticipe(): Collection
-    {
-        return $this->participe;
-    }
-
-    public function addParticipe(Evenement $participe): static
-    {
-        if (!$this->participe->contains($participe)) {
-            $this->participe->add($participe);
-        }
-
-        return $this;
-    }
-
-    public function removeParticipe(Evenement $participe): static
-    {
-        $this->participe->removeElement($participe);
-
-        return $this;
-    }
-
     // vérifier si l'utilisateur est un membre
     public function isMembre(): bool
     {
@@ -262,12 +238,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function isAdmin(): bool
     {
         return in_array('ROLE_ADMIN', $this->getRoles());
-    }
-
-    // Vérifier si utilisateur participe déjà à l'événement
-    public function estCeQueParticipeDeja(Evenement $evenement): bool
-    {
-        return $this->participe->contains($evenement);
     }
 
     /**
@@ -414,5 +384,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function dateNaissanceFormatee(): ?string
     {
         return $this->dateNaissance->format('d/m/Y');
+    }
+
+    /**
+     * @return Collection<int, Participations>
+     */
+    public function getParticipationsEvenement(): Collection
+    {
+        return $this->participationsEvenement;
+    }
+
+    public function addParticipationsEvenement(Participations $participationsEvenement): static
+    {
+        if (!$this->participationsEvenement->contains($participationsEvenement)) {
+            $this->participationsEvenement->add($participationsEvenement);
+            $participationsEvenement->setInscrit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipationsEvenement(Participations $participationsEvenement): static
+    {
+        if ($this->participationsEvenement->removeElement($participationsEvenement)) {
+            // set the owning side to null (unless already changed)
+            if ($participationsEvenement->getInscrit() === $this) {
+                $participationsEvenement->setInscrit(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -10,6 +10,7 @@ use App\Form\CommentaireType;
 use Doctrine\ORM\EntityManager;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\AddParticipantsEvenementType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -131,58 +132,58 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    // ------------- PARTICIPATION A UN EVENEMENT -------------
+    // ------------- PARTICIPER A UN EVENEMENT -------------
 
-    #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
-    public function participerEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
-    {
-        // Récupérer id événement
-        $evenement = $evenementRepository->find($id);
+    // #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
+    // public function participerEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
+    // {
+    //     // Récupérer id événement
+    //     $evenement = $evenementRepository->find($id);
 
-        // dd($user);
-        // vérifier s'il reste de la place
-        if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
-            // Ajouter l'utilisateur comme participant à l'événement
-            $evenement->addParticipant($user);
+    //     // dd($user);
+    //     // vérifier s'il reste de la place
+    //     if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
+    //         // Ajouter l'utilisateur comme participant à l'événement
+    //         $evenement->addParticipant($user);
 
-            // Incrémenter le nombre de places prises
-            $evenement->setPlacesPrises($evenement->getPlacesPrises() + 1);
+    //         // Incrémenter le nombre de places prises
+    //         $evenement->setPlacesPrises($evenement->getPlacesPrises() + 1);
 
-            // Passer les changements en BDD
-            $entityManager->persist($evenement);
-            $entityManager->flush();
+    //         // Passer les changements en BDD
+    //         $entityManager->persist($evenement);
+    //         $entityManager->flush();
 
-            $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
-        } else {
-            // Gérer le cas où il n'y a plus de place
-            $this->addFlash('error', 'Cet événement est complet.');
-        }
+    //         $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
+    //     } else {
+    //         // Gérer le cas où il n'y a plus de place
+    //         $this->addFlash('error', 'Cet événement est complet.');
+    //     }
 
-        return $this->redirectToRoute('app_evenement');
-    }
+    //     return $this->redirectToRoute('app_evenement');
+    // }
 
-    // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
+    // // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
 
-    #[Route('/evenement/{id}/ne-pas-participer', name: 'pas_participer_evenement')]
-    public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
-    {
-        // Récupérer id événement
-        $evenement = $evenementRepository->find($id);
+    // #[Route('/evenement/{id}/ne-pas-participer', name: 'pas_participer_evenement')]
+    // public function nePasParticiperEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
+    // {
+    //     // Récupérer id événement
+    //     $evenement = $evenementRepository->find($id);
 
-        // Supprimer l'utilisateur comme participant à l'événement
-        $evenement->removeParticipant($user);
+    //     // Supprimer l'utilisateur comme participant à l'événement
+    //     $evenement->removeParticipant($user);
 
-        // Décrémenter le nombre de places prises
-        $evenement->setPlacesPrises($evenement->getPlacesPrises() - 1);
+    //     // Décrémenter le nombre de places prises
+    //     $evenement->setPlacesPrises($evenement->getPlacesPrises() - 1);
 
-        // Passer les changements en BDD
-        $entityManager->persist($evenement);
-        $entityManager->flush();
+    //     // Passer les changements en BDD
+    //     $entityManager->persist($evenement);
+    //     $entityManager->flush();
 
-        $this->addFlash('success', 'Vous vous êtes désinscrit de l\'événement.');
+    //     $this->addFlash('success', 'Vous vous êtes désinscrit de l\'événement.');
 
-        return $this->redirectToRoute('app_evenement');
-    }
+    //     return $this->redirectToRoute('app_evenement');
+    // }
 
         // ------------- Supprimer un commentaire -------------
         #[Route('/commentaire/delete/{id}', name: 'suppr_commentaire')]
@@ -205,4 +206,53 @@ class EvenementController extends AbstractController
             }
 
         }
+
+        // form participation
+        // public function participationsEvenement($id, EvenementRepository $evenementRepository, Request $request, EntityManagerInterface $entityManager, UserInterface $user): Response
+        // {
+
+        //     $evenement = $evenementRepository->find($id);
+        //     $form = $this->createForm(AddParticipantsEvenementType::class, $evenement);
+
+        //     $form->handleRequest($request);
+        //     if ($form->isSubmitted() && $form->isValid()) {
+
+        //         $evenement = $form->getData();
+        //         $entityManager->persist($evenement);
+        //         $entityManager->flush();
+
+        //         return $this->redirectToRoute('app_evenement');
+        //     }
+            
+        //     return $this->render('evenement/index.html.twig',[
+        //         'formAddParticipantsEvenement'=> $form,
+        //         'edit'=> $evenement->getId()
+        //     ]);
+        // }
+
+
+    //     // Récupérer id événement
+    //     $evenement = $evenementRepository->find($id);
+
+    //     // dd($user);
+    //     // vérifier s'il reste de la place
+    //     if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
+    //         // Ajouter l'utilisateur comme participant à l'événement
+    //         $evenement->addParticipant($user);
+
+    //         // Incrémenter le nombre de places prises
+    //         $evenement->setPlacesPrises($evenement->getPlacesPrises() + 1);
+
+    //         // Passer les changements en BDD
+    //         $entityManager->persist($evenement);
+    //         $entityManager->flush();
+
+    //         $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
+    //     } else {
+    //         // Gérer le cas où il n'y a plus de place
+    //         $this->addFlash('error', 'Cet événement est complet.');
+    //     }
+
+    //     return $this->redirectToRoute('app_evenement');
+    // }
 }

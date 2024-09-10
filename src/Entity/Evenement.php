@@ -32,19 +32,13 @@ class Evenement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    // private ?\DateTimeInterface $dateDebut = null;
-
-    // #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    // private ?\DateTimeInterface $dateFin = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\NotNull(message: 'The start date is required.')]
-    #[Assert\GreaterThanOrEqual("tomorrow", message: 'The start date must be at least tomorrow.')]
+    #[Assert\NotNull(message: 'Date de début nécessaire.')]
+    #[Assert\GreaterThanOrEqual("tomorrow", message: 'La date de  début doit être à partir de demain.')]
     private ?\DateTimeInterface $dateDebut = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Assert\NotNull(message: 'The end date is required.')]
+    #[Assert\NotNull(message: 'Date de fin nécessaire.')]
     #[Assert\Callback([self::class, 'validateDateFin'])]
     private ?\DateTimeInterface $dateFin = null;
 
@@ -60,22 +54,22 @@ class Evenement
     #[ORM\Column]
     private ?int $places = null;
 
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participe')]
-    private Collection $participants;
-
     #[ORM\Column(nullable: false)]
     private ?int $placesPrises = 0;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $affiche = null;
 
+    /**
+     * @var Collection<int, Participations>
+     */
+    #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'inscriptions', orphanRemoval: true)]
+    private Collection $participations;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
-        $this->participants = new ArrayCollection();
+        $this->participations = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -216,14 +210,6 @@ class Evenement
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getParticipants(): Collection
-    {
-        return $this->participants;
-    }
-
     // ==================================== Fin get et set ====================================
 
 
@@ -247,27 +233,6 @@ class Evenement
             if ($commentaire->getAppartient() === $this) {
                 $commentaire->setAppartient(null);
             }
-        }
-
-        return $this;
-    }
-
-    // =============== Add / remove participant ===============
-
-    public function addParticipant(User $participant): static
-    {
-        if (!$this->participants->contains($participant)) {
-            $this->participants->add($participant);
-            $participant->addParticipe($this);
-        }
-
-        return $this;
-    }
-
-    public function removeParticipant(User $participant): static
-    {
-        if ($this->participants->removeElement($participant)) {
-            $participant->removeParticipe($this);
         }
 
         return $this;
@@ -309,21 +274,33 @@ class Evenement
         return $this->dateFin->format('H:i');
     }
 
-    // =============== compteur de places ===============
-
-    public function placesPriseEvenement()
+    /**
+     * @return Collection<int, Participations>
+     */
+    public function getParticipations(): Collection
     {
-        if ($this->placesPrises < $this->places) {
-            $this->placesPrises += 1;
-        };
+        return $this->participations;
+    }
+
+    public function addParticipation(Participations $participation): static
+    {
+        if (!$this->participations->contains($participation)) {
+            $this->participations->add($participation);
+            $participation->setInscriptions($this);
+        }
+
         return $this;
     }
 
-    public function placesDesisteeEvenement()
+    public function removeParticipation(Participations $participation): static
     {
-        if ($this->placesPrises < $this->places) {
-            $this->placesPrises -= 1;
-        };
+        if ($this->participations->removeElement($participation)) {
+            // set the owning side to null (unless already changed)
+            if ($participation->getInscriptions() === $this) {
+                $participation->setInscriptions(null);
+            }
+        }
+
         return $this;
     }
 

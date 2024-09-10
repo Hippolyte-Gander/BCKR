@@ -417,6 +417,9 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserController"/>
       </call>
     </service>
+    <service id="App\Form\AddParticipantsEvenementType" class="App\Form\AddParticipantsEvenementType" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Form\AddParticipantsEvenementType&quot; to be defined in file &quot;C:\laragon\www\hippolyte G\Github\BCKR\vendor\composer/../../src\Form\AddParticipantsEvenementType.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
+    </service>
     <service id="App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -454,6 +457,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ParticipantEntrainementRepository" class="App\Repository\ParticipantEntrainementRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ParticipationsRepository" class="App\Repository\ParticipationsRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -500,7 +507,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.KTpY2QW"/>
+      <argument type="service" id=".service_locator.o57JonI"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3500,7 +3507,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.KTpY2QW"/>
+      <argument type="service" id=".service_locator.o57JonI"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -5286,7 +5293,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.Rguo7wD"/>
+      <argument type="service" id=".service_locator.5r9eudP"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -7464,6 +7471,8 @@
     <service id=".abstract.instanceof.App\Repository\EvenementRepository" class="App\Repository\EvenementRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ParticipantEntrainementRepository" class="App\Repository\ParticipantEntrainementRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ParticipantEntrainementRepository" class="App\Repository\ParticipantEntrainementRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ParticipationsRepository" class="App\Repository\ParticipationsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ParticipationsRepository" class="App\Repository\ParticipationsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.w7.f4fT" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7915,14 +7924,6 @@
         <argument key="evenement" type="service_closure" id=".errored..service_locator.JFCU_Ej.App\Entity\Evenement"/>
       </argument>
     </service>
-    <service id=".service_locator.bCdRQ_V" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="evenementRepository" type="service_closure" id="App\Repository\EvenementRepository"/>
-        <argument key="user" type="service_closure" id=".errored..service_locator.bCdRQ_V.Symfony\Component\Security\Core\User\UserInterface"/>
-      </argument>
-    </service>
     <service id=".service_locator.HrDCg3Q" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8006,14 +8007,12 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.d_UY3kt.App\Entity\User"/>
       </argument>
     </service>
-    <service id=".service_locator.KTpY2QW" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.o57JonI" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\EntrainementController::listEntrainements" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EvenementController::index" type="service_closure" id=".service_locator.3viUAbe"/>
-        <argument key="App\Controller\EvenementController::nePasParticiperEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
         <argument key="App\Controller\EvenementController::new_edit" type="service_closure" id=".service_locator.EMuVimD"/>
-        <argument key="App\Controller\EvenementController::participerEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
         <argument key="App\Controller\EvenementController::show" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\EvenementController::supprCommentaire" type="service_closure" id=".service_locator.HrDCg3Q"/>
         <argument key="App\Controller\EvenementController::supprEvenement" type="service_closure" id=".service_locator.JFCU_Ej"/>
@@ -8034,9 +8033,7 @@
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Controller\EntrainementController:listEntrainements" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EvenementController:index" type="service_closure" id=".service_locator.3viUAbe"/>
-        <argument key="App\Controller\EvenementController:nePasParticiperEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
         <argument key="App\Controller\EvenementController:new_edit" type="service_closure" id=".service_locator.EMuVimD"/>
-        <argument key="App\Controller\EvenementController:participerEvenement" type="service_closure" id=".service_locator.bCdRQ_V"/>
         <argument key="App\Controller\EvenementController:show" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\EvenementController:supprCommentaire" type="service_closure" id=".service_locator.HrDCg3Q"/>
         <argument key="App\Controller\EvenementController:supprEvenement" type="service_closure" id=".service_locator.JFCU_Ej"/>
@@ -8348,13 +8345,14 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.Rguo7wD" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.5r9eudP" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CommentaireRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
         <argument key="App\Repository\EntrainementRepository" type="service_closure" id="App\Repository\EntrainementRepository"/>
         <argument key="App\Repository\EvenementRepository" type="service_closure" id="App\Repository\EvenementRepository"/>
         <argument key="App\Repository\ParticipantEntrainementRepository" type="service_closure" id="App\Repository\ParticipantEntrainementRepository"/>
+        <argument key="App\Repository\ParticipationsRepository" type="service_closure" id="App\Repository\ParticipationsRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -9107,9 +9105,6 @@
     </service>
     <service id=".errored..service_locator.JFCU_Ej.App\Entity\Evenement" class="App\Entity\Evenement">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.JFCU_Ej&quot;: it needs an instance of &quot;App\Entity\Evenement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
-    </service>
-    <service id=".errored..service_locator.bCdRQ_V.Symfony\Component\Security\Core\User\UserInterface" class="Symfony\Component\Security\Core\User\UserInterface">
-      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.bCdRQ_V&quot;: it references interface &quot;Symfony\Component\Security\Core\User\UserInterface&quot; but no such service exists. Did you create a class that implements this interface?"/>
     </service>
     <service id=".errored..service_locator.HrDCg3Q.App\Entity\Commentaire" class="App\Entity\Commentaire">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.HrDCg3Q&quot;: it needs an instance of &quot;App\Entity\Commentaire&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -10320,7 +10315,7 @@
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.KTpY2QW"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.o57JonI"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -10347,14 +10342,13 @@
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
     <service id=".service_locator.qpV4qDJ" alias=".service_locator.EMuVimD"/>
     <service id=".service_locator.HuHdp3s" alias=".service_locator.JFCU_Ej"/>
-    <service id=".service_locator.82oFuUB" alias=".service_locator.bCdRQ_V"/>
     <service id=".service_locator.lr46L5c" alias=".service_locator.Tj7FrpL"/>
     <service id=".service_locator.900uUd7" alias=".service_locator.yoflbtf"/>
     <service id=".service_locator.OeQRtdy" alias=".service_locator.t9aPEVW"/>
     <service id=".service_locator.4ntabyc" alias=".service_locator.kuUfZEq"/>
     <service id=".service_locator.gjt7tHW" alias=".service_locator.pbtqkCT"/>
     <service id=".service_locator.UfbavBN" alias=".service_locator.d_UY3kt"/>
-    <service id=".service_locator.j.PllyW" alias=".service_locator.KTpY2QW"/>
+    <service id=".service_locator.vH5Oco1" alias=".service_locator.o57JonI"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.dNOsz3R" alias=".service_locator.bjj_Fle"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
@@ -10384,7 +10378,6 @@
     <service id=".service_locator.W2oDVmy" alias=".service_locator.3viUAbe"/>
     <service id=".service_locator.owYSAS8" alias=".service_locator.EMuVimD"/>
     <service id=".service_locator.AUCwrUD" alias=".service_locator.JFCU_Ej"/>
-    <service id=".service_locator.fnC9aZ2" alias=".service_locator.bCdRQ_V"/>
     <service id=".service_locator.cSLnqKe" alias=".service_locator.HrDCg3Q"/>
     <service id=".service_locator.ooaZ1p9" alias=".service_locator.pX4JUuC"/>
     <service id=".service_locator.JcYU5bC" alias=".service_locator.Tj7FrpL"/>
