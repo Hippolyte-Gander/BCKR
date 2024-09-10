@@ -209,6 +209,14 @@ class Evenement
 
         return $this;
     }
+    
+    /**
+     * @return Collection<int, Participations>
+     */
+    public function getParticipations(): Collection
+    {
+        return $this->participations;
+    }
 
     // ==================================== Fin get et set ====================================
 
@@ -274,13 +282,7 @@ class Evenement
         return $this->dateFin->format('H:i');
     }
 
-    /**
-     * @return Collection<int, Participations>
-     */
-    public function getParticipations(): Collection
-    {
-        return $this->participations;
-    }
+    // =============== ADD / REMOVE Participations ===============
 
     public function addParticipation(Participations $participation): static
     {

@@ -26,9 +26,9 @@
             <td>Nom événement</td>
             <td>Date de début</td>
             <td>Date de fin</td>
-            {% if app.user %}
+            {# {% if app.user %}
                 <td>Participation</td>
-            {% endif %}
+            {% endif %} #}
             {% if app.user  and app.user.isAdmin() %}
                 <td>Éditer</td>
                 <td>Supprimer</td>
@@ -36,8 +36,7 @@
         </tr>
 
         {% for evenement in pagination %}
-        {# {{ dump(evenement.participants) }} #}
-            {% if (evenement.visibilite == 'tous') %}
+        
                 <tr>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
@@ -48,8 +47,8 @@
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
-
-                    {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
+                    {# ========== AJOUTER fonction edit participation ========== #}
+                    {# {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
                         <td>
                             <a class="suppr-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">Ne plus participer</a>
                         </td>
@@ -61,7 +60,7 @@
                         <td>
                             <a class="valider-btn-formulaire" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
                         </td>
-                    {% endif %}
+                    {% endif %} #}
 
                     {% if app.user  and app.user.isAdmin() %}
                         <td>
@@ -73,67 +72,6 @@
                     {% endif %}
                 </tr>
 
-            {% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
-                <tr>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
-                    </td>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
-                    </td>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
-                    </td>
-                    {% if app.user.estCeQueParticipeDeja(evenement) %}
-                    <td>
-                        <a class="valider-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">paparticiper</a>
-                    </td>
-                    {% else %}
-                        <td>
-                            <a class="valider-btn-formulaire" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
-                        </td>
-                    {% endif %}
-                    
-                    {% if app.user  and app.user.isAdmin() %}
-                        <td>
-                            <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
-                        </td>
-                        <td>
-                            <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
-                        </td>
-                    {% endif %}
-                </tr>
-
-            {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
-                <tr>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} ">{{ evenement.titre }}</a>
-                    </td>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</a>
-                    </td>
-                    <td>
-                        <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
-                    </td>
-
-                    {% if app.user.estCeQueParticipeDeja(evenement) %}
-                        <td>
-                            <a class="valider-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">paparticiper</a>
-                        </td>
-                    {% else %}
-                        <td>
-                            <a class="valider-btn-formulaire" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
-                        </td>
-                    {% endif %}
-
-                    <td>
-                        <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
-                    </td>
-                    <td>
-                        <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
-                    </td>
-                </tr>
-            {% endif %}
         {% endfor %}
     </table>
     <div class="navigation">

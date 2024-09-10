@@ -417,9 +417,6 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserController"/>
       </call>
     </service>
-    <service id="App\Form\AddParticipantsEvenementType" class="App\Form\AddParticipantsEvenementType" autowire="true" autoconfigure="true">
-      <tag name="container.error" message="The autoloader expected class &quot;App\Form\AddParticipantsEvenementType&quot; to be defined in file &quot;C:\laragon\www\hippolyte G\Github\BCKR\vendor\composer/../../src\Form\AddParticipantsEvenementType.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
-    </service>
     <service id="App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>

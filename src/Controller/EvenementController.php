@@ -7,6 +7,7 @@ use App\Entity\Evenement;
 use App\Entity\Commentaire;
 use App\Form\EvenementType;
 use App\Form\CommentaireType;
+use App\Entity\Participations;
 use Doctrine\ORM\EntityManager;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -208,27 +209,36 @@ class EvenementController extends AbstractController
         }
 
         // form participation
-        // public function participationsEvenement($id, EvenementRepository $evenementRepository, Request $request, EntityManagerInterface $entityManager, UserInterface $user): Response
-        // {
+        public function participationsEvenement($id, EvenementRepository $evenementRepository, Request $request, EntityManagerInterface $entityManager, UserInterface $user): Response
+        {
+            $participations = new Participations();
 
-        //     $evenement = $evenementRepository->find($id);
-        //     $form = $this->createForm(AddParticipantsEvenementType::class, $evenement);
+            $user = $this->getUser();
+            $evenement = $evenementRepository->find($id);
 
-        //     $form->handleRequest($request);
-        //     if ($form->isSubmitted() && $form->isValid()) {
+            $form = $this->createForm(ParticipationType::class, $participations);
 
-        //         $evenement = $form->getData();
-        //         $entityManager->persist($evenement);
-        //         $entityManager->flush();
+            $participations->setInscrit($user);
+            $participations->setInscriptions($evenement);
 
-        //         return $this->redirectToRoute('app_evenement');
-        //     }
+
+
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $evenement = $form->getData();
+                $entityManager->persist($evenement);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_evenement');
+            }
             
-        //     return $this->render('evenement/index.html.twig',[
-        //         'formAddParticipantsEvenement'=> $form,
-        //         'edit'=> $evenement->getId()
-        //     ]);
-        // }
+            return $this->render('evenement/index.html.twig',[
+                'formAddParticipantsEvenement'=> $form,
+                'edit'=> $evenement->getId()
+            ]);
+        }
 
 
     //     // Récupérer id événement

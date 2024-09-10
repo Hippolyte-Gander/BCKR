@@ -177,3 +177,6 @@ c92d29,127.0.0.1,GET,http://127.0.0.1:8000/evenement/3,1725970588,,200,request
 cd9154,127.0.0.1,GET,http://127.0.0.1:8000/evenement/3/ne-pas-participer,1725970609,,302,request
 8375ef,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1725970610,,200,request
 f23539,127.0.0.1,GET,http://127.0.0.1:8000/evenement/3,1725970615,,200,request
+d8c6f6,127.0.0.1,GET,http://127.0.0.1:8000/,1725977157,,200,request
+d1dae2,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1725977162,,200,request
+6a35fc,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1725977176,,200,request
