@@ -27,16 +27,16 @@
     {% if evenement.participations|length == 0 %}
         <p>Aucun inscrit pour le moment</p>
     {% else %}
-        {# {% if app.user %}
+        {% if app.user %}
             <div class="participants-liste">
                 <h4>Participants inscrits :</h4>
                 <ul>
-                    {% for participant in evenement.participants %}
-                        <a href=" {{ path('show_user', {'id': participant.id}) }} ">{{ participant.pseudo }}</a>
+                    {% for participant in evenement.participations %}
+                        {{ participant.inscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
                     {% endfor %}
                 </ul>
             </div>
-        {% endif %} #}
+        {% endif %}
     {% endif %}
 
     {# ============= section commentaires ============= #}

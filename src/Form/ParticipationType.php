@@ -18,7 +18,7 @@ class ParticipationType extends AbstractType
     {
         $builder
             ->add('nbrParticipants', IntegerType::class, [
-                'label'=>'Nombre de places maximum',
+                'label'=>'Nombre de personnes à inscrire',
                 'data' => 1,
                 'attr'=> [
                     'class'=> 'texte-formulaire',

@@ -26,9 +26,9 @@
             <td>Nom événement</td>
             <td>Date de début</td>
             <td>Date de fin</td>
-            {# {% if app.user %}
+            {% if app.user %}
                 <td>Participation</td>
-            {% endif %} #}
+            {% endif %}
             {% if app.user  and app.user.isAdmin() %}
                 <td>Éditer</td>
                 <td>Supprimer</td>
@@ -48,27 +48,35 @@
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
                     {# ========== AJOUTER fonction participation ========== #}
-                    <td>
-                        {{ form_start(forms[evenement.id]) }}
-                        {{ form_row(forms[evenement.id].nbrParticipants) }}
-                        <div class="bouton">
-                            {{ form_widget(forms[evenement.id].valider) }}
-                        </div>
-                        {{ form_end(forms[evenement.id]) }}
-                    </td>
-                    {# {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
-                        <td>
-                            <a class="suppr-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">Ne plus participer</a>
-                        </td>
-                    {% elseif evenement.placesPrises == evenement.places and app.user %}
-                        <td>
-                            <p>Événement complet</p>
-                        </td>
-                    {% elseif app.user %}
-                        <td>
-                            <a class="valider-btn-formulaire" href="{{ path('participer_evenement', {'id': evenement.id}) }}">Participer</a>
-                        </td>
-                    {% endif %} #}
+                    {% if app.user %}
+                        {# {% for p in app.user.participationsEvenement %}
+                            {{ dump(p) }}
+                        {% endfor %} #}
+                        {% if app.user.estCeQueParticipeDeja(evenement)  %}
+                            <td>
+                                {# <div class="formulaire">
+                                    {{ form_start(formsDel[evenement.id]) }}
+                                    {{ form_row(formsDel[evenement.id].nbrParticipants) }}
+                                    <div class="bouton">
+                                        {{ form_widget(formsDel[evenement.id].valider) }}
+                                    </div>
+                                    {{ form_end(formsDel[evenement.id]) }}
+                                </div> #}
+                                <button>Se désinscrire</button>
+                            </td>
+                            {% else %}
+                            <td>
+                                <div class="formulaire">
+                                    {{ form_start(formsAdd[evenement.id]) }}
+                                    {{ form_row(formsAdd[evenement.id].nbrParticipants) }}
+                                    <div class="bouton">
+                                        {{ form_widget(formsAdd[evenement.id].valider) }}
+                                    </div>
+                                    {{ form_end(formsAdd[evenement.id]) }}
+                                </div>
+                            </td>
+                        {% endif %}
+                    {% endif %}
 
                     {% if app.user  and app.user.isAdmin() %}
                         <td>

@@ -144,7 +144,35 @@ class __TwigTemplate_b002bf376b944aa46ee2c50f79d14d8f extends Template
     ";
         } else {
             // line 30
-            yield "            ";
+            yield "        ";
+            if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "user", [], "any", false, false, false, 30)) {
+                // line 31
+                yield "            <div class=\"participants-liste\">
+                <h4>Participants inscrits :</h4>
+                <ul>
+                    ";
+                // line 34
+                $context['_parent'] = $context;
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["evenement"]) || array_key_exists("evenement", $context) ? $context["evenement"] : (function () { throw new RuntimeError('Variable "evenement" does not exist.', 34, $this->source); })()), "participations", [], "any", false, false, false, 34));
+                foreach ($context['_seq'] as $context["_key"] => $context["participant"]) {
+                    // line 35
+                    yield "                        ";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participant"], "inscrit", [], "any", false, false, false, 35), "pseudo", [], "any", false, false, false, 35), "html", null, true);
+                    yield " => ";
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["participant"], "nbrParticipants", [], "any", false, false, false, 35), "html", null, true);
+                    yield " personne(s)
+                    ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['participant'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 37
+                yield "                </ul>
+            </div>
+        ";
+            }
+            // line 40
+            yield "    ";
         }
         // line 41
         yield "
@@ -271,7 +299,7 @@ class __TwigTemplate_b002bf376b944aa46ee2c50f79d14d8f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  241 => 81,  237 => 79,  230 => 75,  224 => 72,  218 => 69,  212 => 66,  208 => 64,  205 => 62,  201 => 60,  198 => 59,  191 => 57,  185 => 55,  183 => 54,  178 => 52,  170 => 49,  166 => 47,  162 => 46,  159 => 45,  156 => 44,  153 => 43,  150 => 41,  147 => 30,  143 => 28,  141 => 27,  134 => 25,  129 => 23,  125 => 22,  117 => 19,  111 => 18,  105 => 15,  98 => 11,  93 => 8,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  269 => 81,  265 => 79,  258 => 75,  252 => 72,  246 => 69,  240 => 66,  236 => 64,  233 => 62,  229 => 60,  226 => 59,  219 => 57,  213 => 55,  211 => 54,  206 => 52,  198 => 49,  194 => 47,  190 => 46,  187 => 45,  184 => 44,  181 => 43,  178 => 41,  175 => 40,  170 => 37,  159 => 35,  155 => 34,  150 => 31,  147 => 30,  143 => 28,  141 => 27,  134 => 25,  129 => 23,  125 => 22,  117 => 19,  111 => 18,  105 => 15,  98 => 11,  93 => 8,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -305,16 +333,16 @@ class __TwigTemplate_b002bf376b944aa46ee2c50f79d14d8f extends Template
     {% if evenement.participations|length == 0 %}
         <p>Aucun inscrit pour le moment</p>
     {% else %}
-        {# {% if app.user %}
+        {% if app.user %}
             <div class=\"participants-liste\">
                 <h4>Participants inscrits :</h4>
                 <ul>
-                    {% for participant in evenement.participants %}
-                        <a href=\" {{ path('show_user', {'id': participant.id}) }} \">{{ participant.pseudo }}</a>
+                    {% for participant in evenement.participations %}
+                        {{ participant.inscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
                     {% endfor %}
                 </ul>
             </div>
-        {% endif %} #}
+        {% endif %}
     {% endif %}
 
     {# ============= section commentaires ============= #}
