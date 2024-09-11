@@ -47,7 +47,15 @@
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
-                    {# ========== AJOUTER fonction edit participation ========== #}
+                    {# ========== AJOUTER fonction participation ========== #}
+                    <td>
+                        {{ form_start(forms[evenement.id]) }}
+                        {{ form_row(forms[evenement.id].nbrParticipants) }}
+                        <div class="bouton">
+                            {{ form_widget(forms[evenement.id].valider) }}
+                        </div>
+                        {{ form_end(forms[evenement.id]) }}
+                    </td>
                     {# {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
                         <td>
                             <a class="suppr-btn-formulaire" href="{{ path('pas_participer_evenement', {'id': evenement.id}) }}">Ne plus participer</a>

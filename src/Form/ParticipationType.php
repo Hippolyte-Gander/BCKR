@@ -25,7 +25,7 @@ class ParticipationType extends AbstractType
                     'min'=> 1,
                 ]
             ])
-            ->add('Valider', SubmitType::class, [
+            ->add('valider', SubmitType::class, [
                 'attr'=> [
                     'class'=> 'valider-btn-formulaire'
                 ]

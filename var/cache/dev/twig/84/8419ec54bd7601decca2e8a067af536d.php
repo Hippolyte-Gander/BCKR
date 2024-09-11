@@ -188,28 +188,48 @@ class __TwigTemplate_1ecbcb6736049eb5b3e555eb05258072 extends Template
                     </td>
                     ";
             // line 51
-            yield "                    ";
-            // line 64
+            yield "                    <td>
+                        ";
+            // line 52
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["forms"]) || array_key_exists("forms", $context) ? $context["forms"] : (function () { throw new RuntimeError('Variable "forms" does not exist.', 52, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 52), [], "array", false, false, false, 52), 'form_start');
+            yield "
+                        ";
+            // line 53
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["forms"]) || array_key_exists("forms", $context) ? $context["forms"] : (function () { throw new RuntimeError('Variable "forms" does not exist.', 53, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 53), [], "array", false, false, false, 53), "nbrParticipants", [], "any", false, false, false, 53), 'row');
+            yield "
+                        <div class=\"bouton\">
+                            ";
+            // line 55
+            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["forms"]) || array_key_exists("forms", $context) ? $context["forms"] : (function () { throw new RuntimeError('Variable "forms" does not exist.', 55, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 55), [], "array", false, false, false, 55), "valider", [], "any", false, false, false, 55), 'widget');
+            yield "
+                        </div>
+                        ";
+            // line 57
+            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["forms"]) || array_key_exists("forms", $context) ? $context["forms"] : (function () { throw new RuntimeError('Variable "forms" does not exist.', 57, $this->source); })()), CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 57), [], "array", false, false, false, 57), 'form_end');
+            yield "
+                    </td>
+                    ";
+            // line 72
             yield "
                     ";
-            // line 65
-            if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 65, $this->source); })()), "user", [], "any", false, false, false, 65) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 65, $this->source); })()), "user", [], "any", false, false, false, 65), "isAdmin", [], "method", false, false, false, 65))) {
-                // line 66
+            // line 73
+            if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 73, $this->source); })()), "user", [], "any", false, false, false, 73) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 73, $this->source); })()), "user", [], "any", false, false, false, 73), "isAdmin", [], "method", false, false, false, 73))) {
+                // line 74
                 yield "                        <td>
                             <a class=\"btn-editer\" href=\"";
-                // line 67
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 67)]), "html", null, true);
+                // line 75
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("edit_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 75)]), "html", null, true);
                 yield "\">Éditer</a>
                         </td>
                         <td>
                             <a class=\"btn-supprimer\" href=\"";
-                // line 70
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 70)]), "html", null, true);
+                // line 78
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("suppr_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenement"], "id", [], "any", false, false, false, 78)]), "html", null, true);
                 yield "\">Supprimer</a>
                         </td>
                     ";
             }
-            // line 73
+            // line 81
             yield "                </tr>
 
         ";
@@ -217,12 +237,12 @@ class __TwigTemplate_1ecbcb6736049eb5b3e555eb05258072 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evenement'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 76
+        // line 84
         yield "    </table>
     <div class=\"navigation\">
         ";
-        // line 78
-        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 78, $this->source); })()));
+        // line 86
+        yield $this->env->getRuntime('Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationRuntime')->render($this->env, (isset($context["pagination"]) || array_key_exists("pagination", $context) ? $context["pagination"] : (function () { throw new RuntimeError('Variable "pagination" does not exist.', 86, $this->source); })()));
         yield "
     </div>
 
@@ -258,7 +278,7 @@ class __TwigTemplate_1ecbcb6736049eb5b3e555eb05258072 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  225 => 78,  221 => 76,  213 => 73,  207 => 70,  201 => 67,  198 => 66,  196 => 65,  193 => 64,  191 => 51,  182 => 48,  172 => 45,  164 => 42,  159 => 39,  155 => 38,  151 => 36,  146 => 33,  143 => 32,  132 => 21,  129 => 20,  126 => 18,  120 => 17,  111 => 15,  106 => 14,  102 => 13,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  245 => 86,  241 => 84,  233 => 81,  227 => 78,  221 => 75,  218 => 74,  216 => 73,  213 => 72,  208 => 57,  203 => 55,  198 => 53,  194 => 52,  191 => 51,  182 => 48,  172 => 45,  164 => 42,  159 => 39,  155 => 38,  151 => 36,  146 => 33,  143 => 32,  132 => 21,  129 => 20,  126 => 18,  120 => 17,  111 => 15,  106 => 14,  102 => 13,  96 => 10,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -312,7 +332,15 @@ class __TwigTemplate_1ecbcb6736049eb5b3e555eb05258072 extends Template
                     <td>
                         <a class=\"texte-utilisateur\" href=\" {{ path('show_evenement', {'id': evenement.id}) }} \"> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
                     </td>
-                    {# ========== AJOUTER fonction edit participation ========== #}
+                    {# ========== AJOUTER fonction participation ========== #}
+                    <td>
+                        {{ form_start(forms[evenement.id]) }}
+                        {{ form_row(forms[evenement.id].nbrParticipants) }}
+                        <div class=\"bouton\">
+                            {{ form_widget(forms[evenement.id].valider) }}
+                        </div>
+                        {{ form_end(forms[evenement.id]) }}
+                    </td>
                     {# {% if app.user and app.user.estCeQueParticipeDeja(evenement) %}
                         <td>
                             <a class=\"suppr-btn-formulaire\" href=\"{{ path('pas_participer_evenement', {'id': evenement.id}) }}\">Ne plus participer</a>

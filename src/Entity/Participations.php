@@ -20,7 +20,7 @@ class Participations
     private ?User $inscrit = null;
 
     #[ORM\ManyToOne(inversedBy: 'participations')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Evenement $inscriptions = null;
 
     public function getId(): ?int

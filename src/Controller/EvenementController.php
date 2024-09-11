@@ -8,10 +8,10 @@ use App\Entity\Commentaire;
 use App\Form\EvenementType;
 use App\Form\CommentaireType;
 use App\Entity\Participations;
+use App\Form\ParticipationType;
 use Doctrine\ORM\EntityManager;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Form\AddParticipantsEvenementType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +26,7 @@ class EvenementController extends AbstractController
     // ------------- AFFICHER LISTE DES EVENEMENTS -------------
 
     #[Route('/evenement', name: 'app_evenement')]
-    public function index(EvenementRepository $evenementRepository, PaginatorInterface $paginator, Request $request): Response
+    public function index(EvenementRepository $evenementRepository, PaginatorInterface $paginator, Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
 
@@ -49,8 +49,27 @@ class EvenementController extends AbstractController
             5 /*limit per page*/
         );
 
+        // PARTIE FORM PARTICIPATION
+
+        $forms = [];
+    
+        foreach ($pagination as $evenement) {
+            $participation = $evenement->getParticipations();
+
+            // Crée une nouvelle instance de la participation s'il n'y en as aucune
+            $participation = new Participations();  
+
+            $form = $this->createForm(ParticipationType::class, $participation, [
+                'action' => $this->generateUrl('app_evenement_participation', ['id' => $evenement->getId()]),
+            ]);
+    
+            // Sauvegarder la vue du formulaire pour chaque événement
+            $forms[$evenement->getId()] = $form->createView();  
+        }
+    
         return $this->render('evenement/index.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'forms' => $forms,
         ]);
     }
 
@@ -127,41 +146,61 @@ class EvenementController extends AbstractController
         }
         // fin form commentaire
         
-        return $this->render('evenement/show.html.twig', [
-            'evenement' => $evenement,
-            'formAddCommentaire'=> $form
-        ]);
+        $user = $this->getUser();
+        $visibilite = $evenement->getVisibilite();
+
+        if ($visibilite == 'tous') {
+            return $this->render('evenement/show.html.twig', [
+                'evenement' => $evenement,
+                'formAddCommentaire'=> $form
+            ]);
+        } elseif ($visibilite == 'membres' and ($user->isMembre() or $user->isAdmin())) {
+            return $this->render('evenement/show.html.twig', [
+                'evenement' => $evenement,
+                'formAddCommentaire'=> $form
+            ]);
+        } elseif ($visibilite == 'admins' and $user->isAdmin()) {
+            return $this->render('evenement/show.html.twig', [
+                'evenement' => $evenement,
+                'formAddCommentaire'=> $form
+            ]);
+        } else {
+            return $this->redirectToRoute('app_login');
+        }
     }
 
     // ------------- PARTICIPER A UN EVENEMENT -------------
 
-    // #[Route('/evenement/{id}/participer', name: 'participer_evenement')]
-    // public function participerEvenement($id, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager, UserInterface $user): Response
-    // {
-    //     // Récupérer id événement
-    //     $evenement = $evenementRepository->find($id);
-
-    //     // dd($user);
-    //     // vérifier s'il reste de la place
-    //     if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
-    //         // Ajouter l'utilisateur comme participant à l'événement
-    //         $evenement->addParticipant($user);
-
-    //         // Incrémenter le nombre de places prises
-    //         $evenement->setPlacesPrises($evenement->getPlacesPrises() + 1);
-
-    //         // Passer les changements en BDD
-    //         $entityManager->persist($evenement);
-    //         $entityManager->flush();
-
-    //         $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
-    //     } else {
-    //         // Gérer le cas où il n'y a plus de place
-    //         $this->addFlash('error', 'Cet événement est complet.');
-    //     }
-
-    //     return $this->redirectToRoute('app_evenement');
-    // }
+    #[Route('/evenement/{id}/participation', name: 'app_evenement_participation', methods: ['POST'])]
+    public function participer(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+    
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+    
+        // Crée une nouvelle participation
+        $participation = new Participations();  
+        $form = $this->createForm(ParticipationType::class, $participation);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Assigner l'utilisateur et l'événement à la participation
+            $participation->setInscrit($user);
+            $participation->setInscriptions($evenement);
+    
+            // Récupérer le nombre de participants soumis
+            $nbrParticipants = $form->get('nbrParticipants')->getData();
+            $participation->setNbrParticipants($nbrParticipants);
+    
+            // Sauvegarder dans la base de données
+            $entityManager->persist($participation);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('app_evenement');
+        }
+    }
 
     // // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
 
@@ -207,62 +246,4 @@ class EvenementController extends AbstractController
             }
 
         }
-
-        // form participation
-        public function participationsEvenement($id, EvenementRepository $evenementRepository, Request $request, EntityManagerInterface $entityManager, UserInterface $user): Response
-        {
-            $participations = new Participations();
-
-            $user = $this->getUser();
-            $evenement = $evenementRepository->find($id);
-
-            $form = $this->createForm(ParticipationType::class, $participations);
-
-            $participations->setInscrit($user);
-            $participations->setInscriptions($evenement);
-
-
-
-
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-
-                $evenement = $form->getData();
-                $entityManager->persist($evenement);
-                $entityManager->flush();
-
-                return $this->redirectToRoute('app_evenement');
-            }
-            
-            return $this->render('evenement/index.html.twig',[
-                'formAddParticipantsEvenement'=> $form,
-                'edit'=> $evenement->getId()
-            ]);
-        }
-
-
-    //     // Récupérer id événement
-    //     $evenement = $evenementRepository->find($id);
-
-    //     // dd($user);
-    //     // vérifier s'il reste de la place
-    //     if ($evenement->getPlacesPrises() < $evenement->getPlaces()) {
-    //         // Ajouter l'utilisateur comme participant à l'événement
-    //         $evenement->addParticipant($user);
-
-    //         // Incrémenter le nombre de places prises
-    //         $evenement->setPlacesPrises($evenement->getPlacesPrises() + 1);
-
-    //         // Passer les changements en BDD
-    //         $entityManager->persist($evenement);
-    //         $entityManager->flush();
-
-    //         $this->addFlash('success', 'Vous vous êtes inscrit à l\'événement.');
-    //     } else {
-    //         // Gérer le cas où il n'y a plus de place
-    //         $this->addFlash('error', 'Cet événement est complet.');
-    //     }
-
-    //     return $this->redirectToRoute('app_evenement');
-    // }
 }

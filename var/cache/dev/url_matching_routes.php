@@ -55,17 +55,18 @@ return [
                     .'|/(?'
                         .'|edit(*:232)'
                         .'|suppr(*:245)'
+                        .'|participation(*:266)'
                     .')'
-                    .'|(*:254)'
+                    .'|(*:275)'
                 .')'
-                .'|/commentaire/delete/([^/]++)(*:291)'
-                .'|/verif/([^/]++)(*:314)'
-                .'|/mot\\-de\\-passe\\-oublie/([^/]++)(*:354)'
+                .'|/commentaire/delete/([^/]++)(*:312)'
+                .'|/verif/([^/]++)(*:335)'
+                .'|/mot\\-de\\-passe\\-oublie/([^/]++)(*:375)'
                 .'|/user/([^/]++)(?'
-                    .'|(*:379)'
+                    .'|(*:400)'
                     .'|/(?'
-                        .'|edit(*:395)'
-                        .'|suppr(*:408)'
+                        .'|edit(*:416)'
+                        .'|suppr(*:429)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -81,13 +82,14 @@ return [
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         232 => [[['_route' => 'edit_evenement', '_controller' => 'App\\Controller\\EvenementController::new_edit'], ['id'], null, null, false, false, null]],
         245 => [[['_route' => 'suppr_evenement', '_controller' => 'App\\Controller\\EvenementController::supprEvenement'], ['id'], null, null, false, false, null]],
-        254 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
-        291 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
-        314 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
-        354 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
-        379 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
-        395 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
-        408 => [
+        266 => [[['_route' => 'app_evenement_participation', '_controller' => 'App\\Controller\\EvenementController::participer'], ['id'], ['POST' => 0], null, false, false, null]],
+        275 => [[['_route' => 'show_evenement', '_controller' => 'App\\Controller\\EvenementController::show'], ['id'], null, null, false, true, null]],
+        312 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
+        335 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
+        375 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
+        400 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
+        416 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
+        429 => [
             [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
