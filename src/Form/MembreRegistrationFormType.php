@@ -38,7 +38,7 @@ class MembreRegistrationFormType extends AbstractType
                 'label'=>'Numéro de téléphone'
             ])
             ->add('dateNaissance', DateType::class,[
-                'label'=>'Date de début',
+                'label'=>'Date de naissance',
                 'widget'=>'single_text',
                 'attr'=> [
                     'class'=> 'texte-formulaire'

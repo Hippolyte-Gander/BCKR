@@ -40,24 +40,166 @@
                 </p>
                 <br>
                 <p>
-                    {% if user.participe|length == 1 %}
+                    {% if user.participationsEvenement|length == 1 %}
                         Inscrit à aucun événement.
-                    {% elseif user.participe|length > 1 %}
+                    {% elseif user.participationsEvenement|length > 1 %}
                         Inscrit aux événements :
-                        {% for evenementpresent in user.participe %}
+                        {% for participation in user.participationsEvenement %}
                             <li>
-                                <a href=" {{ path('show_evenement', {'id': evenementpresent.id}) }} ">{{ evenementpresent }}</a>
+                                <a href=" {{ path('show_evenement', {'id': participation.inscriptions.id}) }} ">{{ participation.inscriptions.titre }}</a>
                             </li>
                         {% endfor %}
                     {% endif %}
                 </p>
 
-                {% if user.membre %}
-                    <br>
-                    <p>
-                        {{ user.membre.nom }}
-                        {{ user.membre.prenom }}
-                    </p>
+                {% if user.isMembre() %}
+                    <table>
+                        {% if app.user.isAdmin() %}
+                        <tr>
+                            <td>
+                                Rôle
+                            </td>
+                            <td>
+                                {% for role in app.user.roles %}
+                                    {% if role == 'ROLE_ADMIN' %}
+                                        Administrateur 
+                                    {% elseif role == 'ROLE_MEMBRE' %}
+                                        Membre 
+                                    {% elseif role == 'ROLE_USER' %}
+                                        Utilisateur 
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td>
+                                {{ app.user.email }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Nom
+                            </td>
+                            <td>
+                                {% if app.user.nom %}
+                                    {{ app.user.nom }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Nom
+                            </td>
+                            <td>
+                                {% if app.user.nom %}
+                                    {{ app.user.nom }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Préom
+                            </td>
+                            <td>
+                                {% if app.user.prenom %}
+                                    {{ app.user.prenom }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Numéro de licence
+                            </td>
+                            <td>
+                                {% if app.user.numLicence %}
+                                    {{ app.user.numLicence }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Numéro de téléphone
+                            </td>
+                            <td>
+                                {% if app.user.numTelephone %}
+                                    {{ app.user.numTelephone }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Date de naissance
+                            </td>
+                            <td>
+                                {% if app.user.dateNaissance %}
+                                    {{ app.user.dateNaissanceFormatee }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Adresse
+                            </td>
+                            <td>
+                                {% if app.user.adresse %}
+                                    {{ app.user.adresse }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Ville
+                            </td>
+                            <td>
+                                {% if app.user.ville %}
+                                    {{ app.user.ville }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Code Postal
+                            </td>
+                            <td>
+                                {% if app.user.cp %}
+                                    {{ app.user.cp }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </table>
                 {% else %}
                     <br>
                     <p>Utilisateur standard, aucune information supplémentaire</p>

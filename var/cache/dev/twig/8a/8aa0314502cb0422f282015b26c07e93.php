@@ -119,7 +119,7 @@ class __TwigTemplate_72e3675760ff79200b68b7b2c44d98db extends Template
                 // line 24
                 yield "                        <tr>
                             <td>
-                                Rôles
+                                Rôle
                             </td>
                             <td>
                                 ";
@@ -184,7 +184,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 59
-                yield "                                    Nom non renseigné
+                yield "                                    Non renseigné
                                 ";
             }
             // line 61
@@ -206,7 +206,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 72
-                yield "                                    Nom non renseigné
+                yield "                                    Non renseigné
                                 ";
             }
             // line 74
@@ -228,7 +228,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 85
-                yield "                                    Prénom non renseigné
+                yield "                                    Non renseigné
                                 ";
             }
             // line 87
@@ -250,7 +250,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 98
-                yield "                                    Numéro de  licence non renseigné
+                yield "                                    Non renseigné
                                 ";
             }
             // line 100
@@ -272,7 +272,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 111
-                yield "                                    Numéro de  téléphone non renseigné
+                yield "                                    Non renseigné
                                 ";
             }
             // line 113
@@ -294,7 +294,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 124
-                yield "                                    Date de naissance non renseignée
+                yield "                                    Non renseigné
                                 ";
             }
             // line 126
@@ -316,7 +316,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 137
-                yield "                                Adresse non renseignée
+                yield "                                    Non renseigné
                                 ";
             }
             // line 139
@@ -338,7 +338,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 150
-                yield "                                Ville non renseignée
+                yield "                                    Non renseigné
                                 ";
             }
             // line 152
@@ -360,7 +360,7 @@ $context["role"] == "ROLE_USER")) {
                                 ";
             } else {
                 // line 163
-                yield "                                    Code Postal non renseignée
+                yield "                                    Non renseigné
                                 ";
             }
             // line 165
@@ -388,44 +388,44 @@ $context["role"] == "ROLE_USER")) {
             yield "
                 ";
             // line 179
-            if ((Twig\Extension\CoreExtension::length($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 179, $this->source); })()), "user", [], "any", false, false, false, 179), "participe", [], "any", false, false, false, 179)) > 0)) {
+            if ((Twig\Extension\CoreExtension::length($this->env->getCharset(), CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 179, $this->source); })()), "user", [], "any", false, false, false, 179), "participationsEvenement", [], "any", false, false, false, 179)) > 0)) {
                 // line 180
                 yield "                    <h5>Inscrit aux événements :</h5>
                         <ul>
                             ";
                 // line 182
                 $context['_parent'] = $context;
-                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 182, $this->source); })()), "user", [], "any", false, false, false, 182), "participe", [], "any", false, false, false, 182));
-                foreach ($context['_seq'] as $context["_key"] => $context["evenementpresent"]) {
+                $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 182, $this->source); })()), "user", [], "any", false, false, false, 182), "participationsEvenement", [], "any", false, false, false, 182));
+                foreach ($context['_seq'] as $context["_key"] => $context["participation"]) {
                     // line 183
                     yield "                                <li>
                                     <h6><a href=\" ";
                     // line 184
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "id", [], "any", false, false, false, 184)]), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_evenement", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 184), "id", [], "any", false, false, false, 184)]), "html", null, true);
                     yield " \">";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["evenementpresent"], "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 184), "titre", [], "any", false, false, false, 184), "html", null, true);
                     yield "</a></h6>
                                     ";
                     // line 185
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "description", [], "any", false, false, false, 185), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 185), "description", [], "any", false, false, false, 185), "html", null, true);
                     yield "<br>
                                     Du ";
                     // line 186
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "dateDebutFormatee", [], "any", false, false, false, 186), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 186), "dateDebutFormatee", [], "any", false, false, false, 186), "html", null, true);
                     yield " à ";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "heureDebutFormatee", [], "any", false, false, false, 186), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 186), "heureDebutFormatee", [], "any", false, false, false, 186), "html", null, true);
                     yield "<br>
                                     Au ";
                     // line 187
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "dateFinFormatee", [], "any", false, false, false, 187), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 187), "dateFinFormatee", [], "any", false, false, false, 187), "html", null, true);
                     yield " à ";
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["evenementpresent"], "heureFinFormatee", [], "any", false, false, false, 187), "html", null, true);
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["participation"], "inscriptions", [], "any", false, false, false, 187), "heureFinFormatee", [], "any", false, false, false, 187), "html", null, true);
                     yield "<br>
                                 </li>
                             ";
                 }
                 $_parent = $context['_parent'];
-                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evenementpresent'], $context['_parent'], $context['loop']);
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['participation'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 190
                 yield "                        </ul>
@@ -510,7 +510,7 @@ $context["role"] == "ROLE_USER")) {
                         {% if app.user.isAdmin() %}
                         <tr>
                             <td>
-                                Rôles
+                                Rôle
                             </td>
                             <td>
                                 {% for role in app.user.roles %}
@@ -543,7 +543,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.nom %}
                                     {{ app.user.nom }}
                                 {% else %}
-                                    Nom non renseigné
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -556,7 +556,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.nom %}
                                     {{ app.user.nom }}
                                 {% else %}
-                                    Nom non renseigné
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -569,7 +569,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.prenom %}
                                     {{ app.user.prenom }}
                                 {% else %}
-                                    Prénom non renseigné
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -582,7 +582,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.numLicence %}
                                     {{ app.user.numLicence }}
                                 {% else %}
-                                    Numéro de  licence non renseigné
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -595,7 +595,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.numTelephone %}
                                     {{ app.user.numTelephone }}
                                 {% else %}
-                                    Numéro de  téléphone non renseigné
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -608,7 +608,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.dateNaissance %}
                                     {{ app.user.dateNaissanceFormatee }}
                                 {% else %}
-                                    Date de naissance non renseignée
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -621,7 +621,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.adresse %}
                                     {{ app.user.adresse }}
                                 {% else %}
-                                Adresse non renseignée
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -634,7 +634,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.ville %}
                                     {{ app.user.ville }}
                                 {% else %}
-                                Ville non renseignée
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -647,7 +647,7 @@ $context["role"] == "ROLE_USER")) {
                                 {% if app.user.cp %}
                                     {{ app.user.cp }}
                                 {% else %}
-                                    Code Postal non renseignée
+                                    Non renseigné
                                 {% endif %}
                             </td>
                         </tr>
@@ -663,15 +663,15 @@ $context["role"] == "ROLE_USER")) {
                     </div>
                 {% endif %}
 
-                {% if app.user.participe|length > 0 %}
+                {% if app.user.participationsEvenement|length > 0 %}
                     <h5>Inscrit aux événements :</h5>
                         <ul>
-                            {% for evenementpresent in app.user.participe %}
+                            {% for participation in app.user.participationsEvenement %}
                                 <li>
-                                    <h6><a href=\" {{ path('show_evenement', {'id': evenementpresent.id}) }} \">{{ evenementpresent }}</a></h6>
-                                    {{ evenementpresent.description }}<br>
-                                    Du {{ evenementpresent.dateDebutFormatee }} à {{ evenementpresent.heureDebutFormatee }}<br>
-                                    Au {{ evenementpresent.dateFinFormatee }} à {{ evenementpresent.heureFinFormatee }}<br>
+                                    <h6><a href=\" {{ path('show_evenement', {'id': participation.inscriptions.id}) }} \">{{ participation.inscriptions.titre }}</a></h6>
+                                    {{ participation.inscriptions.description }}<br>
+                                    Du {{ participation.inscriptions.dateDebutFormatee }} à {{ participation.inscriptions.heureDebutFormatee }}<br>
+                                    Au {{ participation.inscriptions.dateFinFormatee }} à {{ participation.inscriptions.heureFinFormatee }}<br>
                                 </li>
                             {% endfor %}
                         </ul>
