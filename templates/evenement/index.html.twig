@@ -49,20 +49,15 @@
                     </td>
                     {# ========== AJOUTER fonction participation ========== #}
                     {% if app.user %}
-                        {# {% for p in app.user.participationsEvenement %}
-                            {{ dump(p) }}
-                        {% endfor %} #}
                         {% if app.user.estCeQueParticipeDeja(evenement)  %}
                             <td>
-                                {# <div class="formulaire">
+                                <div class="formulaire">
                                     {{ form_start(formsDel[evenement.id]) }}
-                                    {{ form_row(formsDel[evenement.id].nbrParticipants) }}
                                     <div class="bouton">
                                         {{ form_widget(formsDel[evenement.id].valider) }}
                                     </div>
                                     {{ form_end(formsDel[evenement.id]) }}
-                                </div> #}
-                                <button>Se désinscrire</button>
+                                </div>
                             </td>
                             {% else %}
                             <td>

@@ -249,11 +249,11 @@ class EvenementController extends AbstractController
             return $this->redirectToRoute('app_login');
         } else {
             // Chercher la participation de l'utilisateur pour cet événement
-            $participation = $entityManager->getRepository(DeleteParticipationType::class)
+            $participation = $entityManager->getRepository(Participations::class)
                 ->findOneBy([
                     'inscrit' => $user,
                     'inscriptions' => $evenement
-                ]);
+            ]);
 
             // Si la participation existe, la supprimer
             if ($participation) {

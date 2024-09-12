@@ -49,25 +49,26 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
 <html>
     <head>
         <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"initial-scale=1, width=device-width\" />
         <title>";
-        // line 5
+        // line 6
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
         ";
-        // line 7
+        // line 8
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 11
+        // line 12
         yield "        ";
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 13
-        yield "        ";
         // line 14
+        yield "        ";
+        // line 15
         yield "    </head>
     <body>
         <header>
             <a href=\"";
-        // line 17
+        // line 18
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield "\" class=\"logo\"><img src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo-BCKR.jpg"), "html", null, true);
@@ -75,67 +76,67 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
             <nav>
                     <div class=\"liens\">
                         <a href=\" ";
-        // line 20
+        // line 21
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield " \">Accueil</a>
                         <a href=\" ";
-        // line 21
+        // line 22
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("club_home");
         yield " \">Le club</a>
                         ";
-        // line 22
-        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 22, $this->source); })()), "user", [], "any", false, false, false, 22) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 22, $this->source); })()), "user", [], "any", false, false, false, 22), "isAdmin", [], "method", false, false, false, 22))) {
-            // line 23
+        // line 23
+        if ((CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "user", [], "any", false, false, false, 23) && CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "user", [], "any", false, false, false, 23), "isAdmin", [], "method", false, false, false, 23))) {
+            // line 24
             yield "                            <a href=\" ";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user");
             yield " \">Liste Users</a>
                             <a href=\" ";
-            // line 24
+            // line 25
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
             yield " \">Créer un événement</a>
                         ";
         }
-        // line 26
+        // line 27
         yield "                        <a href=\" ";
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Les événements</a>
                         ";
-        // line 28
+        // line 29
         yield "                    </div>
             </nav>
             <div class=\"login\">
                 ";
-        // line 31
-        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) {
-            // line 32
+        // line 32
+        if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32)) {
+            // line 33
             yield "                    <a href=\"#\" class=\"pseudo-utilisateur\">Bonjour ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "pseudo", [], "any", false, false, false, 32), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33), "pseudo", [], "any", false, false, false, 33), "html", null, true);
             yield "</a>
                     <a href=\"";
-            // line 33
+            // line 34
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("pageperso_user");
             yield "\" class=\"connexion\">Espace Personnel</a>
                     <a href=\"";
-            // line 34
+            // line 35
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             yield "\" class=\"deconnexion\">Se déconnecter</a>
                 ";
         } else {
-            // line 36
+            // line 37
             yield "                    <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             yield "\" class=\"connexion\">Se connecter</a>
                     <a href=\"";
-            // line 37
+            // line 38
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             yield "\" class=\"inscription\">S'inscrire</a>
                     <a href=\"";
-            // line 38
+            // line 39
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register_membre");
             yield "\" class=\"inscription\">S'inscrire en tant que membre</a>
                 ";
         }
-        // line 40
+        // line 41
         yield "            </div>
 
             <div class=\"menu-mobile\">
@@ -146,19 +147,19 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
                     <i class=\"fa-solid fa-x\"></i>
                 </div>
                     <a href=\" ";
-        // line 49
+        // line 50
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield " \">Home</a>
                     <a href=\" ";
-        // line 50
+        // line 51
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user");
         yield " \">Liste Users</a>
                     <a href=\" ";
-        // line 51
+        // line 52
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_evenement");
         yield " \">Liste Événements</a>
                     <a href=\" ";
-        // line 52
+        // line 53
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("new_evenement");
         yield " \">Créer un événement</a>
                 <div class=\"login\">
@@ -172,13 +173,13 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
 
 
         ";
-        // line 63
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
         // line 64
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 65
         yield "
         <footer>
             <a href=\"";
-        // line 66
+        // line 67
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_home");
         yield "\" class=\"logo\"><img src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("img/logo-BCKR.jpg"), "html", null, true);
@@ -187,11 +188,11 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
             <div class=\"lien-footer\">
                 <a href=\"#\" class=\"texte-footer\">Retour en haut</a>
                 <a href=\"";
-        // line 70
+        // line 71
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("mentions_home");
         yield "\" class=\"texte-footer\">Mentions légales</a>
                 ";
-        // line 72
+        // line 73
         yield "                <a href=\"#\" class=\"texte-footer\">Contact</a>
             </div>
             
@@ -211,7 +212,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
         return; yield '';
     }
 
-    // line 5
+    // line 6
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -231,7 +232,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
         return; yield '';
     }
 
-    // line 7
+    // line 8
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -241,10 +242,10 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 8
+        // line 9
         yield "        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css\" integrity=\"sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />
         <link rel=\"stylesheet\" href=\"";
-        // line 9
+        // line 10
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/style.css"), "html", null, true);
         yield "\">
         ";
@@ -257,7 +258,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
         return; yield '';
     }
 
-    // line 11
+    // line 12
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -267,7 +268,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 12
+        // line 13
         yield "        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -278,7 +279,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
         return; yield '';
     }
 
-    // line 63
+    // line 64
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -318,7 +319,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  282 => 63,  271 => 12,  261 => 11,  248 => 9,  245 => 8,  235 => 7,  215 => 5,  195 => 72,  191 => 70,  182 => 66,  178 => 64,  176 => 63,  162 => 52,  158 => 51,  154 => 50,  150 => 49,  139 => 40,  134 => 38,  130 => 37,  125 => 36,  120 => 34,  116 => 33,  111 => 32,  109 => 31,  104 => 28,  99 => 26,  94 => 24,  89 => 23,  87 => 22,  83 => 21,  79 => 20,  71 => 17,  66 => 14,  64 => 13,  61 => 11,  59 => 7,  54 => 5,  48 => 1,);
+        return array (  283 => 64,  272 => 13,  262 => 12,  249 => 10,  246 => 9,  236 => 8,  216 => 6,  196 => 73,  192 => 71,  183 => 67,  179 => 65,  177 => 64,  163 => 53,  159 => 52,  155 => 51,  151 => 50,  140 => 41,  135 => 39,  131 => 38,  126 => 37,  121 => 35,  117 => 34,  112 => 33,  110 => 32,  105 => 29,  100 => 27,  95 => 25,  90 => 24,  88 => 23,  84 => 22,  80 => 21,  72 => 18,  67 => 15,  65 => 14,  62 => 12,  60 => 8,  55 => 6,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -327,6 +328,7 @@ class __TwigTemplate_c943da86b03cdb5d3146e14fe46f8204 extends Template
 <html>
     <head>
         <meta charset=\"UTF-8\">
+        <meta name=\"viewport\" content=\"initial-scale=1, width=device-width\" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
         {% block stylesheets %}
