@@ -15,7 +15,9 @@
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
 
         <div class="pagePerso-contenu">
-            {# <a href="{{ url }}" class="reset_password" target="_blank">Changer mot de passe</a> #}
+            <div class="mot-de-passe-oublie">
+                <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
+            </div>
 
             <div class="infos-pagePerso">
 
@@ -86,7 +88,7 @@
                                 {% endif %}
                             </td>
                         </tr>
-
+                        
                         <tr>
                             <td>
                                 Numéro de licence

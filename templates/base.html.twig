@@ -6,16 +6,26 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}">
         {% endblock %}
         {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         {% endblock %}
         {# {{ knp_pagination_rel_links(pagination) }} #}
     </head>
     <body>
         <header>
-            <a href="{{ path('app_home') }}" class="logo"><img src="{{ asset('img/logo-BCKR.jpg')}}" alt="logo du club" class="img-logo"></a>
+            <a href="{{ path('app_home') }}" class="logo">
+                <svg width="55" height="70" viewBox="0 0 141 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M91.9997 145.5C85.1997 167.9 63.1665 188.998 51.9998 196.998C50.4999 198.332 48.7 200.998 53.5 200.998C58.3 200.998 104.167 200.333 126.5 200C122 169 93.214 141.5 91.9997 145.5Z" fill="#807FFF"/>
+                    <path d="M85.4997 117.5C127.5 150.5 133.5 188.801 133.5 198.301C133.5 200.301 140 200.801 140 198.301C140 193.829 140.833 64.8333 140 0.5H0V200.998H40.5C69.5001 169.998 75.4351 132.479 75 131C72.5 122.5 18.5 105.5 11.4998 53.4999C10.8669 48.7989 20 76.5 30.4998 84C37.4997 89 54.7998 94 49.9998 86C43.9998 76 44.5 69.4999 45.5 66.4999C47.1493 61.5522 51.0485 59.4902 53.5 58.9999C56 58.5 61.9 59.6 65.5 66C68.0313 70.5001 68 78.5 65.5 81.5C65.5 81.5 63.5 84 63.9998 84C76.5601 84 92.8331 68.1666 99.4997 58.9999C95.4997 88.4999 75.9997 97.0625 77.4997 99.5C80.6997 104.7 84.1664 114 85.4997 117.5Z" fill="#807FFF"/>
+                    <path d="M115.5 28L89.5 39L95 29.5L88 25L95.5 19L88 10.5L115.5 15C118.167 15.5 123.078 15.5162 123.5 21C124 27.5 118.167 27.1667 115.5 28Z" fill="#FFFF0F"/>
+                    <path d="M115.5 28L89.5 39L95 29.5M115.5 28V23.5M115.5 28C118.167 27.1667 124 27.5 123.5 21C123.078 15.5162 118.167 15.5 115.5 15M115.5 15L88 10.5L95.5 19M115.5 15V20M95.5 19L88 25L95 29.5M95.5 19L115.5 20M95 29.5L115.5 23.5M115.5 23.5V20" stroke="#0C0AED" stroke-width="2"/>
+                    </svg>
+                    
+            </a>
             <nav>
                     <div class="liens">
                         <a href=" {{ path('app_home') }} ">Accueil</a>
@@ -31,12 +41,12 @@
             <div class="login">
                 {% if app.user %}
                     <a href="#" class="pseudo-utilisateur">Bonjour {{ app.user.pseudo }}</a>
-                    <a href="{{ path('pageperso_user') }}" class="connexion">Espace Personnel</a>
-                    <a href="{{ path('app_logout') }}" class="deconnexion">Se déconnecter</a>
+                    <a href="{{ path('pageperso_user') }}" class="btn-espace-perso">Espace Personnel</a>
+                    <a class="btn-deconnexion" href="{{ path('app_logout') }}">Se déconnecter</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}" class="connexion">Se connecter</a>
-                    <a href="{{ path('app_register') }}" class="inscription">S'inscrire</a>
-                    <a href="{{ path('app_register_membre') }}" class="inscription">S'inscrire en tant que membre</a>
+                    <a href="{{ path('app_login') }}" class="btn-connexion">Se connecter</a>
+                    <a href="{{ path('app_register') }}" class="btn-inscription">S'inscrire</a>
+                    <a href="{{ path('app_register_membre') }}" class="btn-inscription">S'inscrire en tant que membre</a>
                 {% endif %}
             </div>
 
@@ -64,7 +74,15 @@
         {% block body %}{% endblock %}
 
         <footer>
-            <a href="{{ path('app_home') }}" class="logo"><img src="{{ asset('img/logo-BCKR.jpg')}}" alt="logo du club" class="img-logo"></a>
+            <a href="{{ path('app_home') }}" class="logo">
+                <svg width="55" height="70" viewBox="0 0 141 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M91.9997 145.5C85.1997 167.9 63.1665 188.998 51.9998 196.998C50.4999 198.332 48.7 200.998 53.5 200.998C58.3 200.998 104.167 200.333 126.5 200C122 169 93.214 141.5 91.9997 145.5Z" fill="#807FFF"/>
+                    <path d="M85.4997 117.5C127.5 150.5 133.5 188.801 133.5 198.301C133.5 200.301 140 200.801 140 198.301C140 193.829 140.833 64.8333 140 0.5H0V200.998H40.5C69.5001 169.998 75.4351 132.479 75 131C72.5 122.5 18.5 105.5 11.4998 53.4999C10.8669 48.7989 20 76.5 30.4998 84C37.4997 89 54.7998 94 49.9998 86C43.9998 76 44.5 69.4999 45.5 66.4999C47.1493 61.5522 51.0485 59.4902 53.5 58.9999C56 58.5 61.9 59.6 65.5 66C68.0313 70.5001 68 78.5 65.5 81.5C65.5 81.5 63.5 84 63.9998 84C76.5601 84 92.8331 68.1666 99.4997 58.9999C95.4997 88.4999 75.9997 97.0625 77.4997 99.5C80.6997 104.7 84.1664 114 85.4997 117.5Z" fill="#807FFF"/>
+                    <path d="M115.5 28L89.5 39L95 29.5L88 25L95.5 19L88 10.5L115.5 15C118.167 15.5 123.078 15.5162 123.5 21C124 27.5 118.167 27.1667 115.5 28Z" fill="#FFFF0F"/>
+                    <path d="M115.5 28L89.5 39L95 29.5M115.5 28V23.5M115.5 28C118.167 27.1667 124 27.5 123.5 21C123.078 15.5162 118.167 15.5 115.5 15M115.5 15L88 10.5L95.5 19M115.5 15V20M95.5 19L88 25L95 29.5M95.5 19L115.5 20M95 29.5L115.5 23.5M115.5 23.5V20" stroke="#0C0AED" stroke-width="2"/>
+                    </svg>
+                    
+            </a>
 
             <div class="lien-footer">
                 <a href="#" class="texte-footer">Retour en haut</a>
