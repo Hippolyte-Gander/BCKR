@@ -64,33 +64,14 @@
             <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
             <div class="evenement-wrapper">
 
-                {% for evenement in evenements %}
+                {% for evenement in pagination %}
                     <div class="card-evenement">
-                        {% if (evenement.visibilite == 'tous') %}
-                            <div class="boucle-for-evenement">
-                                <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
+                            <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
 
-                                <p class="texte-user">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
-                                <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
-                                <p>{{ evenement.description }}</p>
-                            </div>
-                        {% elseif (evenement.visibilite == 'membres') and app.user and (app.user.isMembre() or app.user.isAdmin()) %}
-                            <div class="boucle-for-evenement">
-                                <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
-
-                                <p class="texte-user">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
-                                <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
-                                <p>{{ evenement.description }}</p>
-                            </div>
-                        {% elseif app.user and evenement.visibilite == 'admins' and app.user.isAdmin() %}
-                            <div class="boucle-for-evenement">
-                                <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
-
-                                <p class="texte-user">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</p><br>
-                                <p>Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</p><br>
-                                <p>{{ evenement.description }}</p>
-                            </div>
-                        {% endif %}
+                            <div class="affiche-event">{{ evenement.affiche }}</div>
+                            <div class="date-event">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</div>
+                            <div class="date-event">Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</div>
+                            <p class="descr-event">{{ evenement.description }}</p>
                     </div>
                 {% endfor %}
             </div>
