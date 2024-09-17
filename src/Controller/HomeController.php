@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\EvenementRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +13,7 @@ class HomeController extends AbstractController
 {
     // ------------- PAGE D'ACCUEIL -------------
     #[Route('/', name: 'app_home')]
-    public function index(EvenementRepository $evenementRepository): Response
+    public function index(EvenementRepository $evenementRepository, PaginatorInterface $paginator,Request $request): Response
     {
         $user = $this->getUser();
 
@@ -28,8 +30,14 @@ class HomeController extends AbstractController
             $evenements = $evenementRepository->evenementsFutursTous();
         }
 
+        $pagination = $paginator->paginate(
+            $evenements, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+
         return $this->render('home/index.html.twig', [
-            'evenements' => $evenements
+            'pagination' => $pagination,
         ]);
     }
 

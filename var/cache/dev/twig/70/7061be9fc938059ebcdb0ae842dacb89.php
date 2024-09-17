@@ -90,73 +90,68 @@ class __TwigTemplate_f552685ae7e92e357e41827a7636c610 extends Template
         yield "
     <div class=\"login-background\">
 
-            ";
+        ";
         // line 9
         if (CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 9, $this->source); })()), "user", [], "any", false, false, false, 9)) {
             // line 10
-            yield "                <div class=\"logged-container\">
-                    Vous êtes connecté en tant que  <a href=\"#\">";
+            yield "            <div class=\"logged-container\">
+                Vous êtes connecté en tant que  <a href=\"#\">";
             // line 11
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "pseudo", [], "any", false, false, false, 11), "html", null, true);
             yield "</a>.
-                    ";
+                ";
             // line 12
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "flashes", [], "any", false, false, false, 12));
             foreach ($context['_seq'] as $context["_key"] => $context["messages"]) {
                 // line 13
-                yield "                        ";
+                yield "                    ";
                 $context['_parent'] = $context;
                 $context['_seq'] = CoreExtension::ensureTraversable($context["messages"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
                     // line 14
-                    yield "                            <p>";
+                    yield "                        <p>";
                     yield $context["message"];
                     yield "</p>
-                        ";
+                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 16
-                yield "                    ";
+                yield "                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['messages'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 17
-            yield "                </div>
-            ";
-        } else {
-            // line 19
-            yield "
-            <div class=\"login-container\">
-
-                <h4>Demande de réinitialisation de mot de passe</h4>
-
-                ";
-            // line 24
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 24, $this->source); })()), 'form_start');
-            yield "
-                <div class=\"input-box\">
-                    ";
-            // line 26
-            yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 26, $this->source); })()), "email", [], "any", false, false, false, 26), 'row');
-            yield "
-                </div>
-                
-                <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
-
-                ";
-            // line 31
-            yield             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 31, $this->source); })()), 'form_end');
-            yield "
-            </div>
-
-            ";
+            yield "            </div>
+        ";
         }
-        // line 35
+        // line 19
         yield "
+        <div class=\"login-container\">
+
+            <h4>Demande de réinitialisation de mot de passe</h4>
+
+            ";
+        // line 24
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 24, $this->source); })()), 'form_start');
+        yield "
+            <div class=\"input-box\">
+                ";
+        // line 26
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(CoreExtension::getAttribute($this->env, $this->source, (isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 26, $this->source); })()), "email", [], "any", false, false, false, 26), 'row');
+        yield "
+            </div>
+            
+            <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
+
+            ";
+        // line 31
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["requestPassForm"]) || array_key_exists("requestPassForm", $context) ? $context["requestPassForm"] : (function () { throw new RuntimeError('Variable "requestPassForm" does not exist.', 31, $this->source); })()), 'form_end');
+        yield "
+        </div>
     </div>
 ";
         
@@ -189,7 +184,7 @@ class __TwigTemplate_f552685ae7e92e357e41827a7636c610 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  159 => 35,  152 => 31,  144 => 26,  139 => 24,  132 => 19,  128 => 17,  122 => 16,  113 => 14,  108 => 13,  104 => 12,  100 => 11,  97 => 10,  95 => 9,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
+        return array (  152 => 31,  144 => 26,  139 => 24,  132 => 19,  128 => 17,  122 => 16,  113 => 14,  108 => 13,  104 => 12,  100 => 11,  97 => 10,  95 => 9,  90 => 6,  80 => 5,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -202,33 +197,30 @@ class __TwigTemplate_f552685ae7e92e357e41827a7636c610 extends Template
 
     <div class=\"login-background\">
 
-            {% if app.user %}
-                <div class=\"logged-container\">
-                    Vous êtes connecté en tant que  <a href=\"#\">{{ app.user.pseudo }}</a>.
-                    {% for messages in app.flashes %}
-                        {% for message in messages %}
-                            <p>{{ message|raw }}</p>
-                        {% endfor %}
+        {% if app.user %}
+            <div class=\"logged-container\">
+                Vous êtes connecté en tant que  <a href=\"#\">{{ app.user.pseudo }}</a>.
+                {% for messages in app.flashes %}
+                    {% for message in messages %}
+                        <p>{{ message|raw }}</p>
                     {% endfor %}
-                </div>
-            {% else %}
-
-            <div class=\"login-container\">
-
-                <h4>Demande de réinitialisation de mot de passe</h4>
-
-                {{ form_start(requestPassForm) }}
-                <div class=\"input-box\">
-                    {{ form_row(requestPassForm.email) }}
-                </div>
-                
-                <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
-
-                {{ form_end(requestPassForm) }}
+                {% endfor %}
             </div>
+        {% endif %}
 
-            {% endif %}
+        <div class=\"login-container\">
 
+            <h4>Demande de réinitialisation de mot de passe</h4>
+
+            {{ form_start(requestPassForm) }}
+            <div class=\"input-box\">
+                {{ form_row(requestPassForm.email) }}
+            </div>
+            
+            <button type=\"submit\" class=\"reset-password-btn\">Envoyer</button>
+
+            {{ form_end(requestPassForm) }}
+        </div>
     </div>
 {% endblock %}
 ", "security/reset_password_request.html.twig", "C:\\laragon\\www\\hippolyte G\\Github\\BCKR\\templates\\security\\reset_password_request.html.twig");

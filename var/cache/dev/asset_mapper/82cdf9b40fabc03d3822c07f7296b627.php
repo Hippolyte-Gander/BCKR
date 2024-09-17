@@ -1,13 +1,89 @@
-O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:59:"C:\laragon\www\hippolyte G\Github\BCKR\assets\css\style.css";s:10:"publicPath";s:54:"/assets/css/style-e47af2bcde863689def33571f464dc27.css";s:23:"publicPathWithoutDigest";s:21:"/assets/css/style.css";s:15:"publicExtension";s:3:"css";s:7:"content";s:19487:"@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:59:"C:\laragon\www\hippolyte G\Github\BCKR\assets\css\style.css";s:10:"publicPath";s:54:"/assets/css/style-2986bc9548de3e846f37e1b6b4002ea7.css";s:23:"publicPathWithoutDigest";s:21:"/assets/css/style.css";s:15:"publicExtension";s:3:"css";s:7:"content";s:20335:"@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-size: 1.15rem;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
+
+::selection {
+    background-color: #807FFF;
+    color: rgb(0, 0, 0);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #807FFF;
+    border-radius: 16px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #4c4caa;
+  }
+
+  /* --------------- GÉNÉRAL ---------------- */
+
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-family: Cinzel;
+    font-weight: 600;
+    font-size: clamp(2rem, 7.5vw + .5rem, 3.5rem);
+    line-height: 58px;
+    padding: 8px;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 5vw + 0.5rem, 2rem);
+    max-width: fit-content;
+    font-family: Cinzel;
+    padding: 16px;
+}
+
+h3 {
+    font-size: clamp(1.2rem, 5vw + 0.5rem, 1.8rem);
+}
+    
+h4 {
+    color: rgb(255, 255, 255);
+    font-size: clamp(1rem, 5vw, 1.7rem);
+}
+
+h5 {
+    font-size: clamp(0.8rem, 5vw, 1.5rem);
+}
+
+a {
+    max-width: fit-content;
+    text-decoration: none;
+}
+
+/* button {
+    background-color: #049faa;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+} */
 
 /* --------------- NAVBAR ---------------- */
 
@@ -17,25 +93,16 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgb(22, 22, 22);
-    padding: 20px;
+    background: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    max-height: 80px;
-    min-height: 80px;
-    border-bottom: solid 2px white;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
-.img-logo {
-    max-height: 60px;
-    /* filter: invert(1); */
+    height: 117px;
+    padding: 24px;
+    /* border-bottom: solid 1px #807FFF; */
+    border-bottom: solid 1px #7f7fff9d;
+    font-weight: 400;
 }
 
 nav {
@@ -46,7 +113,8 @@ nav {
 
 .liens a:hover {
     text-decoration: underline;
-    color:  rgb(255, 255, 255);
+    color:  #5757b1;
+    transition: 0.2s;
 }
 
 .liens a {
@@ -108,65 +176,56 @@ header .menu-mobile {
 /* --- Boutons connexion --- */
 .login {
     display: flex;
-    gap: 20px;
+    gap: 16px;
 }
 
 .pseudo-utilisateur {
-    color: rgb(0, 174, 255);
+    color: #5757b1;
     border:  1px;
-    padding: 9px 14px;
+    padding: 8px 16px;
 }
 
-.deconnexion {
-    background-color: white;
-    color: black;
-    border: solid 1px rgb(0, 0, 0);
-    border-radius: 5px;
+.btn-deconnexion,
+.btn-connexion {
+    background-color: rgb(255, 255, 255);
+    border: solid 1px #5757b1;
+    color: #5757b1;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.btn-inscription,
+.btn-espace-perso {
+    background-color: #807FFF;
+    color: rgb(255, 255, 255);
+    border: solid 1px #000000;
+    border-radius: 8px;
     padding: 10px 15px;
 }
 
-.connexion {
-    background-color: rgb(0, 0, 0);
-    border: solid 1px white;
-    border-radius: 5px;
-    padding: 9px 14px;
-}
-
-.inscription {
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-    padding: 10px 15px;
-}
-
-.deconnexion:hover {
-    text-decoration: none;
-    color:  rgb(0, 0, 0);
-    transition: 0.2s;
-    box-shadow: 0 0 20px rgb(161, 161, 161);
-}
-
-.connexion:hover {
-    text-decoration: none;
+.btn-deconnexion:hover,
+.btn-connexion:hover {
     color:  rgb(255, 255, 255);
-    transition: 0.2s;
-    box-shadow: 0 0 20px rgb(255, 255, 255);
+    transition: 0.5s;
+    background-color: #5757b1;
+    border: solid 1px #000000;
 }
 
-.inscription:hover {
-    text-decoration: none;
-    color:  rgb(0, 0, 0);
-    transition: 0.2s;
-    box-shadow: 0 0 20px rgb(161, 161, 161);
+.btn-inscription:hover,
+.btn-espace-perso:hover {
+    background-color: rgb(255, 255, 255);
+    border: solid 1px #5757b1;
+    color: #5757b1;
+    border-radius: 8px;
+    transition: 0.5s;
 }
 
 /* --------------- FOOTER ---------------- */
 
 footer {
-    background: rgb(22, 22, 22);
-    max-height: 80px;
-    min-height: 80px;
-    border-top: solid 2px white;
+    background: rgb(255, 255, 255);
+    height: 320px;
+    border-top: solid 1px #807FFF;
     font-size: 1.25rem;
     display: flex;
     align-items: center;
@@ -174,164 +233,168 @@ footer {
     padding: 20px;
 }
 
+.liens-internes {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.lien-footer {
+    display: flex;
+    gap: 16px;
+}
 .lien-footer a {
     padding: 0 20px;
 }
 
 .lien-footer a:hover {
     text-decoration: underline;
-    color:  rgb(255, 255, 255);
+    color:  #5757b1;
+    transition: 0.2s;
 }
 
 footer a i:hover {
-    color: rgb(4, 4, 143);
-    transition: 0.3s;
-}
-
-/* --------------- TITRE PRINCIPAL ---------------- */
-
-.nom-club {
-    width: 100%;
-    padding: 50px 20px;
-    align-items: center;
-    text-align: center;
-}
-
-h1 {
-    color: rgb(255, 255, 255);
-    font-family: Poppins;
-    font-weight: 800;
-    font-size: clamp(2rem, 7.5vw + .5rem, 4rem);
-}
-
-h2 {
-    font-size: clamp(1.5rem, 5vw + 0.5rem, 2.25rem);
-}
-
-/* h3 {
-    font-size: clamp(1.5rem, 5vw + 0.5rem, 2.25rem);
-} */
-
-h5 {
-    font-size: clamp(1rem, 5vw, 1.75rem);
+    color:  #5757b1;
+    transition: 0.2s;
 }
 
 /* --------------- PAGE ACCUEIL ---------------- */
 
-main {
+.homepage {
+    /* align-items: center;
+    text-align: center; */
+    margin-top: 117px;
+}
+
+.wrapper {
     display: flex;
     flex-direction: column;
-    background: url("../img/bg1-terrain-tres-sombre-758b3d0eebb2a67c9f05e4cd5121d108.jpg") no-repeat;
+    padding: 24px;
+    gap: 64px;
+}
+
+.titre-homepage {
+    background: url("../img/fond-titre-06d35428b479cfc8db5bbb677273b1b7.png") no-repeat;
+    background-position-y: 50%;
     background-size: cover;
-    padding-top: 110px;
-}
-
-.accueil {
-    min-height: 100vh;
+    min-height: 400px;
+    border-radius: 16px;
     display: flex;
-    flex-direction: row-reverse;
-    padding: 0px 20px;
-}
-
-.accueil h2, .accueil h5, .accueil p {
-    color: white;
-}
-
-.accueil h2 {
-    text-decoration: none;
-    max-width: fit-content;
-}
-
-.accueil h2:hover {
-    text-decoration: underline;
-}
-
-.a-venir {
-    width: 30%;
-    margin: 30px;
-}
-
-.a-venir h2 {
-    margin: 50px 30px;
-}
-
-.boucle-for-evenement h5 {
-    padding: 20px 0;
-}
-
-.boucle-for-evenement {
-    padding: 20px 0;
+    align-items: end;
 }
 
 .club {
-    color: white;
     display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.card-club {
+    display: flex;
+    flex: 1;
     flex-direction: column;
-    width: 60%;
-    margin: 30px;
-    gap: 30px;
+    border-radius: 16px;
 }
 
-.a-venir,
-.club-description,
-.club-entrainements,
-.club-activites {
-    background: transparent;
-    border:  2px solid rgb(0, 0, 0);
-    border-radius: 5px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-
-.club-description,
-.club-entrainements,
-.club-activites {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 25px 0 15px;
+.club-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    margin-bottom: 16px;
 }
 
 .titre-texte {
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    /* background: rgba(15, 15, 15, 0.555); */
+    padding: 0 32px 0 32px;
     font-size: 1.5rem;
-    text-align: justify;
-    gap: 20px;
+    /* text-align: justify; */
+    gap: 16px;
 }
 
-.titre-texte h2 {
-    padding: 20px 0px;
+.titre-texte p {
+    color: rgba(0, 0, 0, 0.750);
 }
 
-.p_underline {
-    text-decoration: underline;
+.a-venir {
+    display: flex;
+    flex-direction: column;
 }
 
-/* ---------- IMAGES ---------- */
+.a-venir h2 {
+    padding: 0 32px 0 32px;
+}
 
-.club-description img,
-.club-entrainements img,
-.club-activites img {
-    margin: 20px;
-    border-radius: 5px;
-    width: 30%;
+.evenement-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.card-evenement {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 24%;
+    border: solid 1px #5757b1;
+    border-radius: 16px;
+    padding: 32px;
+    min-width: 400px;
+    max-width: 750px;
+}
+
+.evenement-card-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.affiche-event {
+    width: 50%;
+    height: auto;
+}
+
+.affiche-event img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 16px;
 }
 
-/* --------------- GÉNÉRAL ---------------- */
-
-h4 {
-    color: rgb(255, 255, 255);
-    font-size: 25px;
+.evenement-info {
+    width: 50%;
+    width: auto;
+    height: auto;
 }
 
-h5 {
-    font-size: 25px;
+.evenement-info h5 {
+    padding: 16px 8 px;
 }
+
+.evenement-descr {
+    background-color: rgba(128, 128, 128, 0.541);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+    text-align: justify;
+}
+
+.carrousel {
+    display: flex;
+}
+
+.swiper {
+    width: 60%;
+    height: 600px;
+}
+
+/* .swiper-slide {
+} */
+  
+
+/* --------------- TEXTE UTILISATEUR ---------------- */
 
 .texte-utilisateur {
     color: rgb(0, 0, 0);
@@ -430,7 +493,6 @@ h5 {
 
 .pagePerso-contenu {
     display: flex;
-    width: 100%;
 }
 
 .infos-pagePerso p {
@@ -801,18 +863,6 @@ td, tr {
     background-color: #08d48a;
 }
 
-/* bouton validation inscription */
-button {
-    background-color: #049faa;
-    border: 2px solid black;
-    border-radius: 5px;
-    color: rgb(0, 0, 0);
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
 /* --------------- REGISTER ---------------- */
 
 .register-formulaire-background {
@@ -843,7 +893,7 @@ button {
 /* Photo de Glen Carrie sur Unsplash */
 
 .logged-container {
-    padding: 150px 50px 700px 50px;
+    padding: 150px 50px 100px 50px;
 }
 
 .login-container p {
@@ -974,4 +1024,4 @@ button {
     cursor: pointer;
     color: rgb(99, 99, 99);
     font-weight: 600;
-}";s:6:"digest";s:32:"e47af2bcde863689def33571f464dc27";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:12:{i:0;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\bg1-terrain-tres-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/bg1-terrain-tres-sombre-758b3d0eebb2a67c9f05e4cd5121d108.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/bg1-terrain-tres-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"758b3d0eebb2a67c9f05e4cd5121d108";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/bg1-terrain-tres-sombre.jpg";}i:1;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:2;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:3;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:4;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:80:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volants-sur-terrain-sombre.jpg";s:10:"publicPath";s:75:"/assets/img/volants-sur-terrain-sombre-4009340a42c79bf0e58014a6ca746bc4.jpg";s:23:"publicPathWithoutDigest";s:42:"/assets/img/volants-sur-terrain-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"4009340a42c79bf0e58014a6ca746bc4";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:34:"img/volants-sur-terrain-sombre.jpg";}i:5;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:6;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volant-sur-ligne-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/volant-sur-ligne-sombre-94f75172ad6fb30a799115b720edcd1d.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/volant-sur-ligne-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"94f75172ad6fb30a799115b720edcd1d";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/volant-sur-ligne-sombre.jpg";}i:7;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:87:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\photo-terrain-et-raquettes-sombre.jpg";s:10:"publicPath";s:82:"/assets/img/photo-terrain-et-raquettes-sombre-6f10c9ef633966f44d6c0f273462f253.jpg";s:23:"publicPathWithoutDigest";s:49:"/assets/img/photo-terrain-et-raquettes-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6f10c9ef633966f44d6c0f273462f253";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:41:"img/photo-terrain-et-raquettes-sombre.jpg";}i:8;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:73:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\photo-lignes-sombre.jpg";s:10:"publicPath";s:68:"/assets/img/photo-lignes-sombre-5886afcbdae884216617e715fe27c95b.jpg";s:23:"publicPathWithoutDigest";s:35:"/assets/img/photo-lignes-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"5886afcbdae884216617e715fe27c95b";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:27:"img/photo-lignes-sombre.jpg";}i:9;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volant-sur-ligne-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/volant-sur-ligne-sombre-94f75172ad6fb30a799115b720edcd1d.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/volant-sur-ligne-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"94f75172ad6fb30a799115b720edcd1d";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/volant-sur-ligne-sombre.jpg";}i:10;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volant-sur-ligne-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/volant-sur-ligne-sombre-94f75172ad6fb30a799115b720edcd1d.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/volant-sur-ligne-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"94f75172ad6fb30a799115b720edcd1d";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/volant-sur-ligne-sombre.jpg";}i:11;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:79:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\raquette-et-volant-sombre.jpg";s:10:"publicPath";s:74:"/assets/img/raquette-et-volant-sombre-cc59f28c1ccfda74d08a254e81c0fd8c.jpg";s:23:"publicPathWithoutDigest";s:41:"/assets/img/raquette-et-volant-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"cc59f28c1ccfda74d08a254e81c0fd8c";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:33:"img/raquette-et-volant-sombre.jpg";}}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:13:"css/style.css";}
+}";s:6:"digest";s:32:"2986bc9548de3e846f37e1b6b4002ea7";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:12:{i:0;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:64:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\fond-titre.png";s:10:"publicPath";s:59:"/assets/img/fond-titre-06d35428b479cfc8db5bbb677273b1b7.png";s:23:"publicPathWithoutDigest";s:26:"/assets/img/fond-titre.png";s:15:"publicExtension";s:3:"png";s:7:"content";N;s:6:"digest";s:32:"06d35428b479cfc8db5bbb677273b1b7";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:18:"img/fond-titre.png";}i:1;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:2;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:3;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:4;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:80:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volants-sur-terrain-sombre.jpg";s:10:"publicPath";s:75:"/assets/img/volants-sur-terrain-sombre-4009340a42c79bf0e58014a6ca746bc4.jpg";s:23:"publicPathWithoutDigest";s:42:"/assets/img/volants-sur-terrain-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"4009340a42c79bf0e58014a6ca746bc4";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:34:"img/volants-sur-terrain-sombre.jpg";}i:5;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:72:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\terrain-bad-sombre.jpg";s:10:"publicPath";s:67:"/assets/img/terrain-bad-sombre-6373ae59d00b8f3ac4178d1eb3884aa6.jpg";s:23:"publicPathWithoutDigest";s:34:"/assets/img/terrain-bad-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6373ae59d00b8f3ac4178d1eb3884aa6";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:26:"img/terrain-bad-sombre.jpg";}i:6;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volant-sur-ligne-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/volant-sur-ligne-sombre-94f75172ad6fb30a799115b720edcd1d.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/volant-sur-ligne-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"94f75172ad6fb30a799115b720edcd1d";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/volant-sur-ligne-sombre.jpg";}i:7;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:87:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\photo-terrain-et-raquettes-sombre.jpg";s:10:"publicPath";s:82:"/assets/img/photo-terrain-et-raquettes-sombre-6f10c9ef633966f44d6c0f273462f253.jpg";s:23:"publicPathWithoutDigest";s:49:"/assets/img/photo-terrain-et-raquettes-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"6f10c9ef633966f44d6c0f273462f253";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:41:"img/photo-terrain-et-raquettes-sombre.jpg";}i:8;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:73:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\photo-lignes-sombre.jpg";s:10:"publicPath";s:68:"/assets/img/photo-lignes-sombre-5886afcbdae884216617e715fe27c95b.jpg";s:23:"publicPathWithoutDigest";s:35:"/assets/img/photo-lignes-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"5886afcbdae884216617e715fe27c95b";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:27:"img/photo-lignes-sombre.jpg";}i:9;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volant-sur-ligne-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/volant-sur-ligne-sombre-94f75172ad6fb30a799115b720edcd1d.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/volant-sur-ligne-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"94f75172ad6fb30a799115b720edcd1d";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/volant-sur-ligne-sombre.jpg";}i:10;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:77:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\volant-sur-ligne-sombre.jpg";s:10:"publicPath";s:72:"/assets/img/volant-sur-ligne-sombre-94f75172ad6fb30a799115b720edcd1d.jpg";s:23:"publicPathWithoutDigest";s:39:"/assets/img/volant-sur-ligne-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"94f75172ad6fb30a799115b720edcd1d";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:31:"img/volant-sur-ligne-sombre.jpg";}i:11;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:79:"C:\laragon\www\hippolyte G\Github\BCKR\assets\img\raquette-et-volant-sombre.jpg";s:10:"publicPath";s:74:"/assets/img/raquette-et-volant-sombre-cc59f28c1ccfda74d08a254e81c0fd8c.jpg";s:23:"publicPathWithoutDigest";s:41:"/assets/img/raquette-et-volant-sombre.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"cc59f28c1ccfda74d08a254e81c0fd8c";s:13:"isPredigested";b:0;s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:33:"img/raquette-et-volant-sombre.jpg";}}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}s:11:"logicalPath";s:13:"css/style.css";}

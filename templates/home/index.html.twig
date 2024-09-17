@@ -63,17 +63,35 @@
         <section class="a-venir">
             <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
             <div class="evenement-wrapper">
-
+                
                 {% for evenement in pagination %}
                     <div class="card-evenement">
-                            <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
-
-                            <div class="affiche-event">{{ evenement.affiche }}</div>
-                            <div class="date-event">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</div>
-                            <div class="date-event">Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</div>
-                            <p class="descr-event">{{ evenement.description }}</p>
+                        <div class="evenement-card-top">
+                            <div class="affiche-event">
+                                {% if evenement.affiche %}
+                                    {{ evenement.affiche }}
+                                {% else %}
+                                    <img src="{{ asset('img/le-club3.jpg')}}" alt="Photo d'une rencontre sportive">
+                                {% endif %}
+                            </div>
+                            <div class="evenement-infos">
+                                <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
+                                <div class="date-event">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</div>
+                                <div class="date-event">Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</div>
+                                <p class="descr-event">{{ evenement.description }}</p>
+                                
+                            </div>
+                        </div>
+                        {% if evenement.description|length < 15 %}
+                            <p class="evenement-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloribus quo totam earum omnis. Inventore perspiciatis possimus ipsum soluta itaque similique eveniet, maiores reiciendis alias velit. Reprehenderit minus quibusdam cum autem.</p>
+                        {% else %}
+                            <p class="evenement-descr">{{ evenement.description }}</p>
+                        {% endif %}
                     </div>
                 {% endfor %}
+            </div>
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
             </div>
         </section>
 
