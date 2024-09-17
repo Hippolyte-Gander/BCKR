@@ -1,0 +1,11 @@
+{% if field.value is not empty %}
+    <ul>
+        {% for participation in field.value %}
+            <li>
+                Événement : {{ participation.inscriptions.titre }} - Participant(s) : {{ participation.nbrParticipants }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucune participation pour cet événement.</p>
+{% endif %}

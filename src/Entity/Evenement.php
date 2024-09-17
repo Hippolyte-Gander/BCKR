@@ -63,10 +63,17 @@ class Evenement
     #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'inscriptions', orphanRemoval: true)]
     private Collection $participations;
 
+    /**
+     * @var Collection<int, ImageEvenement>
+     */
+    #[ORM\OneToMany(targetEntity: ImageEvenement::class, mappedBy: 'evenement', orphanRemoval: true)]
+    private Collection $imagesEvenement;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
         $this->participations = new ArrayCollection();
+        $this->imagesEvenement = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -307,5 +314,35 @@ class Evenement
     public function getNbrPlacesDisponibles(): int
     {
         return $this->getPlaces() - $this->getTotalParticipants();
+    }
+
+    /**
+     * @return Collection<int, ImageEvenement>
+     */
+    public function getImagesEvenement(): Collection
+    {
+        return $this->imagesEvenement;
+    }
+
+    public function addImagesEvenement(ImageEvenement $imagesEvenement): static
+    {
+        if (!$this->imagesEvenement->contains($imagesEvenement)) {
+            $this->imagesEvenement->add($imagesEvenement);
+            $imagesEvenement->setEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImagesEvenement(ImageEvenement $imagesEvenement): static
+    {
+        if ($this->imagesEvenement->removeElement($imagesEvenement)) {
+            // set the owning side to null (unless already changed)
+            if ($imagesEvenement->getEvenement() === $this) {
+                $imagesEvenement->setEvenement(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Evenement;
 use App\Entity\Commentaire;
+use App\Entity\ImageEvenement;
 use App\Entity\Participations;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,5 +36,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('User', 'fas fa-user-pen', User::class);
         yield MenuItem::linkToCrud('Commentaire', 'fas fa-pen', Commentaire::class);
         yield MenuItem::linkToCrud('Participations', 'fas fa-handshake', Participations::class);
+        yield MenuItem::linkToCrud('ImageEvenement', 'fas fa-image', ImageEvenement::class);
     }
 }
