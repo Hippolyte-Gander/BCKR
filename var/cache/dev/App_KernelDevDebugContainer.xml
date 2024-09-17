@@ -27,6 +27,7 @@
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="SymfonyCastsVerifyEmailBundle">SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
+      <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -84,6 +85,10 @@
       <parameter key="KnpPaginatorBundle" type="collection">
         <parameter key="path">C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle</parameter>
         <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
+      <parameter key="EasyAdminBundle" type="collection">
+        <parameter key="path">C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src</parameter>
+        <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -164,7 +169,14 @@
       <parameter key="default">doctrine.orm.default_entity_manager</parameter>
     </parameter>
     <parameter key="doctrine.default_entity_manager">default</parameter>
-    <parameter key="doctrine.dbal.connection_factory.types" type="collection"/>
+    <parameter key="doctrine.dbal.connection_factory.types" type="collection">
+      <parameter key="uuid" type="collection">
+        <parameter key="class">Symfony\Bridge\Doctrine\Types\UuidType</parameter>
+      </parameter>
+      <parameter key="ulid" type="collection">
+        <parameter key="class">Symfony\Bridge\Doctrine\Types\UlidType</parameter>
+      </parameter>
+    </parameter>
     <parameter key="doctrine.connections" type="collection">
       <parameter key="default">doctrine.dbal.default_connection</parameter>
     </parameter>
@@ -351,6 +363,10 @@
         <parameter>serializer</parameter>
         <parameter>@WebProfiler/Collector/serializer.html.twig</parameter>
       </parameter>
+      <parameter key="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector" type="collection">
+        <parameter>easyadmin</parameter>
+        <parameter>@EasyAdmin/inspector/data_collector.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.config" type="collection">
         <parameter>config</parameter>
         <parameter>@WebProfiler/Collector/config.html.twig</parameter>
@@ -366,6 +382,46 @@
     </service>
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
+    </service>
+    <service id="App\Controller\Admin\CommentaireCrudController" class="App\Controller\Admin\CommentaireCrudController" public="true" autowire="true" autoconfigure="true">
+      <tag name="ea.crud_controller"/>
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.3YFBJbt.App\Controller\Admin\CommentaireCrudController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" public="true" autowire="true" autoconfigure="true">
+      <tag name="ea.dashboard_controller"/>
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.EjdkWEU.App\Controller\Admin\DashboardController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Admin\EvenementCrudController" class="App\Controller\Admin\EvenementCrudController" public="true" autowire="true" autoconfigure="true">
+      <tag name="ea.crud_controller"/>
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.3YFBJbt.App\Controller\Admin\EvenementCrudController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Admin\ParticipationsCrudController" class="App\Controller\Admin\ParticipationsCrudController" public="true" autowire="true" autoconfigure="true">
+      <tag name="ea.crud_controller"/>
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.3YFBJbt.App\Controller\Admin\ParticipationsCrudController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" public="true" autowire="true" autoconfigure="true">
+      <tag name="ea.crud_controller"/>
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.3YFBJbt.App\Controller\Admin\UserCrudController"/>
+      </call>
     </service>
     <service id="App\Controller\CommentaireController" class="App\Controller\CommentaireController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -487,6 +543,9 @@
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>
     </service>
+    <service id="argument_resolver.uid" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\UidValueResolver">
+      <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\UidValueResolver">controller.argument_value_resolver</tag>
+    </service>
     <service id="argument_resolver.datetime" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DateTimeValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DateTimeValueResolver">controller.argument_value_resolver</tag>
       <argument type="service" id="clock" on-invalid="null"/>
@@ -510,7 +569,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.Ioz7h9V"/>
+      <argument type="service" id=".service_locator.La4MfUZ"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1319,6 +1378,7 @@
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations</argument>
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations</argument>
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations</argument>
+        <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
       </argument>
       <argument type="collection">
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\twig-bridge/Resources/views/Email</argument>
@@ -1347,6 +1407,7 @@
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations</argument>
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations</argument>
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations</argument>
+        <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
       </argument>
       <argument type="collection">
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\twig-bridge/Resources/views/Email</argument>
@@ -1429,6 +1490,7 @@
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\CommentaireType</argument>
@@ -1446,6 +1508,9 @@
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ColorType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1458,6 +1523,8 @@
         <argument>Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension</argument>
         <argument>Symfony\Component\Form\Extension\PasswordHasher\Type\FormTypePasswordHasherExtension</argument>
         <argument>Symfony\Component\Form\Extension\PasswordHasher\Type\PasswordTypePasswordHasherExtension</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser</argument>
@@ -1802,6 +1869,7 @@
         <argument key="C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\ux-turbo\src\DependencyInjection/../../assets/dist">@symfony/ux-turbo</argument>
         <argument key="C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\stimulus-bundle\src\DependencyInjection/../../assets/dist">@symfony/stimulus-bundle</argument>
         <argument key="assets/"></argument>
+        <argument key="C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/public">bundles/easyadmin</argument>
       </argument>
       <argument>C:\laragon\www\hippolyte G\Github\BCKR</argument>
       <argument type="collection">
@@ -2176,6 +2244,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.ar.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ar.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ar.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ar.php</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.az.xlf</argument>
@@ -2192,6 +2261,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.bg.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.bg.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.bg.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.bg.php</argument>
           </argument>
           <argument key="bs" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.bs.xlf</argument>
@@ -2204,6 +2274,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ca.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ca.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ca.php</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
@@ -2211,6 +2282,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.cs.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.cs.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.cs.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.cs.php</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.cy.xlf</argument>
@@ -2222,6 +2294,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.da.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.da.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.da.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.da.php</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.de.xlf</argument>
@@ -2229,12 +2302,14 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.de.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.de.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.de.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.de.php</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.el.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.el.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.el.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.el.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.el.php</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.en.xlf</argument>
@@ -2242,6 +2317,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.en.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.en.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.en.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.en.php</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.es.xlf</argument>
@@ -2249,6 +2325,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.es.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.es.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.es.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.es.php</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.et.xlf</argument>
@@ -2260,6 +2337,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.eu.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.eu.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.eu.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.eu.php</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.fa.xlf</argument>
@@ -2267,6 +2345,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.fa.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.fa.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fa.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fa.php</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.fi.xlf</argument>
@@ -2274,6 +2353,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.fi.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.fi.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fi.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fi.php</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.fr.xlf</argument>
@@ -2281,22 +2361,26 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.fr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.fr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.fr.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.fr.php</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.gl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.gl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.gl.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.gl.php</argument>
           </argument>
           <argument key="he" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.he.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.he.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.he.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.he.php</argument>
           </argument>
           <argument key="hr" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.hr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.hr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hr.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.hr.php</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.hu.xlf</argument>
@@ -2304,11 +2388,13 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.hu.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.hu.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.hu.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.hu.php</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.hy.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.hy.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.hy.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.hy.php</argument>
           </argument>
           <argument key="id" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.id.xlf</argument>
@@ -2316,6 +2402,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.id.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.id.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.id.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.id.php</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.it.xlf</argument>
@@ -2323,6 +2410,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.it.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.it.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.it.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.it.php</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.ja.xlf</argument>
@@ -2335,12 +2423,14 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.lb.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.lb.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.lb.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.lb.php</argument>
           </argument>
           <argument key="lt" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.lt.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.lt.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.lt.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.lt.php</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.lv.xlf</argument>
@@ -2352,6 +2442,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.mk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.mk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.mk.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.mk.php</argument>
           </argument>
           <argument key="mn" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.mn.xlf</argument>
@@ -2375,6 +2466,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.nl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle+intl-icu.nl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.nl.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.nl.php</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.nn.xlf</argument>
@@ -2386,6 +2478,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.no.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.no.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.no.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.no.php</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.pl.xlf</argument>
@@ -2393,18 +2486,21 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.pl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.pl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pl.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pl.php</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.pt.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.pt.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.pt.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.pt.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pt.php</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.pt_BR.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.pt_BR.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.pt_BR.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.pt_BR.php</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.ro.xlf</argument>
@@ -2412,6 +2508,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.ro.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ro.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ro.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ro.php</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.ru.xlf</argument>
@@ -2419,17 +2516,20 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.ru.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.ru.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.ru.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.ru.php</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.sk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.sk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.sk.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sk.php</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.sl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.sl.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.sl.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sl.php</argument>
           </argument>
           <argument key="sq" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.sq.xlf</argument>
@@ -2451,6 +2551,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.sv.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.sv.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sv.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sv.php</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.th.xlf</argument>
@@ -2468,6 +2569,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.tr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.tr.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.tr.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.tr.php</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.uk.xlf</argument>
@@ -2475,6 +2577,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.uk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.uk.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.uk.xliff</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.uk.php</argument>
           </argument>
           <argument key="ur" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.ur.xlf</argument>
@@ -2495,11 +2598,13 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.zh_CN.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.zh_CN.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.zh_CN.php</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations\validators.zh_TW.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\form/Resources/translations\validators.zh_TW.xlf</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations\security.zh_TW.xlf</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.zh_TW.php</argument>
           </argument>
           <argument key="sr" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations\VerifyEmailBundle.sr.xlf</argument>
@@ -2510,6 +2615,9 @@
           <argument key="sw" type="collection">
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations\KnpPaginatorBundle.sw.xliff</argument>
           </argument>
+          <argument key="sr_RS" type="collection">
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations\EasyAdminBundle.sr_RS.php</argument>
+          </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
           <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\validator/Resources/translations</argument>
@@ -2517,6 +2625,7 @@
           <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations</argument>
           <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations</argument>
           <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations</argument>
+          <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
           <argument>C:\laragon\www\hippolyte G\Github\BCKR/translations</argument>
           <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\framework-bundle/translations</argument>
           <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\doctrine\doctrine-bundle/translations</argument>
@@ -2538,6 +2647,7 @@
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\security-core/Resources/translations</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfonycasts\verify-email-bundle\src/Resources/translations</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/translations</argument>
+            <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/translations</argument>
             <argument>translations</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\symfony\framework-bundle/translations</argument>
             <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\doctrine\doctrine-bundle/translations</argument>
@@ -2927,6 +3037,22 @@
         <argument type="collection">
           <argument type="service_closure" id="knp_paginator.subscriber.sliding_pagination"/>
           <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.exception</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener"/>
+          <argument>onKernelException</argument>
+        </argument>
+        <argument>-64</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.view</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener"/>
+          <argument>onKernelView</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3483,6 +3609,22 @@
         <argument>1</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.controller</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber"/>
+          <argument>onKernelController</argument>
+        </argument>
+        <argument>128</argument>
+      </call>
+      <call method="addListener">
         <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
         <argument type="collection">
           <argument type="service_closure" id="security.listener.csrf_protection"/>
@@ -3512,7 +3654,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.Ioz7h9V"/>
+      <argument type="service" id=".service_locator.La4MfUZ"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3897,6 +4039,25 @@
       <tag name="container.hot_path"/>
       <argument type="service" id="web_link.http_header_serializer"/>
     </service>
+    <service id="ulid.factory" class="Symfony\Component\Uid\Factory\UlidFactory"/>
+    <service id="uuid.factory" class="Symfony\Component\Uid\Factory\UuidFactory">
+      <argument>7</argument>
+      <argument>7</argument>
+      <argument>5</argument>
+      <argument>Symfony\Component\Uid\UuidV4</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+    </service>
+    <service id="name_based_uuid.factory" class="Symfony\Component\Uid\Factory\NameBasedUuidFactory">
+      <argument type="abstract">Please set the "framework.uid.name_based_uuid_namespace" configuration option to use the "name_based_uuid.factory" service</argument>
+      <factory service="uuid.factory" method="nameBased"/>
+    </service>
+    <service id="random_based_uuid.factory" class="Symfony\Component\Uid\Factory\RandomBasedUuidFactory">
+      <factory service="uuid.factory" method="randomBased"/>
+    </service>
+    <service id="time_based_uuid.factory" class="Symfony\Component\Uid\Factory\TimeBasedUuidFactory">
+      <factory service="uuid.factory" method="timeBased"/>
+    </service>
     <service id=".cache_connection.GD_MSZC" class="Symfony\Component\Cache\Adapter\AbstractAdapter" constructor="createConnection">
       <argument>redis://localhost</argument>
       <argument type="collection">
@@ -4011,7 +4172,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.r_6Ne5G"/>
+      <argument type="service" id=".service_locator.9xwBRkw"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4021,6 +4182,7 @@
           <argument type="service" id="form.type_extension.csrf"/>
           <argument type="service" id="form.type_extension.form.data_collector"/>
           <argument type="service" id="form.type_extension.form.password_hasher"/>
+          <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension"/>
         </argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType" type="iterator">
           <argument type="service" id="form.type_extension.repeated.validator"/>
@@ -4030,6 +4192,9 @@
         </argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\PasswordType" type="iterator">
           <argument type="service" id="form.type_extension.password.password_hasher"/>
+        </argument>
+        <argument key="Symfony\Component\Form\Extension\Core\Type\CollectionType" type="iterator">
+          <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension"/>
         </argument>
       </argument>
       <argument type="iterator">
@@ -4828,6 +4993,9 @@
         <argument type="service" id="serializer.data_collector"/>
       </call>
       <call method="add">
+        <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector"/>
+      </call>
+      <call method="add">
         <argument type="service" id="data_collector.config"/>
       </call>
     </service>
@@ -5044,7 +5212,7 @@
       <argument type="service" id="doctrine.debug_data_holder" on-invalid="null"/>
     </service>
     <service id="doctrine.dbal.connection_factory" class="Doctrine\Bundle\DoctrineBundle\ConnectionFactory">
-      <argument type="collection"/>
+      <argument>%doctrine.dbal.connection_factory.types%</argument>
       <argument type="service" id="doctrine.dbal.connection_factory.dsn_parser"/>
     </service>
     <service id="doctrine.dbal.connection_factory.dsn_parser" class="Doctrine\DBAL\Tools\DsnParser">
@@ -5342,11 +5510,11 @@
     <service id="doctrine.orm.quote_strategy.ansi" class="Doctrine\ORM\Mapping\AnsiQuoteStrategy"/>
     <service id="doctrine.ulid_generator" class="Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator">
       <tag name="doctrine.id_generator"/>
-      <argument>null</argument>
+      <argument type="service" id="ulid.factory" on-invalid="ignore"/>
     </service>
     <service id="doctrine.uuid_generator" class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator">
       <tag name="doctrine.id_generator"/>
-      <argument>null</argument>
+      <argument type="service" id="uuid.factory" on-invalid="ignore"/>
     </service>
     <service id="doctrine.orm.command.entity_manager_provider" class="Doctrine\Bundle\DoctrineBundle\Orm\ManagerRegistryAwareEntityManagerProvider">
       <argument type="service" id="doctrine"/>
@@ -5953,6 +6121,9 @@
         <argument type="service" id="knp_paginator.twig.extension.pagination"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="stimulus.twig_extension"/>
       </call>
       <call method="addGlobal">
@@ -6070,6 +6241,14 @@
       <call method="addPath">
         <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\knplabs\knp-paginator-bundle/templates</argument>
         <argument>!KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/views</argument>
+        <argument>EasyAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\laragon\www\hippolyte G\Github\BCKR\vendor\easycorp\easyadmin-bundle\src/Resources/views</argument>
+        <argument>!EasyAdmin</argument>
       </call>
       <call method="addPath">
         <argument>C:\laragon\www\hippolyte G\Github\BCKR/templates</argument>
@@ -7431,6 +7610,348 @@
       <tag name="twig.runtime"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand" class="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand" public="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker"/>
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR</argument>
+      <call method="setName">
+        <argument>make:admin:dashboard</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Creates a new EasyAdmin Dashboard class</argument>
+      </call>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand" class="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand" public="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR</argument>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker"/>
+      <argument type="service" id="doctrine"/>
+      <call method="setName">
+        <argument>make:admin:crud</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Creates a new EasyAdmin CRUD controller class</argument>
+      </call>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker" class="EasyCorp\Bundle\EasyAdminBundle\Maker\ClassMaker">
+      <argument type="service" id="kernel"/>
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Cache\CacheWarmer" class="EasyCorp\Bundle\EasyAdminBundle\Cache\CacheWarmer">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector" class="EasyCorp\Bundle\EasyAdminBundle\Inspector\DataCollector">
+      <tag name="data_collector" id="easyadmin" template="@EasyAdmin/inspector/data_collector.html.twig"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\ExceptionListener">
+      <tag name="kernel.event_listener" event="kernel.exception" priority="-64"/>
+      <argument>true</argument>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension" class="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+      <argument type="service" id="asset_mapper.importmap.renderer" on-invalid="null"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension" class="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EaCrudFormTypeExtension">
+      <tag name="form.type_extension"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension" class="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\CollectionTypeExtension">
+      <tag name="form.type_extension"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker" class="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker">
+      <argument type="service" id="security.authorization_checker" on-invalid="null"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter" class="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider" class="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider">
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver" class="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver">
+      <tag name="controller.argument_value_resolver"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver" class="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver">
+      <tag name="controller.argument_value_resolver"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\AdminRouterSubscriber">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory"/>
+      <argument type="service" id="debug.controller_resolver"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory">
+      <argument type="service" id="debug.controller_resolver"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\CrudResponseListener">
+      <tag name="kernel.event_listener" event="Symfony\Component\HttpKernel\Event\ViewEvent"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="twig"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\AdminContextFactory">
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR\var\cache\dev</argument>
+      <argument type="service" id="security.token_storage" on-invalid="null"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" class="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" shared="false">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry"/>
+    </service>
+    <service id="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      </argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner" class="EasyCorp\Bundle\EasyAdminBundle\Router\UrlSigner">
+      <argument>%env(APP_SECRET)%</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\MenuFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="security.logout_url_generator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher" class="EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository" class="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator" class="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater" class="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater">
+      <argument type="service" id="property_accessor"/>
+      <argument type="service" id="debug.validator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory">
+      <argument type="service" id="form.factory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormLayoutFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FormLayoutFactory"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FieldFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="tagged_iterator" tag="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormLayoutFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider" class="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="tagged_iterator" tag="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType">
+      <tag name="form.type" alias="ea_filters"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType">
+      <tag name="form.type"/>
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator">
+      <tag name="ea.filter_configurator" priority="9999"/>
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator">
+      <tag name="ea.filter_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory" class="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter" class="EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter">
+      <tag name="security.voter"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType">
+      <tag name="form.type" alias="ea_crud"/>
+      <argument type="service" id="form.type_guesser.doctrine"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
+      <argument type="service" id="security.csrf.token_manager" on-invalid="null"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator">
+      <tag name="ea.field_configurator" priority="-9999"/>
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider"/>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator">
+      <tag name="ea.field_configurator" priority="9999"/>
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="property_accessor"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR</argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator">
+      <tag name="ea.field_configurator"/>
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Intl\IntlFormatter"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator">
+      <tag name="ea.field_configurator"/>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage" class="EasyCorp\Bundle\EasyAdminBundle\Asset\AssetPackage">
+      <tag name="assets.package" package="easyadmin.assets.package"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\CommentaireCrudController" class="App\Controller\Admin\CommentaireCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\CommentaireCrudController" class="App\Controller\Admin\CommentaireCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\CommentaireCrudController" class="App\Controller\Admin\CommentaireCrudController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\CommentaireCrudController" class="App\Controller\Admin\CommentaireCrudController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\DashboardControllerInterface.0.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\DashboardController" class="App\Controller\Admin\DashboardController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\EvenementCrudController" class="App\Controller\Admin\EvenementCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\EvenementCrudController" class="App\Controller\Admin\EvenementCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\EvenementCrudController" class="App\Controller\Admin\EvenementCrudController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\EvenementCrudController" class="App\Controller\Admin\EvenementCrudController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\ParticipationsCrudController" class="App\Controller\Admin\ParticipationsCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\ParticipationsCrudController" class="App\Controller\Admin\ParticipationsCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\ParticipationsCrudController" class="App\Controller\Admin\ParticipationsCrudController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\ParticipationsCrudController" class="App\Controller\Admin\ParticipationsCrudController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface.0.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\UserCrudController" class="App\Controller\Admin\UserCrudController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7484,6 +8005,78 @@
     <service id=".abstract.instanceof.App\Repository\ParticipationsRepository" class="App\Repository\ParticipationsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\CommonConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\ComparisonConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\EntityConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NullConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\NumericConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Filter\FilterConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Filter\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ArrayConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AssociationConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\AvatarConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\BooleanConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CodeEditorConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CollectionConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPostConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CommonPreConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CountryConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\CurrencyConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\DateTimeConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\EmailConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\FormConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IdConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ImageConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\IntegerConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LanguageConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\LocaleConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\MoneyConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\NumberConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\PercentConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\ChoiceConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\SlugConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TelephoneConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TextEditorConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\TimezoneConfigurator" abstract="true"/>
+    <service id=".instanceof.EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldConfiguratorInterface.0.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" abstract="true"/>
+    <service id=".abstract.instanceof.EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" class="EasyCorp\Bundle\EasyAdminBundle\Field\Configurator\UrlConfigurator" abstract="true"/>
     <service id=".service_locator.w7.f4fT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7907,10 +8500,76 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.Nb584vp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="crud" type="service_closure" id=".errored..service_locator.Nb584vp.EasyCorp\Bundle\EasyAdminBundle\Config\Crud"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wvbCcwL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="assets" type="service_closure" id=".errored..service_locator.wvbCcwL.EasyCorp\Bundle\EasyAdminBundle\Config\Assets"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UrOEf8r" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="actions" type="service_closure" id=".errored..service_locator.UrOEf8r.EasyCorp\Bundle\EasyAdminBundle\Config\Actions"/>
+      </argument>
+    </service>
+    <service id=".service_locator.kud45L1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="filters" type="service_closure" id=".errored..service_locator.kud45L1.EasyCorp\Bundle\EasyAdminBundle\Config\Filters"/>
+      </argument>
+    </service>
+    <service id=".service_locator.t9B7cZ4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="context" type="service_closure" id=".errored..service_locator.t9B7cZ4.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jwjltq_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="batchActionDto" type="service_closure" id=".errored..service_locator.jwjltq_.EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto"/>
+        <argument key="context" type="service_closure" id=".errored..service_locator.jwjltq_.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
+      </argument>
+    </service>
+    <service id=".service_locator.yR6jqeD" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityDto" type="service_closure" id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto"/>
+        <argument key="fields" type="service_closure" id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection"/>
+        <argument key="filters" type="service_closure" id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection"/>
+        <argument key="searchDto" type="service_closure" id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto"/>
+      </argument>
+    </service>
     <service id=".service_locator.CsMkqUa" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jG5xrFj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="context" type="service_closure" id=".errored..service_locator.jG5xrFj.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext"/>
+        <argument key="entityDto" type="service_closure" id=".errored..service_locator.jG5xrFj.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto"/>
+        <argument key="formOptions" type="service_closure" id=".errored..service_locator.jG5xrFj.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.vMUOjiq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="responseParameters" type="service_closure" id=".errored..service_locator.vMUOjiq.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.t7nLwyX" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="user" type="service_closure" id=".errored..service_locator.t7nLwyX.Symfony\Component\Security\Core\User\UserInterface"/>
       </argument>
     </service>
     <service id=".service_locator.zoVzhCf" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -8018,9 +8677,94 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.d_UY3kt.App\Entity\User"/>
       </argument>
     </service>
-    <service id=".service_locator.Ioz7h9V" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.La4MfUZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\Admin\CommentaireCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController::updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\DashboardController::configureUserMenu" type="service_closure" id=".service_locator.t7nLwyX"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController::updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController::updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\UserCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\UserCrudController::configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\UserCrudController::configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\UserCrudController::configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\UserCrudController::configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\UserCrudController::configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\UserCrudController::createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController::createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController::createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\UserCrudController::createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController::createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController::delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\UserCrudController::detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\UserCrudController::renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController::updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EntrainementController::listEntrainements" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EvenementController::index" type="service_closure" id=".service_locator.zoVzhCf"/>
         <argument key="App\Controller\EvenementController::nePlusParticiper" type="service_closure" id=".service_locator.JFCU_Ej"/>
@@ -8044,6 +8788,91 @@
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\CommentaireCrudController:updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\DashboardController:configureUserMenu" type="service_closure" id=".service_locator.t7nLwyX"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\EvenementCrudController:updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\ParticipationsCrudController:updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\UserCrudController:autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:batchDelete" type="service_closure" id=".service_locator.jwjltq_"/>
+        <argument key="App\Controller\Admin\UserCrudController:configureActions" type="service_closure" id=".service_locator.UrOEf8r"/>
+        <argument key="App\Controller\Admin\UserCrudController:configureAssets" type="service_closure" id=".service_locator.wvbCcwL"/>
+        <argument key="App\Controller\Admin\UserCrudController:configureCrud" type="service_closure" id=".service_locator.Nb584vp"/>
+        <argument key="App\Controller\Admin\UserCrudController:configureFilters" type="service_closure" id=".service_locator.kud45L1"/>
+        <argument key="App\Controller\Admin\UserCrudController:configureResponseParameters" type="service_closure" id=".service_locator.vMUOjiq"/>
+        <argument key="App\Controller\Admin\UserCrudController:createEditForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController:createEditFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController:createIndexQueryBuilder" type="service_closure" id=".service_locator.yR6jqeD"/>
+        <argument key="App\Controller\Admin\UserCrudController:createNewForm" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController:createNewFormBuilder" type="service_closure" id=".service_locator.jG5xrFj"/>
+        <argument key="App\Controller\Admin\UserCrudController:delete" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:deleteEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\UserCrudController:detail" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:edit" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:index" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:new" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:persistEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
+        <argument key="App\Controller\Admin\UserCrudController:renderFilters" type="service_closure" id=".service_locator.t9B7cZ4"/>
+        <argument key="App\Controller\Admin\UserCrudController:updateEntity" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EntrainementController:listEntrainements" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\EvenementController:index" type="service_closure" id=".service_locator.zoVzhCf"/>
         <argument key="App\Controller\EvenementController:nePlusParticiper" type="service_closure" id=".service_locator.JFCU_Ej"/>
@@ -8184,6 +9013,10 @@
       <argument type="service" id="argument_resolver.backed_enum_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
+    <service id=".debug.value_resolver.argument_resolver.uid" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
+      <argument type="service" id="argument_resolver.uid"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
     <service id=".debug.value_resolver.argument_resolver.datetime" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
       <argument type="service" id="argument_resolver.datetime"/>
       <argument type="service" id="debug.stopwatch"/>
@@ -8198,6 +9031,14 @@
     </service>
     <service id=".debug.value_resolver.argument_resolver.session" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
       <argument type="service" id="argument_resolver.session"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
+    <service id=".debug.value_resolver.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver"/>
+      <argument type="service" id="debug.stopwatch"/>
+    </service>
+    <service id=".debug.value_resolver.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
     <service id=".debug.value_resolver.argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver">
@@ -8224,7 +9065,7 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.r_6Ne5G" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9xwBRkw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
@@ -8237,6 +9078,9 @@
         <argument key="App\Form\ResetPasswordFormType" type="service_closure" id="App\Form\ResetPasswordFormType"/>
         <argument key="App\Form\ResetPasswordRequestFormType" type="service_closure" id="App\Form\ResetPasswordRequestFormType"/>
         <argument key="App\Form\UserEditType" type="service_closure" id="App\Form\UserEditType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ColorType" type="service_closure" id="form.type.color"/>
@@ -8407,6 +9251,10 @@
       <argument type="service" id="security.access.expression_voter"/>
       <argument type="service" id="debug.event_dispatcher"/>
     </service>
+    <service id=".debug.security.voter.EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
+      <argument type="service" id="EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
     <service id="security.listener.csrf_protection" class="Symfony\Component\Security\Http\EventListener\CsrfProtectionListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="security.csrf.token_manager"/>
@@ -8570,6 +9418,41 @@
       <configurator service="debug.debug_logger_configurator" method="pushDebugLogger"/>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry">
+      <argument>C:\laragon\www\hippolyte G\Github\BCKR\var\cache\dev</argument>
+      <argument type="collection">
+        <argument key="App\Controller\Admin\DashboardController">9ef20f3</argument>
+      </argument>
+      <argument type="collection">
+        <argument key="9ef20f3">App\Controller\Admin\DashboardController</argument>
+      </argument>
+    </service>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry">
+      <argument type="collection">
+        <argument key="App\Controller\Admin\CommentaireCrudController">App\Entity\Commentaire</argument>
+        <argument key="App\Controller\Admin\EvenementCrudController">App\Entity\Evenement</argument>
+        <argument key="App\Controller\Admin\ParticipationsCrudController">App\Entity\Participations</argument>
+        <argument key="App\Controller\Admin\UserCrudController">App\Entity\User</argument>
+      </argument>
+      <argument type="collection">
+        <argument key="App\Controller\Admin\CommentaireCrudController">f4b24fc</argument>
+        <argument key="App\Controller\Admin\EvenementCrudController">b4c3d73</argument>
+        <argument key="App\Controller\Admin\ParticipationsCrudController">c2e10d0</argument>
+        <argument key="App\Controller\Admin\UserCrudController">3b854bb</argument>
+      </argument>
+      <argument type="collection">
+        <argument key="App\Entity\Commentaire">App\Controller\Admin\CommentaireCrudController</argument>
+        <argument key="App\Entity\Evenement">App\Controller\Admin\EvenementCrudController</argument>
+        <argument key="App\Entity\Participations">App\Controller\Admin\ParticipationsCrudController</argument>
+        <argument key="App\Entity\User">App\Controller\Admin\UserCrudController</argument>
+      </argument>
+      <argument type="collection">
+        <argument key="f4b24fc">App\Controller\Admin\CommentaireCrudController</argument>
+        <argument key="b4c3d73">App\Controller\Admin\EvenementCrudController</argument>
+        <argument key="c2e10d0">App\Controller\Admin\ParticipationsCrudController</argument>
+        <argument key="3b854bb">App\Controller\Admin\UserCrudController</argument>
+      </argument>
+    </service>
     <service id=".service_locator.yY.p4P7" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8682,6 +9565,82 @@
         <argument>0</argument>
       </call>
     </service>
+    <service id=".service_locator.3YFBJbt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider" on-invalid="ignore"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" on-invalid="ignore"/>
+        <argument key="doctrine" type="service_closure" id="doctrine" on-invalid="ignore"/>
+        <argument key="event_dispatcher" type="service_closure" id="debug.event_dispatcher" on-invalid="ignore"/>
+        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
+        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
+        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
+        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
+        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
+        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
+        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
+        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer" on-invalid="ignore"/>
+        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
+        <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.3YFBJbt.App\Controller\Admin\CommentaireCrudController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\CommentaireCrudController"/>
+      <argument>App\Controller\Admin\CommentaireCrudController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.3YFBJbt" method="withContext"/>
+    </service>
+    <service id=".service_locator.EjdkWEU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator" on-invalid="ignore"/>
+        <argument key="form.factory" type="service_closure" id="form.factory" on-invalid="ignore"/>
+        <argument key="http_kernel" type="service_closure" id="http_kernel" on-invalid="ignore"/>
+        <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
+        <argument key="request_stack" type="service_closure" id="request_stack" on-invalid="ignore"/>
+        <argument key="router" type="service_closure" id="router.default" on-invalid="ignore"/>
+        <argument key="security.authorization_checker" type="service_closure" id="security.authorization_checker" on-invalid="ignore"/>
+        <argument key="security.csrf.token_manager" type="service_closure" id="security.csrf.token_manager" on-invalid="ignore"/>
+        <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
+        <argument key="serializer" type="service_closure" id="debug.serializer" on-invalid="ignore"/>
+        <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
+        <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.EjdkWEU.App\Controller\Admin\DashboardController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\DashboardController"/>
+      <argument>App\Controller\Admin\DashboardController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.EjdkWEU" method="withContext"/>
+    </service>
+    <service id=".service_locator.3YFBJbt.App\Controller\Admin\EvenementCrudController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\EvenementCrudController"/>
+      <argument>App\Controller\Admin\EvenementCrudController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.3YFBJbt" method="withContext"/>
+    </service>
+    <service id=".service_locator.3YFBJbt.App\Controller\Admin\ParticipationsCrudController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\ParticipationsCrudController"/>
+      <argument>App\Controller\Admin\ParticipationsCrudController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.3YFBJbt" method="withContext"/>
+    </service>
+    <service id=".service_locator.3YFBJbt.App\Controller\Admin\UserCrudController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\UserCrudController"/>
+      <argument>App\Controller\Admin\UserCrudController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.3YFBJbt" method="withContext"/>
+    </service>
     <service id=".service_locator.O2p6Lk7" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8788,9 +9747,11 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.etVElvN" method="withContext"/>
     </service>
-    <service id=".service_locator.oR77BOj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.BSVJ08h" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver" type="service_closure" id=".debug.value_resolver.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver" type="service_closure" id=".debug.value_resolver.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver"/>
         <argument key="Symfony\Bridge\Doctrine\ArgumentResolver\EntityValueResolver" type="service_closure" id=".debug.value_resolver.doctrine.orm.entity_value_resolver"/>
         <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.backed_enum_resolver"/>
         <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DateTimeValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.datetime"/>
@@ -8801,6 +9762,7 @@
         <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.request"/>
         <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.service"/>
         <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.session"/>
+        <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\UidValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.uid"/>
         <argument key="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" type="service_closure" id=".debug.value_resolver.argument_resolver.variadic"/>
         <argument key="Symfony\Component\Security\Http\Controller\SecurityTokenValueResolver" type="service_closure" id=".debug.value_resolver.security.security_token_value_resolver"/>
         <argument key="Symfony\Component\Security\Http\Controller\UserValueResolver" type="service_closure" id=".debug.value_resolver.security.user_value_resolver"/>
@@ -8913,6 +9875,11 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\Admin\CommentaireCrudController</argument>
+          <argument>App\Controller\Admin\DashboardController</argument>
+          <argument>App\Controller\Admin\EvenementCrudController</argument>
+          <argument>App\Controller\Admin\ParticipationsCrudController</argument>
+          <argument>App\Controller\Admin\UserCrudController</argument>
           <argument>App\Controller\CommentaireController</argument>
           <argument>App\Controller\EntrainementController</argument>
           <argument>App\Controller\EvenementController</argument>
@@ -8931,16 +9898,19 @@
         <argument type="service" id=".debug.value_resolver.security.security_token_value_resolver"/>
         <argument type="service" id=".debug.value_resolver.doctrine.orm.entity_value_resolver"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.backed_enum_resolver"/>
+        <argument type="service" id=".debug.value_resolver.argument_resolver.uid"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.datetime"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.request_attribute"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.request"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.session"/>
+        <argument type="service" id=".debug.value_resolver.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\AdminContextResolver"/>
+        <argument type="service" id=".debug.value_resolver.EasyCorp\Bundle\EasyAdminBundle\ArgumentResolver\BatchActionDtoResolver"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.service"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.default"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.variadic"/>
         <argument type="service" id=".debug.value_resolver.argument_resolver.not_tagged_controller"/>
       </argument>
-      <argument type="service" id=".service_locator.oR77BOj"/>
+      <argument type="service" id=".service_locator.BSVJ08h"/>
     </service>
     <service id="debug.serializer.inner" class="Symfony\Component\Serializer\Serializer">
       <argument type="collection">
@@ -9089,6 +10059,7 @@
         <argument type="service" id=".debug.security.voter.security.access.authenticated_voter"/>
         <argument type="service" id=".debug.security.voter.security.access.simple_role_voter"/>
         <argument type="service" id=".debug.security.voter.security.access.expression_voter"/>
+        <argument type="service" id=".debug.security.voter.EasyCorp\Bundle\EasyAdminBundle\Security\SecurityVoter"/>
       </argument>
       <argument type="service">
         <service class="Symfony\Component\Security\Core\Authorization\Strategy\AffirmativeStrategy">
@@ -9119,6 +10090,54 @@
     <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
     <service id=".errored..service_locator.y4_Zrx..Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.y4_Zrx.&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator.Nb584vp.EasyCorp\Bundle\EasyAdminBundle\Config\Crud" class="EasyCorp\Bundle\EasyAdminBundle\Config\Crud">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.Nb584vp&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Config\Crud&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.wvbCcwL.EasyCorp\Bundle\EasyAdminBundle\Config\Assets" class="EasyCorp\Bundle\EasyAdminBundle\Config\Assets">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.wvbCcwL&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Config\Assets&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.UrOEf8r.EasyCorp\Bundle\EasyAdminBundle\Config\Actions" class="EasyCorp\Bundle\EasyAdminBundle\Config\Actions">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.UrOEf8r&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Config\Actions&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.kud45L1.EasyCorp\Bundle\EasyAdminBundle\Config\Filters" class="EasyCorp\Bundle\EasyAdminBundle\Config\Filters">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.kud45L1&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Config\Filters&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.t9B7cZ4.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext" class="EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.t9B7cZ4&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.jwjltq_.EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jwjltq_&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.jwjltq_.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext" class="EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jwjltq_&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.yR6jqeD&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection" class="EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.yR6jqeD&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection" class="EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.yR6jqeD&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.yR6jqeD.EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.yR6jqeD&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.jG5xrFj.EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext" class="EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jG5xrFj&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.jG5xrFj.EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto" class="EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jG5xrFj&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.jG5xrFj.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore" class="EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jG5xrFj&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.vMUOjiq.EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore" class="EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.vMUOjiq&quot;: it references class &quot;EasyCorp\Bundle\EasyAdminBundle\Config\KeyValueStore&quot; but no such service exists."/>
+    </service>
+    <service id=".errored..service_locator.t7nLwyX.Symfony\Component\Security\Core\User\UserInterface" class="Symfony\Component\Security\Core\User\UserInterface">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.t7nLwyX&quot;: it references interface &quot;Symfony\Component\Security\Core\User\UserInterface&quot; but no such service exists. Did you create a class that implements this interface?"/>
     </service>
     <service id=".errored..service_locator.JFCU_Ej.App\Entity\Evenement" class="App\Entity\Evenement">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.JFCU_Ej&quot;: it needs an instance of &quot;App\Entity\Evenement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
@@ -9618,6 +10637,20 @@
       <argument>false</argument>
       <argument type="service_closure" id="security.command.user_password_hash"/>
     </service>
+    <service id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>make:admin:dashboard</argument>
+      <argument type="collection"/>
+      <argument>Creates a new EasyAdmin Dashboard class</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand"/>
+    </service>
+    <service id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>make:admin:crud</argument>
+      <argument type="collection"/>
+      <argument>Creates a new EasyAdmin CRUD controller class</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand"/>
+    </service>
     <service id=".maker.auto_command.make_auth.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>make:auth</argument>
       <argument type="collection"/>
@@ -9814,7 +10847,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.rsY5EXH"/>
+      <argument type="service" id=".service_locator.KiatudO"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -9901,6 +10934,8 @@
         <argument key="lint:twig">twig.command.lint</argument>
         <argument key="debug:firewall">security.command.debug_firewall</argument>
         <argument key="security:hash-password">security.command.user_password_hash</argument>
+        <argument key="make:admin:dashboard">EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand</argument>
+        <argument key="make:admin:crud">EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:twig-component">maker.auto_command.make_twig_component</argument>
@@ -9933,7 +10968,7 @@
         <argument key="make:webhook">maker.auto_command.make_webhook</argument>
       </argument>
     </service>
-    <service id=".service_locator.rsY5EXH" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.KiatudO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -10021,6 +11056,8 @@
         <argument key="twig.command.lint" type="service_closure" id=".twig.command.lint.lazy"/>
         <argument key="security.command.debug_firewall" type="service_closure" id=".security.command.debug_firewall.lazy"/>
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand" type="service_closure" id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminDashboardCommand.lazy"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand" type="service_closure" id=".EasyCorp\Bundle\EasyAdminBundle\Command\MakeCrudControllerCommand.lazy"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id=".maker.auto_command.make_auth.lazy"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id=".maker.auto_command.make_command.lazy"/>
         <argument key="maker.auto_command.make_twig_component" type="service_closure" id=".maker.auto_command.make_twig_component.lazy"/>
@@ -10251,6 +11288,11 @@
     <service id="Symfony\Component\PropertyInfo\PropertyReadInfoExtractorInterface" alias="property_info.reflection_extractor"/>
     <service id="Symfony\Component\PropertyInfo\PropertyWriteInfoExtractorInterface" alias="property_info.reflection_extractor"/>
     <service id="Symfony\Component\WebLink\HttpHeaderSerializer" alias="web_link.http_header_serializer"/>
+    <service id="Symfony\Component\Uid\Factory\UlidFactory" alias="ulid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\UuidFactory" alias="uuid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\NameBasedUuidFactory" alias="name_based_uuid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\RandomBasedUuidFactory" alias="random_based_uuid.factory"/>
+    <service id="Symfony\Component\Uid\Factory\TimeBasedUuidFactory" alias="time_based_uuid.factory"/>
     <service id="cache.default_redis_provider" alias=".cache_connection.GD_MSZC"/>
     <service id="cache.default_memcached_provider" alias=".cache_connection.JKE6keX"/>
     <service id="cache.default_doctrine_dbal_provider" alias="doctrine.dbal.default_connection"/>
@@ -10330,9 +11372,11 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="Knp\Component\Pager\ArgumentAccess\ArgumentAccessInterface" alias="Knp\Component\Pager\ArgumentAccess\RequestArgumentAccess"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Menu\MenuItemMatcherInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Menu\MenuItemMatcher"/>
+    <service id="EasyCorp\Bundle\EasyAdminBundle\Contracts\Orm\EntityPaginatorInterface" alias="EasyCorp\Bundle\EasyAdminBundle\Orm\EntityPaginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Ioz7h9V"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.La4MfUZ"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -10356,7 +11400,11 @@
     <service id=".service_locator.GsIjbjK" alias="messenger.receiver_locator"/>
     <service id=".service_locator.Q7if2wv" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.ZBZXtOS" alias=".service_locator.NZdAz3P"/>
+    <service id=".service_locator.Mo0FXEU" alias="service_locator_EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator"/>
     <service id=".service_locator.bJ.4HC5" alias=".service_locator.w7.f4fT"/>
+    <service id=".service_locator.twrFs.m" alias=".service_locator.jwjltq_"/>
+    <service id=".service_locator.lng3o3t" alias=".service_locator.yR6jqeD"/>
+    <service id=".service_locator.Lazlz4J" alias=".service_locator.jG5xrFj"/>
     <service id=".service_locator.oqerleC" alias=".service_locator.zoVzhCf"/>
     <service id=".service_locator.qpV4qDJ" alias=".service_locator.EMuVimD"/>
     <service id=".service_locator.HuHdp3s" alias=".service_locator.JFCU_Ej"/>
@@ -10366,11 +11414,13 @@
     <service id=".service_locator.4ntabyc" alias=".service_locator.kuUfZEq"/>
     <service id=".service_locator.gjt7tHW" alias=".service_locator.pbtqkCT"/>
     <service id=".service_locator.UfbavBN" alias=".service_locator.d_UY3kt"/>
-    <service id=".service_locator.iuO.S4j" alias=".service_locator.Ioz7h9V"/>
+    <service id=".service_locator.ZUSxOYm" alias=".service_locator.La4MfUZ"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.rGm8mNR" alias=".service_locator.r_6Ne5G"/>
+    <service id=".service_locator.DjBLhw." alias=".service_locator.9xwBRkw"/>
     <service id=".service_locator.XtmiKbi" alias=".service_locator.MfxSDRP"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
+    <service id=".service_locator.ZP92gqz" alias=".service_locator.3YFBJbt"/>
+    <service id=".service_locator.yTMp7CA" alias=".service_locator.EjdkWEU"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="validator" alias="debug.validator"/>
     <service id="http_client" alias=".debug.http_client"/>
@@ -10392,7 +11442,17 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
+    <service id=".service_locator.b4Agcrj" alias=".service_locator.Nb584vp"/>
+    <service id=".service_locator.rr8g6a9" alias=".service_locator.wvbCcwL"/>
+    <service id=".service_locator.1aiqmLQ" alias=".service_locator.UrOEf8r"/>
+    <service id=".service_locator.A1CG8fu" alias=".service_locator.kud45L1"/>
+    <service id=".service_locator.AMJoP_V" alias=".service_locator.t9B7cZ4"/>
+    <service id=".service_locator.bznA3Sd" alias=".service_locator.jwjltq_"/>
+    <service id=".service_locator.4MX1q0S" alias=".service_locator.yR6jqeD"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
+    <service id=".service_locator.dMQbl2t" alias=".service_locator.jG5xrFj"/>
+    <service id=".service_locator.z_typH5" alias=".service_locator.vMUOjiq"/>
+    <service id=".service_locator.uoBNKjJ" alias=".service_locator.t7nLwyX"/>
     <service id=".service_locator.2mUS3V4" alias=".service_locator.zoVzhCf"/>
     <service id=".service_locator.owYSAS8" alias=".service_locator.EMuVimD"/>
     <service id=".service_locator.AUCwrUD" alias=".service_locator.JFCU_Ej"/>
@@ -10407,8 +11467,10 @@
     <service id=".service_locator.EmZ4cZI" alias=".service_locator.Hz5btge"/>
     <service id=".service_locator.ACbmi6u" alias=".service_locator.pbtqkCT"/>
     <service id=".service_locator.yyqRZo0" alias=".service_locator.d_UY3kt"/>
+    <service id=".service_locator.Tvu22ko" alias=".service_locator.3YFBJbt"/>
+    <service id=".service_locator.8dJpptH" alias=".service_locator.EjdkWEU"/>
     <service id=".service_locator.Q1z.f9O" alias=".service_locator.O2p6Lk7"/>
-    <service id=".service_locator.dGUCsbe" alias=".service_locator.oR77BOj"/>
+    <service id=".service_locator.k22e_lh" alias=".service_locator.BSVJ08h"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.hnz5ZNh" alias=".service_locator.0TACwl3"/>
     <service id=".service_locator..Fs8Kd7" alias=".service_locator.e_.xxAP"/>
