@@ -33,12 +33,12 @@ class Evenement
     private ?string $image = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Assert\NotNull(message: 'Date de début nécessaire.')]
+    #[Assert\NotNull(message: 'Veuillez saisir une date de début.')]
     #[Assert\GreaterThanOrEqual("tomorrow", message: 'La date de  début doit être à partir de demain.')]
     private ?\DateTimeInterface $dateDebut = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Assert\NotNull(message: 'Date de fin nécessaire.')]
+    #[Assert\NotNull(message: 'Veuillez saisir une date de fin.')]
     #[Assert\Callback([self::class, 'validateDateFin'])]
     private ?\DateTimeInterface $dateFin = null;
 
@@ -53,9 +53,6 @@ class Evenement
 
     #[ORM\Column]
     private ?int $places = null;
-
-    #[ORM\Column(nullable: false)]
-    private ?int $placesPrises = 0;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $affiche = null;
@@ -186,18 +183,6 @@ class Evenement
         return $this;
     }
         
-    public function getPlacesPrises(): ?int
-    {
-        return $this->placesPrises;
-    }
-
-    public function setPlacesPrises(?int $placesPrises): static
-    {
-        $this->placesPrises = $placesPrises;
-
-        return $this;
-    }
-
     public function getAffiche(): ?string
     {
         return $this->affiche;
@@ -306,4 +291,21 @@ class Evenement
         return $this;
     }
 
+
+    // =============== gérer nombre de Participations ===============
+    public function getTotalParticipants(): int
+    {
+        $totalParticipants = 0;
+
+        foreach ($this->participations as $participation) {
+            $totalParticipants += $participation->getNbrParticipants();
+        }
+
+        return $totalParticipants;
+    }
+
+    public function getNbrPlacesDisponibles(): int
+    {
+        return $this->getPlaces() - $this->getTotalParticipants();
+    }
 }

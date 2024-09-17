@@ -22,7 +22,7 @@
     <p>Visibilité : {{ evenement.visibilite }}</p>
     <p>{{ evenement.contenu }}</p>
 
-    <p> {{ evenement.placesPrises }} / {{ evenement.places }} places prises.</p>
+    <p> {{ evenement.getTotalParticipants() }} / {{ evenement.places }} places prises.</p>
 
     {% if evenement.participations|length == 0 %}
         <p>Aucun inscrit pour le moment</p>

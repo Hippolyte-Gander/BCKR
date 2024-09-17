@@ -201,26 +201,18 @@ class EvenementController extends AbstractController
                 $participation->setInscrit($user);
                 $participation->setInscriptions($evenement);
                 
-                // Récupérer le nombre de participants soumis
+                // Récupérer le nombre de participants soumis dans le formulaire
                 $nbrParticipants = $form->get('nbrParticipants')->getData();
                 $participation->setNbrParticipants($nbrParticipants);
 
                 // Vérifier si assez de places libres
-                $futuresPlacesPrises = $evenement->getPlacesPrises() + $nbrParticipants;
+                $futuresPlacesPrises = $evenement->getTotalParticipants() + $nbrParticipants;
                 $placesMax = $evenement->getPlaces();
 
                 if ($futuresPlacesPrises > $placesMax) {
                     // alert('Erreur');
                     return $this->redirectToRoute('app_evenement');
                 } elseif ($futuresPlacesPrises <= $placesMax) {
-                    // MAJ nbr placesPrises
-                    $evenement->setPlacesPrises($futuresPlacesPrises);
-                    
-                    // Ajout de la participation dans l'entité User et Evenement
-                    // $user->getParticipationsEvenement()->add($participation);
-                    // $evenement->getParticipations()->add($participation);
-
-
                     // Sauvegarder en BDD
                     $entityManager->persist($participation);
                     $entityManager->flush();
@@ -257,11 +249,6 @@ class EvenementController extends AbstractController
 
             // Si la participation existe, la supprimer
             if ($participation) {
-                // MAJ places prises
-                $nbrParticipants = $participation->getNbrParticipants();
-                $futuresPlacesPrises = $evenement->getPlacesPrises() - $nbrParticipants;
-                $evenement->setPlacesPrises($futuresPlacesPrises);
-
                 // Sauvegarder en BDD
                 $entityManager->persist($evenement);
                 $entityManager->remove($participation);
