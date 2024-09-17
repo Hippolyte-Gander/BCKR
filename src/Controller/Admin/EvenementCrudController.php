@@ -33,11 +33,11 @@ class EvenementCrudController extends AbstractCrudController
             TextField::new('contenu'),
             IntegerField::new('places'),
             TextField::new('visibilite'),
-            // AssociationField::new('participations')
-            //     ->onlyOnIndex(),
-            // ArrayField::new('participations')
-            //     ->onlyOnDetail(),
-            ImageField::new('affiche')->setUploadedFileNamePattern('[year]/[month]/[day]/[slug]-[contenthash].[extension]')->setBasePath('assets/img/affiche-event/')->setUploadDir('assets/img/affiche-event/')->setRequired(false),
+            // Ajouter un champ personnalisé pour afficher les participations
+            CollectionField::new('participations', 'Participations')
+                ->setTemplatePath('admin/participations.html.twig') // Template Twig personnalisé pour les participations
+                ->onlyOnDetail(),
+            // ImageField::new('affiche')->setUploadedFileNamePattern('[year]/[month]/[day]/[slug]-[contenthash].[extension]')->setBasePath('assets/img/affiche-event/')->setUploadDir('assets/img/affiche-event/')->setRequired(false),
         ];
     }
 }
