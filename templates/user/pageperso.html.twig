@@ -9,191 +9,142 @@
 
 {% if app.user %}
     <div class="pagePerso-container">
-        <div>
-            <a class="btn-editer-profile" href="{{ path('edit_user', {'id': app.user.id}) }}">Éditer</a>
-        </div>
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
+        <div class="pagePerso-wrapper">
+            <section class="gerer-compte">
+                <h5>Gestion du compte</h5>
+                <ul>
+                    <li>
+                        <a href="{{ path('edit_user', {'id': app.user.id}) }}">Modifier profil</a>
+                    </li>
+                    <li>
+                        <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
+                    </li>
+                </ul>
+            </section>
 
-        <div class="pagePerso-contenu">
-            <div class="mot-de-passe-oublie">
-                <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
-            </div>
+            <section class="infos-compte">
+                <div class="infos-generales">
 
-            <div class="infos-pagePerso">
-
-                    <table>
-                        {% if app.user.isAdmin() %}
-                        <tr>
-                            <td>
-                                Rôle
-                            </td>
-                            <td>
-                                {% for role in app.user.roles %}
-                                    {% if role == 'ROLE_ADMIN' %}
-                                        Administrateur 
-                                    {% elseif role == 'ROLE_MEMBRE' %}
-                                        Membre 
-                                    {% elseif role == 'ROLE_USER' %}
-                                        Utilisateur 
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
-                        </tr>
-                        {% endif %}
-
-                        <tr>
-                            <td>
-                                Email
-                            </td>
-                            <td>
-                                {{ app.user.email }}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Nom
-                            </td>
-                            <td>
-                                {% if app.user.nom %}
-                                    {{ app.user.nom }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Nom
-                            </td>
-                            <td>
-                                {% if app.user.nom %}
-                                    {{ app.user.nom }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Préom
-                            </td>
-                            <td>
-                                {% if app.user.prenom %}
-                                    {{ app.user.prenom }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                Numéro de licence
-                            </td>
-                            <td>
-                                {% if app.user.numLicence %}
-                                    {{ app.user.numLicence }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Numéro de téléphone
-                            </td>
-                            <td>
-                                {% if app.user.numTelephone %}
-                                    {{ app.user.numTelephone }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Date de naissance
-                            </td>
-                            <td>
-                                {% if app.user.dateNaissance %}
-                                    {{ app.user.dateNaissanceFormatee }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Adresse
-                            </td>
-                            <td>
-                                {% if app.user.adresse %}
-                                    {{ app.user.adresse }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Ville
-                            </td>
-                            <td>
-                                {% if app.user.ville %}
-                                    {{ app.user.ville }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Code Postal
-                            </td>
-                            <td>
-                                {% if app.user.cp %}
-                                    {{ app.user.cp }}
-                                {% else %}
-                                    Non renseigné
-                                {% endif %}
-                            </td>
-                        </tr>
-
-                    </table>
-            </div>
-
-            <div class="evenements-pagePerso">
-                
-                {% if app.user.photo %}
-                    <div class="photo-pagePerso">
-                        {{ app.user.photo }}
+                    <div class="infos-texte">
+                        <h5>Informations générales</h5>
+                        <div class="texte-underligne">
+                            Pseudo
+                        </div>
+                        <div class="espace-perso-texte">
+                            {{ app.user.pseudo }}
+                        </div>
+                        <div class="texte-underligne">
+                            Email
+                        </div>
+                        <div class="espace-perso-texte">
+                            {{ app.user.email }}
+                        </div>
                     </div>
-                {% endif %}
 
+                    {% if app.user.photo %}
+                        <div class="photo-pagePerso">
+                            {{ app.user.photo }}
+                        </div>
+                    {% else %}
+                        <div class="photo-pagePerso">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"/></svg>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="infos-membre">
+                    <div class="infos-texte">
+                        <h5>Informations personnelles</h5>
+                        <div class="texte-underligne">
+                            Nom
+                        </div>
+                        <div class="espace-perso-texte">
+                            {% if app.user.nom %}
+                                {{ app.user.nom }}
+                            {% else %}
+                                Non renseigné
+                            {% endif %}
+                        </div>
+
+                        <div class="texte-underligne">
+                            Prénom
+                        </div>
+                        <div class="espace-perso-texte">
+                            {% if app.user.prenom %}
+                                {{ app.user.prenom }}
+                            {% else %}
+                                Non renseigné
+                            {% endif %}
+                        </div>
+                        <div class="texte-underligne">
+                            Numéro de téléphone
+                        </div>
+                        <div class="espace-perso-texte">
+                            {% if app.user.numTelephone %}
+                                {{ app.user.numTelephone }}
+                            {% else %}
+                                Non renseigné
+                            {% endif %}
+                        </div>
+                        <div class="texte-underligne">
+                            Numéro de licence
+                        </div>
+                        <div class="espace-perso-texte">
+                            {% if app.user.numLicence %}
+                                {{ app.user.numLicence }}
+                            {% else %}
+                                Non renseigné
+                            {% endif %}
+                        </div>
+                        <div class="texte-underligne">
+                            Date de naissance
+                        </div>
+                        <div class="espace-perso-texte">
+                            {% if app.user.dateNaissanceFormatee %}
+                                {{ app.user.dateNaissanceFormatee }}
+                            {% else %}
+                                Non renseigné
+                            {% endif %}
+                        </div>
+                        <div class="texte-underligne">
+                            Adresse
+                        </div>
+                        <div class="espace-perso-texte">
+                            {% if app.user.adresse and app.user.ville and app.user.cp %}
+                                {{ app.user.adresse }}, {{ app.user.cp }} {{ app.user.ville }}
+                            {% else %}
+                                Non renseigné
+                            {% endif %}
+                        </div>
+
+                    </div>
+            </section>
+
+            <section class="evenements-inscrit">
                 {% if app.user.participationsEvenement|length > 0 %}
                     <h5>Inscrit aux événements :</h5>
-                        <ul>
-                            {% for participation in app.user.participationsEvenement %}
-                                <li>
-                                    <h6><a href=" {{ path('show_evenement', {'id': participation.inscriptions.id}) }} ">{{ participation.inscriptions.titre }}</a></h6>
-                                    {{ participation.inscriptions.description }}<br>
-                                    Du {{ participation.inscriptions.dateDebutFormatee }} à {{ participation.inscriptions.heureDebutFormatee }}<br>
-                                    Au {{ participation.inscriptions.dateFinFormatee }} à {{ participation.inscriptions.heureFinFormatee }}<br>
-                                </li>
-                            {% endfor %}
-                        </ul>
+                    <div class="evenement-mini-card">
+                        {% for participation in app.user.participationsEvenement %}
+                            <div class="affiche-event">
+                                {% if participation.inscriptions.affiche %}
+                                    {{ participation.inscriptions.affiche }}
+                                {% else %}
+                                    <img src="{{ asset('img/le-club3.jpg')}}" alt="Photo d'un barbecue convivial">
+                                {% endif %}
+                            </div>
+                            <div class="detail-mini-card">
+                                <h6><a href=" {{ path('show_evenement', {'id': participation.inscriptions.id}) }} ">{{ participation.inscriptions.titre }}</a></h6>
+                                {{ participation.inscriptions.description }}<br>
+                                Du {{ participation.inscriptions.dateDebutFormatee }} à {{ participation.inscriptions.heureDebutFormatee }}<br>
+                                Au {{ participation.inscriptions.dateFinFormatee }} à {{ participation.inscriptions.heureFinFormatee }}<br>
+                            </div>
+                        {% endfor %}
+                        </div>
                 {% else %}
                     Inscrit à aucun événement.
                 {% endif %}
-            </div>
+            </section>
         </div>
     </div>
 {% else %}
