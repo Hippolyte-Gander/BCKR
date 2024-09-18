@@ -2,16 +2,23 @@
 
 namespace App\Entity;
 
-use App\Repository\ImageEvenementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ImageEvenementRepository;
+use Symfony\Component\HttpFoundation\File\File;
 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 #[ORM\Entity(repositoryClass: ImageEvenementRepository::class)]
+#[Vich\Uploadable]
 class ImageEvenement
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[UploadableField(mapping: 'products', fileNameProperty: 'name', size: 'size')]
+    private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $name = null;
@@ -29,6 +36,21 @@ class ImageEvenement
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+        return $this;
     }
 
     public function getName(): ?string
@@ -77,5 +99,10 @@ class ImageEvenement
         $this->evenement = $evenement;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

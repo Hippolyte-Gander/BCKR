@@ -29,9 +29,6 @@ class Evenement
     #[ORM\Column(type: Types::TEXT)]
     private ?string $contenu = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotNull(message: 'Veuillez saisir une date de début.')]
     #[Assert\GreaterThanOrEqual("tomorrow", message: 'La date de  début doit être à partir de demain.')]
@@ -66,7 +63,7 @@ class Evenement
     /**
      * @var Collection<int, ImageEvenement>
      */
-    #[ORM\OneToMany(targetEntity: ImageEvenement::class, mappedBy: 'evenement', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: ImageEvenement::class, mappedBy: 'evenement', cascade: ['persist'], orphanRemoval: true)]
     private Collection $imagesEvenement;
 
     public function __construct()
@@ -118,18 +115,6 @@ class Evenement
     public function setContenu(string $contenu): static
     {
         $this->contenu = $contenu;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): static
-    {
-        $this->image = $image;
 
         return $this;
     }
