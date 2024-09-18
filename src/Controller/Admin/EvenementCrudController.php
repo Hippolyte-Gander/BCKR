@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Evenement;
+use App\Entity\ImageEvenement;
 use phpDocumentor\Reflection\Types\Integer;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -27,16 +28,18 @@ class EvenementCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('titre'),
-            TextField::new('description'),
-            TextField::new('contenu'),
-            IntegerField::new('places'),
-            TextField::new('visibilite'),
-            // Ajouter un champ personnalisé pour afficher les participations
-            CollectionField::new('participations', 'Participations')
+            yield IdField::new('id'),
+            yield TextField::new('titre'),
+            yield TextField::new('description'),
+            yield TextField::new('contenu'),
+            yield IntegerField::new('places'),
+            yield TextField::new('visibilite'),
+            // Ajout d'un champ personnalisé pour afficher les participations
+            yield CollectionField::new('participations', 'Participations')
                 ->setTemplatePath('admin/evenementParticipations.html.twig') // Template Twig personnalisé pour les participations
                 ->onlyOnDetail(),
+            yield CollectionField::new('imagesEvenement')
+            // ->setEntryType(ImageEvenement::class)
             // ImageField::new('affiche')->setUploadedFileNamePattern('[year]/[month]/[day]/[slug]-[contenthash].[extension]')->setBasePath('assets/img/affiche-event/')->setUploadDir('assets/img/affiche-event/')->setRequired(false),
         ];
     }
