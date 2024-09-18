@@ -14,6 +14,7 @@
 ::selection {
     background-color: #807FFF;
     color: rgb(0, 0, 0);
+    border-radius: 16px;
 }
 
 /* width */
@@ -61,7 +62,7 @@ h3 {
 }
     
 h4 {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: clamp(1rem, 5vw, 1.7rem);
 }
 
@@ -317,12 +318,12 @@ footer a i:hover {
     color: rgba(0, 0, 0, 0.750);
 }
 
-.a-venir {
+.evenement-a-venir {
     display: flex;
     flex-direction: column;
 }
 
-.a-venir h2 {
+.evenement-a-venir h2 {
     padding: 0 32px 0 32px;
 }
 
@@ -544,45 +545,93 @@ footer a i:hover {
 
 .liste-evenement-background {
     padding-top: 110px;
-    background: url('../img/volants-sur-terrain-sombre.jpg') no-repeat;
-    background-size: cover;
-    min-height: 90lvh;
+    /* background: url('../img/volants-sur-terrain-sombre.jpg') no-repeat; */
+    /* background-size: cover; */
+    min-height: 100lvh;
     display: flex;
     flex-direction: column;
 }
 
 .liste-evenement-background h4 {
-    padding: 0 100px;
+    padding: 32px;
 }
 
-.liste-evenement-background a:hover {
-    text-decoration: underline;
+.evenement-form form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: solid 1px #5757b1;
+    border-bottom: solid 1px #5757b1;
+    padding: 16px;
+    margin: 16px 0;
 }
 
-.liste-evenement-background a {
-    color: white;
-    padding: 20px;
-    width: max-content;
+.nbr-participants-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nbr-participants-form div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nbr-participants-form input{
+    width: 64px;
+    color: #000000;
+}
+
+.form-nbr-participants div label {
+    color: #000000;
+    align-content: center;
+    padding: 8px 0;
+}
+
+.valider-participation-btn {
+    padding: 16px;
+    display: flex;
+    width: fit-content;
+    background-color: #807FFF;
+    border-radius: 16px;
+    border: solid 1px;
+}
+
+.valider-participation-btn:hover {
+    cursor: pointer;
+}
+
+.suppr-edit-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 24px;
 }
 
 .message-participation {
     text-align: center;
     font-weight: 500;
-    padding: 15px;
-    color: rgb(190, 190, 190);
+    padding: 16px;
+    color: rgb(0, 0, 0);
 }
 
-table {
+/* table {
     width: 80%;
     border: solid 2px white;
     border-collapse: collapse;
     margin: 0 auto;
-}
+    margin-bottom: 24px;
+} */
 
 .navigation {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    color: #000000;
+    margin: 24px;
 }
 
 /* .pagination {
@@ -598,6 +647,7 @@ td, tr {
     padding: 30px;
     border: solid 1px white;
     text-align: center;
+    color: white;
 }
 
 .btn-editer {
@@ -722,10 +772,10 @@ td, tr {
     width: 100%;
 }
 
-.required {
+/* .required {
     color: rgb(255, 255, 255);
     padding-right: 20px;
-}
+} */
 
 .texte-formulaire {
     color: rgb(255, 255, 255);

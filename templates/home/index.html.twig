@@ -8,9 +8,8 @@
         <section class="titre-homepage">
             <h1>Badminton Club<br>Kriegsheim Rottelsheim</h1>
 
-            
             {# <div class="annonce">
-
+                <p class="alerte-accueil"> {{ afficher message important ici }} </p>
             </div> #}
         </section>
 
@@ -60,7 +59,7 @@
             </article>
         </section>
 
-        <section class="a-venir">
+        <section class="evenement-a-venir">
             <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
             <div class="evenement-wrapper">
                 
@@ -85,7 +84,7 @@
                         {% if evenement.description|length < 15 %}
                             <p class="evenement-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloribus quo totam earum omnis. Inventore perspiciatis possimus ipsum soluta itaque similique eveniet, maiores reiciendis alias velit. Reprehenderit minus quibusdam cum autem.</p>
                         {% else %}
-                            <p class="evenement-descr">{{ evenement.description }}</p>
+                            <p class="evenement-descr">{{ evenement.contenu }}</p>
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -95,7 +94,7 @@
             </div>
         </section>
 
-        <section class="carrousel">
+        {# <section class="carrousel">
             <div class="swiper">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
@@ -117,12 +116,12 @@
                 <!-- If we need scrollbar -->
                 <div class="swiper-scrollbar"></div>
               </div>
-        </section>
+        </section> #}
         
     </div>
 </main>
 
 {% endblock %}
-{% block javascripts %}
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-{% endblock %}
+{# {% block javascripts %}
+    <script src="{{ asset('js/script-swiper.js') }}"></script>
+{% endblock %} #}

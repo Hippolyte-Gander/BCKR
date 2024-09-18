@@ -16,12 +16,75 @@
                 {% endfor %}
         {% endfor %}
     </div>
-    {# début image pagination #}
-    <div class="count">
-        {{ pagination.getTotalItemCount }}
-    </div>
 
-    <table>
+    <section class="evenement-a-venir">
+        <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
+        <div class="evenement-wrapper">
+            
+            {% for evenement in pagination %}
+                <div class="card-evenement">
+                    <div class="evenement-card-top">
+                        <div class="affiche-event">
+                            {% if evenement.affiche %}
+                                {{ evenement.affiche }}
+                            {% else %}
+                                <img src="{{ asset('img/le-club3.jpg')}}" alt="Photo d'une rencontre sportive">
+                            {% endif %}
+                        </div>
+                        <div class="evenement-infos">
+                            <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
+                            <div class="date-event">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</div>
+                            <div class="date-event">Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</div>
+                            <p class="descr-event">{{ evenement.description }}</p>
+                            
+                        </div>
+                    </div>
+                    
+                    {# ========== fonction participation ========== #}
+                    {% if app.user %}
+                        <div class="evenement-form">
+                            {% if app.user.estCeQueParticipeDeja(evenement)  %}
+                                {{ form_start(formsDel[evenement.id]) }}
+                                <div class="bouton">
+                                    {{ form_widget(formsDel[evenement.id].valider) }}
+                                </div>
+                                {{ form_end(formsDel[evenement.id]) }}
+                            {% else %}
+                                {{ form_start(formsAdd[evenement.id]) }}
+                                <div class="nbr-participants-form">
+                                    {{ form_row(formsAdd[evenement.id].nbrParticipants) }}
+                                </div>
+                                    {{ form_widget(formsAdd[evenement.id].valider) }}
+                                {{ form_end(formsAdd[evenement.id]) }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if evenement.description|length < 15 %}
+                        <p class="evenement-descr">A propos de l'événement :<br>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloribus quo totam earum omnis. Inventore perspiciatis possimus ipsum soluta itaque similique eveniet, maiores reiciendis alias velit. Reprehenderit minus quibusdam cum autem.</p>
+                    {% else %}
+                        <p class="evenement-descr">A propos de l'événement :<br>
+                            {{ evenement.contenu }}
+                        </p>
+                    {% endif %}
+
+                    {# ========== delete / edit ========== #}
+                    {% if app.user  and app.user.isAdmin() %}
+                        <div class="suppr-edit-btn">
+                            <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
+                            <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
+
+
+    {# <table>
         <tr class="titre-colonne">
             <td>Nom événement</td>
             <td>Date de début</td>
@@ -46,9 +109,9 @@
                     </td>
                     <td>
                         <a class="texte-utilisateur" href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</a>
-                    </td>
+                    </td> #}
                     {# ========== AJOUTER fonction participation ========== #}
-                    {% if app.user %}
+                    {# {% if app.user %}
                         {% if app.user.estCeQueParticipeDeja(evenement)  %}
                             <td>
                                 <div class="formulaire">
@@ -84,10 +147,6 @@
                 </tr>
 
         {% endfor %}
-    </table>
-    <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
-    </div>
-
+    </table> #}
 </div>
 {% endblock %}

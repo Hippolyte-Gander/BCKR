@@ -21,13 +21,13 @@ class ParticipationType extends AbstractType
                 'label'=>'Nombre de personnes à inscrire',
                 'data' => 1,
                 'attr'=> [
-                    'class'=> 'texte-formulaire',
+                    'class'=> 'nbr-participants-form',
                     'min'=> 1,
                 ]
             ])
             ->add('valider', SubmitType::class, [
                 'attr'=> [
-                    'class'=> 'valider-btn-formulaire'
+                    'class'=> 'valider-participation-btn'
                 ]
             ])
 //             ->add('inscrit', EntityType::class, [
