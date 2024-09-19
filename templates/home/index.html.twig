@@ -15,7 +15,7 @@
 
         <section class="club">
             <article class="card-club">
-                <img class="club-img" src="{{ asset('img/le-club1.jpg')}}" alt="photo du président du club faisant un discours">
+                <img class="club-img" src="{{ asset('img/homepage/le-club1.jpg')}}" alt="photo du président du club faisant un discours">
                 <div class="titre-texte">
                     <a href=" {{ path('club_home') }} "><h2>Le club</h2></a>
                     <p>
@@ -32,7 +32,7 @@
                 </div>
             </article>
             <article class="card-club">
-                <img class="club-img" src="{{ asset('img/le-club2.jpg')}}" alt="photo d'un entraînement du club">
+                <img class="club-img" src="{{ asset('img/homepage/le-club2.jpg')}}" alt="photo d'un entraînement du club">
                 <div class="titre-texte">
                     <a href=" {{ path('app_entrainements') }} "><h2>Les entraînements</h2></a>
                         <p>
@@ -46,7 +46,7 @@
                 </div>
             </article>
             <article class="card-club">
-                <img class="club-img" src="{{ asset('img/le-club3.jpg')}}" alt="photo d'un membre du club faisant une très grande paëlla">
+                <img class="club-img" src="{{ asset('img/homepage/le-club3.jpg')}}" alt="photo d'un membre du club faisant une très grande paëlla">
                 <div class="titre-texte">
                     <a href=" {{ path('app_evenement') }} "><h2>Autres activités</h2></a>
                     <p>
@@ -70,7 +70,7 @@
                                 {% if evenement.affiche %}
                                     {{ evenement.affiche }}
                                 {% else %}
-                                    <img src="{{ asset('img/le-club3.jpg')}}" alt="Photo d'une rencontre sportive">
+                                    <img src="{{ asset('img/homepage/le-club3.jpg')}}" alt="Photo d'une rencontre sportive">
                                 {% endif %}
                             </div>
                             <div class="evenement-infos">

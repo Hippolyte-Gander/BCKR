@@ -10,13 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EntrainementController extends AbstractController
 {
-    #[Route('/entrainements', name: 'app_entrainements')]
-    public function listEntrainements(EntityManagerInterface $entityManager): Response
-    {
-        $entrainements = $entityManager->getRepository(Entrainement::class)->findBy([], ['date' => 'ASC']);
+    // #[Route('/entrainements', name: 'app_entrainements')]
+    // public function listEntrainements(EntityManagerInterface $entityManager): Response
+    // {
+    //     $entrainements = $entityManager->getRepository(Entrainement::class)->findBy([], ['date' => 'ASC']);
 
-        return $this->render('entrainement/list.html.twig', [
-            'entrainements' => $entrainements,
-        ]);
-    }
+    //     return $this->render('entrainement/list.html.twig', [
+    //         'entrainements' => $entrainements,
+    //     ]);
+    // }
 }

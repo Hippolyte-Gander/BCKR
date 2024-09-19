@@ -275,7 +275,7 @@ footer a i:hover {
 }
 
 .titre-homepage {
-    background: url('../img/fond-titre.png') no-repeat;
+    background: url('../img/homepage/fond-titre.png') no-repeat;
     background-position-y: 50%;
     background-size: cover;
     min-height: 400px;
@@ -750,6 +750,95 @@ td, tr {
     flex-direction: column;
 }
 
+/* --------------- PAGE ENTRAINEMENTS ---------------- */
+
+.page-entrainement {
+    padding-top: 117px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-entrainement h2 {
+    color: white;
+
+}
+
+.photos-entrainement {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.img-entrainement {
+    height: 400px;
+    size: cover;
+    width: auto;
+    max-width: 600px;
+}
+
+.separation-parallaxe {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/filet-volant-sombre.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.infos-entrainement {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    padding: 32px 0;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    /* test */
+    background-image: url('../img/filet-volant-sombre.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box-infos {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.box-infos p {
+    color: white;
+    min-height: 100px;
+    padding-top: 32px;
+    text-align: center;
+}
+
+.entrainement-infos-complementaires {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 32px 0;
+}
+
+.texte-img-horizontal {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.texte-img-horizontal p {
+    width: 35%;
+}
 
 /* --------------- MENTIONS LÉGALES ---------------- */
 
