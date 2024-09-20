@@ -12,125 +12,160 @@
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
         <div class="pagePerso-wrapper">
             <section class="gerer-compte">
-                <h5>Gestion du compte</h5>
-                <ul>
-                    <li>
+                <div class="pagePerso-row">
+                    <h5>Gestion du compte</h5>
+                    <svg width="40" height="40" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M49.3962 16.5949C49.715 17.4615 49.446 18.4277 48.7587 19.0453L44.4457 22.9699C44.5552 23.7967 44.615 24.6434 44.615 25.5C44.615 26.3566 44.5552 27.2033 44.4457 28.0301L48.7587 31.9547C49.446 32.5723 49.715 33.5385 49.3962 34.4051C48.958 35.5904 48.43 36.726 47.8224 37.8217L47.3542 38.6285C46.6968 39.7242 45.9597 40.7602 45.1529 41.7363C44.5652 42.4535 43.589 42.6926 42.7124 42.4137L37.1642 40.6506C35.8294 41.6766 34.3552 42.5332 32.7814 43.1807L31.5363 48.8684C31.3371 49.7748 30.6398 50.492 29.7234 50.6414C28.3488 50.8705 26.9343 50.99 25.49 50.99C24.0457 50.99 22.6312 50.8705 21.2566 50.6414C20.3402 50.492 19.6429 49.7748 19.4437 48.8684L18.1986 43.1807C16.6248 42.5332 15.1505 41.6766 13.8158 40.6506L8.27749 42.4236C7.40093 42.7025 6.42476 42.4535 5.83706 41.7463C5.03023 40.7701 4.29312 39.7342 3.63569 38.6385L3.16753 37.8316C2.55991 36.7359 2.03198 35.6004 1.5937 34.415C1.27495 33.5484 1.5439 32.5822 2.2312 31.9646L6.54429 28.04C6.43472 27.2033 6.37495 26.3566 6.37495 25.5C6.37495 24.6434 6.43472 23.7967 6.54429 22.9699L2.2312 19.0453C1.5439 18.4277 1.27495 17.4615 1.5937 16.5949C2.03198 15.4096 2.55991 14.274 3.16753 13.1783L3.63569 12.3715C4.29312 11.2758 5.03023 10.2398 5.83706 9.26367C6.42476 8.54648 7.40093 8.30742 8.27749 8.58633L13.8257 10.3494C15.1605 9.32344 16.6347 8.4668 18.2085 7.81934L19.4537 2.13164C19.6529 1.2252 20.3501 0.508008 21.2666 0.358594C22.6412 0.119531 24.0556 0 25.5 0C26.9443 0 28.3587 0.119531 29.7334 0.348633C30.6498 0.498047 31.347 1.21523 31.5462 2.12168L32.7914 7.80938C34.3652 8.45684 35.8394 9.31348 37.1742 10.3395L42.7224 8.57637C43.599 8.29746 44.5751 8.54648 45.1628 9.25371C45.9697 10.2299 46.7068 11.2658 47.3642 12.3615L47.8324 13.1684C48.44 14.2641 48.9679 15.3996 49.4062 16.585L49.3962 16.5949ZM25.5 33.4688C27.6134 33.4688 29.6403 32.6292 31.1347 31.1348C32.6291 29.6403 33.4687 27.6134 33.4687 25.5C33.4687 23.3866 32.6291 21.3597 31.1347 19.8652C29.6403 18.3708 27.6134 17.5312 25.5 17.5312C23.3865 17.5312 21.3596 18.3708 19.8652 19.8652C18.3708 21.3597 17.5312 23.3866 17.5312 25.5C17.5312 27.6134 18.3708 29.6403 19.8652 31.1348C21.3596 32.6292 23.3865 33.4688 25.5 33.4688Z" fill="black"/>
+                    </svg>
+                </div>
+                    
+                <div id="menu-compte-perso">
+                    <div class="espace-perso-texte">
                         <a href="{{ path('edit_user', {'id': app.user.id}) }}">Modifier profil</a>
-                    </li>
-                    <li>
+                    </div>
+                    <div class="espace-perso-texte">
                         <a href=" {{ path('forgotten_password') }} ">Mot de passe oublié ?</a>
-                    </li>
-                </ul>
+                    </div>
+                    <div class="espace-perso-texte">
+                        Rejoindre le club
+                    </div>
+                    <div class="espace-perso-texte">
+                        Supprimer mon compte
+                    </div>
+                </div>
             </section>
 
             <section class="infos-compte">
                 <div class="infos-generales">
-
-                    <div class="infos-texte">
+                    <div class="pagePerso-row">
                         <h5>Informations générales</h5>
-                        <div class="texte-underligne">
-                            Pseudo
-                        </div>
-                        <div class="espace-perso-texte">
-                            {{ app.user.pseudo }}
-                        </div>
-                        <div class="texte-underligne">
-                            Email
-                        </div>
-                        <div class="espace-perso-texte">
-                            {{ app.user.email }}
-                        </div>
+                        <svg width="40" height="55" viewBox="0 0 55 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_89_2)">
+                            <path d="M16.3748 8.45834H8.95817C4.86206 8.45834 1.5415 11.4058 1.5415 15.0417V54.5417C1.5415 58.1777 4.86206 61.125 8.95817 61.125H46.0415C50.1377 61.125 53.4582 58.1777 53.4582 54.5417V15.0417C53.4582 11.4058 50.1377 8.45834 46.0415 8.45834H38.6248" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M27.5 31.5H38.625" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M27.5 44.6667H38.625" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.375 8.45833C16.375 4.82246 19.6956 1.875 23.7917 1.875H31.2083C35.3046 1.875 38.625 4.82246 38.625 8.45833V15.0417H16.375V8.45833Z" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.1208 34.523C18.0286 34.523 19.5752 33.0793 19.5752 31.2985C19.5752 29.5176 18.0286 28.074 16.1208 28.074C14.2131 28.074 12.6665 29.5176 12.6665 31.2985C12.6665 33.0793 14.2131 34.523 16.1208 34.523Z" fill="black"/>
+                            <path d="M16.1208 47.4209C18.0286 47.4209 19.5752 46.0675 19.5752 44.398C19.5752 42.7284 18.0286 41.375 16.1208 41.375C14.2131 41.375 12.6665 42.7284 12.6665 44.398C12.6665 46.0675 14.2131 47.4209 16.1208 47.4209Z" fill="black"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_89_2">
+                            <rect width="55" height="63" fill="white"/>
+                            </clipPath>
+                            </defs>
+                        </svg>
                     </div>
-
-                    {% if app.user.photo %}
-                        <div class="photo-pagePerso">
-                            {{ app.user.photo }}
+                    <div class="pagePerso-row">
+                        <div class="infos-liste">
+                            <div class="texte-underligne">
+                                Pseudo
+                            </div>
+                            <div class="espace-perso-texte">
+                                {{ app.user.pseudo }}
+                            </div>
+                            <div class="texte-underligne">
+                                Email
+                            </div>
+                            <div class="espace-perso-texte">
+                                {{ app.user.email }}
+                            </div>
                         </div>
-                    {% else %}
-                        <div class="photo-pagePerso">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"/></svg>
-                        </div>
-                    {% endif %}
+                        {% if app.user.photo %}
+                            <div class="photo-pagePerso">
+                                {{ app.user.photo }}
+                            </div>
+                        {% else %}
+                            <div class="photo-pagePerso">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"/></svg>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
 
                 <div class="infos-membre">
                     <div class="infos-texte">
                         <h5>Informations personnelles</h5>
-                        <div class="texte-underligne">
-                            Nom
-                        </div>
-                        <div class="espace-perso-texte">
-                            {% if app.user.nom %}
-                                {{ app.user.nom }}
-                            {% else %}
-                                Non renseigné
-                            {% endif %}
-                        </div>
+                        <div class="infos-liste">
+                            <div class="texte-underligne">
+                                Nom
+                            </div>
+                            <div class="espace-perso-texte">
+                                {% if app.user.nom %}
+                                    {{ app.user.nom }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </div>
 
-                        <div class="texte-underligne">
-                            Prénom
+                            <div class="texte-underligne">
+                                Prénom
+                            </div>
+                            <div class="espace-perso-texte">
+                                {% if app.user.prenom %}
+                                    {{ app.user.prenom }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </div>
+                            <div class="texte-underligne">
+                                Numéro de téléphone
+                            </div>
+                            <div class="espace-perso-texte">
+                                {% if app.user.numTelephone %}
+                                    {{ app.user.numTelephone }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </div>
+                            <div class="texte-underligne">
+                                Numéro de licence
+                            </div>
+                            <div class="espace-perso-texte">
+                                {% if app.user.numLicence %}
+                                    {{ app.user.numLicence }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </div>
+                            <div class="texte-underligne">
+                                Date de naissance
+                            </div>
+                            <div class="espace-perso-texte">
+                                {% if app.user.dateNaissance %}
+                                    {{ app.user.dateNaissanceFormatee }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </div>
+                            <div class="texte-underligne">
+                                Adresse
+                            </div>
+                            <div class="espace-perso-texte">
+                                {% if app.user.adresse and app.user.ville and app.user.cp %}
+                                    {{ app.user.adresse }}, {{ app.user.cp }} {{ app.user.ville }}
+                                {% else %}
+                                    Non renseigné
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="espace-perso-texte">
-                            {% if app.user.prenom %}
-                                {{ app.user.prenom }}
-                            {% else %}
-                                Non renseigné
-                            {% endif %}
-                        </div>
-                        <div class="texte-underligne">
-                            Numéro de téléphone
-                        </div>
-                        <div class="espace-perso-texte">
-                            {% if app.user.numTelephone %}
-                                {{ app.user.numTelephone }}
-                            {% else %}
-                                Non renseigné
-                            {% endif %}
-                        </div>
-                        <div class="texte-underligne">
-                            Numéro de licence
-                        </div>
-                        <div class="espace-perso-texte">
-                            {% if app.user.numLicence %}
-                                {{ app.user.numLicence }}
-                            {% else %}
-                                Non renseigné
-                            {% endif %}
-                        </div>
-                        <div class="texte-underligne">
-                            Date de naissance
-                        </div>
-                        <div class="espace-perso-texte">
-                            {% if app.user.dateNaissanceFormatee %}
-                                {{ app.user.dateNaissanceFormatee }}
-                            {% else %}
-                                Non renseigné
-                            {% endif %}
-                        </div>
-                        <div class="texte-underligne">
-                            Adresse
-                        </div>
-                        <div class="espace-perso-texte">
-                            {% if app.user.adresse and app.user.ville and app.user.cp %}
-                                {{ app.user.adresse }}, {{ app.user.cp }} {{ app.user.ville }}
-                            {% else %}
-                                Non renseigné
-                            {% endif %}
-                        </div>
-
                     </div>
             </section>
 
             <section class="evenements-inscrit">
                 {% if app.user.participationsEvenement|length > 0 %}
-                    <h5>Inscrit aux événements :</h5>
+                    <div class="pagePerso-row">
+                        <h5>Inscrit aux événements :</h5>
+                        <svg width="37" height="40" viewBox="0 0 37 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M29.5416 17.0833H7.45822V21.5H29.5416V17.0833ZM34.5 4.91667H31.7499V0.5H27.3332V4.91667H9.66656V0.5H5.24989V4.91667H2.5C0.0487502 4.91667 0 5.07083 0 7.5V36.9584C0 39.3875 0.590306 40 3.04156 40H33.9582C36.3874 40 36.9999 39.3875 36.9999 36.9584V7.5C36.9999 5.07083 36.9292 4.91667 34.5 4.91667ZM33.9582 36.9584H3.04156V12.6667H33.9582V36.9584ZM22.9166 25.9167H7.45822V30.3333H22.9166V25.9167Z" fill="black"/>
+                        </svg>
+                    </div>
                     <div class="evenement-mini-card">
                         {% for participation in app.user.participationsEvenement %}
                             <div class="affiche-event">
                                 {% if participation.inscriptions.affiche %}
                                     {{ participation.inscriptions.affiche }}
                                 {% else %}
-                                    <img src="{{ asset('img/le-club3.jpg')}}" alt="Photo d'un barbecue convivial">
+                                    <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'un barbecue convivial">
                                 {% endif %}
                             </div>
                             <div class="detail-mini-card">

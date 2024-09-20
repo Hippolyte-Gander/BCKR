@@ -86,6 +86,7 @@ a {
     cursor: pointer;
 } */
 
+
 /* --------------- NAVBAR ---------------- */
 
 
@@ -321,6 +322,7 @@ footer a i:hover {
 .evenement-a-venir {
     display: flex;
     flex-direction: column;
+    margin: 16px;
 }
 
 .evenement-a-venir h2 {
@@ -443,39 +445,6 @@ footer a i:hover {
 /* --------------- DETAIL UTILISATEUR ---------------- */
 
 
-
-/* --------------- LISTE MEMBRES ---------------- */
-
-.membre-container {
-    padding-top: 110px;
-    min-height: 100vh;
-    background: url('../img/terrain-bad-sombre.jpg') no-repeat;
-    background-size: cover;
-}
-
-.membre-container h4 {
-    padding: 0 100px;
-}
-
-.membre-container p {
-    padding: 60px;
-    margin: 60px;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    background: #3a3a3a85;
-    border-radius: 5px;
-}
-
-.membre-container a {
-    color: white;
-    margin: 10px;
-}
-
-.membre-container a:hover {
-    text-decoration: underline;
-}
-
 /* --------------- ESPACE PERSO ---------------- */
 
 .pagePerso-container {
@@ -493,11 +462,17 @@ footer a i:hover {
 .pagePerso-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 16px;
-    padding: 0 24px;
     width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin-bottom: 32px;
+}
+
+.gerer-compte,
+.infos-compte,
+.evenements-inscrit {
+    padding: 24px;
+    margin: 0 16px;
 }
 
 .gerer-compte {
@@ -505,23 +480,48 @@ footer a i:hover {
     min-width: 240px;
     display: flex;
     flex-direction: column;
+    border-radius: 16px;
+    background-color: rgb(192, 192, 192);
 }
 
 .gerer-compte li {
     list-style: none;
 }
 
-.infos-compte {
-    width: auto;
-    min-width: 320px;
-    max-width: 500px;
+.pagePerso-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.pagePerso-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#menu-compte-perso {
+    padding: 0 16px;
+    margin: 16px 0;
+    border-left: solid 3px #807FFF;
+}
+
+.infos-compte {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 30%;
+    border: solid 1px #807FFF;
+    border-radius: 16px;
 }
 
 .infos-generales {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -529,6 +529,15 @@ footer a i:hover {
 .infos-texte {
     display: flex;
     flex-direction: column;
+}
+
+.infos-liste {
+    padding: 16px;
+}
+
+.espace-perso-texte,
+.texte-underligne {
+    padding: 8px 0;
 }
 
 .texte-underligne {
@@ -543,10 +552,8 @@ footer a i:hover {
 .evenements-inscrit {
     width: 35%;
     min-width: 360px;
-}
-
-.evenements-inscrit h5 {
-    margin: 0 24px;
+    border: solid 1px black;
+    border-radius: 16px;
 }
 
 .evenement-mini-card {
@@ -555,6 +562,7 @@ footer a i:hover {
     flex-direction: row;
     gap: 16px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .detail-mini-card {
@@ -675,7 +683,7 @@ td, tr {
     color: black;
     padding: 10px;
     background-color: orange;
-    border-radius: 10px;
+    border-radius: 16px;
 }
 
 .btn-editer-profile {
