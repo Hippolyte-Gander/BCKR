@@ -17,7 +17,7 @@ class ImageEvenement
     #[ORM\Column]
     private ?int $id = null;
 
-    #[UploadableField(mapping: 'products', fileNameProperty: 'name', size: 'size')]
+    #[UploadableField(mapping: 'photoDEvenement', fileNameProperty: 'name', size: 'size')]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]

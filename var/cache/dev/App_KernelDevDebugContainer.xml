@@ -282,11 +282,11 @@
     <parameter key="knp_paginator.page_limit">null</parameter>
     <parameter key="vich_uploader.default_filename_attribute_suffix">_name</parameter>
     <parameter key="vich_uploader.mappings" type="collection">
-      <parameter key="products" type="collection">
-        <parameter key="uri_prefix">/images/products</parameter>
-        <parameter key="upload_destination">C:\laragon\www\Github\BCKR/public/images/products</parameter>
+      <parameter key="photoDEvenement" type="collection">
+        <parameter key="uri_prefix">/images/photoDEvenement</parameter>
+        <parameter key="upload_destination">C:\laragon\www\Github\BCKR/public/images/photoDEvenement</parameter>
         <parameter key="namer" type="collection">
-          <parameter key="service">Vich\UploaderBundle\Naming\SmartUniqueNamer.products</parameter>
+          <parameter key="service">Vich\UploaderBundle\Naming\SmartUniqueNamer.photoDEvenement</parameter>
           <parameter key="options" type="collection"/>
         </parameter>
         <parameter key="directory_namer" type="collection">
@@ -5393,13 +5393,13 @@
       </call>
     </service>
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager">
-      <argument type="service" id=".service_locator.j599G73"/>
+      <argument type="service" id=".service_locator.EJy82.P"/>
       <argument type="collection">
         <argument type="collection">
           <argument type="collection">
             <argument>preUpdate</argument>
           </argument>
-          <argument>vich_uploader.listener.clean.products</argument>
+          <argument>vich_uploader.listener.clean.photoDEvenement</argument>
         </argument>
         <argument type="collection">
           <argument type="collection">
@@ -5459,25 +5459,25 @@
           <argument type="collection">
             <argument>preRemove</argument>
           </argument>
-          <argument>vich_uploader.listener.remove.products</argument>
+          <argument>vich_uploader.listener.remove.photoDEvenement</argument>
         </argument>
         <argument type="collection">
           <argument type="collection">
             <argument>postFlush</argument>
           </argument>
-          <argument>vich_uploader.listener.remove.products</argument>
+          <argument>vich_uploader.listener.remove.photoDEvenement</argument>
         </argument>
         <argument type="collection">
           <argument type="collection">
             <argument>prePersist</argument>
           </argument>
-          <argument>vich_uploader.listener.upload.products</argument>
+          <argument>vich_uploader.listener.upload.photoDEvenement</argument>
         </argument>
         <argument type="collection">
           <argument type="collection">
             <argument>preUpdate</argument>
           </argument>
-          <argument>vich_uploader.listener.upload.products</argument>
+          <argument>vich_uploader.listener.upload.photoDEvenement</argument>
         </argument>
       </argument>
     </service>
@@ -8083,7 +8083,7 @@
       <tag name="assets.package" package="easyadmin.assets.package"/>
       <argument type="service" id="request_stack"/>
     </service>
-    <service id="Vich\UploaderBundle\Naming\SmartUniqueNamer.products" class="Vich\UploaderBundle\Naming\SmartUniqueNamer" public="true">
+    <service id="Vich\UploaderBundle\Naming\SmartUniqueNamer.photoDEvenement" class="Vich\UploaderBundle\Naming\SmartUniqueNamer" public="true">
       <argument type="service" id="Vich\UploaderBundle\Util\Transliterator"/>
     </service>
     <service id="vich_uploader.adapter.mongodb" class="Vich\UploaderBundle\Adapter\ODM\MongoDB\MongoDBAdapter"/>
@@ -8324,25 +8324,25 @@
       <argument type="service" id="Vich\UploaderBundle\Templating\Helper\UploaderHelper"/>
     </service>
     <service id="vich_uploader.metadata.reader" class="Vich\UploaderBundle\Metadata\Driver\AttributeReader"/>
-    <service id="vich_uploader.listener.clean.products" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener">
+    <service id="vich_uploader.listener.clean.photoDEvenement" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener">
       <tag name="doctrine.event_listener" event="preUpdate" priority="50"/>
-      <argument>products</argument>
+      <argument>photoDEvenement</argument>
       <argument type="service" id="vich_uploader.adapter.orm"/>
       <argument type="service" id="vich_uploader.metadata_reader"/>
       <argument type="service" id="vich_uploader.upload_handler"/>
     </service>
-    <service id="vich_uploader.listener.remove.products" class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener">
+    <service id="vich_uploader.listener.remove.photoDEvenement" class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener">
       <tag name="doctrine.event_listener" event="preRemove" priority="0"/>
       <tag name="doctrine.event_listener" event="postFlush" priority="0"/>
-      <argument>products</argument>
+      <argument>photoDEvenement</argument>
       <argument type="service" id="vich_uploader.adapter.orm"/>
       <argument type="service" id="vich_uploader.metadata_reader"/>
       <argument type="service" id="vich_uploader.upload_handler"/>
     </service>
-    <service id="vich_uploader.listener.upload.products" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener">
+    <service id="vich_uploader.listener.upload.photoDEvenement" class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener">
       <tag name="doctrine.event_listener" event="prePersist" priority="0"/>
       <tag name="doctrine.event_listener" event="preUpdate" priority="0"/>
-      <argument>products</argument>
+      <argument>photoDEvenement</argument>
       <argument type="service" id="vich_uploader.adapter.orm"/>
       <argument type="service" id="vich_uploader.metadata_reader"/>
       <argument type="service" id="vich_uploader.upload_handler"/>
@@ -9660,7 +9660,7 @@
       <argument type="service" id="http_client.uri_template"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
     </service>
-    <service id=".service_locator.j599G73" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EJy82.P" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
@@ -9670,9 +9670,9 @@
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
         <argument key="doctrine.orm.messenger.doctrine_schema_listener" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_listener"/>
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
-        <argument key="vich_uploader.listener.clean.products" type="service_closure" id="vich_uploader.listener.clean.products"/>
-        <argument key="vich_uploader.listener.remove.products" type="service_closure" id="vich_uploader.listener.remove.products"/>
-        <argument key="vich_uploader.listener.upload.products" type="service_closure" id="vich_uploader.listener.upload.products"/>
+        <argument key="vich_uploader.listener.clean.photoDEvenement" type="service_closure" id="vich_uploader.listener.clean.photoDEvenement"/>
+        <argument key="vich_uploader.listener.remove.photoDEvenement" type="service_closure" id="vich_uploader.listener.remove.photoDEvenement"/>
+        <argument key="vich_uploader.listener.upload.photoDEvenement" type="service_closure" id="vich_uploader.listener.upload.photoDEvenement"/>
       </argument>
     </service>
     <service id=".service_locator.RlDNgQC" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -11930,7 +11930,7 @@
     <service id=".service_locator.SpHvRyw" alias=".service_locator.KM1.Fqy"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.8zowV0p" alias=".service_locator._IsNMvW"/>
-    <service id=".service_locator.NOM.hi3" alias=".service_locator.j599G73"/>
+    <service id=".service_locator.xvo6EYI" alias=".service_locator.EJy82.P"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.ZP92gqz" alias=".service_locator.3YFBJbt"/>
     <service id=".service_locator.yTMp7CA" alias=".service_locator.EjdkWEU"/>

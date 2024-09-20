@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Assert\NotNull;
 use App\Entity\User;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\DBAL\Types\Types;
@@ -35,8 +36,8 @@ class Evenement
     private ?\DateTimeInterface $dateDebut = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Assert\NotNull(message: 'Veuillez saisir une date de fin.')]
-    #[Assert\Callback([self::class, 'validateDateFin'])]
+    #[NotNull(message: 'Veuillez saisir une date de fin.')]
+    #[Callback([self::class, 'validateDateFin'])]
     private ?\DateTimeInterface $dateFin = null;
 
     /**

@@ -72,7 +72,7 @@
                         </div>
                         {% if app.user.photo %}
                             <div class="photo-pagePerso">
-                                {{ app.user.photo }}
+                                <img src="{{ vich_uploader_asset(app.user.photo, "imageFile") }} " alt="Photo de profil">
                             </div>
                         {% else %}
                             <div class="photo-pagePerso">
@@ -163,10 +163,16 @@
                         {% for participation in app.user.participationsEvenement %}
                             <div class="affiche-event">
                                 {% if participation.inscriptions.affiche %}
-                                    {{ participation.inscriptions.affiche }}
+                                    <img src="{{ vich_uploader_asset(participation.inscriptions.affiche, "imageFile") }} " alt="{{ participation.inscriptions.name }}">
                                 {% else %}
                                     <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'un barbecue convivial">
                                 {% endif %}
+                            </div>
+                            <div class="affiche-event">
+                                    {% for imageEvenement in participation.inscriptions.getImagesEvenement() %}
+                                        <img src="{{ vich_uploader_asset(imageEvenement, "imageFile") }} " alt="{{ imageEvenement.name }}">
+                                        <a href="{{ vich_uploader_asset(imageEvenement, 'imageFile') }}" download="{{ imageEvenement.name }}">Télécharger cette image</a>
+                                    {% endfor %}
                             </div>
                             <div class="detail-mini-card">
                                 <h6><a href=" {{ path('show_evenement', {'id': participation.inscriptions.id}) }} ">{{ participation.inscriptions.titre }}</a></h6>

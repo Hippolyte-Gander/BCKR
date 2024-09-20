@@ -24,22 +24,30 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')
+                ->onlyOnIndex(),
             TextField::new('pseudo'),
             EmailField::new('email'),
             ArrayField::new('roles'),
             TextField::new('nom'),
             TextField::new('prenom'),
-            TextField::new('numTelephone'),
-            TextField::new('numLicence'),
-            DateField::new('numLicencedateNaissance'),
-            TextField::new('photo'),
-            TextField::new('adresse'),
-            TextField::new('ville'),
-            TextField::new('cp'),
+            TextField::new('numTelephone')
+                ->hideOnIndex(),
+            TextField::new('numLicence')
+                ->hideOnIndex(),
+            DateField::new('dateNaissance')
+                ->hideOnIndex(),
+            TextField::new('photo')
+                ->hideOnIndex(),
+            TextField::new('adresse')
+                ->hideOnIndex(),
+            TextField::new('ville')
+                ->hideOnIndex(),
+            TextField::new('cp')
+                ->hideOnIndex(),
             CollectionField::new('participationsEvenement', 'Participations')
-            ->setTemplatePath('admin/userParticipations.html.twig') // Template Twig personnalisé pour les participations
-            ->onlyOnDetail(),
+                ->setTemplatePath('admin/userParticipations.html.twig') // Template Twig personnalisé pour les participations
+                ->onlyOnDetail(),
         ];
     }
 }
