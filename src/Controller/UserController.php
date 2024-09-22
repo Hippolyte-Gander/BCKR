@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use DateTimeImmutable;
 use App\Form\UserEditType;
+use App\Form\PhotoProfilType;
 use App\Repository\UserRepository;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -106,5 +108,30 @@ class UserController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_user');
+    }
+
+    #[Route('/profil/photo', name: 'profil_photo_upload')]
+    public function uploadPhoto(Request $request, EntityManagerInterface $entityManager,): Response
+    {
+        $user = $this->getUser();
+
+        $form = $this->createForm(PhotoProfilType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Mettre à jour l'utilisateur
+            $user->setUpdatedAt(new DateTimeImmutable());
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Photo de profil mise à jour avec succès.');
+
+            return $this->redirectToRoute('profil_photo_upload');
+        }
+
+        return $this->render('user/pageperso.html.twig', [
+            'editPhotoProfil' => $form->createView(),
+        ]);        
     }
 }

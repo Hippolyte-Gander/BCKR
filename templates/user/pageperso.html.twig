@@ -70,9 +70,9 @@
                                 {{ app.user.email }}
                             </div>
                         </div>
-                        {% if app.user.photo %}
+                        {% if app.user.photoProfilName %}
                             <div class="photo-pagePerso">
-                                <img src="{{ vich_uploader_asset(app.user.photo, "imageFile") }} " alt="Photo de profil">
+                                <img src="{{ vich_uploader_asset(app.user.photoProfilName, "photoProfilFile") }} " alt="Photo de profil">
                             </div>
                         {% else %}
                             <div class="photo-pagePerso">
@@ -86,6 +86,10 @@
                     <div class="infos-texte">
                         <h5>Informations personnelles</h5>
                         <div class="infos-liste">
+                            {{ form_start(editPhotoProfil) }}
+                                {{ form_row(editPhotoProfil.photoProfilFile) }}
+                                <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                            {{ form_end(editPhotoProfil) }}
                             <div class="texte-underligne">
                                 Nom
                             </div>
@@ -162,8 +166,8 @@
                     <div class="evenement-mini-card">
                         {% for participation in app.user.participationsEvenement %}
                             <div class="affiche-event">
-                                {% if participation.inscriptions.affiche %}
-                                    <img src="{{ vich_uploader_asset(participation.inscriptions.affiche, "imageFile") }} " alt="{{ participation.inscriptions.name }}">
+                                {% if participation.inscriptions.afficheName %}
+                                    <img src="{{ vich_uploader_asset(participation.inscriptions.afficheName, "imageFile") }} " alt="{{ participation.inscriptions.name }}">
                                 {% else %}
                                     <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'un barbecue convivial">
                                 {% endif %}

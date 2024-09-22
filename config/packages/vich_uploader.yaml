@@ -1,21 +1,29 @@
 vich_uploader:
     db_driver: orm
-
     metadata:
         type: attribute
-
     mappings:
-       photoDEvenement:
-           uri_prefix: /images/photoDEvenement
-           upload_destination: '%kernel.project_dir%/public/images/photoDEvenement'
-           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        photoDEvenement:
+            uri_prefix: /images/photoDEvenement
+            upload_destination: '%kernel.project_dir%/public/images/photoDEvenement'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-    #    photoProfil:
-    #        uri_prefix: /images/photoProfil
-    #        upload_destination: '%kernel.project_dir%/public/images/photoProfil'
-    #        namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        photoProfil:
+            uri_prefix: /images/photoProfil
+            upload_destination: '%kernel.project_dir%/public/images/photoProfil'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-    #    afficheEvenement:
-    #        uri_prefix: /images/afficheEvenement
-    #        upload_destination: '%kernel.project_dir%/public/images/photosEvenement'
-    #        namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+
+        afficheEvenement:
+            uri_prefix: /images/afficheEvenement
+            upload_destination: '%kernel.project_dir%/public/images/photosEvenement'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+

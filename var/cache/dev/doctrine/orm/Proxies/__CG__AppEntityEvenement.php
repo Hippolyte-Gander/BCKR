@@ -23,6 +23,9 @@ class Evenement extends \App\Entity\Evenement implements \Doctrine\ORM\Proxy\Int
 
     private const LAZY_OBJECT_PROPERTY_SCOPES = [
         "\0".parent::class."\0".'affiche' => [parent::class, 'affiche', null],
+        "\0".parent::class."\0".'afficheFile' => [parent::class, 'afficheFile', null],
+        "\0".parent::class."\0".'afficheName' => [parent::class, 'afficheName', null],
+        "\0".parent::class."\0".'afficheSize' => [parent::class, 'afficheSize', null],
         "\0".parent::class."\0".'commentaires' => [parent::class, 'commentaires', null],
         "\0".parent::class."\0".'contenu' => [parent::class, 'contenu', null],
         "\0".parent::class."\0".'dateDebut' => [parent::class, 'dateDebut', null],
@@ -33,8 +36,12 @@ class Evenement extends \App\Entity\Evenement implements \Doctrine\ORM\Proxy\Int
         "\0".parent::class."\0".'participations' => [parent::class, 'participations', null],
         "\0".parent::class."\0".'places' => [parent::class, 'places', null],
         "\0".parent::class."\0".'titre' => [parent::class, 'titre', null],
+        "\0".parent::class."\0".'updatedAt' => [parent::class, 'updatedAt', null],
         "\0".parent::class."\0".'visibilite' => [parent::class, 'visibilite', null],
         'affiche' => [parent::class, 'affiche', null],
+        'afficheFile' => [parent::class, 'afficheFile', null],
+        'afficheName' => [parent::class, 'afficheName', null],
+        'afficheSize' => [parent::class, 'afficheSize', null],
         'commentaires' => [parent::class, 'commentaires', null],
         'contenu' => [parent::class, 'contenu', null],
         'dateDebut' => [parent::class, 'dateDebut', null],
@@ -45,6 +52,7 @@ class Evenement extends \App\Entity\Evenement implements \Doctrine\ORM\Proxy\Int
         'participations' => [parent::class, 'participations', null],
         'places' => [parent::class, 'places', null],
         'titre' => [parent::class, 'titre', null],
+        'updatedAt' => [parent::class, 'updatedAt', null],
         'visibilite' => [parent::class, 'visibilite', null],
     ];
 

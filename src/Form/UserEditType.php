@@ -7,6 +7,7 @@ use App\Entity\Membre;
 use App\Entity\Evenement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,6 +22,16 @@ class UserEditType extends AbstractType
         $builder
             ->add('pseudo', TextType::class, [
                 'label'=>'Pseudo'
+            ])
+            ->add('photoProfilFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer la photo de profil',
+                // 'download_label' => 'Télécharger la photo de profil',
+                'asset_helper' => true, // Pour que les chemins relatifs fonctionnent bien
+                'attr'=> [
+                    'label'=>'Changer photo de profil',
+                ]
             ])
             ->add('nom', TextType::class, [
                 'label'=>'Nom'

@@ -25,8 +25,8 @@
                 <div class="card-evenement">
                     <div class="evenement-card-top">
                         <div class="affiche-event">
-                            {% if evenement.affiche %}
-                                {{ evenement.affiche }}
+                            {% if evenement.afficheName %}
+                                {{ evenement.afficheName }}
                             {% else %}
                                 <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'une rencontre sportive">
                             {% endif %}

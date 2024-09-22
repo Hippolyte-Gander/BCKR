@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use Assert\NotNull;
 use App\Entity\User;
+use Vich\UploadableField;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -54,6 +56,18 @@ class Evenement
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $affiche = null;
+
+    #[UploadableField(mapping: 'afficheEvenement', fileNameProperty: 'afficheName', size: 'afficheSize')]
+    private ?File $afficheFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $afficheName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $afficheSize = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     /**
      * @var Collection<int, Participations>
@@ -176,18 +190,6 @@ class Evenement
         return $this;
     }
         
-    public function getAffiche(): ?string
-    {
-        return $this->affiche;
-    }
-
-    public function setAffiche(?string $affiche): static
-    {
-        $this->affiche = $affiche;
-
-        return $this;
-    }
-    
     /**
      * @return Collection<int, Participations>
      */
@@ -284,24 +286,6 @@ class Evenement
         return $this;
     }
 
-
-    // =============== gérer nombre de Participations ===============
-    public function getTotalParticipants(): int
-    {
-        $totalParticipants = 0;
-
-        foreach ($this->participations as $participation) {
-            $totalParticipants += $participation->getNbrParticipants();
-        }
-
-        return $totalParticipants;
-    }
-
-    public function getNbrPlacesDisponibles(): int
-    {
-        return $this->getPlaces() - $this->getTotalParticipants();
-    }
-
     /**
      * @return Collection<int, ImageEvenement>
      */
@@ -330,5 +314,70 @@ class Evenement
         }
 
         return $this;
+    }
+
+    public function getAfficheName(): ?string
+    {
+        return $this->afficheName;
+    }
+
+    public function setAfficheName(?string $afficheName): void
+    {
+        $this->afficheName = $afficheName;
+    }
+    
+    public function getAfficheFile(): ?File
+    {
+        return $this->afficheFile;
+    }
+
+    public function setAfficheFile($afficheFile = null): void
+    {
+        $this->afficheFile = $afficheFile;
+
+        if (null !== $afficheFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getAfficheSize(): ?int
+    {
+        return $this->afficheSize;
+    }
+
+    public function setAfficheSize($afficheSize)
+    {
+        $this->afficheSize = $afficheSize;
+
+        return $this;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt($updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    // =============== gérer nombre de Participations ===============
+    public function getTotalParticipants(): int
+    {
+        $totalParticipants = 0;
+
+        foreach ($this->participations as $participation) {
+            $totalParticipants += $participation->getNbrParticipants();
+        }
+
+        return $totalParticipants;
+    }
+
+    public function getNbrPlacesDisponibles(): int
+    {
+        return $this->getPlaces() - $this->getTotalParticipants();
     }
 }

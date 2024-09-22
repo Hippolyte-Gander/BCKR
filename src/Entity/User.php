@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
+use Vich\UploadableField;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
+use Vich\UploaderBundle\Entity\File;
 use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -13,6 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[Vich\Uploadable]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -69,18 +73,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $dateNaissance = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $photo = null;
-
+    
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresse = null;
-
+    
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $ville = null;
-
+    
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $cp = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photoProfilName = null;
+
+    #[UploadableField(mapping: 'photoProfil', fileNameProperty: 'photoProfil', size: 'photoProfilSize')]
+    private ?File $photoProfilFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $photoProfilSize = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?DateTimeImmutable $updatedAt = null;
 
     /**
      * @var Collection<int, Participations>
@@ -333,18 +346,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?string $photo): static
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
     public function getAdresse(): ?string
     {
         return $this->adresse;
@@ -389,13 +390,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->participationsEvenement;
     }
 
-    // Date de naissance format jj/mm/aaaa
+    public function getPhotoProfilName(): ?string
+    {
+        return $this->photoProfilName;
+    }
+
+    public function setPhotoProfilName(?string $photoProfilName): void
+    {
+        $this->photoProfilName = $photoProfilName;
+    }
+
+
+    public function getPhotoProfilFile(): ?File
+    {
+        return $this->photoProfilFile;
+    }
+
+    public function setPhotoProfilFile($photoProfilFile): void
+    {
+        $this->photoProfilFile = $photoProfilFile;
+
+        if (null !== $photoProfilFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getPhotoProfilSize(): ?int
+    {
+        return $this->photoProfilSize;
+    }
+
+    public function setPhotoProfilSize($photoProfilSize): void
+    {
+        $this->photoProfilSize = $photoProfilSize;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    // ------------- Date de naissance format jj/mm/aaaa -------------
     public function dateNaissanceFormatee(): ?string
     {
         return $this->dateNaissance->format('d/m/Y');
     }
 
-
+    // ------------- edit participations -------------
     public function addParticipationsEvenement(Participations $participationsEvenement): static
     {
         if (!$this->participationsEvenement->contains($participationsEvenement)) {
