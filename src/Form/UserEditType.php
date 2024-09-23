@@ -38,7 +38,19 @@ class UserEditType extends AbstractType
                 'required' => false,
                 'attr'=> [
                     'enctype'=> 'multipart/form-data'
-                ]
+                ],
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\File([
+                        'maxSize' => '4000k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'maxSizeMessage' => 'La taille maximale autorisée est de 4 Mo.',
+                        'mimeTypesMessage' => 'Veuillez télécharger un fichier valide (JPEG, PNG, ou WEBP).',
+                    ])
+                    ],
             ])
             ->add('dateNaissance', DateType::class,[
                 'label'=>'Date de début',

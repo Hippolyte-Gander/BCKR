@@ -31,7 +31,6 @@
                         <a href=" {{ path('app_home') }} ">Accueil</a>
                         <a href=" {{ path('club_home') }} ">Le club</a>
                         {% if app.user  and app.user.isAdmin() %}
-                            <a href=" {{ path('app_user') }} ">Liste Users</a>
                             <a href=" {{ path('new_evenement') }} ">Créer un événement</a>
                         {% endif %}
                         <a href=" {{ path('app_evenement') }} ">Les événements</a>
@@ -40,7 +39,6 @@
             </nav>
             <div class="login">
                 {% if app.user %}
-                    <a href="#" class="pseudo-utilisateur">Bonjour {{ app.user.pseudo }}</a>
                     <a href="{{ path('pageperso_user') }}" class="btn-espace-perso">Espace Personnel</a>
                     <a class="btn-deconnexion" href="{{ path('app_logout') }}">Se déconnecter</a>
                 {% else %}
@@ -58,8 +56,6 @@
                     <i class="fa-solid fa-x"></i>
                 </div>
                     <a href=" {{ path('app_home') }} ">Home</a>
-                    <a href=" {{ path('app_user') }} ">Liste Users</a>
-                    <a href=" {{ path('app_evenement') }} ">Liste Événements</a>
                     <a href=" {{ path('new_evenement') }} ">Créer un événement</a>
                 <div class="login">
                     <a href="#" class="connexion">Se connecter</a>
