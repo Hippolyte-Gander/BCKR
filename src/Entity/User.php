@@ -71,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeImmutable $dateNaissance = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $photo = null;
+    private ?string $photoProfil = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresse = null;
@@ -333,14 +333,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPhotoProfil(): ?string
     {
-        return $this->photo;
+        return $this->photoProfil;
     }
 
-    public function setPhoto(?string $photo): static
+    public function setPhotoProfil(?string $photoProfil): static
     {
-        $this->photo = $photo;
+        $this->photoProfil = $photoProfil;
 
         return $this;
     }

@@ -70,9 +70,9 @@
                                 {{ app.user.email }}
                             </div>
                         </div>
-                        {% if app.user.photo %}
+                        {% if app.user.photoProfil %}
                             <div class="photo-pagePerso">
-                                <img src="{{ vich_uploader_asset(app.user.photo, "imageFile") }} " alt="Photo de profil">
+                                <img src="{{ asset('/uploads/photoProfil/'~app.user.photoProfil) }} " alt="Photo de profil">
                             </div>
                         {% else %}
                             <div class="photo-pagePerso">

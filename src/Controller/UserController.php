@@ -71,6 +71,25 @@ class UserController extends AbstractController
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
+                $photoProfil = $form->get('photoProfil')->getData();
+
+                if ($photoProfil) {
+                    // supprimer l'ancienne photo de profil
+                    if ($user->getPhotoProfil()) {
+                        $img = $user->getPhotoProfil();
+                        // On supprime le fichier
+                        unlink($this->getParameter('photoProfil_directory').'/'.$img);
+                    }
+                    // On génère un nouveau nom de fichier
+                    $fichier = md5(uniqid()).'.'.$photoProfil->guessExtension();
+                    // On copie le fichier dans le dossier uploads
+                    $photoProfil->move(
+                        $this->getParameter('photoProfil_directory'),
+                        $fichier
+                    );
+                    //modifier l'image de profil
+                    $user->setPhotoProfil($fichier);
+                }
 
                 $user = $form->getData();
 
