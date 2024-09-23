@@ -95,6 +95,28 @@ class EvenementController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $affiche = $form->get('affiche')->getData();
+            
+            if ($affiche) {
+                // supprimer l'ancienne affiche
+                if ($evenement->getAffiche()) {
+                    $img = $evenement->getAffiche();
+                    // On supprime le fichier
+                    unlink($this->getParameter('afficheEvenement_directory').'/'.$img);
+                }
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()).'.'.$affiche->guessExtension();
+                // On copie le fichier dans le dossier uploads
+                $affiche->move(
+                    $this->getParameter('afficheEvenement_directory'),
+                    $fichier
+                );
+                //modifier l'affiche de l'événement
+                $evenement->setAffiche($fichier);
+            }
+
+
+
 
             $evenement = $form->getData();
             $entityManager->persist($evenement);

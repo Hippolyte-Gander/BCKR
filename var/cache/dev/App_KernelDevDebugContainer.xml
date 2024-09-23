@@ -100,6 +100,7 @@
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
     <parameter key="app.jwtsecret">%env(JWT_SECRET)%</parameter>
     <parameter key="photoProfil_directory">C:\laragon\www\HippolyteG\BCKR/public/uploads/photoProfil</parameter>
+    <parameter key="afficheEvenement_directory">C:\laragon\www\HippolyteG\BCKR/public/uploads/afficheEvenement</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -9890,10 +9891,10 @@
     <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\DashboardControllerRegistry">
       <argument>C:\laragon\www\HippolyteG\BCKR\var\cache\dev</argument>
       <argument type="collection">
-        <argument key="App\Controller\Admin\DashboardController">29c89d7</argument>
+        <argument key="App\Controller\Admin\DashboardController">32b46ee</argument>
       </argument>
       <argument type="collection">
-        <argument key="29c89d7">App\Controller\Admin\DashboardController</argument>
+        <argument key="32b46ee">App\Controller\Admin\DashboardController</argument>
       </argument>
     </service>
     <service id="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry" class="EasyCorp\Bundle\EasyAdminBundle\Registry\CrudControllerRegistry">
@@ -9905,11 +9906,11 @@
         <argument key="App\Controller\Admin\UserCrudController">App\Entity\User</argument>
       </argument>
       <argument type="collection">
-        <argument key="App\Controller\Admin\CommentaireCrudController">5a65ba1</argument>
-        <argument key="App\Controller\Admin\EvenementCrudController">3e5fa20</argument>
-        <argument key="App\Controller\Admin\ImageEvenementCrudController">efe73ca</argument>
-        <argument key="App\Controller\Admin\ParticipationsCrudController">79ab121</argument>
-        <argument key="App\Controller\Admin\UserCrudController">665d5b4</argument>
+        <argument key="App\Controller\Admin\CommentaireCrudController">f3efceb</argument>
+        <argument key="App\Controller\Admin\EvenementCrudController">9460f25</argument>
+        <argument key="App\Controller\Admin\ImageEvenementCrudController">9e6cbc2</argument>
+        <argument key="App\Controller\Admin\ParticipationsCrudController">fe099f4</argument>
+        <argument key="App\Controller\Admin\UserCrudController">785492b</argument>
       </argument>
       <argument type="collection">
         <argument key="App\Entity\Commentaire">App\Controller\Admin\CommentaireCrudController</argument>
@@ -9919,11 +9920,11 @@
         <argument key="App\Entity\User">App\Controller\Admin\UserCrudController</argument>
       </argument>
       <argument type="collection">
-        <argument key="5a65ba1">App\Controller\Admin\CommentaireCrudController</argument>
-        <argument key="3e5fa20">App\Controller\Admin\EvenementCrudController</argument>
-        <argument key="efe73ca">App\Controller\Admin\ImageEvenementCrudController</argument>
-        <argument key="79ab121">App\Controller\Admin\ParticipationsCrudController</argument>
-        <argument key="665d5b4">App\Controller\Admin\UserCrudController</argument>
+        <argument key="f3efceb">App\Controller\Admin\CommentaireCrudController</argument>
+        <argument key="9460f25">App\Controller\Admin\EvenementCrudController</argument>
+        <argument key="9e6cbc2">App\Controller\Admin\ImageEvenementCrudController</argument>
+        <argument key="fe099f4">App\Controller\Admin\ParticipationsCrudController</argument>
+        <argument key="785492b">App\Controller\Admin\UserCrudController</argument>
       </argument>
     </service>
     <service id=".service_locator.yY.p4P7" class="Symfony\Component\DependencyInjection\ServiceLocator">

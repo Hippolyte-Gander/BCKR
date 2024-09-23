@@ -37,7 +37,7 @@ class UserCrudController extends AbstractCrudController
                 ->hideOnIndex(),
             DateField::new('dateNaissance')
                 ->hideOnIndex(),
-            TextField::new('photo')
+            TextField::new('photoProfil')
                 ->hideOnIndex(),
             TextField::new('adresse')
                 ->hideOnIndex(),

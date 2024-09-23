@@ -356,14 +356,13 @@ footer a i:hover {
 
 .affiche-event {
     width: 50%;
-    height: auto;
 }
 
 .affiche-event img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 16px;
+    max-width: 150px;
+    max-height: 225px;
 }
 
 .evenement-info {

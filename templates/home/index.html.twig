@@ -69,7 +69,7 @@
                         <div class="evenement-card-top">
                             <div class="affiche-event">
                                 {% if evenement.affiche %}
-                                    {{ evenement.affiche }}
+                                <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
                                 {% else %}
                                     <img src="{{ asset('img/homepage/le-club3.jpg')}}" alt="Photo d'une rencontre sportive">
                                 {% endif %}
@@ -82,7 +82,7 @@
                                 
                             </div>
                         </div>
-                        {% if evenement.description|length < 15 %}
+                        {% if evenement.contenu|length < 15 %}
                             <p class="evenement-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloribus quo totam earum omnis. Inventore perspiciatis possimus ipsum soluta itaque similique eveniet, maiores reiciendis alias velit. Reprehenderit minus quibusdam cum autem.</p>
                         {% else %}
                             <p class="evenement-descr">{{ evenement.contenu }}</p>
