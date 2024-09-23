@@ -1863,3 +1863,17 @@ b18395,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1726847902,feb371,500,re
 feb371,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1726847902,,500,request
 c9c879,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1726848049,,200,request
 ac9438,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1726848176,,200,request
+10ba17,127.0.0.1,GET,http://127.0.0.1:8000/,1727074705,742ca4,500,request
+742ca4,127.0.0.1,GET,http://127.0.0.1:8000/,1727074705,,500,request
+f30d08,127.0.0.1,GET,http://127.0.0.1:8000/,1727074754,cfd9df,500,request
+cfd9df,127.0.0.1,GET,http://127.0.0.1:8000/,1727074754,,500,request
+dc2065,127.0.0.1,GET,http://127.0.0.1:8000/,1727074810,,200,request
+a6a4ad,127.0.0.1,GET,http://127.0.0.1:8000/login,1727075339,,200,request
+1a5823,127.0.0.1,POST,http://127.0.0.1:8000/login,1727075354,,302,request
+662785,127.0.0.1,GET,http://127.0.0.1:8000/,1727075355,,200,request
+07a641,127.0.0.1,GET,http://127.0.0.1:8000/admin,1727075366,,302,request
+64dc90,127.0.0.1,GET,http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CEvenementCrudController,1727075367,,200,request
+4cce9f,127.0.0.1,GET,http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CImageEvenementCrudController,1727075376,42e3cc,500,request
+42e3cc,127.0.0.1,GET,http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CImageEvenementCrudController,1727075376,,500,request
+d566a9,127.0.0.1,GET,http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CImageEvenementCrudController,1727075689,b7ea5e,500,request
+b7ea5e,127.0.0.1,GET,http://127.0.0.1:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CImageEvenementCrudController,1727075689,,500,request
