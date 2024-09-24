@@ -796,7 +796,7 @@ td, tr {
 
 .separation-parallaxe {
     display: flex;
-    height: 100px;
+    height: 80px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -853,6 +853,7 @@ td, tr {
 
 .texte-img-horizontal p {
     width: 35%;
+    text-align: center;
 }
 
 /* --------------- MENTIONS LÉGALES ---------------- */

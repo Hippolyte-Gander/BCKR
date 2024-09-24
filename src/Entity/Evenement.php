@@ -284,24 +284,6 @@ class Evenement
         return $this;
     }
 
-
-    // =============== gérer nombre de Participations ===============
-    public function getTotalParticipants(): int
-    {
-        $totalParticipants = 0;
-
-        foreach ($this->participations as $participation) {
-            $totalParticipants += $participation->getNbrParticipants();
-        }
-
-        return $totalParticipants;
-    }
-
-    public function getNbrPlacesDisponibles(): int
-    {
-        return $this->getPlaces() - $this->getTotalParticipants();
-    }
-
     /**
      * @return Collection<int, ImageEvenement>
      */
@@ -330,5 +312,22 @@ class Evenement
         }
 
         return $this;
+    }
+
+    // =============== gérer nombre de Participations ===============
+    public function getTotalParticipants(): int
+    {
+        $totalParticipants = 0;
+
+        foreach ($this->participations as $participation) {
+            $totalParticipants += $participation->getNbrParticipants();
+        }
+
+        return $totalParticipants;
+    }
+
+    public function getNbrPlacesDisponibles(): int
+    {
+        return $this->getPlaces() - $this->getTotalParticipants();
     }
 }

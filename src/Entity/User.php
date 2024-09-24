@@ -427,4 +427,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
         return $response = in_array($evenement, $events);
     }
+
+    // Vérifier si utilisateur a des infos perso
+    public function aInfosPerso(): bool
+    {
+        if ($this->nom || $this->prenom || $this->numTelephone || $this->numLicence || $this->dateNaissance || $this->adresse || $this->ville || $this->cp) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

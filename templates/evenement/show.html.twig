@@ -39,6 +39,18 @@
         {% endif %}
     {% endif %}
 
+    {% if app.user and app.user.estCeQueParticipeDeja(evenement) and evenement.imagesEvenement|length > 0 %}
+        <section class="liste-photos-evenement">
+            <h3>Photos de l'événement :</h3>
+                {% for photo in evenement.imagesEvenement %}
+                    <div class="affiche-event">
+                        <img src="{{ asset('/images/photoDEvenement/'~photo) }} " alt="Photo prise lors de l'événement">
+                    </div>
+                    <a href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
+                {% endfor %}
+        </section>
+    {% endif %}
+
     {# ============= section commentaires ============= #}
     {% if app.user %}
         {% if evenement.commentaires | length > 0 %}
