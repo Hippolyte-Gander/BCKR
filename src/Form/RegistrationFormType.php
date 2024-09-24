@@ -31,7 +31,7 @@ class RegistrationFormType extends AbstractType
                     new IsTrue([
                         'message' => "Veuillez accepter les conditions générales d'utilisations.",
                     ]),
-                ],
+                ]
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'constraints' => [

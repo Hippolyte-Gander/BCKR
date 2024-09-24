@@ -12,55 +12,31 @@
 {% block body %}
 
 {% if app.user  and app.user.isAdmin() %}
-    <div class="formulaire-background">
+    <div class="evenement-formulaire-background">
+        <div class="evenement-haut">
+            {% if edit %}
+                <h2>Modifier un événement</h2>
+            {% else %}
+                <h2>Créer un événement</h2>
+            {% endif %}
+        </div>
 
-        {% if edit %}
-            <h4>Modifier un événement</h4>
-        {% else %}
-            <h4>Créer un événement</h4>
-        {% endif %}
 
-
-        <div class="formulaire">
+        <section class="formulaire">
             {{ form_start(formAddEvenement) }}
-            <div class="row-form">
-                <div class="col-form">
                     {{ form_row(formAddEvenement.titre) }}    
-                </div>
-                <div class="col-form">
                     {{ form_row(formAddEvenement.places) }}    
-                </div>
-                <div class="col-form">
                 {{ form_row(formAddEvenement.description) }}
-                </div>
-            </div>
-
-            <div class="row-form">
-                <div class="col-form">
                     {{ form_row(formAddEvenement.contenu) }}
-                </div>
-            </div>
-
-            <div class="row-form">
-                <div class="col-form">
                     {{ form_row(formAddEvenement.dateDebut) }}
-                </div>
-                <div class="col-form">
                     {{ form_row(formAddEvenement.dateFin) }}
-                </div>
-            </div>
-            <div class="row-form">
-                <div class="col-form">
                     {{ form_row(formAddEvenement.affiche) }}
-                </div>
-                <div class="col-form">
                     {{ form_row(formAddEvenement.visibilite) }}
-                </div>
-            </div>
+                    
             <div class="bouton">
                 {{ form_end(formAddEvenement) }}
             </div>
-        </div>
+        </section>
 
     </div>
 {% else %}

@@ -80,6 +80,7 @@ class EvenementType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'attr'=> [
+                    'class'=> 'upload-btn',
                     'enctype'=> 'multipart/form-data'
                 ],
                 'constraints' => [

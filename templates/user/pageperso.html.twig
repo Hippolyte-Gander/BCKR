@@ -170,7 +170,8 @@
                         {% for participation in app.user.participationsEvenement %}
                             <div class="affiche-event">
                                 {% if participation.inscriptions.affiche %}
-                                    <img src="{{ vich_uploader_asset(participation.inscriptions.affiche, "imageFile") }} " alt="{{ participation.inscriptions.name }}">
+                                    {# <img src="{{ vich_uploader_asset(participation.inscriptions.affiche, "imageFile") }} " alt="{{ participation.inscriptions.name }}"> #}
+                                    <img src="{{ asset('/uploads/afficheEvenement/'~participation.inscriptions.affiche) }} " alt="Affiche de l'événement">
                                 {% else %}
                                     <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'un barbecue convivial">
                                 {% endif %}
