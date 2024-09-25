@@ -5,20 +5,8 @@
 {% block body %}
 
 <div class="liste-evenement-background">
-
-    <h4>Liste des événements</h4>
-    <a class="texte-utilisateur" href=" {{ path('new_evenement') }} ">Créer un événement</a><br>
-
-    <div class="message-participation">
-        {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-        {% endfor %}
-    </div>
-
+    <h2>Événements à venir</h2>
     <section class="evenement-a-venir">
-        <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
         <div class="evenement-wrapper">
             
             {% for evenement in pagination %}
