@@ -863,15 +863,59 @@ td, tr {
 
 /* --------------- DÉTAIL ÉVÉNEMENT ---------------- */
 
-.det-evenement-background {
-    background: url('../img/terrain-bad-sombre.jpg') no-repeat;
-    background-size: cover;
-    min-height: 80lvh;
-    padding-top: 110px;
+.detail-evenement-background {
+    margin-top: 117px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.det-evenement-background p {
-    padding: 20px;
+.detail-evenement-infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.detail-evenement-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-evenement-affiche {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-evenement-participation {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-evenement-nbrParticipations {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.detail-evenement-inscrits {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.detail-evenement-photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.detail-evenement-photo {
+    
 }
 
 /* --------------- CLUB ---------------- */

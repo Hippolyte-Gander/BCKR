@@ -4,91 +4,122 @@
 
 {% block body %}
 
-{# ============= version tous ============= #}
+<div class="detail-evenement-background">
 
-<div class="det-evenement-background">
+    {# ============= section informations ============= #}
 
-    <h4>Détails de l'événement : {{ evenement.titre }}</h4>
+    <section class="detail-evenement-infos">
+        <div class="detail-evenement-card">
+            <h3>{{ evenement.titre }}</h3>
 
-    <p>
-        Description : <br>
-        {{ evenement.description }}</p>
+            <article>
+                <p>
+                    Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+                    Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+                </p>
 
-    <p>
-        Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
-        Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
-    </p>
+                {% if app.user and app.user.isAdmin() %}
+                    <p>
+                        Visible par : {{ evenement.visibilite }}
+                    </p>
+                {% endif %}
 
-    <p>Visibilité : {{ evenement.visibilite }}</p>
-    <p>{{ evenement.contenu }}</p>
+                <p>
+                    {{ evenement.description }}
+                </p>
+                <p>
+                    {{ evenement.contenu }}
+                </p>
+            </article>
+        </div>
 
-    <p> {{ evenement.getTotalParticipants() }} / {{ evenement.places }} places prises.</p>
+        <div class="detail-evenement-affiche">
+            {% if evenement.affiche %}
+                <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
+            {% else %}
+                <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'une rencontre sportive">
+            {% endif %}
+        </div>
+    </section>
+    
+    {# ============= section participation ============= #}
 
-    {% if evenement.participations|length == 0 %}
-        <p>Aucun inscrit pour le moment</p>
-    {% else %}
-        {% if app.user %}
-            <div class="participants-liste">
-                <h4>Participants inscrits :</h4>
-                <ul>
+    <section class="detail-evenement-participation">
+        
+        <div class="detail-evenement-nbrParticipations">
+            <h4>Participants</h4>
+            <p>
+                {{ evenement.getTotalParticipants() }} / {{ evenement.places }} places prises.
+            </p>
+        </div>
+
+        <div class="detail-evenement-inscrits">
+            {% if evenement.participations|length == 0 %}
+                <p>Aucun inscrit pour le moment</p>
+            {% else %}
+                {% if app.user %}
                     {% for participant in evenement.participations %}
-                        {{ participant.inscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
+                        <p>
+                            {{ participant.inscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
+                        </p>
                     {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </section>
+
+    {# ============= section photos événement ============= #}
 
     {% if app.user and app.user.estCeQueParticipeDeja(evenement) and evenement.imagesEvenement|length > 0 %}
-        <section class="liste-photos-evenement">
-            <h3>Photos de l'événement :</h3>
-                {% for photo in evenement.imagesEvenement %}
-                    <div class="affiche-event">
-                        <img src="{{ asset('/images/photoDEvenement/'~photo) }} " alt="Photo prise lors de l'événement">
-                    </div>
-                    <a href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
-                {% endfor %}
+        <h3>Photos de l'événement :</h3>
+        <section class="detail-evenement-photos">
+            {% for photo in evenement.imagesEvenement %}
+                <div class="detail-evenement-photo">
+                    <img src="{{ asset('/images/photoDEvenement/'~photo) }} " alt="Photo prise lors de l'événement">
+                </div>
+                <a class="download-btn" href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
+            {% endfor %}
         </section>
     {% endif %}
 
     {# ============= section commentaires ============= #}
-    {% if app.user %}
-        {% if evenement.commentaires | length > 0 %}
-            <h4>Commentaires</h4>
-            {% for commentaire in evenement.commentaires %}
-                <div>
-                    <p>
-                        {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
-                    </p>
-                    <p>
-                        {{ commentaire.message }}
-                    </p>
-                    {% if app.user.isAdmin() %}
-                        <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
-                    {% endif %}
-                </div>
-            {% endfor %}
-        {% else %}
-                <p>Soyez le premier à commenter !</p>
-        {% endif %}
 
-        {# ============= formulaire commentaire ============= #}
-        <div class="commentaire">
-            <div class="formulaire">
+    <section class="detail-evenement-commentaires">
+        <h4>Commentaires</h4>
+        {% if app.user %}
+            {% if evenement.commentaires | length > 0 %}
+                {% for commentaire in evenement.commentaires %}
+                    <div class="detail-evenement-card-commentaire">
+                        <p>
+                            {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
+                        </p>
+                        <p>
+                            {{ commentaire.message }}
+                        </p>
+                        {% if app.user.isAdmin() %}
+                            <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <p>Soyez le premier à commenter !</p>
+            {% endif %}
+
+            {# ============= formulaire commentaire ============= #}
+            
+            <h5>Laissez un commentaire !</h5>
+            <div class="detail-evenement-commentaire-form">
                 {{ form_start(formAddCommentaire) }}
-
-                <div class="col-form">
-                    {{ form_row(formAddCommentaire.message) }}    
-                </div>
-                <div class="bouton">
-                    {{ form_row(formAddCommentaire.valider) }}    
-                </div>
-
+                {{ form_row(formAddCommentaire.message) }}    
+                {{ form_row(formAddCommentaire.valider) }}    
                 {{ form_end(formAddCommentaire) }}
             </div>
-        </div>
+        </section> 
     {% else %}
-        <p>Connectez-vous pour laisser un commentaire !</p>
+            <p>
+                Connectez-vous pour laisser un commentaire !
+            </p>
+        </section> 
     {% endif %}
 </div>
 
