@@ -57,7 +57,7 @@ class EvenementController extends AbstractController
         $formsDel = [];
     
         foreach ($pagination as $evenement) {
-            $participation = $evenement->getParticipations();
+            $participation = $evenement->getParticipationsEvenement();
 
             // Crée une nouvelle instance de la participation s'il n'y en as aucune
             $participation = new Participations();  
@@ -178,7 +178,7 @@ class EvenementController extends AbstractController
         
         $user = $this->getUser();
         $visibilite = $evenement->getVisibilite();
-        $participations = $evenement->getParticipations();
+        $participations = $evenement->getParticipationsEvenement();
 
         if ($visibilite == 'tous') {
             return $this->render('evenement/show.html.twig', [
@@ -220,8 +220,8 @@ class EvenementController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid()) {
                 // Assigner l'utilisateur et l'événement à la participation
-                $participation->setInscrit($user);
-                $participation->setInscriptions($evenement);
+                $participation->setUserInscrit($user);
+                $participation->setEvenementInscrit($evenement);
                 
                 // Récupérer le nombre de participants soumis dans le formulaire
                 $nbrParticipants = $form->get('nbrParticipants')->getData();

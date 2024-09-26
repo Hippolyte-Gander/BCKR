@@ -16,12 +16,12 @@ class Participations
     #[ORM\Column(nullable: true)]
     private ?int $nbrParticipants = null;
 
-    #[ORM\ManyToOne(inversedBy: 'participationsEvenement')]
-    private ?User $inscrit = null;
+    #[ORM\ManyToOne(inversedBy: 'participationEvent')]
+    private ?User $userInscrit = null;
 
-    #[ORM\ManyToOne(inversedBy: 'participations')]
+    #[ORM\ManyToOne(inversedBy: 'participationsEvenement')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?Evenement $inscriptions = null;
+    private ?Evenement $evenementInscrit = null;
 
     public function getId(): ?int
     {
@@ -40,32 +40,32 @@ class Participations
         return $this;
     }
 
-    public function getInscrit(): ?User
+    public function getUserInscrit(): ?User
     {
-        return $this->inscrit;
+        return $this->userInscrit;
     }
 
-    public function setInscrit(?User $inscrit): static
+    public function setUserInscrit(?User $userInscrit): static
     {
-        $this->inscrit = $inscrit;
+        $this->userInscrit = $userInscrit;
 
         return $this;
     }
 
-    public function getInscriptions(): ?Evenement
+    public function getEvenementInscrit(): ?Evenement
     {
-        return $this->inscriptions;
+        return $this->evenementInscrit;
     }
 
-    public function setInscriptions(?Evenement $inscriptions): static
+    public function setEvenementInscrit(?Evenement $evenementInscrit): static
     {
-        $this->inscriptions = $inscriptions;
+        $this->evenementInscrit = $evenementInscrit;
 
         return $this;
     }
 
     public function __toString()
     {
-        return $this->inscrit;
+        return $this->userInscrit;
     }
 }

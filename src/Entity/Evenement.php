@@ -58,8 +58,8 @@ class Evenement
     /**
      * @var Collection<int, Participations>
      */
-    #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'inscriptions', orphanRemoval: true)]
-    private Collection $participations;
+    #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'evenementInscrit', orphanRemoval: true)]
+    private Collection $participationsEvenement;
 
     /**
      * @var Collection<int, ImageEvenement>
@@ -70,7 +70,7 @@ class Evenement
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
-        $this->participations = new ArrayCollection();
+        $this->participationsEvenement = new ArrayCollection();
         $this->imagesEvenement = new ArrayCollection();
     }
 
@@ -191,9 +191,9 @@ class Evenement
     /**
      * @return Collection<int, Participations>
      */
-    public function getParticipations(): Collection
+    public function getParticipationsEvenement(): Collection
     {
-        return $this->participations;
+        return $this->participationsEvenement;
     }
 
     // ==================================== Fin get et set ====================================
@@ -262,11 +262,11 @@ class Evenement
 
     // =============== ADD / REMOVE Participations ===============
 
-    public function addParticipation(Participations $participation): static
+    public function addParticipationsEvenement(Participations $participation): static
     {
-        if (!$this->participations->contains($participation)) {
-            $this->participations->add($participation);
-            $participation->setInscriptions($this);
+        if (!$this->participationsEvenement->contains($participation)) {
+            $this->participationsEvenement->add($participation);
+            $participation->setEvenementInscrit($this);
         }
 
         return $this;
@@ -274,10 +274,10 @@ class Evenement
 
     public function removeParticipation(Participations $participation): static
     {
-        if ($this->participations->removeElement($participation)) {
+        if ($this->participationsEvenement->removeElement($participation)) {
             // set the owning side to null (unless already changed)
-            if ($participation->getInscriptions() === $this) {
-                $participation->setInscriptions(null);
+            if ($participation->getEvenementInscrit() === $this) {
+                $participation->setEvenementInscrit(null);
             }
         }
 
@@ -319,7 +319,7 @@ class Evenement
     {
         $totalParticipants = 0;
 
-        foreach ($this->participations as $participation) {
+        foreach ($this->participationsEvenement as $participation) {
             $totalParticipants += $participation->getNbrParticipants();
         }
 

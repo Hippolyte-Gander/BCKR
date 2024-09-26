@@ -159,7 +159,7 @@
             </section>
 
             <section class="evenements-inscrit">
-                {% if app.user.participationsEvenement|length > 0 %}
+                {% if app.user.participationEvent|length > 0 %}
                     <div class="pagePerso-row">
                         <h5>Inscrit aux événements :</h5>
                         <svg width="37" height="40" viewBox="0 0 37 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -167,21 +167,21 @@
                         </svg>
                     </div>
                     <div class="evenement-mini-card">
-                        {% for participation in app.user.participationsEvenement %}
+                        {% for participation in app.user.participationEvent %}
                             <div class="affiche-event">
-                                {% if participation.inscriptions.affiche %}
-                                    {# <img src="{{ vich_uploader_asset(participation.inscriptions.affiche, "imageFile") }} " alt="{{ participation.inscriptions.name }}"> #}
-                                    <img src="{{ asset('/uploads/afficheEvenement/'~participation.inscriptions.affiche) }} " alt="Affiche de l'événement">
+                                {% if participation.evenementInscrit.affiche %}
+                                    {# <img src="{{ vich_uploader_asset(participation.evenementInscrit.affiche, "imageFile") }} " alt="{{ participation.evenement.name }}"> #}
+                                    <img src="{{ asset('/uploads/afficheEvenement/'~participation.evenementInscrit.affiche) }} " alt="Affiche de l'événement">
                                 {% else %}
                                     <img src="{{ asset('img/affiche-event/affiche-defaut.jpg')}}" alt="Photo d'un barbecue convivial">
                                 {% endif %}
                             </div>
                             
                             <div class="detail-mini-card">
-                                <h6><a href=" {{ path('show_evenement', {'id': participation.inscriptions.id}) }} ">{{ participation.inscriptions.titre }}</a></h6>
-                                {{ participation.inscriptions.description }}<br>
-                                Du {{ participation.inscriptions.dateDebutFormatee }} à {{ participation.inscriptions.heureDebutFormatee }}<br>
-                                Au {{ participation.inscriptions.dateFinFormatee }} à {{ participation.inscriptions.heureFinFormatee }}<br>
+                                <h6><a href=" {{ path('show_evenement', {'id': participation.evenementInscrit.id}) }} ">{{ participation.evenementInscrit.titre }}</a></h6>
+                                {{ participation.evenementInscrit.description }}<br>
+                                Du {{ participation.evenementInscrit.dateDebutFormatee }} à {{ participation.evenementInscrit.heureDebutFormatee }}<br>
+                                Au {{ participation.evenementInscrit.dateFinFormatee }} à {{ participation.evenementInscrit.heureFinFormatee }}<br>
                             </div>
                         {% endfor %}
                         </div>

@@ -1411,7 +1411,7 @@
                     "dev-master": "4.0.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "EasyCorp\\Bundle\\EasyAdminBundle\\": "src/"
@@ -1550,7 +1550,7 @@
                     "dev-master": "2.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Metadata\\": "src/"
@@ -1638,7 +1638,7 @@
                     "dev-master": "5.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Knp\\Component\\": "src/Knp/Component"
@@ -1713,7 +1713,7 @@
                     "dev-master": "6.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Knp\\Bundle\\PaginatorBundle\\": "src"
@@ -8056,7 +8056,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -8362,7 +8362,7 @@
             },
             "time": "2024-05-31T14:49:08+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\RateLimiter\\": ""
@@ -9759,7 +9759,7 @@
             },
             "time": "2024-08-12T09:55:28+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Uid\\": ""
@@ -10771,7 +10771,7 @@
                     "dev-master": "2.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Vich\\UploaderBundle\\": "src"

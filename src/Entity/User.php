@@ -85,14 +85,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Participations>
      */
-    #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'inscrit')]
-    private Collection $participationsEvenement;
+    #[ORM\OneToMany(targetEntity: Participations::class, mappedBy: 'userInscrit')]
+    private Collection $participationEvent;
 
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
         $this->participantEntrainements = new ArrayCollection();
-        $this->participationsEvenement = new ArrayCollection();
+        $this->participationEvent = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -272,7 +272,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-    // ========================== AJOUT INFOS MEMBRE ==========================
+    // ========================== INFOS MEMBRE ==========================
     public function getNumLicence(): ?string
     {
         return $this->numLicence;
@@ -384,9 +384,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Participations>
      */
-    public function getParticipationsEvenement(): Collection
+    public function getParticipationEvent(): Collection
     {
-        return $this->participationsEvenement;
+        return $this->participationEvent;
     }
 
     // Date de naissance format jj/mm/aaaa
@@ -396,22 +396,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-    public function addParticipationsEvenement(Participations $participationsEvenement): static
+    public function addParticipationEvent(Participations $participationEvent): static
     {
-        if (!$this->participationsEvenement->contains($participationsEvenement)) {
-            $this->participationsEvenement->add($participationsEvenement);
-            $participationsEvenement->setInscrit($this);
+        if (!$this->participationEvent->contains($participationEvent)) {
+            $this->participationEvent->add($participationEvent);
+            $participationEvent->setUserInscrit($this);
         }
 
         return $this;
     }
 
-    public function removeParticipationsEvenement(Participations $participationsEvenement): static
+    public function removeParticipationEvent(Participations $participationEvent): static
     {
-        if ($this->participationsEvenement->removeElement($participationsEvenement)) {
+        if ($this->participationEvent->removeElement($participationEvent)) {
             // set the owning side to null (unless already changed)
-            if ($participationsEvenement->getInscrit() === $this) {
-                $participationsEvenement->setInscrit(null);
+            if ($participationEvent->getUserInscrit() === $this) {
+                $participationEvent->setUserInscrit(null);
             }
         }
 
@@ -422,8 +422,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function estCeQueParticipeDeja(Evenement $evenement): bool
     {
         $events = [];
-        foreach($this->participationsEvenement as $p) {
-            $events[] = $p->getInscriptions();
+        foreach($this->participationEvent as $p) {
+            $events[] = $p->getEvenementInscrit();
         }
         return $response = in_array($evenement, $events);
     }

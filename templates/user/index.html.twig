@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
 {% block title %}
     {% if app.user  and app.user.isAdmin() %}
@@ -35,9 +35,9 @@
                                 {% endif %}
                             {% endfor %}
                         </td>
-                        {# <td>
+                        <td>
                             <a class="btn-editer" href="{{ path('edit_user', {'id': user.id}) }}">Éditer</a>
-                        </td> #}
+                        </td>
                         <td>
                             <a class="btn-supprimer" href="{{ path('suppr_user', {'id': user.id}) }}">Supprimer</a>
                         </td>
@@ -51,4 +51,4 @@
     </div>
 {% endif %}
 
-{% endblock %}
+{% endblock %} #}

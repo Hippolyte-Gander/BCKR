@@ -54,13 +54,13 @@
         </div>
 
         <div class="detail-evenement-inscrits">
-            {% if evenement.participations|length == 0 %}
+            {% if evenement.participationsEvenement|length == 0 %}
                 <p>Aucun inscrit pour le moment</p>
             {% else %}
                 {% if app.user %}
-                    {% for participant in evenement.participations %}
+                    {% for participant in evenement.participationsEvenement %}
                         <p>
-                            {{ participant.inscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
+                            {{ participant.userInscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
                         </p>
                     {% endfor %}
                 {% endif %}
