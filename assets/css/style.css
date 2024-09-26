@@ -86,7 +86,6 @@ a {
     cursor: pointer;
 } */
 
-
 /* --------------- NAVBAR ---------------- */
 
 
@@ -744,6 +743,10 @@ footer a i:hover {
 
 .liste-evenement-background h2 {
     padding: 32px;
+}
+
+.barre-recherche {
+    width: 50vw;
 }
 
 .evenement-form form {

@@ -11,6 +11,8 @@ use App\Entity\Participations;
 use App\Form\ParticipationType;
 use Doctrine\ORM\EntityManager;
 use App\Form\DeleteParticipationType;
+use App\Form\SearchEventType;
+use App\Model\SearchData;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -33,7 +35,7 @@ class EvenementController extends AbstractController
         $user = $this->getUser();
 
         if ($user) {
-            // chercher les events en fonction de leur visibilité
+            // afficher les events en fonction de leur visibilité
             if ($user->isAdmin()) {
                 $evenements = $evenementRepository->evenementsFutursAdmin();
             } elseif ($user->isMembre()) {
@@ -44,14 +46,14 @@ class EvenementController extends AbstractController
         } else {
             $evenements = $evenementRepository->evenementsFutursTous();
         }
-            
-            $pagination = $paginator->paginate(
+        // pagination des événements à afficher
+        $pagination = $paginator->paginate(
             $evenements, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             4 /*limit per page*/
         );
 
-        // PARTIE FORM PARTICIPATION
+        // =========== PARTIE FORM PARTICIPATION ===========
 
         $formsAdd = [];
         $formsDel = [];
@@ -73,11 +75,36 @@ class EvenementController extends AbstractController
             $formsAdd[$evenement->getId()] = $formAdd->createView();  
             $formsDel[$evenement->getId()] = $formDel->createView();  
         }
+
+            // =========== barre de recherche ===========
+            $searchData = new SearchData();
+            $formSearch = $this->createForm(SearchEventType::class, $searchData);
     
+            $formSearch->handleRequest($request);
+            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+                $formSearch->page = $request->query->getInt('page', 1);
+                $evenements = $evenementRepository->findBySearch($searchData);
+    
+                // pagination des événements à afficher
+                $pagination = $paginator->paginate(
+                    $evenements, /* query NOT result */
+                    $request->query->getInt('page', 1), /*page number*/
+                    4 /*limit per page*/
+                );
+    
+                return $this->render('evenement/index.html.twig', [
+                    'pagination' => $pagination,
+                    'formsAdd' => $formsAdd,
+                    'formsDel' => $formsDel,
+                    'formSearch' => $formSearch->createView()
+                ]);
+            }
+        
         return $this->render('evenement/index.html.twig', [
             'pagination' => $pagination,
             'formsAdd' => $formsAdd,
             'formsDel' => $formsDel,
+            'formSearch' => $formSearch->createView()
         ]);
     }
 

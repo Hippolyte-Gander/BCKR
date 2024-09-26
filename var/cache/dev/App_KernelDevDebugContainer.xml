@@ -544,8 +544,14 @@
     <service id="App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\SearchEventType" class="App\Form\SearchEventType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\UserEditType" class="App\Form\UserEditType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Model\SearchDate" class="App\Model\SearchDate" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Model\SearchDate&quot; to be defined in file &quot;C:\laragon\www\Github\BCKR\vendor\composer/../../src\Model\SearchDate.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
     </service>
     <service id="App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -1554,6 +1560,7 @@
         <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Form\ResetPasswordFormType</argument>
         <argument>App\Form\ResetPasswordRequestFormType</argument>
+        <argument>App\Form\SearchEventType</argument>
         <argument>App\Form\UserEditType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -4250,7 +4257,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator._IsNMvW"/>
+      <argument type="service" id=".service_locator.Wq7RR10"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -8414,6 +8421,8 @@
     <service id=".abstract.instanceof.App\Form\ResetPasswordFormType" class="App\Form\ResetPasswordFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ResetPasswordRequestFormType" class="App\Form\ResetPasswordRequestFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SearchEventType" class="App\Form\SearchEventType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SearchEventType" class="App\Form\SearchEventType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserEditType" class="App\Form\UserEditType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserEditType" class="App\Form\UserEditType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" abstract="true"/>
@@ -9530,7 +9539,7 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator._IsNMvW" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Wq7RR10" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
@@ -9543,6 +9552,7 @@
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="App\Form\ResetPasswordFormType" type="service_closure" id="App\Form\ResetPasswordFormType"/>
         <argument key="App\Form\ResetPasswordRequestFormType" type="service_closure" id="App\Form\ResetPasswordRequestFormType"/>
+        <argument key="App\Form\SearchEventType" type="service_closure" id="App\Form\SearchEventType"/>
         <argument key="App\Form\UserEditType" type="service_closure" id="App\Form\UserEditType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudFormType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType" type="service_closure" id="EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType"/>
@@ -11931,7 +11941,7 @@
     <service id=".service_locator.UfbavBN" alias=".service_locator.d_UY3kt"/>
     <service id=".service_locator.SpHvRyw" alias=".service_locator.KM1.Fqy"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.8zowV0p" alias=".service_locator._IsNMvW"/>
+    <service id=".service_locator.02eFhH1" alias=".service_locator.Wq7RR10"/>
     <service id=".service_locator.xvo6EYI" alias=".service_locator.EJy82.P"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.ZP92gqz" alias=".service_locator.3YFBJbt"/>

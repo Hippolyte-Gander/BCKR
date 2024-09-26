@@ -6,6 +6,9 @@
 
 <div class="liste-evenement-background">
     <h2>Événements à venir</h2>
+    {{ form_start(formSearch) }}
+        {{ form_widget(formSearch.recherche) }}
+    {{ form_end(formSearch) }}
     <section class="evenement-a-venir">
         <div class="evenement-wrapper">
             

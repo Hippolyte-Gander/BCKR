@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Evenement;
+use App\Model\SearchData;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -80,5 +81,21 @@ class EvenementRepository extends ServiceEntityRepository
                ->getQuery()
                ->getResult()
            ;
+       }
+
+       public function findBySearch (SearchData $searchData)
+       {
+           if (!empty($searchData->recherche)) {
+                $evenements = $this->createQueryBuilder('e')
+                    ->where('e.titre LIKE :recherche')
+                    ->setParameter('recherche', "%{$searchData->recherche}%")
+                    ->addOrderBy('e.dateDebut', 'DESC');
+            }
+
+            $evenements = $evenements
+                ->getQuery()
+                ->getResult();
+
+            return $evenements;
        }
 }
