@@ -2,7 +2,7 @@
     <ul>
         {% for participation in field.value %}
             <li>
-                Utilisateur : {{ participation.inscrit.pseudo }} - Participant(s) : {{ participation.nbrParticipants }}
+                Utilisateur : {{ participation.userInscrit.pseudo }} - Participant(s) : {{ participation.nbrParticipants }}
             </li>
         {% endfor %}
     </ul>

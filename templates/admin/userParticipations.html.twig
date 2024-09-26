@@ -2,7 +2,7 @@
     <ul>
         {% for participation in field.value %}
             <li>
-                Événement : {{ participation.inscriptions.titre }} - Participant(s) : {{ participation.nbrParticipants }}
+                Événement : {{ participation.evenementInscrit.titre }} - Participant(s) : {{ participation.nbrParticipants }}
             </li>
         {% endfor %}
     </ul>

@@ -45,7 +45,7 @@ class UserCrudController extends AbstractCrudController
                 ->hideOnIndex(),
             TextField::new('cp')
                 ->hideOnIndex(),
-            CollectionField::new('participationsEvenement', 'Participations')
+            CollectionField::new('participationEvent', 'Participations')
                 ->setTemplatePath('admin/userParticipations.html.twig') // Template Twig personnalisé pour les participations
                 ->onlyOnDetail(),
         ];

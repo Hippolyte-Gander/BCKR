@@ -808,14 +808,6 @@ footer a i:hover {
     color: rgb(0, 0, 0);
 }
 
-/* table {
-    width: 80%;
-    border: solid 2px white;
-    border-collapse: collapse;
-    margin: 0 auto;
-    margin-bottom: 24px;
-} */
-
 .navigation {
     display: flex;
     justify-content: space-evenly;
@@ -867,12 +859,21 @@ td, tr {
     margin-top: 117px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+}
+
+.detail-evenement-background h3,
+.detail-evenement-background h4,
+.detail-evenement-background h5 {
+    margin: 16px 32px;
+}
+
+.detail-evenement-background section {
+    margin: 32px 0;
 }
 
 .detail-evenement-infos {
     display: flex;
+    width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
@@ -881,25 +882,31 @@ td, tr {
 .detail-evenement-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .detail-evenement-affiche {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 40vh;
+    max-width: 25vw;
+}
+
+.detail-evenement-affiche img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .detail-evenement-participation {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .detail-evenement-nbrParticipations {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
 }
 
 .detail-evenement-inscrits {
@@ -908,14 +915,43 @@ td, tr {
     flex-wrap: wrap;
 }
 
+.detail-evenement-galerie {
+    display: flex;
+    flex-direction: column;
+}
+
 .detail-evenement-photos {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 16px;
 }
 
 .detail-evenement-photo {
-    
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 150px;
+}
+
+.detail-evenement-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-evenement-commentaire-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-evenement-commentaire form {
+    width: 80%;
 }
 
 /* --------------- CLUB ---------------- */

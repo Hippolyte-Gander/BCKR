@@ -71,14 +71,16 @@
     {# ============= section photos événement ============= #}
 
     {% if app.user and app.user.estCeQueParticipeDeja(evenement) and evenement.imagesEvenement|length > 0 %}
-        <h3>Photos de l'événement :</h3>
-        <section class="detail-evenement-photos">
-            {% for photo in evenement.imagesEvenement %}
-                <div class="detail-evenement-photo">
-                    <img src="{{ asset('/images/photoDEvenement/'~photo) }} " alt="Photo prise lors de l'événement">
-                </div>
-                <a class="download-btn" href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
-            {% endfor %}
+        <section class="detail-evenement-galerie">
+            <h3>Photos de l'événement :</h3>
+            <div class="detail-evenement-photos">
+                {% for photo in evenement.imagesEvenement %}
+                    <div class="detail-evenement-photo">
+                        <img src="{{ asset('/images/photoDEvenement/'~photo) }} " alt="Photo prise lors de l'événement">
+                        <a class="download-btn" href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
+                    </div>
+                {% endfor %}
+            </div>
         </section>
     {% endif %}
 

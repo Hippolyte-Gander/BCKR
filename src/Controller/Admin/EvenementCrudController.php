@@ -47,7 +47,7 @@ class EvenementCrudController extends AbstractCrudController
             yield TextField::new('affiche')
                 ->hideOnIndex(),
             // Ajout d'un champ personnalisé pour afficher les participations
-            yield CollectionField::new('participations', 'Participations')
+            yield CollectionField::new('participationsEvenement', 'Participations')
                 ->setTemplatePath('admin/evenementParticipations.html.twig') // Template Twig personnalisé pour les participations
                 ->onlyOnDetail(),
             yield CollectionField::new('imagesEvenement')

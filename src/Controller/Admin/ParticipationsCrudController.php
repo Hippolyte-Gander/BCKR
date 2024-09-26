@@ -25,9 +25,9 @@ class ParticipationsCrudController extends AbstractCrudController
             IdField::new('id')
                 ->onlyOnIndex(),
             IntegerField::new('nbrParticipants'),
-            AssociationField::new('inscrit')
+            AssociationField::new('userInscrit')
                 ->onlyOnIndex(),
-            AssociationField::new('inscriptions')
+            AssociationField::new('evenementInscrit')
                 ->onlyOnIndex(),
         ];
     }
