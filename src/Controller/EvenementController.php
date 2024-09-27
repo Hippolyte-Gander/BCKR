@@ -83,8 +83,20 @@ class EvenementController extends AbstractController
             $formSearch->handleRequest($request);
             if ($formSearch->isSubmitted() && $formSearch->isValid()) {
                 $formSearch->page = $request->query->getInt('page', 1);
-                $evenements = $evenementRepository->findBySearch($searchData);
-    
+
+                if ($user) {
+                    // afficher les events en fonction de leur visibilité
+                    if ($user->isAdmin()) {
+                        $evenements = $evenementRepository->findBySearchAdmin($searchData);
+                    } elseif ($user->isMembre()) {
+                        $evenements = $evenementRepository->findBySearchMembre($searchData);
+                    } else {
+                        $evenements = $evenementRepository->findBySearch($searchData);
+                    }
+                } else {
+                    $evenements = $evenementRepository->findBySearch($searchData);
+                }
+
                 // pagination des événements à afficher
                 $pagination = $paginator->paginate(
                     $evenements, /* query NOT result */

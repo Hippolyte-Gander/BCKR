@@ -33,69 +33,117 @@ class EvenementRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-       public function evenementsFutursAdmin() 
-       {
-           return $this->createQueryBuilder('e')
-               ->andWhere('e.dateDebut >= :today')
-               ->andWhere('e.visibilite IN (:visibilites)')
-               ->setParameter('today', new DateTime())
-               ->setParameter('visibilites', ['admins', 'membres', 'tous'])
-               ->orderBy('e.dateDebut', 'DESC')
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+    // =============== affichage des events selon visibilité ===============
 
-       public function evenementsFutursMembre() 
-       {
-           return $this->createQueryBuilder('e')
-               ->andWhere('e.dateDebut >= :today')
-               ->andWhere('e.visibilite IN (:visibilites)')
-               ->setParameter('today', new DateTime())
-               ->setParameter('visibilites', ['membres', 'tous'])
-               ->orderBy('e.dateDebut', 'DESC')
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+    public function evenementsFutursAdmin() 
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.dateDebut >= :today')
+            ->andWhere('e.visibilite IN (:visibilites)')
+            ->setParameter('today', new DateTime())
+            ->setParameter('visibilites', ['admins', 'membres', 'tous'])
+            ->orderBy('e.dateDebut', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
-       public function evenementsFutursTous() 
-       {
-           return $this->createQueryBuilder('e')
-               ->andWhere('e.dateDebut >= :today')
-               ->andWhere('e.visibilite = :visibilite')
-               ->setParameter('today', new DateTime())
-               ->setParameter('visibilite', 'tous')
-               ->orderBy('e.dateDebut', 'DESC')
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+    public function evenementsFutursMembre() 
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.dateDebut >= :today')
+            ->andWhere('e.visibilite IN (:visibilites)')
+            ->setParameter('today', new DateTime())
+            ->setParameter('visibilites', ['membres', 'tous'])
+            ->orderBy('e.dateDebut', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
-       public function evenementsPasses() 
-       {
-           return $this->createQueryBuilder('e')
-               ->andWhere('e.dateDebut <= :today')
-               ->setParameter('today', new DateTime())
-               ->orderBy('e.dateDebut', 'DESC')
-               ->getQuery()
-               ->getResult()
-           ;
-       }
+    public function evenementsFutursTous() 
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.dateDebut >= :today')
+            ->andWhere('e.visibilite = :visibilite')
+            ->setParameter('today', new DateTime())
+            ->setParameter('visibilite', 'tous')
+            ->orderBy('e.dateDebut', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
-       public function findBySearch (SearchData $searchData)
-       {
-           if (!empty($searchData->recherche)) {
-                $evenements = $this->createQueryBuilder('e')
-                    ->where('e.titre LIKE :recherche')
-                    ->setParameter('recherche', "%{$searchData->recherche}%")
-                    ->addOrderBy('e.dateDebut', 'DESC');
-            }
+    public function evenementsPasses() 
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.dateDebut <= :today')
+            ->setParameter('today', new DateTime())
+            ->orderBy('e.dateDebut', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
-            $evenements = $evenements
-                ->getQuery()
-                ->getResult();
+    // =============== affichage des events selon visibilité dans la recherche ===============
 
-            return $evenements;
-       }
+    public function findBySearch(SearchData $searchData)
+    {
+        if (!empty($searchData->recherche)) {
+            $evenements = $this->createQueryBuilder('e')
+                ->where('e.titre LIKE :recherche')
+                ->andWhere('e.dateDebut >= :today')
+                ->andWhere('e.visibilite = :visibilite')
+                ->setParameter('recherche', "%{$searchData->recherche}%")
+                ->setParameter('today', new DateTime())
+                ->setParameter('visibilite', 'tous')
+                ->orderBy('e.dateDebut', 'DESC');
+        }
+
+        $evenements = $evenements
+            ->getQuery()
+            ->getResult();
+
+        return $evenements;
+    }
+
+    public function findBySearchMembre(SearchData $searchData)
+    {
+        if (!empty($searchData->recherche)) {
+            $evenements = $this->createQueryBuilder('e')
+                ->where('e.titre LIKE :recherche')
+                ->andWhere('e.dateDebut >= :today')
+                ->andWhere('e.visibilite IN (:visibilites)')
+                ->setParameter('recherche', "%{$searchData->recherche}%")
+                ->setParameter('today', new DateTime())
+                ->setParameter('visibilites', ['membres', 'tous'])
+                ->orderBy('e.dateDebut', 'DESC');
+        }
+
+        $evenements = $evenements
+            ->getQuery()
+            ->getResult();
+
+        return $evenements;
+    }
+
+    public function findBySearchAdmin(SearchData $searchData)
+    {
+        if (!empty($searchData->recherche)) {
+            $evenements = $this->createQueryBuilder('e')
+                ->where('e.titre LIKE :recherche')
+                ->andWhere('e.dateDebut >= :today')
+                ->andWhere('e.visibilite IN (:visibilites)')
+                ->setParameter('recherche', "%{$searchData->recherche}%")
+                ->setParameter('today', new DateTime())
+                ->setParameter('visibilites', ['admins', 'membres', 'tous'])
+                ->orderBy('e.dateDebut', 'DESC');
+        }
+
+        $evenements = $evenements
+            ->getQuery()
+            ->getResult();
+
+        return $evenements;
+    }
 }
