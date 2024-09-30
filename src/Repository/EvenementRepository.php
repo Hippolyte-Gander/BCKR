@@ -85,7 +85,7 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
 
-    // =============== affichage des events selon visibilité dans la recherche ===============
+    // =============== affichage des events selon visibilité dans la recherche PAGE EVENTS ===============
 
     public function findBySearch(SearchData $searchData)
     {
@@ -146,4 +146,5 @@ class EvenementRepository extends ServiceEntityRepository
 
         return $evenements;
     }
+
 }

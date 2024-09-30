@@ -3,10 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Model\SearchData;
 use App\Form\UserEditType;
+use App\Form\SearchEventType;
 use App\Repository\UserRepository;
 use App\Repository\EvenementRepository;
+use App\Repository\ParticipationsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -39,19 +43,63 @@ class UserController extends AbstractController
         ]);
     }
 
-    // ------------- PAGE PERSO ------------- en cours
+    // ------------- PAGE PERSO -------------
 
     #[Route('/espace-perso', name: 'pageperso_user')]
-    public function pagePerso(): Response
+    public function pagePerso(ParticipationsRepository $participationsRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $user = $this->getUser();
         
         if ($user) {
+            // =========== barre de recherche ===========
+            $searchData = new SearchData();
+            $formSearch = $this->createForm(SearchEventType::class, $searchData);
+            $userId = $user->getId();
+    
+            // afficher les events en fonction de leur visibilité
+            if ($user->isAdmin()) {
+                $participations = $participationsRepository->findBySearchPagePersoAdmin($searchData, $userId);
+            } elseif ($user->isMembre()) {
+                $participations = $participationsRepository->findBySearchPagePersoMembre($searchData, $userId);
+            } else {
+                $participations = $participationsRepository->findBySearchPagePerso($searchData, $user);
+            }
+
+            // pagination des événements à afficher
+            $pagination = $paginator->paginate(
+                $participations, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                4 /*limit per page*/
+            );
+
+            $formSearch->handleRequest($request);
+            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+                $formSearch->page = $request->query->getInt('page', 1);
+
+                // afficher les events en fonction de leur visibilité
+                if ($user->isAdmin()) {
+                    $participations = $participationsRepository->findBySearchPagePersoAdmin($searchData, $userId);
+                } elseif ($user->isMembre()) {
+                    $participations = $participationsRepository->findBySearchPagePersoMembre($searchData, $userId);
+                } else {
+                    $participations = $participationsRepository->findBySearchPagePerso($searchData, $userId);
+                }
+
+                // pagination des événements à afficher
+                $pagination = $paginator->paginate(
+                    $participations, /* query NOT result */
+                    $request->query->getInt('page', 1), /*page number*/
+                    4 /*limit per page*/
+                );
+            }
+
             return $this->render('user/pageperso.html.twig', [
+                'pagination' => $pagination,
+                'formSearch' => $formSearch->createView(),
                 'user' => $user
             ]);
         } else {
-            return $this->render('home/club.html.twig');
+            return $this->redirectToRoute('app_login');
         }
     }
 
