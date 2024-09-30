@@ -1102,23 +1102,28 @@ td, tr {
 
 /* --------------- MENTIONS LÉGALES ---------------- */
 
-.mentions-h3 h3 {
-    font-size: 35px;
-    padding: 130px 20px 20px 20px;
-}
-
 .mentions-legales-background {
-    padding-top: 100px;
-    background: url('../img/photo-lignes-sombre.jpg') no-repeat;
-    background-size: cover;
-    min-height: 90lvh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 117px;
+    min-height: 90vh;
+    align-items: center;
 }
 
-.mentions-bloc-texte {
-    margin: 30px;
-    background-color: rgba(24, 25, 29, 0.7);
-    border-radius: 3px;
-    backdrop-filter: blur(3px);
+.mentions-legales-background h2 {
+    padding: 32px 0;
+}
+
+.mentions-legales {
+    width: 75%;
+}
+
+.mentions-legales h4 {
+    padding: 16px 0;
+}
+
+.mentions-legales p {
+    padding: 32px 0;
 }
 
 /* --------------- FORMULAIRE ---------------- */
