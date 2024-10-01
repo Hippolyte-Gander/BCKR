@@ -1303,7 +1303,7 @@ td, tr {
 .login-background {
     display: flex;
     flex-direction: column;
-    background: url('../img/raquette-et-volant-sombre.webp') no-repeat;
+    background: url('../img/login/raquette-et-volant-sombre.webp') no-repeat;
     background-size: cover;
     justify-content: center;
     align-items: center;

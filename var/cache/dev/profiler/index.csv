@@ -466,3 +466,12 @@ ba43ea,127.0.0.1,GET,http://127.0.0.1:8000/,1727769700,,200,request
 cbad8f,127.0.0.1,GET,http://127.0.0.1:8000/,1727770082,,200,request
 74f59e,127.0.0.1,GET,http://127.0.0.1:8000/,1727770156,,200,request
 fdf411,127.0.0.1,GET,http://127.0.0.1:8000/,1727770277,,200,request
+006b77,127.0.0.1,GET,http://127.0.0.1:8000/login,1727772849,,200,request
+7acc44,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/raquette-et-volant-sombre.webp,1727772860,a51df9,404,request
+a51df9,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/raquette-et-volant-sombre.webp,1727772860,,404,request
+43045a,127.0.0.1,POST,http://127.0.0.1:8000/login,1727772875,,302,request
+17cd5c,127.0.0.1,GET,http://127.0.0.1:8000/,1727772879,,200,request
+3a1d79,127.0.0.1,GET,http://127.0.0.1:8000/login,1727773104,,200,request
+379005,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/raquette-et-volant-sombre.webp,1727773105,660110,404,request
+660110,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/raquette-et-volant-sombre.webp,1727773105,,404,request
+3331e6,127.0.0.1,GET,http://127.0.0.1:8000/login,1727773159,,200,request
