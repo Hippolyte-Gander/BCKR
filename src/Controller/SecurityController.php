@@ -27,9 +27,11 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        if ($error) {
+            $this->addFlash('danger', 'Identifiant ou mot de passe invalide.');
+        }
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error,
         ]);
     }
 
@@ -90,12 +92,10 @@ class SecurityController extends AbstractController
 
             }
             // $user est null
-            $this->addFlash('danger', 'Un problème est survenu');
+            $this->addFlash('danger', 'Veuillez saisir une adresse mail valide');
             return $this->redirectToRoute('app_login');
         }
-
-
-
+        
         return $this->render('security/reset_password_request.html.twig', [
             'requestPassForm' => $form->createView()
         ]);
@@ -134,7 +134,7 @@ class SecurityController extends AbstractController
 
                     $em->flush();
 
-                    $this->addFlash('success', 'Mot de passe changé avec succès');
+                    $this->addFlash('success', 'Mot de passe modifié avec succès');
                     return $this->redirectToRoute('app_login');
                 }
                 return $this->render('security/reset_password.html.twig', [

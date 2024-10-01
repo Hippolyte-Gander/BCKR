@@ -65,7 +65,18 @@
             </div>
         </header>
 
+        {# ================= FLASHES MESSAGES ================= #}
+        {% for message in app.flashes('success') %}
+            <div class="flash-success">
+                {{ message }}
+            </div>
+        {% endfor %}
 
+        {% for message in app.flashes('danger') %}
+            <div class="flash-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
 
         {% block body %}{% endblock %}
 

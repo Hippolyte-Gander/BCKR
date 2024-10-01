@@ -166,7 +166,7 @@ class RegistrationController extends AbstractController
                 $user->setVerified(true);
                 $em->flush();
 
-                $this->addFlash('success', 'Utilisateur activé');
+                $this->addFlash('success', 'Compte utilisateur activé');
                 return $this->redirectToRoute('app_home');
             }
         }

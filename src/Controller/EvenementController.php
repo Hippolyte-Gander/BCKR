@@ -319,7 +319,7 @@ class EvenementController extends AbstractController
                 $this->addFlash('success', 'Votre participation a été supprimée.');
             } else {
                 // Si la participation n'existe pas
-                $this->addFlash('error', 'Aucune participation trouvée pour cet événement.');
+                $this->addFlash('danger', 'Aucune participation trouvée pour cet événement.');
             }
 
             // Rediriger vers la liste des événements
