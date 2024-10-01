@@ -276,7 +276,7 @@ footer a i:hover {
 }
 
 .titre-homepage {
-    background: url('../img/homepage/fond-titre.png') no-repeat;
+    background: url('../img/homepage/fond-titre.webp') no-repeat;
     background-position-y: 50%;
     background-size: cover;
     min-height: 400px;
@@ -1002,7 +1002,7 @@ td, tr {
 
 .entrainement-background {
     padding-top: 100px;
-    background: url('../img/photo-terrain-et-raquettes-sombre.jpg') no-repeat;
+    background: url('../img/photo-terrain-et-raquettes-sombre.webp') no-repeat;
     background-size: cover;
     min-height: 90lvh;
     display: flex;
@@ -1044,7 +1044,7 @@ td, tr {
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/filet-volant-sombre.jpg');
+    background-image: url('../img/filet-volant-sombre.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -1060,7 +1060,7 @@ td, tr {
     justify-content: space-evenly;
     width: 100%;
     /* test */
-    background-image: url('../img/filet-volant-sombre.jpg');
+    background-image: url('../img/filet-volant-sombre.webp');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -1303,7 +1303,7 @@ td, tr {
 .login-background {
     display: flex;
     flex-direction: column;
-    background: url('../img/raquette-et-volant-sombre.jpg') no-repeat;
+    background: url('../img/raquette-et-volant-sombre.webp') no-repeat;
     background-size: cover;
     justify-content: center;
     align-items: center;
