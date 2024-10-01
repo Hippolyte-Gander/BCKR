@@ -54,6 +54,9 @@ class UserController extends AbstractController
             // =========== barre de recherche ===========
             $searchData = new SearchData();
             $formSearch = $this->createForm(SearchEventType::class, $searchData);
+            
+            $formSearch->handleRequest($request);
+            
             $userId = $user->getId();
     
             // afficher les events en fonction de leur visibilité
@@ -62,7 +65,7 @@ class UserController extends AbstractController
             } elseif ($user->isMembre()) {
                 $participations = $participationsRepository->findBySearchPagePersoMembre($searchData, $userId);
             } else {
-                $participations = $participationsRepository->findBySearchPagePerso($searchData, $user);
+                $participations = $participationsRepository->findPagePerso($userId);
             }
 
             // pagination des événements à afficher
@@ -71,11 +74,11 @@ class UserController extends AbstractController
                 $request->query->getInt('page', 1), /*page number*/
                 4 /*limit per page*/
             );
-
-            $formSearch->handleRequest($request);
+            // ------------ barre de recherche ------------
             if ($formSearch->isSubmitted() && $formSearch->isValid()) {
                 $formSearch->page = $request->query->getInt('page', 1);
-
+                
+                
                 // afficher les events en fonction de leur visibilité
                 if ($user->isAdmin()) {
                     $participations = $participationsRepository->findBySearchPagePersoAdmin($searchData, $userId);
@@ -84,13 +87,16 @@ class UserController extends AbstractController
                 } else {
                     $participations = $participationsRepository->findBySearchPagePerso($searchData, $userId);
                 }
-
+                // dd($participations);
+                
                 // pagination des événements à afficher
                 $pagination = $paginator->paginate(
                     $participations, /* query NOT result */
                     $request->query->getInt('page', 1), /*page number*/
                     4 /*limit per page*/
                 );
+
+
             }
 
             return $this->render('user/pageperso.html.twig', [

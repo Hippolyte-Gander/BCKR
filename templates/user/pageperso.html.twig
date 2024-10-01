@@ -171,10 +171,25 @@
                     {{ form_end(formSearch) }}
                     <div class="evenement-mini-card">
 
-                        {% for participation in app.user.participationEvent %}
+                        {# {% for participation in app.user.participationEvent %}
                             <div class="affiche-event">
                                 {% if participation.evenementInscrit.affiche %}
-                                    {# <img src="{{ vich_uploader_asset(participation.evenementInscrit.affiche, "imageFile") }} " alt="{{ participation.evenement.name }}"> #}
+                                    <img src="{{ asset('/uploads/afficheEvenement/'~participation.evenementInscrit.affiche) }} " alt="Affiche de l'événement">
+                                {% else %}
+                                    <img src="{{ asset('img/affiche-event/affiche-defaut.webp')}}" alt="Photo d'un barbecue convivial">
+                                {% endif %}
+                            </div>
+                            
+                            <div class="detail-mini-card">
+                                <h6><a href=" {{ path('show_evenement', {'id': participation.evenementInscrit.id}) }} ">{{ participation.evenementInscrit.titre }}</a></h6>
+                                {{ participation.evenementInscrit.description }}<br>
+                                Du {{ participation.evenementInscrit.dateDebutFormatee }} à {{ participation.evenementInscrit.heureDebutFormatee }}<br>
+                                Au {{ participation.evenementInscrit.dateFinFormatee }} à {{ participation.evenementInscrit.heureFinFormatee }}<br>
+                            </div>
+                        {% endfor %} #}
+                        {% for participation in pagination %}
+                            <div class="affiche-event">
+                                {% if participation.evenementInscrit.affiche %}
                                     <img src="{{ asset('/uploads/afficheEvenement/'~participation.evenementInscrit.affiche) }} " alt="Affiche de l'événement">
                                 {% else %}
                                     <img src="{{ asset('img/affiche-event/affiche-defaut.webp')}}" alt="Photo d'un barbecue convivial">
@@ -188,6 +203,7 @@
                                 Au {{ participation.evenementInscrit.dateFinFormatee }} à {{ participation.evenementInscrit.heureFinFormatee }}<br>
                             </div>
                         {% endfor %}
+
                         <div class="navigation">
                             {{ knp_pagination_render(pagination) }}
                         </div>

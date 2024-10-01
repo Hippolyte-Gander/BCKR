@@ -33,7 +33,7 @@ class EvenementRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    // =============== affichage des events selon visibilité ===============
+    // =============== affichage des events selon visibilité PAGE EVENTS ===============
 
     public function evenementsFutursAdmin() 
     {

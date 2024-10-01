@@ -90,25 +90,110 @@ class ParticipationsRepository extends ServiceEntityRepository
         return $participations;
     }
 
+    // public function findBySearchPagePerso(SearchData $searchData, int $userId)
+    // {
+    //     $participations = $this->createQueryBuilder('p')
+    //         ->innerJoin('p.evenementInscrit','e')
+    //         ->innerJoin('p.userInscrit','u')
+    //         ->where('p.userInscrit = :userId')
+    //         ->andWhere('e.visibilite IN (:visibilite)')
+    //         ->setParameter('visibilite', 'tous')
+    //         ->setParameter('userId', "%{$userId}%")
+    //         ->orderBy('e.dateDebut', 'DESC');
+            
+    //         // dump($participations);
+    //         if (!empty($searchData->recherche)) {
+    //             $participations = $participations
+    //                 ->andWhere('e.titre LIKE :recherche')
+    //                 ->setParameter('recherche', "%{$searchData->recherche}%");
+    //             // dd($participations);
+    //         }
+            
+    //     $participations = $participations
+    //         ->getQuery()
+    //         ->getResult();
+            
+    //     // dd($participations);
+
+    //     return $participations;
+    // }
+
+    // public function findBySearchPagePerso(SearchData $searchData, int $userId)
+    // {
+    //     $conn = $this->getEntityManager()->getConnection();
+
+    //     $recherche = $searchData->recherche;
+
+    //     if (!$recherche) {
+    //         $sql = '
+    //         SELECT * 
+    //         FROM participations p
+    //         INNER JOIN evenement e ON e.id = p.evenement_inscrit_id
+    //         INNER JOIN user u ON u.id = p.user_inscrit_id
+    //         WHERE u.id = :userId
+    //             AND e.visibilite = "tous"
+    //         ORDER BY e.date_debut DESC
+    //         ';
+
+    //         $resultSet = $conn->executeQuery($sql, ['userId' => $userId]);
+    //     } else {
+    //         $sql = '
+    //             SELECT * 
+    //             FROM participations p
+    //             INNER JOIN evenement e ON e.id = p.evenement_inscrit_id
+    //             INNER JOIN user u ON u.id = p.user_inscrit_id
+    //             WHERE u.id = :userId
+    //                 AND e.visibilite = "tous"
+    //                 AND LOWER(e.titre) LIKE :recherche
+    //             ORDER BY e.date_debut DESC
+    //             ';
+
+    //             $recherche = '%' . $recherche . '%';
+
+    //             $resultSet = $conn->executeQuery($sql, ['userId' => $userId, 'recherche' => $recherche]);
+    //     }
+    //     return $resultSet->fetchAllAssociative();
+    // }
+    public function findPagePerso(int $userId)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * 
+        FROM participations p
+        INNER JOIN evenement e ON e.id = p.evenement_inscrit_id
+        INNER JOIN user u ON u.id = p.user_inscrit_id
+        WHERE u.id = :userId
+            AND e.visibilite = "tous"
+        ORDER BY e.date_debut DESC
+        ';
+
+        $resultSet = $conn->executeQuery($sql, ['userId' => $userId]);
+
+        return $resultSet->fetchAllAssociative();
+    }
+
     public function findBySearchPagePerso(SearchData $searchData, int $userId)
     {
-        $participations = $this->createQueryBuilder('p')
-            ->innerJoin('p.evenementInscrit','e')
-            ->innerJoin('p.userInscrit','u')
-            ->where('p.userInscrit = :userId')
-            ->andWhere('e.visibilite IN (:visibilite)')
-            ->setParameter('visibilite', 'tous')
-            ->setParameter('userId', "%{$userId}%")
-            ->orderBy('e.dateDebut', 'DESC');
+        $conn = $this->getEntityManager()->getConnection();
 
-        if (!empty($searchData->recherche)) {
-            $participations ->andWhere('e.titre LIKE :recherche')
-                            ->setParameter('recherche', "%{$searchData->recherche}%");
-        }
+        $recherche = $searchData->recherche;
+        $recherche = '%' . $recherche . '%';
 
-        $participations = $participations
-            ->getQuery()
-            ->getResult();
+        $sql = '
+            SELECT * 
+            FROM participations p
+            INNER JOIN evenement e ON e.id = p.evenement_inscrit_id
+            INNER JOIN user u ON u.id = p.user_inscrit_id
+            WHERE u.id = :userId
+                AND e.visibilite = "tous"
+                AND LOWER(e.titre) LIKE :recherche
+            ORDER BY e.date_debut DESC
+            ';
 
-        return $participations;
-    }}
+        $resultSet = $conn->executeQuery($sql, ['userId' => $userId, 'recherche' => $recherche]);
+            
+        // dd($resultSet->fetchAllAssociative());
+        return $resultSet->fetchAllAssociative();
+    }
+}

@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerXsGvTM1\App_KernelDevDebugContainer([
     'container.build_hash' => 'XsGvTM1',
-    'container.build_id' => '4f521b05',
-    'container.build_time' => 1727764358,
+    'container.build_id' => '752dad80',
+    'container.build_time' => 1727794381,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerXsGvTM1');
