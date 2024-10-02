@@ -30,7 +30,7 @@ class SecurityController extends AbstractController
         // test du honey pot
         // if (isset($_POST["name"]) && empty($_POST["name"])) {
             if ($error) {
-                $this->addFlash('danger', 'Identifiant ou mot de passe invalide.');
+                $this->addFlash('danger', "Identifiant ou mot de passe invalide.");
             }
             return $this->render('security/login.html.twig', [
                 'last_username' => $lastUsername,

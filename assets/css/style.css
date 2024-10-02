@@ -97,6 +97,11 @@ a {
     text-decoration: none;
 }
 
+.background {
+    background-color: #f1eeeb;
+    /* padding-top: 117px; */
+}
+
 /* button {
     background-color: #049faa;
     border: 2px solid black;
@@ -283,7 +288,7 @@ footer a i:hover {
 
 /* --------------- PAGE ACCUEIL ---------------- */
 
-.homepage {
+.homepage-background {
     /* align-items: center;
     text-align: center; */
     margin-top: 117px;
@@ -612,7 +617,7 @@ footer a i:hover {
 
 /* --------------- ESPACE PERSO ---------------- */
 
-.pagePerso-container {
+.pagePerso-background {
     padding-top: 117px;
     min-height: 100vh;
     display: flex;
@@ -620,7 +625,7 @@ footer a i:hover {
     align-items: center;
 }
 
-.pagePerso-container h4 {
+.pagePerso-background h4 {
     margin: 32px 0;
 }
 
@@ -999,7 +1004,7 @@ td, tr {
 
 /* --------------- CLUB ---------------- */
 
-.club-wrapper {
+.club-background {
     padding-top: 117px;
     display: flex;
     flex-direction: column;
@@ -1038,20 +1043,9 @@ td, tr {
     height: 400px;
 }
 
-/* --------------- ENTRAINEMENTS ---------------- */
-
-.entrainement-background {
-    padding-top: 100px;
-    background: url('../img/photo-terrain-et-raquettes-sombre.webp') no-repeat;
-    background-size: cover;
-    min-height: 90lvh;
-    display: flex;
-    flex-direction: column;
-}
-
 /* --------------- PAGE ENTRAINEMENTS ---------------- */
 
-.page-entrainement {
+.page-entrainement-background {
     padding-top: 117px;
     display: flex;
     flex-direction: column;
@@ -1059,7 +1053,7 @@ td, tr {
     justify-content: center;
 }
 
-.page-entrainement h2 {
+.page-entrainement-background h2 {
     color: white;
 
 }

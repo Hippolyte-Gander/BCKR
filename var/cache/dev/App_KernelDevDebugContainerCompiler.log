@@ -119,6 +119,9 @@ Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Reso
 Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.logout_listener.main" (parent: security.logout_listener).
 Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.logout.listener.default.main" (parent: security.logout.listener.default).
 Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.logout.listener.session.main" (parent: security.logout.listener.session).
+Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "limiter._login_local_main" (parent: limiter).
+Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "limiter._login_global_main" (parent: limiter).
+Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.listener.login_throttling.main" (parent: security.listener.login_throttling).
 Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.authenticator.form_login.main" (parent: security.authenticator.form_login).
 Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.authentication.success_handler.main.form_login" (parent: security.authentication.success_handler).
 Symfony\Component\DependencyInjection\Compiler\ResolveChildDefinitionsPass: Resolving inheritance for "security.authentication.failure_handler.main.form_login" (parent: security.authentication.failure_handler).
@@ -403,6 +406,10 @@ Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "security.user_providers"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\Security\Core\User\UserProviderInterface"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "security.authentication.session_strategy.main"; reason: private alias.
+Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service ".Symfony\Component\RateLimiter\RateLimiterFactory $_login_local_main.limiter"; reason: private alias.
+Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\RateLimiter\RateLimiterFactory $loginLocalMainLimiter"; reason: private alias.
+Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service ".Symfony\Component\RateLimiter\RateLimiterFactory $_login_global_main.limiter"; reason: private alias.
+Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\RateLimiter\RateLimiterFactory $loginGlobalMainLimiter"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "security.user_checker.main"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "security.firewall.context_locator"; reason: private alias.
 Symfony\Component\DependencyInjection\Compiler\RemovePrivateAliasesPass: Removed service "Symfony\Component\Security\Core\User\UserCheckerInterface"; reason: private alias.
@@ -1251,6 +1258,11 @@ Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inl
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service ".security.request_matcher.q1UFWmc" to ".security.request_matcher.kLbKLHa".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.firewall.map.config.dev" to "security.firewall.map.context.dev".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.authentication.session_strategy" to "security.listener.session.main".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "limiter.storage._login_local_main" to "limiter._login_local_main".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "limiter.storage._login_global_main" to "limiter._login_global_main".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "limiter._login_global_main" to "security.login_throttling.main.limiter".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "limiter._login_local_main" to "security.login_throttling.main.limiter".
+Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.login_throttling.main.limiter" to "security.listener.login_throttling.main".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.authentication.success_handler.main.form_login" to "security.authenticator.form_login.main".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "security.authentication.failure_handler.main.form_login" to "security.authenticator.form_login.main".
 Symfony\Component\DependencyInjection\Compiler\InlineServiceDefinitionsPass: Inlined service "debug.security.firewall.authenticator.main.inner" to "debug.security.firewall.authenticator.main".

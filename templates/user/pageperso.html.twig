@@ -8,7 +8,7 @@
 {% block body %}
 
 {% if app.user %}
-    <div class="pagePerso-container">
+    <main class="background pagePerso-background">
         <h4>Espace personnel : {{app.user.pseudo}}</h4>
         <div class="pagePerso-wrapper">
             <section class="gerer-compte">
@@ -200,7 +200,7 @@
                 {% endif %}
             </section>
         </div>
-    </div>
+    </main>
 {% else %}
     <div class="error">
         Page introuvable

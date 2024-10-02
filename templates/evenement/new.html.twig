@@ -12,7 +12,7 @@
 {% block body %}
 
 {% if app.user  and app.user.isAdmin() %}
-    <div class="evenement-formulaire-background">
+    <main class="background evenement-formulaire-background">
         <div class="evenement-haut">
             {% if edit %}
                 <h2>Modifier un événement</h2>
@@ -38,7 +38,7 @@
             </div>
         </section>
 
-    </div>
+    </main>
 {% else %}
     <div class="error">
         Page introuvable

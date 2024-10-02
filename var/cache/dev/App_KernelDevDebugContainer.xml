@@ -7236,6 +7236,7 @@
       <argument>null</argument>
       <argument>null</argument>
       <argument type="collection">
+        <argument>login_throttling</argument>
         <argument>form_login</argument>
       </argument>
       <argument>null</argument>
@@ -7294,6 +7295,42 @@
     </service>
     <service id="security.logout.listener.session.main" class="Symfony\Component\Security\Http\EventListener\SessionLogoutListener">
       <tag name="kernel.event_subscriber" dispatcher="debug.security.event_dispatcher.main"/>
+    </service>
+    <service id="limiter._login_local_main" class="Symfony\Component\RateLimiter\RateLimiterFactory">
+      <argument type="collection">
+        <argument key="policy">fixed_window</argument>
+        <argument key="limit">5</argument>
+        <argument key="interval">15 minutes</argument>
+        <argument key="id">_login_local_main</argument>
+      </argument>
+      <argument type="service" id="limiter.storage._login_local_main"/>
+      <argument>null</argument>
+    </service>
+    <service id="limiter.storage._login_local_main" class="Symfony\Component\RateLimiter\Storage\CacheStorage">
+      <argument type="service" id="cache.rate_limiter"/>
+    </service>
+    <service id="limiter._login_global_main" class="Symfony\Component\RateLimiter\RateLimiterFactory">
+      <argument type="collection">
+        <argument key="policy">fixed_window</argument>
+        <argument key="limit">25</argument>
+        <argument key="interval">15 minutes</argument>
+        <argument key="id">_login_global_main</argument>
+      </argument>
+      <argument type="service" id="limiter.storage._login_global_main"/>
+      <argument>null</argument>
+    </service>
+    <service id="limiter.storage._login_global_main" class="Symfony\Component\RateLimiter\Storage\CacheStorage">
+      <argument type="service" id="cache.rate_limiter"/>
+    </service>
+    <service id="security.login_throttling.main.limiter" class="Symfony\Component\Security\Http\RateLimiter\DefaultLoginRateLimiter">
+      <argument type="service" id="limiter._login_global_main"/>
+      <argument type="service" id="limiter._login_local_main"/>
+      <argument>%env(APP_SECRET)%</argument>
+    </service>
+    <service id="security.listener.login_throttling.main" class="Symfony\Component\Security\Http\EventListener\LoginThrottlingListener">
+      <tag name="kernel.event_subscriber" dispatcher="debug.security.event_dispatcher.main"/>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="security.login_throttling.main.limiter"/>
     </service>
     <service id="security.authenticator.form_login.main" class="Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator">
       <argument type="service" id="security.http_utils"/>
@@ -9982,6 +10019,30 @@
       <call method="addListener">
         <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
         <argument type="collection">
+          <argument type="service_closure" id="security.listener.login_throttling.main"/>
+          <argument>checkPassport</argument>
+        </argument>
+        <argument>2080</argument>
+      </call>
+      <call method="addListener">
+        <argument>Symfony\Component\Security\Http\Event\LoginFailureEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="security.listener.login_throttling.main"/>
+          <argument>onFailedLogin</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>Symfony\Component\Security\Http\Event\LoginSuccessEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="security.listener.login_throttling.main"/>
+          <argument>onSuccessfulLogin</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>Symfony\Component\Security\Http\Event\CheckPassportEvent</argument>
+        <argument type="collection">
           <argument type="service_closure" id="security.listener.user_checker.main"/>
           <argument>preCheckCredentials</argument>
         </argument>
@@ -11846,6 +11907,10 @@
     <service id="security.user_providers" alias="security.user.provider.concrete.app_user_provider"/>
     <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.app_user_provider"/>
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
+    <service id=".Symfony\Component\RateLimiter\RateLimiterFactory $_login_local_main.limiter" alias="limiter._login_local_main"/>
+    <service id="Symfony\Component\RateLimiter\RateLimiterFactory $loginLocalMainLimiter" alias="limiter._login_local_main"/>
+    <service id=".Symfony\Component\RateLimiter\RateLimiterFactory $_login_global_main.limiter" alias="limiter._login_global_main"/>
+    <service id="Symfony\Component\RateLimiter\RateLimiterFactory $loginGlobalMainLimiter" alias="limiter._login_global_main"/>
     <service id="security.user_checker.main" alias="security.user_checker"/>
     <service id="security.firewall.context_locator" alias=".service_locator.zJyh7qS"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
