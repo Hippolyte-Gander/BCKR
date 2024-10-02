@@ -27,12 +27,17 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        if ($error) {
-            $this->addFlash('danger', 'Identifiant ou mot de passe invalide.');
-        }
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-        ]);
+        // test du honey pot
+        // if (isset($_POST["name"]) && empty($_POST["name"])) {
+            if ($error) {
+                $this->addFlash('danger', 'Identifiant ou mot de passe invalide.');
+            }
+            return $this->render('security/login.html.twig', [
+                'last_username' => $lastUsername,
+            ]);
+        // } else {
+        //     return $this->redirectToRoute('app_home');
+        // }
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
