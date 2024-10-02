@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SearchEventType extends AbstractType
 {
@@ -18,6 +19,10 @@ class SearchEventType extends AbstractType
                     'placeholder'=> 'Rechercher un événement',
                     'class'=>'barre-recherche'
                 ]
+            ])
+            ->add('valider', SubmitType::class, [
+                'label'=> '<i class="fa-solid fa-magnifying-glass"></i>',
+                'label_html' => true
             ])
         ;
     }

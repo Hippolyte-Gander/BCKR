@@ -759,6 +759,33 @@ footer a i:hover {
     padding: 32px;
 }
 
+.form-recherche {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.form-recherche button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+.form-recherche i {
+    padding: 8px;
+    border: solid 1px white;
+}
+
+.form-recherche button i:hover,
+.form-recherche a i:hover
+ {
+    color: #5757b1;
+    border: solid 1px #807FFF;
+    border-radius: 8px;
+}
+
 .barre-recherche {
     width: 300px;
 }

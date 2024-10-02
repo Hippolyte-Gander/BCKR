@@ -65,7 +65,7 @@ class UserController extends AbstractController
             } elseif ($user->isMembre()) {
                 $participations = $participationsRepository->findBySearchPagePersoMembre($searchData, $userId);
             } else {
-                $participations = $participationsRepository->findPagePerso($userId);
+                $participations = $participationsRepository->findBySearchPagePerso($searchData, $userId);
             }
 
             // pagination des événements à afficher

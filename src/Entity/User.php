@@ -49,12 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'poste')]
     private Collection $commentaires;
 
-    /**
-     * @var Collection<int, ParticipantEntrainement>
-     */
-    #[ORM\OneToMany(targetEntity: ParticipantEntrainement::class, mappedBy: 'utilisateur')]
-    private Collection $participantEntrainements;
-
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $numLicence = null;
 

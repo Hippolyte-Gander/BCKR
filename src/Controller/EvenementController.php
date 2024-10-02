@@ -271,21 +271,22 @@ class EvenementController extends AbstractController
                 $placesMax = $evenement->getPlaces();
 
                 if ($futuresPlacesPrises > $placesMax) {
-                    // alert('Erreur');
+                    $this->addFlash('danger', 'Il n\'y a plus assez de places libres.');
                     return $this->redirectToRoute('app_evenement');
                 } elseif ($futuresPlacesPrises <= $placesMax) {
                     // Sauvegarder en BDD
                     $entityManager->persist($participation);
                     $entityManager->flush();
             
+                    $this->addFlash('success', 'Votre participation a été ajoutée.');
                     return $this->redirectToRoute('app_evenement');
                 } else {
-                    // alert('Erreur');
+                    $this->addFlash('danger', 'Une erreur est survenue.');
                     return $this->redirectToRoute('app_evenement');
                 }
                 
             } else {
-                // alert('Erreur');
+                $this->addFlash('danger', 'Une erreur est survenue.');
                 return $this->redirectToRoute('app_evenement');
             }
         }
@@ -304,8 +305,8 @@ class EvenementController extends AbstractController
             // Chercher la participation de l'utilisateur pour cet événement
             $participation = $entityManager->getRepository(Participations::class)
                 ->findOneBy([
-                    'inscrit' => $user,
-                    'inscriptions' => $evenement
+                    'userInscrit' => $user,
+                    'evenementInscrit' => $evenement
             ]);
 
             // Si la participation existe, la supprimer

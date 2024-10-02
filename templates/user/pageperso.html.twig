@@ -166,9 +166,13 @@
                             <path d="M29.5416 17.0833H7.45822V21.5H29.5416V17.0833ZM34.5 4.91667H31.7499V0.5H27.3332V4.91667H9.66656V0.5H5.24989V4.91667H2.5C0.0487502 4.91667 0 5.07083 0 7.5V36.9584C0 39.3875 0.590306 40 3.04156 40H33.9582C36.3874 40 36.9999 39.3875 36.9999 36.9584V7.5C36.9999 5.07083 36.9292 4.91667 34.5 4.91667ZM33.9582 36.9584H3.04156V12.6667H33.9582V36.9584ZM22.9166 25.9167H7.45822V30.3333H22.9166V25.9167Z" fill="black"/>
                         </svg>
                     </div>
-                    {{ form_start(formSearch) }}
-                        {{ form_widget(formSearch.recherche) }}
-                    {{ form_end(formSearch) }}
+                    <div class="form-recherche">
+                        {{ form_start(formSearch) }}
+                            {{ form_widget(formSearch.recherche) }}
+                            {{ form_widget(formSearch.valider) }}
+                            <a href="{{ path('pageperso_user') }}"><i class="fa-solid fa-rotate"></i></a>
+                        {{ form_end(formSearch) }}
+                    </div>
                     <div class="evenement-mini-card">
 
                         {# {% for participation in app.user.participationEvent %}
@@ -187,6 +191,7 @@
                                 Au {{ participation.evenementInscrit.dateFinFormatee }} à {{ participation.evenementInscrit.heureFinFormatee }}<br>
                             </div>
                         {% endfor %} #}
+                        {# {{ dump(pagination) }} #}
                         {% for participation in pagination %}
                             <div class="affiche-event">
                                 {% if participation.evenementInscrit.affiche %}
