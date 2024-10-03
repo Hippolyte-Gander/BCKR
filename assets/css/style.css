@@ -1160,6 +1160,51 @@ td, tr {
     padding: 32px 0;
 }
 
+/* --------------- CONTACT ---------------- */
+
+.contact-background {
+    padding-top: 117px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.texte-contact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 32px 0;
+}
+
+.texte-contact p {
+    margin: 16px;
+}
+
+.form-contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* texte du form */
+.texte-mail {
+    min-height: 150px;
+    min-width: 400px;
+}
+/* bouton du form */
+.btn-mail {
+    height: 64px;
+    width: 128px;
+    margin-top: 32px;
+}
+
 /* --------------- FORMULAIRE ---------------- */
 
 .evenement-formulaire-background {

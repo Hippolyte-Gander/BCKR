@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Form\ContactType;
+use Symfony\Component\Mime\Email;
 use App\Repository\EvenementRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
 
 class HomeController extends AbstractController
 {
@@ -61,4 +64,37 @@ class HomeController extends AbstractController
     {
         return $this->render('home/entrainements.html.twig');
     }
+    
+    // ------------- PAGE CONTACT -------------
+    #[Route('/contact', name: 'contact_home')]
+    public function contact(Request $request, MailerInterface $mailer): Response
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(ContactType::class);
+
+        if ($user) {
+            $expediteur = $user->getEmail();
+            $form->handleRequest($request);
+            
+            if ($form->isSubmitted() && $form->isValid()) {
+                $message = $form->get('message')->getData();
+                $email = (new Email())
+                    ->from($expediteur)
+                    ->to('Badminton.bckr@gmail.com')
+                    ->subject('Mail envoyé depuis le site')
+                    ->text($message);
+                $mailer->send($email);
+
+                $this->addFlash('success', 'Mail envoyé avec succès');
+
+                return $this->redirectToRoute('contact_home');
+            }
+                
+        }
+
+        return $this->render('home/contact.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }
