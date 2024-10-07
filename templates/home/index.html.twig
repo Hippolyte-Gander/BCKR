@@ -7,12 +7,18 @@
     <div class="wrapper">
         <section class="titre-homepage">
             <h1>Badminton Club<br>Kriegsheim Rottelsheim</h1>
-
             {# <div class="annonce">
                 <p class="alerte-accueil"> {{ afficher message important ici }} </p>
             </div> #}
         </section>
-
+        <div class="wrapper-cta">
+            <i class="fa-solid fa-angles-right"></i>
+            <div class="homepage-rejoindre-btn">
+                Rejoignez-nous !
+            </div>
+            <i class="fa-solid fa-angles-left"></i>
+        </div>
+        
         <section class="club">
             <article class="card-club">
                 <img class="club-img" src="{{ asset('img/homepage/le-club1.webp')}}" alt="photo du président du club faisant un discours">
@@ -86,7 +92,9 @@
                                 <br>
                                 Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
                             </p>
-                            <p class="evenement-card-description">{{ evenement.description }}</p>
+                            <p class="evenement-card-description">
+                                {{ evenement.description }}
+                            </p>
                         </div>
                         <div class="evenement-card-bottom">
                             <div class="evenement-card-infos">
