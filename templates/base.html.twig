@@ -30,11 +30,11 @@
                     <div class="liens">
                         <a href=" {{ path('app_home') }} ">Accueil</a>
                         <a href=" {{ path('club_home') }} ">Le club</a>
-                        {% if app.user  and app.user.isAdmin() %}
-                            <a href=" {{ path('new_evenement') }} ">Créer un événement</a>
-                        {% endif %}
                         <a href=" {{ path('app_evenement') }} ">Les événements</a>
                         <a href=" {{ path('entrainements_home') }} ">Les entraînements</a>
+                        {% if app.user  and app.user.isAdmin() %}
+                        <a href=" /admin ">Panneau administrateur</a>
+                        {% endif %}
                     </div>
             </nav>
             <div class="login">
