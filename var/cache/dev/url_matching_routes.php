@@ -64,10 +64,7 @@ return [
                 .'|/mot\\-de\\-passe\\-oublie/([^/]++)(*:404)'
                 .'|/user/([^/]++)(?'
                     .'|(*:429)'
-                    .'|/(?'
-                        .'|edit(*:445)'
-                        .'|suppr(*:458)'
-                    .')'
+                    .'|/edit(*:442)'
                 .')'
             .')/?$}sDu',
     ],
@@ -89,9 +86,8 @@ return [
         364 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
         404 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
         429 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
-        445 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
-        458 => [
-            [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], ['id'], null, null, false, false, null],
+        442 => [
+            [['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

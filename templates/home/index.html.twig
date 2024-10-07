@@ -66,27 +66,35 @@
                 
                 {% for evenement in pagination %}
                     <div class="card-evenement">
-                        <div class="evenement-card-top">
-                            <div class="affiche-event">
-                                {% if evenement.affiche %}
-                                <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
-                                {% else %}
-                                    <img src="{{ asset('img/homepage/le-club3.webp')}}" alt="Photo d'une rencontre sportive">
-                                {% endif %}
+                        <div class="affiche-event">
+                            {% if evenement.affiche %}
+                            <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
+                            {% else %}
+                                <img src="{{ asset('img/homepage/le-club3.webp')}}" alt="Photo d'une rencontre sportive">
+                            {% endif %}
+                        </div>
+                        <div class="evenement-card-content">
+                            <div class="evenement-card-titre">
+                                <h5>
+                                    <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
+                                        {{ evenement.titre }}
+                                    </a>
+                                </h5>
                             </div>
-                            <div class="evenement-infos">
-                                <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
-                                <div class="date-event">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</div>
-                                <div class="date-event">Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</div>
-                                <p class="descr-event">{{ evenement.description }}</p>
-                                
+                            <p>
+                                Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}
+                                <br>
+                                Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+                            </p>
+                            <p class="evenement-card-description">{{ evenement.description }}</p>
+                        </div>
+                        <div class="evenement-card-bottom">
+                            <div class="evenement-card-infos">
+                                <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
+                                    En savoir plus <i class="fa-solid fa-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                        {% if evenement.contenu|length < 15 %}
-                            <p class="evenement-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloribus quo totam earum omnis. Inventore perspiciatis possimus ipsum soluta itaque similique eveniet, maiores reiciendis alias velit. Reprehenderit minus quibusdam cum autem.</p>
-                        {% else %}
-                            <p class="evenement-descr">{{ evenement.contenu }}</p>
-                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -95,12 +103,12 @@
             </div>
         </section>
 
-        <section class="photos-entrainement">
+        {# <section class="photos-entrainement">
             <img class="img-entrainement" src="{{ asset('img/entrainement/hand-shake.webp')}}" alt="">
             <img class="img-entrainement" src="{{ asset('img/entrainement/rattrapage-amorti.webp')}}" alt="">
             <img class="img-entrainement" src="{{ asset('img/entrainement/volant-sur-ligne.webp')}}" alt="">
             <img class="img-entrainement" src="{{ asset('img/entrainement/pret-pour-entrainement.webp')}}" alt="">
-        </section>
+        </section> #}
 
         <section class="creative-carousal--hero">
             <div class="carousel-slider swiper-container-horizontal">

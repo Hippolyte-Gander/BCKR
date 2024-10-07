@@ -54,18 +54,19 @@ class ParticipationsRepository extends ServiceEntityRepository
             ->where('p.userInscrit = :userId')
             ->andWhere('e.visibilite IN (:visibilites)')
             ->setParameter('visibilites', ['admins', 'membres', 'tous'])
-            ->setParameter('userId', "%{$userId}%")
+            ->setParameter('userId', $userId)
             ->orderBy('e.dateDebut', 'DESC');
-
-        if (!empty($searchData->recherche)) {
-            $participations ->andWhere('e.titre LIKE :recherche')
-                            ->setParameter('recherche', "%{$searchData->recherche}%");
-        }
-
+            
+            if (!empty($searchData->recherche)) {
+                $participations = $participations
+                    ->andWhere('e.titre LIKE :recherche')
+                    ->setParameter('recherche', "%{$searchData->recherche}%");
+            }
+            
         $participations = $participations
             ->getQuery()
             ->getResult();
-
+            
         return $participations;
     }
 
@@ -77,22 +78,22 @@ class ParticipationsRepository extends ServiceEntityRepository
             ->where('p.userInscrit = :userId')
             ->andWhere('e.visibilite IN (:visibilites)')
             ->setParameter('visibilites', ['membres', 'tous'])
-            ->setParameter('userId', "%{$userId}%")
+            ->setParameter('userId', $userId)
             ->orderBy('e.dateDebut', 'DESC');
-
-        if (!empty($searchData->recherche)) {
-            $participations ->andWhere('e.titre LIKE :recherche')
-                            ->setParameter('recherche', "%{$searchData->recherche}%");
-        }
-
+            
+            if (!empty($searchData->recherche)) {
+                $participations = $participations
+                    ->andWhere('e.titre LIKE :recherche')
+                    ->setParameter('recherche', "%{$searchData->recherche}%");
+            }
+            
         $participations = $participations
             ->getQuery()
             ->getResult();
-
+            
         return $participations;
     }
 
-    //  --------------- DQL en 1 fonction ---------------
     public function findBySearchPagePerso(SearchData $searchData, int $userId)
     {
         $participations = $this->createQueryBuilder('p')

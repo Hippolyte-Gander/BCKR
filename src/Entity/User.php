@@ -85,7 +85,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
-        $this->participantEntrainements = new ArrayCollection();
         $this->participationEvent = new ArrayCollection();
     }
 
@@ -234,37 +233,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return in_array('ROLE_ADMIN', $this->getRoles());
     }
-
-    /**
-     * @return Collection<int, ParticipantEntrainement>
-     */
-    public function getParticipantEntrainements(): Collection
-    {
-        return $this->participantEntrainements;
-    }
-
-    public function addParticipantEntrainement(ParticipantEntrainement $participantEntrainement): static
-    {
-        if (!$this->participantEntrainements->contains($participantEntrainement)) {
-            $this->participantEntrainements->add($participantEntrainement);
-            $participantEntrainement->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeParticipantEntrainement(ParticipantEntrainement $participantEntrainement): static
-    {
-        if ($this->participantEntrainements->removeElement($participantEntrainement)) {
-            // set the owning side to null (unless already changed)
-            if ($participantEntrainement->getUtilisateur() === $this) {
-                $participantEntrainement->setUtilisateur(null);
-            }
-        }
-
-        return $this;
-    }
-
 
     // ========================== INFOS MEMBRE ==========================
     public function getNumLicence(): ?string

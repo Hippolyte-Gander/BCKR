@@ -166,20 +166,20 @@ class UserController extends AbstractController
 
     // ------------- SUPRIMER UN USER -------------
 
-    #[Route('/user/{id}/suppr', name: 'suppr_user')]
-    public function supprUser(User $user, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager)
-    {
-        // mettre à jour le compteur de places libres
-        $participation = $user->getParticipe();
-        foreach ($participation as $evenement) {
-            $id = $evenement->getId();
-            $evenementToUpdate = $evenementRepository->find($id);
-            $evenementToUpdate->setPlacesPrises($evenementToUpdate->getPlacesPrises() - 1);
-        }
+    // #[Route('/user/{id}/suppr', name: 'suppr_user')]
+    // public function supprUser(User $user, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager)
+    // {
+    //     // mettre à jour le compteur de places libres
+    //     $participation = $user->getParticipe();
+    //     foreach ($participation as $evenement) {
+    //         $id = $evenement->getId();
+    //         $evenementToUpdate = $evenementRepository->find($id);
+    //         $evenementToUpdate->setPlacesPrises($evenementToUpdate->getPlacesPrises() - 1);
+    //     }
 
-        $entityManager->remove($user);
-        $entityManager->flush();
+    //     $entityManager->remove($user);
+    //     $entityManager->flush();
 
-        return $this->redirectToRoute('app_user');
-    }
+    //     return $this->redirectToRoute('app_user');
+    // }
 }

@@ -19,7 +19,7 @@ class DeleteParticipationType extends AbstractType
             ->add('valider', SubmitType::class, [
                 'label'=> 'Se désinscrire',
                 'attr'=> [
-                    'class'=> 'valider-btn-formulaire'
+                    'class'=> 'suppr-btn-formulaire'
                 ]
             ])
         ;

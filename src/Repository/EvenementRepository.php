@@ -42,7 +42,7 @@ class EvenementRepository extends ServiceEntityRepository
             ->andWhere('e.visibilite IN (:visibilites)')
             ->setParameter('today', new DateTime())
             ->setParameter('visibilites', ['admins', 'membres', 'tous'])
-            ->orderBy('e.dateDebut', 'DESC')
+            ->orderBy('e.dateDebut', 'ASC')
             ->getQuery()
             ->getResult()
         ;
@@ -55,7 +55,7 @@ class EvenementRepository extends ServiceEntityRepository
             ->andWhere('e.visibilite IN (:visibilites)')
             ->setParameter('today', new DateTime())
             ->setParameter('visibilites', ['membres', 'tous'])
-            ->orderBy('e.dateDebut', 'DESC')
+            ->orderBy('e.dateDebut', 'ASC')
             ->getQuery()
             ->getResult()
         ;
@@ -68,7 +68,7 @@ class EvenementRepository extends ServiceEntityRepository
             ->andWhere('e.visibilite = :visibilite')
             ->setParameter('today', new DateTime())
             ->setParameter('visibilite', 'tous')
-            ->orderBy('e.dateDebut', 'DESC')
+            ->orderBy('e.dateDebut', 'ASC')
             ->getQuery()
             ->getResult()
         ;
@@ -79,7 +79,7 @@ class EvenementRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('e')
             ->andWhere('e.dateDebut <= :today')
             ->setParameter('today', new DateTime())
-            ->orderBy('e.dateDebut', 'DESC')
+            ->orderBy('e.dateDebut', 'ASC')
             ->getQuery()
             ->getResult()
         ;
@@ -97,7 +97,7 @@ class EvenementRepository extends ServiceEntityRepository
                 ->setParameter('recherche', "%{$searchData->recherche}%")
                 ->setParameter('today', new DateTime())
                 ->setParameter('visibilite', 'tous')
-                ->orderBy('e.dateDebut', 'DESC');
+                ->orderBy('e.dateDebut', 'ASC');
         }
 
         $evenements = $evenements
@@ -117,7 +117,7 @@ class EvenementRepository extends ServiceEntityRepository
                 ->setParameter('recherche', "%{$searchData->recherche}%")
                 ->setParameter('today', new DateTime())
                 ->setParameter('visibilites', ['membres', 'tous'])
-                ->orderBy('e.dateDebut', 'DESC');
+                ->orderBy('e.dateDebut', 'ASC');
         }
 
         $evenements = $evenements

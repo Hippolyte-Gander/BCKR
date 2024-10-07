@@ -98,7 +98,7 @@ a {
 }
 
 .background {
-    background-color: #f8f6f3;
+    background-color: #f9f9fa;
     /* padding-top: 117px; */
 }
 
@@ -121,7 +121,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,6 +130,7 @@ header {
     border-bottom: solid 1px #807FFF;
     /* border-bottom: solid 1px #7f7fff9d; */
     font-weight: 400;
+    background-color: #f9f9fa;
 }
 
 nav {
@@ -250,7 +250,6 @@ header .menu-mobile {
 /* --------------- FOOTER ---------------- */
 
 footer {
-    background: rgb(255, 255, 255);
     height: 320px;
     border-top: solid 1px #807FFF;
     font-size: 1.25rem;
@@ -258,6 +257,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    background-color: #f9f9fa;
 }
 
 .liens-internes {
@@ -349,6 +349,8 @@ footer a i:hover {
 .evenement-a-venir {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 16px;
 }
 
@@ -359,6 +361,7 @@ footer a i:hover {
 .evenement-wrapper {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
 }
@@ -366,33 +369,24 @@ footer a i:hover {
 .card-evenement {
     display: flex;
     flex-direction: column;
-    flex: 1 1 24%;
+    /* align-items: center; */
     border: solid 1px #5757b1;
     border-radius: 8px;
-    padding: 32px;
-    width: 30%;
+    width: 20%;
     max-height: 720px;
     min-width: 400px;
     max-width: 750px;
 }
 
-.evenement-card-top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 24px;
-}
-
 .affiche-event {
-    width: 45%;
-    max-height: 180px;
-    overflow: hidden;
+    width: 100%;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 220px;
-    max-height: 220px;
-    border-radius: 8px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0 ;
+    /* border: solid 1px; */
 }
 
 .affiche-event img {
@@ -401,23 +395,44 @@ footer a i:hover {
     object-fit: cover;
 }
 
-.evenement-info {
-    width: 55%;
-    width: auto;
+.evenement-card-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    padding: 16px;
+    flex-grow: 1;
+}
+
+.evenement-card-titre h5 a {
+    font-size: 24px;
+}
+
+.evenement-card-description {
+    color: #2b2b2b;
+}
+
+.evenement-card-bottom {
+    width: 100%;
     height: auto;
+    display: flex;
 }
 
-.evenement-info h5 {
-    padding: 16px 8 px;
-}
-
-.evenement-descr {
-    background-color: rgba(128, 128, 128, 0.541);
+.evenement-card-infos {
+    padding: 10px;
+    margin: 16px;
+    background-color: #807FFF;
     border-radius: 8px;
-    padding: 24px;
-    margin-top: 24px;
-    text-align: justify;
+    border: solid 1px;
+    width: fit-content;
 }
+
+.evenement-card-infos a,
+.evenement-card-infos i {
+    color: white;
+}
+
+/* PARTIE CARROUSEL   */
 
 .carrousel {
     display: flex;
@@ -427,8 +442,6 @@ footer a i:hover {
     width: 60%;
     height: 600px;
 }
-
-/* PARTIE CARROUSEL   */
 
 .creative-carousal--hero img {
 	-ms-interpolation-mode: bicubic;
@@ -496,7 +509,7 @@ footer a i:hover {
 .creative-carousal--hero .carousel-slider .swiper-slide .inner h2{
     width: 100%;
     float: left;
-    font-size: 4vw;
+    font-size: 3vw;
     line-height: 5vw;
     font-weight: 800;
     color: #fff;
@@ -833,8 +846,9 @@ footer a i:hover {
     display: flex;
     width: fit-content;
     background-color: #807FFF;
-    border-radius: 16px;
-    border: solid 1px;
+    color: white;
+    border-radius: 8px;
+    border: solid 1px black;
 }
 
 .valider-participation-btn:hover {
@@ -1345,9 +1359,9 @@ td, tr {
 }
 /* bouton non participation événement */
 .suppr-btn-formulaire {
-    background-color: #881602;
-    border: 2px solid black;
-    border-radius: 5px;
+    background-color: #FF5353;
+    border: 1px solid black;
+    border-radius: 8px;
     color: rgb(0, 0, 0);
     padding: 16px 32px;
     text-decoration: none;

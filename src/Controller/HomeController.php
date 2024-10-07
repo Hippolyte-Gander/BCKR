@@ -36,7 +36,7 @@ class HomeController extends AbstractController
         $pagination = $paginator->paginate(
             $evenements, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            6 /*limit per page*/
+            4 /*limit per page*/
         );
 
         return $this->render('home/index.html.twig', [
