@@ -26,12 +26,22 @@
                                 <img src="{{ asset('img/affiche-event/affiche-defaut.webp')}}" alt="Photo d'une rencontre sportive">
                             {% endif %}
                         </div>
-                        <div class="evenement-infos">
-                            <h5> <a href=" {{ path('show_evenement', {'id': evenement.id}) }} "> {{ evenement.titre }}</a></h5>
-                            <div class="date-event">Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}</div>
-                            <div class="date-event">Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}</div>
-                            <p class="descr-event">{{ evenement.description }}</p>
-                            
+                        <div class="evenement-card-content">
+                            <div class="evenement-card-titre">
+                                <h5>
+                                    <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
+                                        {{ evenement.titre }}
+                                    </a>
+                                </h5>
+                            </div>
+                            <p>
+                                Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}
+                                <br>
+                                Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+                            </p>
+                            <p class="evenement-card-description">
+                                {{ evenement.description }}
+                            </p>
                         </div>
                     </div>
                     
@@ -54,20 +64,18 @@
                             {% endif %}
                         </div>
                     {% endif %}
-                    {% if evenement.contenu|length < 15 %}
-                        <p class="evenement-descr">A propos de l'événement :<br>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis doloribus quo totam earum omnis. Inventore perspiciatis possimus ipsum soluta itaque similique eveniet, maiores reiciendis alias velit. Reprehenderit minus quibusdam cum autem.</p>
-                    {% else %}
-                        <p class="evenement-descr">A propos de l'événement :<br>
-                            {{ evenement.contenu }}
-                        </p>
-                    {% endif %}
 
                     {# ========== delete / edit ========== #}
                     {% if app.user  and app.user.isAdmin() %}
-                        <div class="suppr-edit-btn">
-                            <a class="btn-editer" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
-                            <a class="btn-supprimer" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
+                        <div class="suppr-edit-btns">
+                            <a class="btn-editer-evenement" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
+                            <a class="btn-supprimer-evenement" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
+                        </div>
+                    {% else %}
+                        <div class="evenement-card-infos">
+                            <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
+                                En savoir plus <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
                     {% endif %}
                 </div>
