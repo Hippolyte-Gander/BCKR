@@ -6,12 +6,19 @@
 
 <main class=" background liste-evenement-background">
     <h2>Événements à venir</h2>
-    <div class="form-recherche">
-        {{ form_start(formSearch) }}
-            {{ form_widget(formSearch.recherche) }}
-            {{ form_widget(formSearch.valider) }}
-            <a href="{{ path('app_evenement') }}"><i class="fa-solid fa-arrow-rotate-left"></i></a>
-        {{ form_end(formSearch) }}
+    <div class="evenement-recherche">
+        {% if app.user %}
+            {% if app.user.isAdmin() %}
+                <a class="ajout-evenement" href=" {{ path('new_evenement') }} ">Ajouter événement</a>
+            {% endif %}
+        {% endif %}
+        <div class="evenement-form-recherche">
+            {{ form_start(formSearch) }}
+                {{ form_widget(formSearch.recherche) }}
+                {{ form_widget(formSearch.valider) }}
+                <a href="{{ path('app_evenement') }}"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+            {{ form_end(formSearch) }}
+        </div>
     </div>
     <section class="evenement-a-venir">
         <div class="evenement-wrapper">

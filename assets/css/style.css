@@ -166,9 +166,42 @@ header .menu-mobile {
     color: red;
 }
 
+/* .plate4 .x {
+    transition: transform 400ms;
+  }
+  .plate4 .line {
+    transform-origin: 50%;
+    transition: transform 400ms 100ms;
+  }
+  .active.plate4 .line {
+    transition: transform 400ms;
+  }
+  .active.plate4 .line1 {
+    transform: translateX(18px) translateY(-3px) rotate(-45deg) scale(.7);
+  }
+  .active.plate4 .line2 {
+    transform: translateX(-18px) translateY(-3px) rotate(45deg) scale(.7);
+  }
+  .active.plate4 .line3 {
+    transform: translateY(0px) rotate(45deg) scale(.7);
+  }
+  .active.plate4 .line4 {
+    transform: translateY(0px) rotate(-45deg) scale(.7);
+  }
+  .active.plate4 .line5 {
+    transform: translateX(18px) translateY(3px) rotate(45deg) scale(.7);
+  }
+  .active.plate4 .line6 {
+    transform: translateX(-18px) translateY(3px) rotate(-45deg) scale(.7);
+  }
+  .active.plate4 .x {
+    transition: transform 400ms 100ms;
+    transform: scale(1);
+  } */
+
 /* Menu mobile */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
 
     header .menu-mobile {
         display: flex;
@@ -848,10 +881,26 @@ footer a i:hover {
     padding: 32px;
 }
 
-.form-recherche {
+.evenement-recherche {
     display: flex;
-    flex-direction: column;
-    margin-top: 16px;
+    flex-direction: row;
+    width: 100%;
+    height: 64px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.ajout-evenement {
+    padding: 8px;
+    background-color: #7f7fffb6;
+    border: solid 1px black;
+    border-radius: 8px;
+}
+
+.evenement-form-recherche {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .form-recherche button {
