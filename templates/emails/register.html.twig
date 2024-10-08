@@ -1,5 +1,7 @@
-<h1>Activation de votre compte sur le site du BCKR</h1>
-<p>Bonjour {{ user.pseudo }},</p>
-<p>Pour activer votre compte sur le site du BCKR cliquez sur le lien ci-dessous.</p>
-<p><a href="{{ absolute_url(path('verify_user', {token: token})) }}">Lien</a></p>
-<p>Merci</p>
+<main>
+    <h1>Activation de votre compte sur le site du BCKR</h1>
+    <p>Bonjour {{ user.pseudo }},</p>
+    <p>Pour activer votre compte sur le site du BCKR cliquez sur le lien ci-dessous.</p>
+    <p><a href="{{ absolute_url(path('verify_user', {token: token})) }}">Lien</a></p>
+    <p>Merci</p>
+</main>

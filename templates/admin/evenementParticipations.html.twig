@@ -1,11 +1,13 @@
-{% if field.value is not empty %}
-    <ul>
-        {% for participation in field.value %}
+<main>
+    {% if field.value is not empty %}
+        <ul>
+            {% for participation in field.value %}
             <li>
                 Utilisateur : {{ participation.userInscrit.pseudo }} - Participant(s) : {{ participation.nbrParticipants }}
             </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Aucune participation pour cet événement.</p>
-{% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune participation pour cet événement.</p>
+    {% endif %}
+</main>

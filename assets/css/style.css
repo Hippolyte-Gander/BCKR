@@ -15,7 +15,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 117px;
     height: 80px;
     font-size: 24px;
     color: #155724;
@@ -26,7 +25,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 117px;
     height: 80px;
     font-size: 24px;
     color: #721c24;
@@ -62,6 +60,9 @@
 
   /* --------------- GÉNÉRAL ---------------- */
 
+  main {
+    margin-top: 117px;
+  }
 
 h1 {
     color: rgb(255, 255, 255);
@@ -99,7 +100,6 @@ a {
 
 .background {
     background-color: #f9f9fa;
-    /* padding-top: 117px; */
 }
 
 /* button {
@@ -120,36 +120,51 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    height: 116px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     z-index: 100;
-    height: 117px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    font-size: 1.25rem;
     padding: 24px;
     border-bottom: solid 1px #807FFF;
-    /* border-bottom: solid 1px #7f7fff9d; */
     font-weight: 400;
     background-color: #f9f9fa;
 }
 
-nav {
-    font-size: 1.25rem;
+.nav-liens {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.liens a:hover {
+.nav-liens ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav-liens ul li {
+    list-style: none;
+}
+
+.nav-liens a:hover {
     text-decoration: underline;
     color:  #5757b1;
     transition: 0.2s;
 }
 
-.liens a {
+.nav-liens a {
     padding: 0 10px;
 }
 
-header .menu-mobile {
+.menu-mobile {
     display: none;
 }
 
@@ -166,7 +181,8 @@ header .menu-mobile {
     color: red;
 }
 
-/* .plate4 .x {
+/* --- animation burger / croix --- */
+.plate4 .x {
     transition: transform 400ms;
   }
   .plate4 .line {
@@ -197,22 +213,22 @@ header .menu-mobile {
   .active.plate4 .x {
     transition: transform 400ms 100ms;
     transform: scale(1);
-  } */
+  }
 
 /* Menu mobile */
 
 @media (max-width: 900px) {
+    
+        header {
+            padding: 20px 0 20px 50px;
+            gap: 0;
+            max-height: none;
+            justify-content: left;
+        }
 
-    header .menu-mobile {
+    .menu-mobile {
         display: flex;
         flex-direction: column;
-    }
-
-    header {
-        padding: 20px 0 20px 50px;
-        gap: 0;
-        max-height: none;
-        justify-content: left;
     }
 
     header .login,
@@ -235,8 +251,9 @@ header .menu-mobile {
 
 
 /* --- Boutons connexion --- */
-.login {
+.nav-login {
     display: flex;
+    align-items: center;
     gap: 16px;
 }
 
@@ -246,8 +263,8 @@ header .menu-mobile {
     padding: 8px 16px;
 }
 
-.btn-deconnexion,
-.btn-connexion {
+.btn-blanc {
+    height: fit-content;
     background-color: rgb(255, 255, 255);
     border: solid 1px #5757b1;
     color: #5757b1;
@@ -255,13 +272,13 @@ header .menu-mobile {
     padding: 8px 16px;
 }
 
-.btn-inscription,
-.btn-espace-perso {
+.btn-clair {
+    height: fit-content;
     background-color: #807FFF;
     color: rgb(255, 255, 255);
     border: solid 1px #000000;
     border-radius: 8px;
-    padding: 10px 15px;
+    padding: 8px 16px;
 }
 
 .btn-deconnexion:hover,
@@ -324,7 +341,6 @@ footer a i:hover {
 .homepage-background {
     /* align-items: center;
     text-align: center; */
-    margin-top: 117px;
 }
 
 .wrapper {
@@ -736,7 +752,6 @@ footer a i:hover {
 /* --------------- ESPACE PERSO ---------------- */
 
 .pagePerso-background {
-    padding-top: 117px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -869,7 +884,6 @@ footer a i:hover {
 /* --------------- LISTE ÉVÉNEMENTS ---------------- */
 
 .liste-evenement-background {
-    margin-top: 117px;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1026,7 +1040,6 @@ td, tr {
 /* --------------- DÉTAIL ÉVÉNEMENT ---------------- */
 
 .detail-evenement-background {
-    margin-top: 117px;
     display: flex;
     flex-direction: column;
 }
@@ -1127,7 +1140,6 @@ td, tr {
 /* --------------- CLUB ---------------- */
 
 .club-background {
-    padding-top: 117px;
     display: flex;
     flex-direction: column;
 }
@@ -1168,7 +1180,6 @@ td, tr {
 /* --------------- PAGE ENTRAINEMENTS ---------------- */
 
 .page-entrainement-background {
-    padding-top: 117px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1261,7 +1272,6 @@ td, tr {
 .mentions-legales-background {
     display: flex;
     flex-direction: column;
-    margin-top: 117px;
     min-height: 90vh;
     align-items: center;
 }
@@ -1285,7 +1295,6 @@ td, tr {
 /* --------------- CONTACT ---------------- */
 
 .contact-background {
-    padding-top: 117px;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -1330,7 +1339,6 @@ td, tr {
 /* --------------- FORMULAIRE ---------------- */
 
 .evenement-formulaire-background {
-    padding-top: 117px;
     display: flex;
     flex-direction: column;
     min-height: 85vh;
@@ -1491,7 +1499,6 @@ td, tr {
 }
 
 .register-formulaire-background h4 {
-    margin: 117px;
 }
 
 .register-formulaire-background a {
@@ -1573,6 +1580,7 @@ td, tr {
 }
 
 .input-box i {
+    color: white;
     position: absolute;
     right: 20px;
     top: 50%;
