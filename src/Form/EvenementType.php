@@ -23,13 +23,13 @@ class EvenementType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'label'=>'Titre événement',
+                'label'=>"Titre de l'événement",
                 'attr'=> [
                     'class'=> 'texte-formulaire'
                 ]
             ])
             ->add('description', TextType::class, [
-                'label'=>'Description événement',
+                'label'=>"Description de l'événement",
                 'attr'=> [
                     'class'=> 'texte-formulaire'
                 ]
@@ -75,7 +75,7 @@ class EvenementType extends AbstractType
                 ]
             ])
             ->add('affiche', FileType::class,[
-                'label' => false,
+                'label' => "Ajouter une affiche à l'événement",
                 'multiple' => false,
                 'mapped' => false,
                 'required' => false,

@@ -9,7 +9,7 @@
     <div class="evenement-recherche">
         {% if app.user %}
             {% if app.user.isAdmin() %}
-                <a class="ajout-evenement" href=" {{ path('new_evenement') }} ">Ajouter événement</a>
+                <a class="btn-clair" href=" {{ path('new_evenement') }} ">Ajouter événement</a>
             {% endif %}
         {% endif %}
         <div class="evenement-form-recherche">

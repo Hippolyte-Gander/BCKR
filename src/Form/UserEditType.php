@@ -32,12 +32,13 @@ class UserEditType extends AbstractType
                 'required' => false
             ])
             ->add('photoProfil', FileType::class,[
-                'label' => false,
+                'label' => 'Photo de profil',
                 'multiple' => false,
                 'mapped' => false,
                 'required' => false,
                 'attr'=> [
-                    'enctype'=> 'multipart/form-data'
+                    'enctype'=> 'multipart/form-data',
+                    'class' => 'no-border'
                 ],
                 'constraints' => [
                     new \Symfony\Component\Validator\Constraints\File([
