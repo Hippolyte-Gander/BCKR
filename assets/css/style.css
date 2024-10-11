@@ -116,6 +116,9 @@ a {
 .underline {
     text-decoration: underline;
 }
+.text-bold {
+    font-weight: 500;
+}
 
 form input {
     width: 100%;
@@ -316,13 +319,13 @@ header {
 
 footer {
     height: 320px;
-    border-top: solid 1px #807FFF;
+    border-top: solid 1px #000000;
     font-size: 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #f9f9fa;
+    background-color: #333335;
 }
 
 .liens-internes {
@@ -338,16 +341,17 @@ footer {
 }
 .lien-footer a {
     padding: 0 20px;
+    color: white;
 }
 
-.lien-footer a:hover {
-    text-decoration: underline;
-    color:  #5757b1;
-    transition: 0.2s;
+.lien-footer i {
+    color: white;
 }
 
-footer a i:hover {
-    color:  #5757b1;
+.lien-footer a:hover,
+footer a i:hover
+ {
+    color:  #807FFF;
     transition: 0.2s;
 }
 
@@ -875,7 +879,7 @@ footer a i:hover {
 .photo-pagePerso {
     max-width: 150px;
     max-height: 150px;
-    border-radius: 16px;
+    border-radius: 50%;
     overflow: hidden;
 }
 
@@ -883,6 +887,11 @@ footer a i:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.photo-pagePerso i {
+    font-size: 80px;
+    font-weight: 100;
 }
 
 .evenements-inscrit {
@@ -1067,6 +1076,8 @@ td, tr {
 .detail-evenement-background {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 116px 32px 32px 32px;
 }
 
 .detail-evenement-background h3,
@@ -1076,7 +1087,7 @@ td, tr {
 }
 
 .detail-evenement-background section {
-    margin: 32px 0;
+    margin: 32px ;
 }
 
 .detail-evenement-infos {
@@ -1090,6 +1101,9 @@ td, tr {
 .detail-evenement-card {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
 }
 
 .detail-evenement-affiche {
@@ -1106,15 +1120,16 @@ td, tr {
     object-fit: cover;
 }
 
+.detail-evenement-contenu {
+    width: 70%;
+    white-space: pre-line;
+    white-space: pre-wrap;
+}
+
 .detail-evenement-participation {
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-
-.detail-evenement-nbrParticipations {
-    display: flex;
-    flex-direction: column;
 }
 
 .detail-evenement-inscrits {
@@ -1126,6 +1141,7 @@ td, tr {
 .detail-evenement-galerie {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .detail-evenement-photos {
@@ -1134,21 +1150,54 @@ td, tr {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: start;
     margin: 0 16px;
 }
 
 .detail-evenement-photo {
     display: flex;
     flex-direction: column;
-    height: 200px;
+    margin: 16px;
+    height: 250px;
     width: 150px;
 }
 
 .detail-evenement-photo img {
     width: 100%;
     height: 100%;
+    border-radius: 4px;
     object-fit: cover;
+}
+
+.detail-evenement-photo a {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    background-color: #979595;
+    color: #000000;
+}
+
+.detail-evenement-commentaires {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-evenement-card-commentaire {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    gap: 8px;
+    border: solid 1px black;
+    border-radius: 8px;
+    white-space: pre-line;
 }
 
 .detail-evenement-commentaire-form {
@@ -1158,8 +1207,17 @@ td, tr {
     justify-content: center;
 }
 
-.detail-evenement-commentaire form {
-    width: 80%;
+.detail-evenement-commentaire-form form,
+.detail-evenement-commentaire-form form div
+ {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+.texte-commentaire {
+    width: 100%;
 }
 
 /* --------------- CLUB ---------------- */

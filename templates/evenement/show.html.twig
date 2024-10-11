@@ -12,24 +12,30 @@
         <div class="detail-evenement-card">
             <h3>{{ evenement.titre }}</h3>
 
-            <article>
+            <article class="detail-evenement-card">
                 <p>
                     Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
                     Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
                 </p>
 
-                {% if app.user and app.user.isAdmin() %}
-                    <p>
-                        Visible par : {{ evenement.visibilite }}
-                    </p>
-                {% endif %}
-
                 <p>
                     {{ evenement.description }}
                 </p>
-                <p>
-                    {{ evenement.contenu }}
+
+                <p class="underline">
+                    {% if evenement.visibilite == 'tous' %}
+                        Ouvert à tous
+                    {% elseif evenement.visibilite == 'membres' %}
+                        Ouvert aux membres
+                    {% elseif evenement.visibilite == 'admins' %}
+                        Ouvert au Comité
+                    {% endif %}
                 </p>
+
+                <p>
+                    Participants inscrits : {{ evenement.getTotalParticipants() }} / {{ evenement.places }}.
+                </p>
+
             </article>
         </div>
 
@@ -41,28 +47,31 @@
             {% endif %}
         </div>
     </section>
+
+    <article class="detail-evenement-contenu">
+        <p>
+            {{ evenement.contenu }}
+        </p>
+    </article>
     
     {# ============= section participation ============= #}
 
     <section class="detail-evenement-participation">
         
-        <div class="detail-evenement-nbrParticipations">
-            <h4>Participants</h4>
-            <p>
-                {{ evenement.getTotalParticipants() }} / {{ evenement.places }} places prises.
-            </p>
-        </div>
+        <h4>Participants</h4>
 
         <div class="detail-evenement-inscrits">
             {% if evenement.participationsEvenement|length == 0 %}
                 <p>Aucun inscrit pour le moment</p>
             {% else %}
                 {% if app.user %}
-                    {% for participant in evenement.participationsEvenement %}
-                        <p>
-                            {{ participant.userInscrit.pseudo }} => {{ participant.nbrParticipants }} personne(s)
-                        </p>
-                    {% endfor %}
+                    <table>
+                        {% for participant in evenement.participationsEvenement %}
+                        <td>
+                            {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-angles-right"></i> {{ participant.nbrParticipants }} personne(s)
+                        </td>
+                        {% endfor %}
+                    </table>
                 {% endif %}
             {% endif %}
         </div>
@@ -73,6 +82,7 @@
     {% if app.user and app.user.estCeQueParticipeDeja(evenement) and evenement.imagesEvenement|length > 0 %}
         <section class="detail-evenement-galerie">
             <h3>Photos de l'événement :</h3>
+            {# {{ dump(evenement.imagesEvenement) }} #}
             <div class="detail-evenement-photos">
                 {% for photo in evenement.imagesEvenement %}
                     <div class="detail-evenement-photo">
@@ -92,14 +102,14 @@
             {% if evenement.commentaires | length > 0 %}
                 {% for commentaire in evenement.commentaires %}
                     <div class="detail-evenement-card-commentaire">
-                        <p>
-                            {{ commentaire.poste.pseudo }} ({{ commentaire.datePoste|date('d/m/Y H:i') }}):
+                        <p class="text-bold">
+                            {{ commentaire.poste.pseudo }} (le {{ commentaire.datePoste|date('d/m/Y') }} à {{ commentaire.datePoste|date('H:i') }}):
                         </p>
                         <p>
                             {{ commentaire.message }}
                         </p>
                         {% if app.user.isAdmin() %}
-                            <a class="btn-supprimer" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
+                            <a class="suppr-btn-formulaire" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -109,20 +119,18 @@
 
             {# ============= formulaire commentaire ============= #}
             
-            <h5>Laissez un commentaire !</h5>
             <div class="detail-evenement-commentaire-form">
                 {{ form_start(formAddCommentaire) }}
                 {{ form_row(formAddCommentaire.message) }}    
                 {{ form_row(formAddCommentaire.valider) }}    
                 {{ form_end(formAddCommentaire) }}
             </div>
-        </section> 
-    {% else %}
+        {% else %}
             <p>
                 Connectez-vous pour laisser un commentaire !
             </p>
-        </section> 
-    {% endif %}
+        {% endif %}
+    </section> 
 </main>
 
 {% endblock %}

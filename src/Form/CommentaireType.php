@@ -18,15 +18,15 @@ class CommentaireType extends AbstractType
     {
         $builder
             ->add('message', TextareaType::class, [
-                'label'=>"Commentez ici",
+                'label'=>"Laissez un commentaire !",
                 'required'=> true,
                 'attr'=> [
-                    'class'=> 'texte-formulaire'
+                    'class'=> 'texte-commentaire'
                 ]
                 ])
             ->add('valider', SubmitType::class, [
                 'attr'=> [
-                    'class'=> 'valider-btn-formulaire'
+                    'class'=> 'valider-participation-btn'
                 ]
                 ]);
     }
