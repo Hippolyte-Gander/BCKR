@@ -214,6 +214,28 @@ class EvenementController extends AbstractController
             return $this->redirectToRoute('show_evenement', ['id' => $evenement->getId()]);
         }
         // fin form commentaire
+
+        // DÉBUT form participation
+        $formsAdd = [];
+        $formsDel = [];
+    
+        $participation = $evenement->getParticipationsEvenement();
+
+        // Crée une nouvelle instance de la participation s'il n'y en as aucune
+        $participation = new Participations();  
+
+        $formAdd = $this->createForm(ParticipationType::class, $participation, [
+            'action' => $this->generateUrl('app_evenement_participation', ['id' => $evenement->getId()]),
+        ]);
+        $formDel = $this->createForm(DeleteParticipationType::class, $participation, [
+            'action' => $this->generateUrl('app_evenement_retirer_participation', ['id' => $evenement->getId()]),
+        ]);
+
+        // Sauvegarder la vue du formulaire pour chaque événement
+        $formsAdd[$evenement->getId()] = $formAdd->createView();  
+        $formsDel[$evenement->getId()] = $formDel->createView();  
+        
+        // FIN form participation
         
         $user = $this->getUser();
         $visibilite = $evenement->getVisibilite();
@@ -223,18 +245,24 @@ class EvenementController extends AbstractController
             return $this->render('evenement/show.html.twig', [
                 'evenement' => $evenement,
                 'participations' => $participations,
+                'formsAdd' => $formsAdd,
+                'formsDel' => $formsDel,
                 'formAddCommentaire'=> $form
             ]);
         } elseif ($visibilite == 'membres' and ($user->isMembre() or $user->isAdmin())) {
             return $this->render('evenement/show.html.twig', [
                 'evenement' => $evenement,
                 'participations' => $participations,
+                'formsAdd' => $formsAdd,
+                'formsDel' => $formsDel,
                 'formAddCommentaire'=> $form
             ]);
         } elseif ($visibilite == 'admins' and $user->isAdmin()) {
             return $this->render('evenement/show.html.twig', [
                 'evenement' => $evenement,
                 'participations' => $participations,
+                'formsAdd' => $formsAdd,
+                'formsDel' => $formsDel,
                 'formAddCommentaire'=> $form
             ]);
         } else {
@@ -272,22 +300,26 @@ class EvenementController extends AbstractController
 
                 if ($futuresPlacesPrises > $placesMax) {
                     $this->addFlash('danger', 'Il n\'y a plus assez de places libres.');
-                    return $this->redirectToRoute('app_evenement');
+                    $referer = $request->headers->get('referer');
+                    return $this->redirect($referer);
                 } elseif ($futuresPlacesPrises <= $placesMax) {
                     // Sauvegarder en BDD
                     $entityManager->persist($participation);
                     $entityManager->flush();
             
                     $this->addFlash('success', 'Votre participation a été ajoutée.');
-                    return $this->redirectToRoute('app_evenement');
+                    $referer = $request->headers->get('referer');
+                    return $this->redirect($referer);
                 } else {
                     $this->addFlash('danger', 'Une erreur est survenue.');
-                    return $this->redirectToRoute('app_evenement');
+                    $referer = $request->headers->get('referer');
+                    return $this->redirect($referer);
                 }
                 
             } else {
                 $this->addFlash('danger', 'Une erreur est survenue.');
-                return $this->redirectToRoute('app_evenement');
+                $referer = $request->headers->get('referer');
+                return $this->redirect($referer);
             }
         }
     }
@@ -295,7 +327,7 @@ class EvenementController extends AbstractController
     // // ------------- NE PLUS PARTICIPER A UN EVENEMENT -------------
 
     #[Route('/evenement/{id}/retirer_participation', name: 'app_evenement_retirer_participation', methods: ['POST'])]
-    public function nePlusParticiper(Evenement $evenement, EntityManagerInterface $entityManager): Response
+    public function nePlusParticiper(Evenement $evenement, EntityManagerInterface $entityManager, Request $request): Response
     {
         $user = $this->getUser();
         // Vérifier si user connecté
@@ -324,7 +356,8 @@ class EvenementController extends AbstractController
             }
 
             // Rediriger vers la liste des événements
-            return $this->redirectToRoute('app_evenement');
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
     }
 

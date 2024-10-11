@@ -25,8 +25,9 @@ class CommentaireType extends AbstractType
                 ]
                 ])
             ->add('valider', SubmitType::class, [
+                'label'=>"Commenter",
                 'attr'=> [
-                    'class'=> 'valider-participation-btn'
+                    'class'=> 'btn-gris'
                 ]
                 ]);
     }

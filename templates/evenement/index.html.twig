@@ -22,9 +22,14 @@
     </div>
     <section class="evenement-a-venir">
         <div class="evenement-wrapper">
-            
             {% for evenement in pagination %}
-                <div class="card-evenement">
+                {% if evenement.visibilite == 'admins' %}
+                    <div class="card-evenement card-admin">
+                {% elseif evenement.visibilite == 'membres' %}
+                    <div class="card-evenement card-membre">
+                {% else %}
+                    <div class="card-evenement">
+                {% endif %}
                     <div class="evenement-card-top">
                         <div class="affiche-event">
                             {% if evenement.affiche %}

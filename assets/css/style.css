@@ -119,7 +119,12 @@ a {
 .text-bold {
     font-weight: 500;
 }
-
+.text-italic {
+    font-style: italic;
+}
+.text-purple {
+    color: #454599;
+}
 form input {
     width: 100%;
     padding: 8px 4px;
@@ -475,12 +480,20 @@ footer a i:hover
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    border: solid 1px #5757b1;
+    border: solid 3px #24853c;
     border-radius: 8px;
     width: 20%;
     max-height: 720px;
     min-width: 400px;
     max-width: 750px;
+}
+
+.card-admin {
+    border: solid 3px #7e0505;
+}
+
+.card-membre {
+    border: solid 3px #5757b1;
 }
 
 .affiche-event {
@@ -490,7 +503,7 @@ footer a i:hover
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 8px 8px 0 0 ;
+    border-radius: 4px 4px 0 0 ;
     /* border: solid 1px; */
 }
 
@@ -879,14 +892,14 @@ footer a i:hover
 .photo-pagePerso {
     max-width: 150px;
     max-height: 150px;
-    border-radius: 50%;
     overflow: hidden;
 }
 
 .photo-pagePerso img {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 .photo-pagePerso i {
@@ -1057,11 +1070,11 @@ footer a i:hover
 }
 
 td, tr {
-    background-color: rgba(39, 39, 39, 0.700);
-    padding: 30px;
-    border: solid 1px white;
+    background-color: rgba(231, 231, 231, 0.7);
+    padding: 16px;
+    border: solid 1px rgb(0, 0, 0);
     text-align: center;
-    color: white;
+    min-width: fit-content;
 }
 
 .btn-editer-profile {
@@ -1077,7 +1090,7 @@ td, tr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 116px 32px 32px 32px;
+    padding: 0 32px 32px 32px;
 }
 
 .detail-evenement-background h3,
@@ -1118,6 +1131,7 @@ td, tr {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 4px;
 }
 
 .detail-evenement-contenu {
@@ -1133,9 +1147,19 @@ td, tr {
 }
 
 .detail-evenement-inscrits {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.detail-evenement-participant {
+    width: fit-content;
+    padding: 8px;
+    margin: 8px;
+    border: solid 1px black;
+    border-radius: 4px;
+    background-color: #e9e9e9;
 }
 
 .detail-evenement-galerie {
@@ -1170,16 +1194,7 @@ td, tr {
 }
 
 .detail-evenement-photo a {
-    display: flex;
     margin-top: 8px;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    background-color: #979595;
-    color: #000000;
 }
 
 .detail-evenement-commentaires {
@@ -1194,10 +1209,29 @@ td, tr {
     width: 100%;
     padding: 8px;
     margin: 8px 0;
-    gap: 8px;
     border: solid 1px black;
     border-radius: 8px;
     white-space: pre-line;
+}
+
+.detail-evenement-card-commentaire a {
+    margin-top: 16px;
+}
+
+.detail-evenement-auteur-commentaire {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: solid 1px #b6b6b6;
+    padding-bottom: 8px;
+    gap: 32px;
+}
+
+.pp-commentaire img,
+.pp-commentaire i
+ {
+    max-height: 40px;
+    max-width: 40px;
 }
 
 .detail-evenement-commentaire-form {
@@ -1217,7 +1251,21 @@ td, tr {
 }
 
 .texte-commentaire {
-    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 200px;
+    max-height: 3000px;
+    background-color: #e6e6e6;
+}
+
+.btn-gris {
+    padding: 8px 16px;
+    display: flex;
+    width: fit-content;
+    background-color: #b6b6b6;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    border: solid 1px black;
 }
 
 /* --------------- CLUB ---------------- */

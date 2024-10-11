@@ -10,10 +10,10 @@
 
     <section class="detail-evenement-infos">
         <div class="detail-evenement-card">
-            <h3>{{ evenement.titre }}</h3>
+            <h2>{{ evenement.titre }}</h2>
 
             <article class="detail-evenement-card">
-                <p>
+                <p class="text-italic">
                     Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
                     Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
                 </p>
@@ -59,19 +59,38 @@
     <section class="detail-evenement-participation">
         
         <h4>Participants</h4>
+        {% if app.user %}
+            <div class="evenement-form">
+                {% if app.user.estCeQueParticipeDeja(evenement)  %}
+                    {{ form_start(formsDel[evenement.id]) }}
+                    <div class="bouton">
+                        {{ form_widget(formsDel[evenement.id].valider) }}
+                    </div>
+                    {{ form_end(formsDel[evenement.id]) }}
+                {% else %}
+                    {{ form_start(formsAdd[evenement.id]) }}
+                    <div class="nbr-participants-form">
+                        {{ form_row(formsAdd[evenement.id].nbrParticipants) }}
+                    </div>
+                        {{ form_widget(formsAdd[evenement.id].valider) }}
+                    {{ form_end(formsAdd[evenement.id]) }}
+                {% endif %}
+            </div>
+        {% else %}
+            <p>Connectez vous pour vous inscrire à cet événement.</p>
+        {% endif %}
 
         <div class="detail-evenement-inscrits">
+
             {% if evenement.participationsEvenement|length == 0 %}
                 <p>Aucun inscrit pour le moment</p>
             {% else %}
                 {% if app.user %}
-                    <table>
-                        {% for participant in evenement.participationsEvenement %}
-                        <td>
-                            {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-angles-right"></i> {{ participant.nbrParticipants }} personne(s)
-                        </td>
-                        {% endfor %}
-                    </table>
+                    {% for participant in evenement.participationsEvenement %}
+                    <div class="detail-evenement-participant">
+                        {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-angles-right"></i> {{ participant.nbrParticipants }} personne(s)
+                    </div>
+                    {% endfor %}
                 {% endif %}
             {% endif %}
         </div>
@@ -87,7 +106,7 @@
                 {% for photo in evenement.imagesEvenement %}
                     <div class="detail-evenement-photo">
                         <img src="{{ asset('/images/photoDEvenement/'~photo) }} " alt="Photo prise lors de l'événement">
-                        <a class="download-btn" href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
+                        <a class="btn-blanc" href="{{ vich_uploader_asset(photo, 'imageFile') }}" download="{{ photo.name }}">Télécharger cette image</a>
                     </div>
                 {% endfor %}
             </div>
@@ -102,14 +121,30 @@
             {% if evenement.commentaires | length > 0 %}
                 {% for commentaire in evenement.commentaires %}
                     <div class="detail-evenement-card-commentaire">
-                        <p class="text-bold">
-                            {{ commentaire.poste.pseudo }} (le {{ commentaire.datePoste|date('d/m/Y') }} à {{ commentaire.datePoste|date('H:i') }}):
-                        </p>
+                        <div class="detail-evenement-auteur-commentaire">
+                            {% if commentaire.poste.photoProfil %}
+                                <div class="photo-pagePerso pp-commentaire">
+                                    <img src="{{ asset('/uploads/photoProfil/'~commentaire.poste.photoProfil) }} " alt="Photo de profil">
+                                </div>
+                            {% else %}
+                                <div class="pp-commentaire">
+                                    <i class="fa-regular fa-circle-user"></i>
+                                </div>
+                            {% endif %}
+                            <p class="text-purple">
+                                {{ commentaire.poste.pseudo }} <i class="fa-regular fa-comment"></i>
+                                {# <i class="fa-regular fa-envelope"></i> #}
+                            </p>
+                            <p>
+                                le {{ commentaire.datePoste|date('d/m/Y') }} à {{ commentaire.datePoste|date('H:i') }}
+                            </p>
+                        </div>
+
                         <p>
                             {{ commentaire.message }}
                         </p>
                         {% if app.user.isAdmin() %}
-                            <a class="suppr-btn-formulaire" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer</a>
+                            <a class="suppr-btn-formulaire" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer commentaire</a>
                         {% endif %}
                     </div>
                 {% endfor %}
