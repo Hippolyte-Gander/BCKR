@@ -480,7 +480,7 @@ footer a i:hover
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    border: solid 3px #24853c;
+    border: solid 3px #000000;
     border-radius: 8px;
     width: 20%;
     max-height: 720px;
@@ -488,12 +488,45 @@ footer a i:hover
     max-width: 750px;
 }
 
+.evenement-card-top {
+    position: relative;
+}
+
+.visib-evenement-admin {
+    position: absolute;
+    z-index: 50;
+    top: 16px;
+    right: 16px;
+    padding: 8px;
+    background-color: #ca6d22;
+    color: white;
+    border: solid 1px white;
+    border-radius: 4px;
+}
+
+.visib-evenement-membre {
+    position: absolute;
+    z-index: 50;
+    top: 16px;
+    right: 16px;
+    padding: 8px;
+    background-color: #807FFF;
+    color: white;
+    border: solid 1px white;
+    border-radius: 4px;
+}
+
+.visib-evenement-admin i,
+.visib-evenement-membre i {
+    color: white;
+}
+
 .card-admin {
-    border: solid 3px #7e0505;
+    border: solid 3px #ca6d22;
 }
 
 .card-membre {
-    border: solid 3px #5757b1;
+    border: solid 3px #807FFF;
 }
 
 .affiche-event {
@@ -512,6 +545,7 @@ footer a i:hover
     width: 100%;
     object-fit: cover;
     transition: transform 0.3s;
+    z-index: 10;
 }
 
 .evenement-card-content {
@@ -972,17 +1006,21 @@ footer a i:hover
     color: inherit;
 }
 
-.form-recherche i {
+.form-recherche i,
+.nav-login a i
+ {
     padding: 8px;
-    border: solid 1px white;
+    border: solid 1px rgba(255, 255, 255, 0);
 }
 
 .form-recherche button i:hover,
-.form-recherche a i:hover
+.form-recherche a i:hover,
+.nav-login a i:hover
  {
     color: #5757b1;
     border: solid 1px #807FFF;
     border-radius: 8px;
+    transition: 0.3s;
 }
 
 .barre-recherche {
@@ -1317,9 +1355,9 @@ td, tr {
     justify-content: center;
 }
 
-.page-entrainement-background h2 {
-    color: rgb(0, 0, 0);
-
+.separation-parallaxe h2 {
+    color: rgb(255, 255, 255);
+    padding: 32px;
 }
 
 .photos-entrainement {
@@ -1338,11 +1376,12 @@ td, tr {
 
 .separation-parallaxe {
     display: flex;
-    height: 80px;
+    min-height: 80px;
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/filet-volant-sombre.webp');
+    /* background-image: url('../img/filet-volant-sombre.webp'); */
+    background-image: url('../img/anciennes_photos/filet-volant-sombre.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

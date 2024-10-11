@@ -31,6 +31,15 @@
                     <div class="card-evenement">
                 {% endif %}
                     <div class="evenement-card-top">
+                        {% if evenement.visibilite == 'membres' %}
+                            <div class="visib-evenement-membre">
+                                Membres <i class="fa-solid fa-lock"></i>
+                            </div>
+                        {% elseif evenement.visibilite == 'admins' %}
+                            <div class="visib-evenement-admin">
+                                Comité <i class="fa-solid fa-lock"></i>
+                            </div>
+                        {% endif %}
                         <div class="affiche-event">
                             {% if evenement.affiche %}
                                 <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">

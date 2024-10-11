@@ -33,9 +33,6 @@
                         <li><a href=" {{ path('club_home') }} ">Le club</a></li>
                         <li><a href=" {{ path('app_evenement') }} ">Les événements</a></li>
                         <li><a href=" {{ path('entrainements_home') }} ">Les entraînements</a></li>
-                        {% if app.user  and app.user.isAdmin() %}
-                            <li><a href=" /admin ">Panneau administrateur</a></li>
-                        {% endif %}
                     </ul>
                 </div>
                 <div class="nav-login">
@@ -54,6 +51,9 @@
                         </svg>
                     </div>
                     {% if app.user %}
+                        {% if app.user  and app.user.isAdmin() %}
+                            <a href=" /admin "><i class="fa-solid fa-user-gear"></i></a>
+                        {% endif %}
                         <a href="{{ path('pageperso_user') }}" class="btn-clair">Espace Personnel</a>
                         <a class="btn-blanc" href="{{ path('app_logout') }}">Se déconnecter</a>
                     {% else %}
