@@ -4,12 +4,6 @@
 
 {% block body %}
 <main>
-    {% if app.user %}
-    <div class="flash-success">
-        Vous êtes connecté en tant que {{ app.user.pseudo }}.                    
-    </div>
-    {% endif %}
-    
     <div class="login-background">
         
         <form method="post">

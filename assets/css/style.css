@@ -61,7 +61,7 @@
   /* --------------- GÉNÉRAL ---------------- */
 
   main {
-    margin-top: 117px;
+    margin-top: 116px;
   }
 
 h1 {
@@ -505,6 +505,7 @@ footer a i:hover
 
 .evenement-card-top {
     position: relative;
+    cursor: pointer;
 }
 
 .visib-evenement-admin {
@@ -572,7 +573,7 @@ footer a i:hover
     flex-grow: 1;
 }
 
-.evenement-card-titre h5 a {
+.evenement-card-titre h5 {
     font-size: 24px;
 }
 
