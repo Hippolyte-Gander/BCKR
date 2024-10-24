@@ -14,8 +14,8 @@
 
             <article class="detail-evenement-card">
                 <p class="text-italic">
-                    Date de début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
-                    Date de fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+                    Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }} <br>
+                    Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
                 </p>
 
                 <p>
@@ -59,6 +59,22 @@
     <section class="detail-evenement-participation">
         
         <h4>Participants</h4>
+
+        <div class="detail-evenement-inscrits">
+
+            {% if evenement.participationsEvenement|length == 0 %}
+                <p>Aucun inscrit pour le moment</p>
+            {% else %}
+                {% if app.user %}
+                    {% for participant in evenement.participationsEvenement %}
+                    <div class="detail-evenement-participant">
+                        {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-angles-right"></i> {{ participant.nbrParticipants }} personne(s)
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+
         {% if app.user %}
             <div class="evenement-form">
                 {% if app.user.estCeQueParticipeDeja(evenement)  %}
@@ -80,20 +96,6 @@
             <p>Connectez vous pour vous inscrire à cet événement.</p>
         {% endif %}
 
-        <div class="detail-evenement-inscrits">
-
-            {% if evenement.participationsEvenement|length == 0 %}
-                <p>Aucun inscrit pour le moment</p>
-            {% else %}
-                {% if app.user %}
-                    {% for participant in evenement.participationsEvenement %}
-                    <div class="detail-evenement-participant">
-                        {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-angles-right"></i> {{ participant.nbrParticipants }} personne(s)
-                    </div>
-                    {% endfor %}
-                {% endif %}
-            {% endif %}
-        </div>
     </section>
 
     {# ============= section photos événement ============= #}

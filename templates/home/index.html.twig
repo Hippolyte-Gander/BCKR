@@ -68,44 +68,53 @@
 
         <section class="evenement-a-venir">
             <a href=" {{ path('app_evenement') }} "><h2>Événements à venir</h2></a>
-            <div class="evenement-wrapper">
-                
-                {% for evenement in pagination %}
-                    <div class="card-evenement">
-                        <div class="affiche-event">
-                            {% if evenement.affiche %}
-                            <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
-                            {% else %}
-                                <img src="{{ asset('img/homepage/le-club3.webp')}}" alt="Photo d'une rencontre sportive">
-                            {% endif %}
-                        </div>
-                        <div class="evenement-card-content">
-                            <div class="evenement-card-titre">
-                                <h5>
+            {% if pagination|length >= 1 %}
+                <div class="evenement-wrapper">
+                    {% for evenement in pagination %}
+                        <div class="card-evenement">
+                            <div class="affiche-event">
+                                {% if evenement.affiche %}
+                                <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
+                                {% else %}
+                                    <img src="{{ asset('img/homepage/le-club3.webp')}}" alt="Photo d'une rencontre sportive">
+                                {% endif %}
+                            </div>
+                            <div class="evenement-card-content">
+                                <div class="evenement-card-titre">
+                                    <h5>
+                                        <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
+                                            {{ evenement.titre }}
+                                        </a>
+                                    </h5>
+                                </div>
+                                <p>
+                                    Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}
+                                    <br>
+                                    Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
+                                </p>
+                                <p class="evenement-card-description">
+                                    {{ evenement.description }}
+                                </p>
+                            </div>
+                            <div class="evenement-card-bottom">
+                                <div class="evenement-card-infos">
                                     <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
-                                        {{ evenement.titre }}
+                                        En savoir plus <i class="fa-solid fa-arrow-right"></i>
                                     </a>
-                                </h5>
-                            </div>
-                            <p>
-                                Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}
-                                <br>
-                                Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
-                            </p>
-                            <p class="evenement-card-description">
-                                {{ evenement.description }}
-                            </p>
-                        </div>
-                        <div class="evenement-card-bottom">
-                            <div class="evenement-card-infos">
-                                <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">
-                                    En savoir plus <i class="fa-solid fa-arrow-right"></i>
-                                </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-evenement-wrapper">
+                    <p>
+                        Aucun événement prévu pour le moment. 
+                        <br><br>
+                        Revenez plus tard !
+                    </p>
+                </div>
+            {% endif %}
             <div class="navigation">
                 {{ knp_pagination_render(pagination) }}
             </div>

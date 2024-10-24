@@ -27,7 +27,7 @@ class ParticipationType extends AbstractType
             ])
             ->add('valider', SubmitType::class, [
                 'attr'=> [
-                    'class'=> 'valider-participation-btn'
+                    'class'=> 'btn-clair'
                 ]
             ])
 //             ->add('inscrit', EntityType::class, [
