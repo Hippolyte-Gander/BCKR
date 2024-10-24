@@ -137,7 +137,7 @@ class EvenementRepository extends ServiceEntityRepository
                 ->setParameter('recherche', "%{$searchData->recherche}%")
                 ->setParameter('today', new DateTime())
                 ->setParameter('visibilites', ['admins', 'membres', 'tous'])
-                ->orderBy('e.dateDebut', 'DESC');
+                ->orderBy('e.dateDebut', 'ASC');
         }
 
         $evenements = $evenements

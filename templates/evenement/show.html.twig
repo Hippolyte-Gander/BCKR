@@ -68,7 +68,11 @@
                 {% if app.user %}
                     {% for participant in evenement.participationsEvenement %}
                     <div class="detail-evenement-participant">
-                        {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-angles-right"></i> {{ participant.nbrParticipants }} personne(s)
+                        {% if participant.nbrParticipants > 1 %}
+                            {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-caret-right"></i> {{ participant.nbrParticipants }} personnes
+                        {% else %}
+                            {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-caret-right"></i> {{ participant.nbrParticipants }} personne
+                        {% endif %}
                     </div>
                     {% endfor %}
                 {% endif %}
@@ -146,7 +150,7 @@
                             {{ commentaire.message }}
                         </p>
                         {% if app.user.isAdmin() %}
-                            <a class="suppr-btn-formulaire" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer commentaire</a>
+                            <a onclick="checker()" class="suppr-btn-formulaire" href="{{ path('suppr_commentaire', {'id': commentaire.id}) }}">Supprimer commentaire</a>
                         {% endif %}
                     </div>
                 {% endfor %}
