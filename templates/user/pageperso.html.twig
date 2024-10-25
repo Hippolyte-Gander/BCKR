@@ -75,8 +75,13 @@
                             </div>
                         </div>
                         {% if app.user.photoProfil %}
-                            <div class="photo-pagePerso">
-                                <img src="{{ asset('/uploads/photoProfil/'~app.user.photoProfil) }} " alt="Photo de profil">
+                            <div class="column-photoPageperso">
+                                <div class="photo-pagePerso">
+                                    <img src="{{ asset('/uploads/photoProfil/'~app.user.photoProfil) }} " alt="Photo de profil">
+                                </div>
+                                {{ form_start(formDeletePP) }}
+                                {{ form_row(formDeletePP.supprimerPP) }}
+                                {{ form_end(formDeletePP) }}
                             </div>
                         {% else %}
                             <div class="photo-pagePerso">

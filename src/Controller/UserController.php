@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\DeletePhotoProfilType;
 use App\Model\SearchData;
 use App\Form\UserEditType;
 use App\Form\SearchEventType;
 use App\Repository\UserRepository;
 use App\Repository\EvenementRepository;
 use App\Repository\ParticipationsRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,19 +48,43 @@ class UserController extends AbstractController
     // ------------- PAGE PERSO -------------
 
     #[Route('/espace-perso', name: 'pageperso_user')]
-    public function pagePerso(ParticipationsRepository $participationsRepository, PaginatorInterface $paginator, Request $request): Response
+    public function pagePerso(ParticipationsRepository $participationsRepository, PaginatorInterface $paginator, Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
         
         if ($user) {
+
+            $userId = $user->getId();
+            // =========== form suppression photo de profil ===========
+            $formDeletePP = $this->createForm(DeletePhotoProfilType::class);
+
+            $formDeletePP->handleRequest($request);
+
+            if ($formDeletePP->isSubmitted() && $formDeletePP->isValid()) {
+                $photoProfil = $user->getPhotoProfil();
+                if ($photoProfil) {
+                    // On supprime le fichier
+                    unlink($this->getParameter('photoProfil_directory').'/'.$photoProfil);
+
+                    // Sauvegarder en BDD
+                    $entityManager->remove($photoProfil);
+                    $entityManager->flush();
+
+                    // Message de succès
+                    $this->addFlash('success', 'Votre photo de profil a été supprimée.');
+                } else {
+                    // Si la photo de profil n'existe pas
+                    $this->addFlash('danger', 'Aucune photo de profil trouvée.');
+                }
+
+            }
+
             // =========== barre de recherche ===========
             $searchData = new SearchData();
             $formSearch = $this->createForm(SearchEventType::class, $searchData);
             
             $formSearch->handleRequest($request);
-            
-            $userId = $user->getId();
-    
+                
             // afficher les events en fonction de leur visibilité
             if ($user->isAdmin()) {
                 $participations = $participationsRepository->findBySearchPagePersoAdmin($searchData, $userId);
@@ -87,7 +113,6 @@ class UserController extends AbstractController
                 } else {
                     $participations = $participationsRepository->findBySearchPagePerso($searchData, $userId);
                 }
-                // dd($participations);
                 
                 // pagination des événements à afficher
                 $pagination = $paginator->paginate(
@@ -102,6 +127,7 @@ class UserController extends AbstractController
             return $this->render('user/pageperso.html.twig', [
                 'pagination' => $pagination,
                 'formSearch' => $formSearch->createView(),
+                'formDeletePP' => $formDeletePP->createView(),
                 'user' => $user
             ]);
         } else {
@@ -163,6 +189,8 @@ class UserController extends AbstractController
 
         }
     }
+
+    // ------------- SUPRIMER UNE PHOTO DE PROFIL -------------
 
     // ------------- SUPRIMER UN USER -------------
 

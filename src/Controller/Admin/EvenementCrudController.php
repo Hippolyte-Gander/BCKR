@@ -38,12 +38,16 @@ class EvenementCrudController extends AbstractCrudController
             yield TextField::new('description'),
             yield TextField::new('contenu')
                 ->hideOnIndex(),
-            yield DateTimeField::new('dateDebut'),
+            yield DateTimeField::new('dateDebut')
+                ->setLabel('Date de début'),
             yield DateTimeField::new('dateFin')
+                ->setLabel('Date de fin')
                 ->hideOnIndex(),
             yield IntegerField::new('places')
-                ->hideOnIndex(),
-            yield TextField::new('visibilite'),
+                ->hideOnIndex()
+                ->setLabel('Nombre de places'),
+            yield TextField::new('visibilite')
+                ->setLabel('Niveau de visibilité'),
             yield TextField::new('affiche')
                 ->hideOnIndex(),
             // Ajout d'un champ personnalisé pour afficher les participations

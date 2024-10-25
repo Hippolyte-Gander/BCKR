@@ -932,6 +932,13 @@ footer a i:hover
     text-decoration: underline;
 }
 
+.column-photoPageperso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .photo-pagePerso {
     max-width: 150px;
     max-height: 150px;

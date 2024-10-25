@@ -516,6 +516,9 @@
     <service id="App\Form\DeleteParticipationType" class="App\Form\DeleteParticipationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\DeletePhotoProfilType" class="App\Form\DeletePhotoProfilType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -609,7 +612,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.ONurt2m"/>
+      <argument type="service" id=".service_locator.TuPBpwR"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1539,6 +1542,7 @@
         <argument>App\Form\CommentaireType</argument>
         <argument>App\Form\ContactType</argument>
         <argument>App\Form\DeleteParticipationType</argument>
+        <argument>App\Form\DeletePhotoProfilType</argument>
         <argument>App\Form\EvenementType</argument>
         <argument>App\Form\ImageEvenementType</argument>
         <argument>App\Form\MembreRegistrationFormType</argument>
@@ -3726,7 +3730,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.ONurt2m"/>
+      <argument type="service" id=".service_locator.TuPBpwR"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -4244,7 +4248,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.H499cDc"/>
+      <argument type="service" id=".service_locator.UY9ig9Y"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -8428,6 +8432,8 @@
     <service id=".abstract.instanceof.App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\DeleteParticipationType" class="App\Form\DeleteParticipationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\DeleteParticipationType" class="App\Form\DeleteParticipationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\DeletePhotoProfilType" class="App\Form\DeletePhotoProfilType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\DeletePhotoProfilType" class="App\Form\DeletePhotoProfilType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EvenementType" class="App\Form\EvenementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ImageEvenementType" class="App\Form\ImageEvenementType" autowire="true" abstract="true"/>
@@ -9120,9 +9126,10 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.Hz5btge.App\Entity\User"/>
       </argument>
     </service>
-    <service id=".service_locator.Kz_Owb7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.J4tq98n" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
         <argument key="paginator" type="service_closure" id="knp_paginator"/>
         <argument key="participationsRepository" type="service_closure" id="App\Repository\ParticipationsRepository"/>
       </argument>
@@ -9135,7 +9142,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.ONurt2m" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.TuPBpwR" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Admin\CommentaireCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
@@ -9261,7 +9268,7 @@
         <argument key="App\Controller\SecurityController::resetPassword" type="service_closure" id=".service_locator.kuUfZEq"/>
         <argument key="App\Controller\UserController::editCurrentUser" type="service_closure" id=".service_locator.pbtqkCT"/>
         <argument key="App\Controller\UserController::index" type="service_closure" id=".service_locator.kPUOGb8"/>
-        <argument key="App\Controller\UserController::pagePerso" type="service_closure" id=".service_locator.Kz_Owb7"/>
+        <argument key="App\Controller\UserController::pagePerso" type="service_closure" id=".service_locator.J4tq98n"/>
         <argument key="App\Controller\UserController::show" type="service_closure" id=".service_locator.Hz5btge"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -9390,7 +9397,7 @@
         <argument key="App\Controller\SecurityController:resetPassword" type="service_closure" id=".service_locator.kuUfZEq"/>
         <argument key="App\Controller\UserController:editCurrentUser" type="service_closure" id=".service_locator.pbtqkCT"/>
         <argument key="App\Controller\UserController:index" type="service_closure" id=".service_locator.kPUOGb8"/>
-        <argument key="App\Controller\UserController:pagePerso" type="service_closure" id=".service_locator.Kz_Owb7"/>
+        <argument key="App\Controller\UserController:pagePerso" type="service_closure" id=".service_locator.J4tq98n"/>
         <argument key="App\Controller\UserController:show" type="service_closure" id=".service_locator.Hz5btge"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -9565,12 +9572,13 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.H499cDc" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.UY9ig9Y" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
         <argument key="App\Form\ContactType" type="service_closure" id="App\Form\ContactType"/>
         <argument key="App\Form\DeleteParticipationType" type="service_closure" id="App\Form\DeleteParticipationType"/>
+        <argument key="App\Form\DeletePhotoProfilType" type="service_closure" id="App\Form\DeletePhotoProfilType"/>
         <argument key="App\Form\EvenementType" type="service_closure" id="App\Form\EvenementType"/>
         <argument key="App\Form\ImageEvenementType" type="service_closure" id="App\Form\ImageEvenementType"/>
         <argument key="App\Form\MembreRegistrationFormType" type="service_closure" id="App\Form\MembreRegistrationFormType"/>
@@ -11944,7 +11952,7 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ONurt2m"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.TuPBpwR"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -11980,11 +11988,11 @@
     <service id=".service_locator.900uUd7" alias=".service_locator.yoflbtf"/>
     <service id=".service_locator.OeQRtdy" alias=".service_locator.t9aPEVW"/>
     <service id=".service_locator.4ntabyc" alias=".service_locator.kuUfZEq"/>
-    <service id=".service_locator.KgknBCB" alias=".service_locator.Kz_Owb7"/>
+    <service id=".service_locator.lQn2Eh1" alias=".service_locator.J4tq98n"/>
     <service id=".service_locator.gjt7tHW" alias=".service_locator.pbtqkCT"/>
-    <service id=".service_locator.JMvO4pc" alias=".service_locator.ONurt2m"/>
+    <service id=".service_locator.P5FZhn7" alias=".service_locator.TuPBpwR"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.AxHx6tm" alias=".service_locator.H499cDc"/>
+    <service id=".service_locator.JjNIjU0" alias=".service_locator.UY9ig9Y"/>
     <service id=".service_locator.xvo6EYI" alias=".service_locator.EJy82.P"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.ZP92gqz" alias=".service_locator.3YFBJbt"/>
@@ -12034,7 +12042,7 @@
     <service id=".service_locator.rdXALhg" alias=".service_locator.kuUfZEq"/>
     <service id=".service_locator.025Wi8b" alias=".service_locator.kPUOGb8"/>
     <service id=".service_locator.EmZ4cZI" alias=".service_locator.Hz5btge"/>
-    <service id=".service_locator.pCA16bd" alias=".service_locator.Kz_Owb7"/>
+    <service id=".service_locator.qWw0Vx8" alias=".service_locator.J4tq98n"/>
     <service id=".service_locator.ACbmi6u" alias=".service_locator.pbtqkCT"/>
     <service id=".service_locator.Tvu22ko" alias=".service_locator.3YFBJbt"/>
     <service id=".service_locator.8dJpptH" alias=".service_locator.EjdkWEU"/>

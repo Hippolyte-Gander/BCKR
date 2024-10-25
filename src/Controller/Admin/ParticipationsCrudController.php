@@ -22,13 +22,12 @@ class ParticipationsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')
-                ->onlyOnIndex(),
-            IntegerField::new('nbrParticipants'),
+            IntegerField::new('nbrParticipants')
+                ->setLabel('Nombre de personnes inscrites'),
             AssociationField::new('userInscrit')
-                ->onlyOnIndex(),
+                ->setLabel("Pseudo de l'inscrit"),
             AssociationField::new('evenementInscrit')
-                ->onlyOnIndex(),
+                ->setLabel('Événement'),
         ];
     }
 }
