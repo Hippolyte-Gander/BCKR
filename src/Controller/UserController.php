@@ -66,9 +66,8 @@ class UserController extends AbstractController
                     // On supprime le fichier
                     unlink($this->getParameter('photoProfil_directory').'/'.$photoProfil);
 
-                    // Sauvegarder en BDD
-                    $entityManager->remove($photoProfil);
-                    $entityManager->flush();
+                    $user->setPhotoProfil(null);
+                    $entityManager->persist($user);                    $entityManager->flush();
 
                     // Message de succès
                     $this->addFlash('success', 'Votre photo de profil a été supprimée.');
