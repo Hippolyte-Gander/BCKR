@@ -122,7 +122,12 @@
     {# ============= section commentaires ============= #}
 
     <section class="detail-evenement-commentaires">
-        <h4>Commentaires</h4>
+        {% if evenement.commentaires | length > 1 %}
+            <h4>Commentaires</h4>
+        {% else %}
+            <h4>Commentaire</h4>
+        {% endif %}
+
         {% if app.user %}
             {% if evenement.commentaires | length > 0 %}
                 {% for commentaire in evenement.commentaires %}

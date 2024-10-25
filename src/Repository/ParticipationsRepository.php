@@ -55,7 +55,7 @@ class ParticipationsRepository extends ServiceEntityRepository
             ->andWhere('e.visibilite IN (:visibilites)')
             ->setParameter('visibilites', ['admins', 'membres', 'tous'])
             ->setParameter('userId', $userId)
-            ->orderBy('e.dateDebut', 'ASC');
+            ->orderBy('e.dateDebut', 'DESC');
             
             if (!empty($searchData->recherche)) {
                 $participations = $participations
@@ -79,7 +79,7 @@ class ParticipationsRepository extends ServiceEntityRepository
             ->andWhere('e.visibilite IN (:visibilites)')
             ->setParameter('visibilites', ['membres', 'tous'])
             ->setParameter('userId', $userId)
-            ->orderBy('e.dateDebut', 'ASC');
+            ->orderBy('e.dateDebut', 'DESC');
             
             if (!empty($searchData->recherche)) {
                 $participations = $participations
@@ -103,7 +103,7 @@ class ParticipationsRepository extends ServiceEntityRepository
             ->andWhere('e.visibilite IN (:visibilite)')
             ->setParameter('visibilite', 'tous')
             ->setParameter('userId', $userId)
-            ->orderBy('e.dateDebut', 'ASC');
+            ->orderBy('e.dateDebut', 'DESC');
             
             if (!empty($searchData->recherche)) {
                 $participations = $participations
