@@ -355,10 +355,10 @@ footer a i:hover
 
 /* --------------- PAGE ACCUEIL ---------------- */
 
-.homepage-background {
-    /* align-items: center;
-    text-align: center; */
-}
+/* .homepage-background {
+    align-items: center;
+    text-align: center;
+} */
 
 .wrapper {
     display: flex;
