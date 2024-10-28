@@ -22,7 +22,7 @@
         <section class="club">
             <article class="card-club">
                 <img class="club-img" src="{{ asset('img/homepage/le-club1.webp')}}" alt="photo du président du club faisant un discours">
-                <div class="titre-texte">
+                <div class="card-details">
                     <a href=" {{ path('club_home') }} "><h2>Le club</h2></a>
                     <p>
                         Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de <strong>badminton en loisir</strong> et compte actuellement une soixantaine de membres.
@@ -39,7 +39,7 @@
             </article>
             <article class="card-club">
                 <img class="club-img" src="{{ asset('img/homepage/le-club2.webp')}}" alt="photo d'un entraînement du club">
-                <div class="titre-texte">
+                <div class="card-details">
                     <a href=" {{ path('entrainements_home') }} "><h2>Les entraînements</h2></a>
                     
                         <p>
@@ -54,7 +54,7 @@
             </article>
             <article class="card-club">
                 <img class="club-img" src="{{ asset('img/homepage/le-club3.webp')}}" alt="photo d'un membre du club faisant une très grande paëlla">
-                <div class="titre-texte">
+                <div class="card-details">
                     <a href=" {{ path('app_evenement') }} "><h2>Autres activités</h2></a>
                     <p>
                         En plus des entraînements, le club est à l’initiative de divers événements tels que des <strong>tournois amicaux</strong> internes ou externes, des <strong>repas</strong> ou des <strong>marches</strong> en groupe.
@@ -119,13 +119,6 @@
                 {{ knp_pagination_render(pagination) }}
             </div>
         </section>
-
-        {# <section class="photos-entrainement">
-            <img class="img-entrainement" src="{{ asset('img/entrainement/hand-shake.webp')}}" alt="">
-            <img class="img-entrainement" src="{{ asset('img/entrainement/rattrapage-amorti.webp')}}" alt="">
-            <img class="img-entrainement" src="{{ asset('img/entrainement/volant-sur-ligne.webp')}}" alt="">
-            <img class="img-entrainement" src="{{ asset('img/entrainement/pret-pour-entrainement.webp')}}" alt="">
-        </section> #}
 
         <section class="creative-carousal--hero">
             <div class="carousel-slider swiper-container-horizontal">
