@@ -368,19 +368,25 @@ class EvenementController extends AbstractController
         #[Route('/commentaire/delete/{id}', name: 'suppr_commentaire')]
         public function supprCommentaire(Commentaire $commentaire, EntityManagerInterface $entityManager)
         {
+            // on récupère l'utilisateur en session
             $user = $this->getUser();
+            //s'il n'y en a pas on redirige sur la page d'accueil
             if (!$user) {
                 return $this->redirectToRoute('app_home');
             }
 
-
+            // on vérifie si l'utilisateur a le rôle d'administrateur
             if ($this->isGranted('ROLE_ADMIN')) {
+                // on récupère l'id de l'événement contenant le commentaire
                 $idEvent = $commentaire->getAppartient()->getId();
+                // on supprime le commentaire
                 $entityManager->remove($commentaire);
+                // on valide le changement en base de données
                 $entityManager->flush();
-        
+                // on rafraîchit la page de l'événement
                 return $this->redirectToRoute('show_evenement', ['id' => $idEvent]);
             } else {
+                // si l'utilisateur n'a pas le rôle d'administrateur il est redirigé vers la page d'accueil
                 return $this->redirectToRoute('app_home');
             }
 
