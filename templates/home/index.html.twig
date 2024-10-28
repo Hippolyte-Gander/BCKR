@@ -87,7 +87,7 @@
                                         </a>
                                     </h5>
                                 </div>
-                                <p>
+                                <p class="text-italic">
                                     Début : {{ evenement.dateDebutFormatee }} à {{ evenement.heureDebutFormatee }}
                                     <br>
                                     Fin : {{ evenement.dateFinFormatee }} à {{ evenement.heureFinFormatee }}
@@ -164,33 +164,39 @@
             </div>
         </section>
 
-        <section>
+        <section class="partenaires">
             <div class="separation-parallaxe">
                 <h2>Ceux qui nous soutiennent</h2>
             </div>
             
-            <article class="partenaires">
+            <article class="bandeau-partenaires">
                 <h3>Merci à nos partenaires</h3>
                 <div class="barre-sous-titre"></div>
-                <div class="bandeau-partenaires">
+                <div class="liste-partenaires">
                     <div class="card-partenaire">
-                        <p>Nom de marque</p>
-                        <img src="{{ asset('img/homepage/lardesport.webp')}}" alt="logo de la marque LardeSports">
+                        <a href="https://www.facebook.com/LardesportsIllkirch.fr/?locale=fr_FR" target="_blank">
+                            <img src="{{ asset('img/homepage/lardesport.webp')}}" alt="logo de la marque LardeSports">
+                            <p>Lardesport</p>
+                        </a>
                     </div>
                 </div>
             </article>
             
-            <article class="partenaires">
+            <article class="bandeau-partenaires">
                 <h3>Merci aux mairies</h3>
                 <div class="barre-sous-titre"></div>
-                <div class="bandeau-partenaires">
+                <div class="liste-partenaires">
                     <div class="card-partenaire">
-                        <p>Mairie de Rottelsheim</p>
-                        <img src="{{ asset('img/homepage/Blason_Rottelsheim.webp')}}" alt="Blason de la mairie de Rottelsheim">
+                        <a href="http://www.rottelsheim.fr/" target="_blank">
+                            <img src="{{ asset('img/homepage/Blason_Rottelsheim.webp')}}" alt="Blason de la mairie de Rottelsheim">
+                            <p>Mairie de Rottelsheim</p>
+                        </a>
                     </div>
                     <div class="card-partenaire">
-                        <p>Mairie de Kriegsheim</p>
-                        <img src="{{ asset('img/homepage/Blason_Kriegsheim.webp')}}" alt="Blason de la mairie de Kriegsheim">
+                        <a href="https://www.agglo-haguenau.fr/commune/kriegsheim/" target="_blank">
+                            <img src="{{ asset('img/homepage/Blason_Kriegsheim.webp')}}" alt="Blason de la mairie de Kriegsheim">
+                            <p>Mairie de Kriegsheim</p>
+                        </a>
                     </div>
                 </div>
 

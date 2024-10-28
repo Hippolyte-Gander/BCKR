@@ -2,6 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+:root {
+    --noir: #333335;
+    --violetlogo: #807FFF;
+    --violetfonce: #5757b1;
+    --blanc: #f9f9fa;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +40,7 @@
 }
 
 ::selection {
-    background-color: #807FFF;
+    background-color: var(--violetlogo);
     color: rgb(0, 0, 0);
     border-radius: 16px;
 }
@@ -49,7 +57,7 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #807FFF;
+    background: var(--violetlogo);
     border-radius: 16px;
   }
   
@@ -57,8 +65,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background-color: #4c4caa;
   }
-
-  /* --------------- GÉNÉRAL ---------------- */
+/* ================================================================ */
+/* --------------- GÉNÉRAL ---------------- */
+/* ================================================================ */
 
   main {
     margin-top: 116px;
@@ -99,7 +108,7 @@ a {
 }
 
 .background {
-    background-color: #f9f9fa;
+    background-color: var(--blanc);
 }
 
 .underline {
@@ -129,7 +138,9 @@ textarea {
     max-height: 90vh;
 }
 
+/* ================================================================ */
 /* --------------- NAVBAR ---------------- */
+/* ================================================================ */
 
 
 header {
@@ -149,9 +160,9 @@ header {
     height: 100%;
     font-size: 1.25rem;
     padding: 24px;
-    border-bottom: solid 1px #807FFF;
+    border-bottom: solid 1px var(--violetlogo);
     font-weight: 400;
-    background-color: #f9f9fa;
+    background-color: var(--blanc);
 }
 
 .nav-liens {
@@ -172,7 +183,7 @@ header {
 
 .nav-liens a:hover {
     text-decoration: underline;
-    color:  #5757b1;
+    color:  var(--violetfonce);
     transition: 0.2s;
 }
 
@@ -274,7 +285,7 @@ header {
 }
 
 .pseudo-utilisateur {
-    color: #5757b1;
+    color: var(--violetfonce);
     border:  1px;
     padding: 8px 16px;
 }
@@ -282,15 +293,15 @@ header {
 .btn-blanc {
     height: fit-content;
     background-color: rgb(255, 255, 255);
-    border: solid 1px #5757b1;
-    color: #5757b1;
+    border: solid 1px var(--violetfonce);
+    color: var(--violetfonce);
     border-radius: 8px;
     padding: 8px 16px;
 }
 
 .btn-clair {
     height: fit-content;
-    background-color: #807FFF;
+    background-color: var(--violetlogo);
     color: rgb(255, 255, 255);
     border: solid 1px #000000;
     border-radius: 8px;
@@ -300,20 +311,22 @@ header {
 .btn-blanc:hover {
     color:  rgb(255, 255, 255);
     transition: 0.5s;
-    background-color: #5757b1;
+    background-color: var(--violetfonce);
     border: solid 1px #000000;
     cursor: pointer;
 }
 
 .btn-clair:hover {
     background-color: rgb(255, 255, 255);
-    border: solid 1px #5757b1;
-    color: #5757b1;
+    border: solid 1px var(--violetfonce);
+    color: var(--violetfonce);
     transition: 0.5s;
     cursor: pointer;
 }
 
+/* ================================================================ */
 /* --------------- FOOTER ---------------- */
+/* ================================================================ */
 
 footer {
     height: 320px;
@@ -323,7 +336,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #333335;
+    background-color: var(--noir);
 }
 
 .liens-internes {
@@ -349,11 +362,13 @@ footer {
 .lien-footer a:hover,
 footer a i:hover
  {
-    color:  #807FFF;
+    color:  var(--violetlogo);
     transition: 0.2s;
 }
 
+/* ================================================================ */
 /* --------------- PAGE ACCUEIL ---------------- */
+/* ================================================================ */
 
 /* .homepage-background {
     align-items: center;
@@ -363,7 +378,6 @@ footer a i:hover
 .wrapper {
     display: flex;
     flex-direction: column;
-    padding: 24px;
     gap: 64px;
 }
 
@@ -372,10 +386,11 @@ footer a i:hover
     background-position-y: 50%;
     background-size: cover;
     min-height: 320px;
-    border-radius: 8px;
+    /* border-radius: 0 0 8px 8px; */
     display: flex;
     align-items: end;
     justify-content: space-between;
+    padding: 0 24px;
 }
 
 .wrapper-cta {
@@ -387,15 +402,15 @@ footer a i:hover
 }
 
 .wrapper-cta i {
-    color: #5757b1;
-    /* border-bottom: 1px solid #5757b1;
-    border-top: 1px solid #5757b1; */
+    color: var(--violetfonce);
+    /* border-bottom: 1px solid var(--violetfonce);
+    border-top: 1px solid var(--violetfonce); */
 }
 
 .homepage-rejoindre-btn {
     background-color: rgb(255, 255, 255);
-    border: solid 1px #5757b1;
-    color: #5757b1;
+    border: solid 1px var(--violetfonce);
+    color: var(--violetfonce);
     border-radius: 8px;
     padding: 16px 24px;
     text-decoration: none;
@@ -408,7 +423,7 @@ footer a i:hover
 .homepage-rejoindre-btn:hover {
     color: #000000;
     border: solid 1px rgb(0, 0, 0);
-    background-color: #807FFF;
+    background-color: var(--violetlogo);
     transition: 0.4s;
 }
 
@@ -416,16 +431,15 @@ footer a i:hover
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
+    margin: 0 16px;
 }
-
-/* =============== test =============== */
 
 .card-club .card-details {
 	/* top: 50%;
 	left: 50%; */
 	transform: rotateY(90deg);
 	transform-origin: 50%;
-	/* background: #f9f9fa;	 */
+	/* background: var(--blanc);	 */
 	opacity: 0;
 	transition: all 0.4s ease-in;
 	
@@ -453,8 +467,6 @@ footer a i:hover
     transition: all 0.6s ease-in;
     border-radius: 8px;
 }
-
-/* =============== fin test =============== */
 
  .card-club {
     display: flex;
@@ -558,7 +570,7 @@ footer a i:hover
     top: 16px;
     right: 16px;
     padding: 8px;
-    background-color: #807FFF;
+    background-color: var(--violetlogo);
     color: white;
     border: solid 1px white;
     border-radius: 4px;
@@ -574,7 +586,7 @@ footer a i:hover
 }
 
 .card-membre {
-    border: solid 3px #807FFF;
+    border: solid 3px var(--violetlogo);
 }
 
 .affiche-event {
@@ -622,7 +634,7 @@ footer a i:hover
 .evenement-card-infos {
     padding: 12px;
     margin: 16px;
-    background-color: #807FFF;
+    background-color: var(--violetlogo);
     border-radius: 8px;
     border: solid 1px;
     width: fit-content;
@@ -635,12 +647,12 @@ footer a i:hover
 
 .evenement-card-infos:hover {
     background-color: white;
-    border: 1px solid #5757b1;
+    border: 1px solid var(--violetfonce);
 }
 
 .evenement-card-infos:hover a,
 .evenement-card-infos:hover i {
-    color: #5757b1;
+    color: var(--violetfonce);
 }
 
 .card-evenement:hover img {
@@ -648,7 +660,6 @@ footer a i:hover
 }
 
  /* ---------- PARTIE PAGE EVENEMENT ---------- */
-
 
  .btn-editer-evenement {
     background-color: #ffd86d;
@@ -661,7 +672,6 @@ footer a i:hover
     cursor: pointer;
 }
 
-
 .btn-supprimer-evenement {
     background-color: #FF5353;
     border: 1px solid black;
@@ -672,9 +682,6 @@ footer a i:hover
     text-decoration: none;
     cursor: pointer;
 }
-
-
- 
 
 /* PARTIE CARROUSEL   */
 
@@ -867,13 +874,60 @@ footer a i:hover
     }
 }
 
-/* --------------- TEXTE UTILISATEUR ---------------- */
+/* ----------- Section partenaires  ------------ */
 
-.texte-utilisateur {
-    color: rgb(0, 0, 0);
+.partenaires {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
+.bandeau-partenaires {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bandeau-partenaires p,
+.bandeau-partenaires h3 {
+    margin: 8px;
+}
+
+.barre-sous-titre {
+    height: 4px;
+    width: 128px;
+    background-color: var(--noir);
+    border-radius: 32px;
+}
+
+.liste-partenaires {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-partenaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-partenaire p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.card-partenaire img {
+    height: 300px;
+    width: 300px;
+    object-fit: fill;
+}
+
+/* ================================================================ */
 /* --------------- ESPACE PERSO ---------------- */
+/* ================================================================ */
 
 .pagePerso-background {
     min-height: 100vh;
@@ -934,7 +988,7 @@ footer a i:hover
 #menu-compte-perso {
     padding: 0 16px;
     margin: 16px 0;
-    border-left: solid 3px #807FFF;
+    border-left: solid 3px var(--violetlogo);
 }
 
 .infos-compte {
@@ -942,7 +996,7 @@ footer a i:hover
     display: flex;
     flex-direction: column;
     min-width: 30%;
-    border: solid 1px #807FFF;
+    border: solid 1px var(--violetlogo);
     border-radius: 16px;
 }
 
@@ -1019,7 +1073,9 @@ footer a i:hover
     flex-direction: column;
 }
 
+/* ================================================================ */
 /* --------------- LISTE ÉVÉNEMENTS ---------------- */
+/* ================================================================ */
 
 .liste-evenement-background {
     min-height: 100vh;
@@ -1062,15 +1118,15 @@ footer a i:hover
 .evenement-form-recherche i {
     color: #000000;
     padding: 8px;
-    background-color: #f9f9fa;
-    border: solid 1px #f9f9fa;
+    background-color: var(--blanc);
+    border: solid 1px var(--blanc);
     border-radius: 8px;
     cursor: pointer;
 }
 
 .evenement-form-recherche i:hover {
-    color: #807FFF;
-    border: solid 1px #807FFF;
+    color: var(--violetlogo);
+    border: solid 1px var(--violetlogo);
     transition: 0.2s;
 }
 
@@ -1093,8 +1149,8 @@ footer a i:hover
 .form-recherche a i:hover,
 .nav-login a i:hover
  {
-    color: #5757b1;
-    border: solid 1px #807FFF;
+    color: var(--violetfonce);
+    border: solid 1px #var(--violetlogo);
     border-radius: 8px;
     transition: 0.3s;
 }
@@ -1108,8 +1164,8 @@ footer a i:hover
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border-top: solid 1px #5757b1;
-    border-bottom: solid 1px #5757b1;
+    border-top: solid 1px var(--violetfonce);
+    border-bottom: solid 1px var(--violetfonce);
     padding: 16px;
 }
 
@@ -1198,7 +1254,9 @@ td, tr {
     border-radius: 10px;
 }
 
+/* ================================================================ */
 /* --------------- DÉTAIL ÉVÉNEMENT ---------------- */
+/* ================================================================ */
 
 .detail-evenement-background {
     display: flex;
@@ -1382,7 +1440,9 @@ td, tr {
     border: solid 1px black;
 } */
 
+/* ================================================================ */
 /* --------------- CLUB ---------------- */
+/* ================================================================ */
 
 .club-background {
     display: flex;
@@ -1413,8 +1473,8 @@ td, tr {
     overflow: hidden;
     align-items: center;
     justify-content: space-evenly;
-    border-top: solid 1px #807FFF;
-    border-bottom: solid 1px #807FFF;
+    border-top: solid 1px var(--violetlogo);
+    border-bottom: solid 1px var(--violetlogo);
 }
 
 .club-ligne-photos img {
@@ -1422,7 +1482,9 @@ td, tr {
     height: 400px;
 }
 
+/* ================================================================ */
 /* --------------- PAGE ENTRAINEMENTS ---------------- */
+/* ================================================================ */
 
 .page-entrainement-background {
     display: flex;
@@ -1462,6 +1524,8 @@ td, tr {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 .infos-entrainement {
@@ -1513,7 +1577,9 @@ td, tr {
     text-align: center;
 }
 
+/* ================================================================ */
 /* --------------- MENTIONS LÉGALES ---------------- */
+/* ================================================================ */
 
 .mentions-legales-background {
     display: flex;
@@ -1538,7 +1604,9 @@ td, tr {
     padding: 32px 0;
 }
 
+/* ================================================================ */
 /* --------------- CONTACT ---------------- */
+/* ================================================================ */
 
 .contact-background {
     min-height: 90vh;
@@ -1751,7 +1819,9 @@ td, tr {
     transition: 0.4s;
 } */
 
+/* ================================================================ */
 /* --------------- REGISTER ---------------- */
+/* ================================================================ */
 
 .register-formulaire-background {
     display: flex;
@@ -1768,7 +1838,9 @@ td, tr {
     text-decoration: underline;
 }
 
+/* ================================================================ */
 /* --------------- LOGIN ---------------- */
+/* ================================================================ */
 
 .login-background {
     display: flex;
@@ -1919,7 +1991,9 @@ td, tr {
     text-decoration:  underline;
 }
 
+/* ================================================================ */
  /* ------------ RESET PASSWORD ------------ */
+ /* ================================================================ */
 
  .reset-password-btn {
     margin: 0;
