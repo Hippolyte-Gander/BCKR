@@ -21,27 +21,30 @@
         
         <section class="club">
             <article class="card-club">
-                <img class="club-img" src="{{ asset('img/homepage/le-club1.webp')}}" alt="photo du président du club faisant un discours">
+                <img class="club-img" src="{{ asset('img/homepage/le-club1.webp')}}" alt="photo d'une personne avec un volant en main">
                 <div class="card-details">
-                    <a href=" {{ path('club_home') }} "><h2>Le club</h2></a>
-                    <p>
-                        Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de <strong>badminton en loisir</strong> et compte actuellement une soixantaine de membres.
-                    </p>
-                    <p>
-                        {# Chez nous, pas de prise de tête, tout le monde joue avec tout le monde, avec comme objectif principal de transpirer.
-                        <br> #}
+                    <a href=" {{ path('club_home') }} ">
+                        <h2>Le club</h2>
+                        <p>
+                            Le badminton club de Kriegsheim-Rottelsheim a été fondé en 1996, il propose des séances de <strong>badminton en loisir</strong> et compte actuellement une soixantaine de membres.
+                        </p>
+                        <p>
+                            {# Chez nous, pas de prise de tête, tout le monde joue avec tout le monde, avec comme objectif principal de transpirer.
+                            <br> #}
                         Uniquement dotés de sportives et sportifs amateurs, la <strong>bonne ambiance</strong> et  la bonne humeur sont les premières qualités recherchées pour les futurs  nouveaux membres.
-                    </p>
-                    <p>                       
-                        <strong>Mouiller le maillot est notre devise !</strong>
-                    </p>
+                        </p>
+                        <p>                       
+                            <strong>Mouiller le maillot est notre devise !</strong>
+                        </p>
+                    </a>
                 </div>
             </article>
+
             <article class="card-club">
-                <img class="club-img" src="{{ asset('img/homepage/le-club2.webp')}}" alt="photo d'un entraînement du club">
+                <img class="club-img" src="{{ asset('img/homepage/le-club2.webp')}}" alt="photo d'une raquette au sol entourée de volants">
                 <div class="card-details">
-                    <a href=" {{ path('entrainements_home') }} "><h2>Les entraînements</h2></a>
-                    
+                    <a href=" {{ path('entrainements_home') }} ">
+                        <h2>Les entraînements</h2>
                         <p>
                             Accueillant des joueurs de tout niveau, les entraînements sont sans prises de têtes avec des équipes <strong>tirées au sort</strong> avec une méthode de tirage absolument unique et totalement impartial !
                         </p>
@@ -50,18 +53,21 @@
                             <br>
                             Les entraînements commencent à 20h30 mais ne se terminent qu’à l’épuisement (ou l’apéro selon les envies).
                         </p>
+                    </a>
                 </div>
             </article>
             <article class="card-club">
-                <img class="club-img" src="{{ asset('img/homepage/le-club3.webp')}}" alt="photo d'un membre du club faisant une très grande paëlla">
+                <img class="club-img" src="{{ asset('img/homepage/le-club3.webp')}}" alt="photo de viande en train de cuir sur un barbecue">
                 <div class="card-details">
-                    <a href=" {{ path('app_evenement') }} "><h2>Autres activités</h2></a>
-                    <p>
-                        En plus des entraînements, le club est à l’initiative de divers événements tels que des <strong>tournois amicaux</strong> internes ou externes, des <strong>repas</strong> ou des <strong>marches</strong> en groupe.
-                        <br>
-                        <br>
-                        Toujours dans une <strong>ambiance chaleureuse</strong> et dans le but de passer des bons moments.
-                    </p>
+                    <a href=" {{ path('app_evenement') }} ">
+                        <h2>Autres activités</h2>
+                        <p>
+                            En plus des entraînements, le club est à l’initiative de divers événements tels que des <strong>tournois amicaux</strong> internes ou externes, des <strong>repas</strong> ou des <strong>marches</strong> en groupe.
+                            <br>
+                            <br>
+                            Toujours dans une <strong>ambiance chaleureuse</strong> et dans le but de passer des bons moments.
+                        </p>
+                    </a>
                 </div>
             </article>
         </section>
@@ -76,7 +82,7 @@
                                 {% if evenement.affiche %}
                                 <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">
                                 {% else %}
-                                    <img src="{{ asset('img/homepage/le-club3.webp')}}" alt="Photo d'une rencontre sportive">
+                                    <img src="{{ asset('img/homepage/le-club3.webp')}}" alt="Affiche de l'événement">
                                 {% endif %}
                             </div>
                             <div class="evenement-card-content">
