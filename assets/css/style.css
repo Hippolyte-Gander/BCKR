@@ -904,7 +904,7 @@ footer a i:hover
     flex-direction: row;
     width: 100%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .card-partenaire {
