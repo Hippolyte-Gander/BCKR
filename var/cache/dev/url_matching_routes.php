@@ -62,12 +62,9 @@ return [
                 .'|/commentaire/delete/([^/]++)(*:341)'
                 .'|/verif/([^/]++)(*:364)'
                 .'|/mot\\-de\\-passe\\-oublie/([^/]++)(*:404)'
-                .'|/user/(?'
-                    .'|([^/]++)(?'
-                        .'|(*:432)'
-                        .'|/edit(*:445)'
-                    .')'
-                    .'|suppr(*:459)'
+                .'|/user/([^/]++)(?'
+                    .'|(*:429)'
+                    .'|/edit(*:442)'
                 .')'
             .')/?$}sDu',
     ],
@@ -88,10 +85,9 @@ return [
         341 => [[['_route' => 'suppr_commentaire', '_controller' => 'App\\Controller\\EvenementController::supprCommentaire'], ['id'], null, null, false, true, null]],
         364 => [[['_route' => 'verify_user', '_controller' => 'App\\Controller\\RegistrationController::verifUser'], ['token'], null, null, false, true, null]],
         404 => [[['_route' => 'reset_password', '_controller' => 'App\\Controller\\SecurityController::resetPassword'], ['token'], null, null, false, true, null]],
-        432 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
-        445 => [[['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null]],
-        459 => [
-            [['_route' => 'suppr_user', '_controller' => 'App\\Controller\\UserController::supprUser'], [], null, null, true, false, null],
+        429 => [[['_route' => 'show_user', '_controller' => 'App\\Controller\\UserController::show'], ['id'], null, null, false, true, null]],
+        442 => [
+            [['_route' => 'edit_user', '_controller' => 'App\\Controller\\UserController::editCurrentUser'], ['id'], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

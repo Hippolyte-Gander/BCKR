@@ -71,30 +71,37 @@ class HomeController extends AbstractController
     {
         $user = $this->getUser();
         $form = $this->createForm(ContactType::class);
-
-        if ($user) {
-            $expediteur = $user->getEmail();
-            $form->handleRequest($request);
-            
-            if ($form->isSubmitted() && $form->isValid()) {
-                $message = $form->get('message')->getData();
-                $email = (new Email())
-                    ->from($expediteur)
-                    ->to('Badminton.bckr@gmail.com')
-                    ->subject('Mail envoyé depuis le site')
-                    ->text($message);
-                $mailer->send($email);
-
-                $this->addFlash('success', 'Mail envoyé avec succès');
-
-                return $this->redirectToRoute('contact_home');
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            // on récupère le message du formulaire
+            $message = $form->get('message')->getData();
+            // s'il y a un utilisateur on prend son adresse mail, si non on prends celle du formulaire
+            if ($user) {
+                $expediteur = $user->getEmail();
+            } else {
+                $expediteur = $form->get('expediteur')->getData();
             }
-                
-        }
+            // on créé l'email en prenant les paramètres fournis plus haut
+            $email = (new Email())
+                ->from($expediteur)
+                ->to('Badminton.bckr@gmail.com')
+                ->subject('Mail envoyé depuis le site')
+                ->text($message);
+            $mailer->send($email);
 
+            $this->addFlash('success', 'Mail envoyé avec succès');
+            
+            return $this->redirectToRoute('contact_home');
+        // si le formulaire n'est pas valide on affiche un message d'erreur
+        } elseif ($form->isSubmitted()) {
+            $this->addFlash('danger', 'Une erreur est survenue');
+        }
+        
         return $this->render('home/contact.html.twig', [
             'form' => $form->createView(),
         ]);
+        
     }
 
 }

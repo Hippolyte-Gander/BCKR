@@ -25,6 +25,7 @@
         
         <section class="form-contact">
             {{ form_start(form) }}
+                {{ form_widget(form.expediteur) }}
                 {{ form_widget(form.message) }}
                 {{ form_widget(form.valider) }}
             {{ form_end(form) }}

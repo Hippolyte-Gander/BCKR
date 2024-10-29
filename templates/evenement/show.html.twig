@@ -57,29 +57,31 @@
     {# ============= section participation ============= #}
 
     <section class="detail-evenement-participation">
-        
-        <h4>Participants</h4>
+        {% if app.user.isAdmin() %}
+            <h4>Participants</h4>
 
-        <div class="detail-evenement-inscrits">
+            <div class="detail-evenement-inscrits">
 
-            {% if evenement.participationsEvenement|length == 0 %}
-                <p>Aucun inscrit pour le moment</p>
-            {% else %}
-                {% if app.user %}
-                    {% for participant in evenement.participationsEvenement %}
-                    <div class="detail-evenement-participant">
-                        {% if participant.nbrParticipants > 1 %}
-                            {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-caret-right"></i> {{ participant.nbrParticipants }} personnes
-                        {% else %}
-                            {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-caret-right"></i> {{ participant.nbrParticipants }} personne
-                        {% endif %}
-                    </div>
-                    {% endfor %}
+                {% if evenement.participationsEvenement|length == 0 %}
+                    <p>Aucun inscrit pour le moment</p>
+                {% else %}
+                    {% if app.user %}
+                        {% for participant in evenement.participationsEvenement %}
+                        <div class="detail-evenement-participant">
+                            {% if participant.nbrParticipants > 1 %}
+                                {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-caret-right"></i> {{ participant.nbrParticipants }} personnes
+                            {% else %}
+                                {{ participant.userInscrit.pseudo }} <i class="fa-solid fa-caret-right"></i> {{ participant.nbrParticipants }} personne
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
 
         {% if app.user %}
+            <h4>S'inscrire</h4>
             <div class="evenement-form">
                 {% if app.user.estCeQueParticipeDeja(evenement)  %}
                     {{ form_start(formsDel[evenement.id]) }}
@@ -133,7 +135,11 @@
                 {% for commentaire in evenement.commentaires %}
                     <div class="detail-evenement-card-commentaire">
                         <div class="detail-evenement-auteur-commentaire">
-                            {% if commentaire.poste.photoProfil %}
+                            {% if commentaire.poste.isVerified() == false %}
+                                <div class="pp-commentaire">
+                                    <i class="fa-regular fa-circle-user"></i>
+                                </div>
+                            {% elseif commentaire.poste.photoProfil %}
                                 <div class="photo-pagePerso pp-commentaire">
                                     <img src="{{ asset('/uploads/photoProfil/'~commentaire.poste.photoProfil) }} " alt="Photo de profil">
                                 </div>
@@ -142,10 +148,18 @@
                                     <i class="fa-regular fa-circle-user"></i>
                                 </div>
                             {% endif %}
-                            <p class="text-purple">
-                                {{ commentaire.poste.pseudo }} <i class="fa-regular fa-comment"></i>
-                                {# <i class="fa-regular fa-envelope"></i> #}
-                            </p>
+                            
+                            {% if commentaire.poste.isVerified() == false %}
+                                <p class="text-purple">
+                                    Anonyme <i class="fa-regular fa-comment"></i>
+                                    {# <i class="fa-regular fa-envelope"></i> #}
+                                </p>
+                            {% else %}
+                                <p class="text-purple">
+                                    {{ commentaire.poste.pseudo }} <i class="fa-regular fa-comment"></i>
+                                    {# <i class="fa-regular fa-envelope"></i> #}
+                                </p>
+                            {% endif %}
                             <p>
                                 le {{ commentaire.datePoste|date('d/m/Y') }} à {{ commentaire.datePoste|date('H:i') }}
                             </p>

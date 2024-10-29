@@ -9,8 +9,19 @@
 
 {% if app.user %}
     <main class="background pagePerso-background">
-        <h4>Espace personnel : {{app.user.pseudo}}</h4>
+        <h2>Espace personnel : {{app.user.pseudo}}</h2>
         <div class="pagePerso-wrapper">
+            <div class="message-masque">
+                <div>
+                    En faisant ceci, votre compte et vos informations personnelles seront <strong>définitivement</strong> supprimées.
+                </div>
+                <div>
+                    Vos commentaires seront anonymisés.
+                </div>
+
+                <a class="red">Supprimer mon compte</a>
+                <a class="afficher-message red">Annuler</a>
+            </div>
             <section class="gerer-compte">
                 <div class="pagePerso-row">
                     <h5>Gestion du compte</h5>
@@ -35,8 +46,9 @@
                     </div>
                     <div class="espace-perso-texte">
                         {# <a onclick="deleteConfirmation()" href=" {{ path('suppr_user',{'id': app.user.id}) }} "> #}
-                            Supprimer mon compte
+                            {# Supprimer mon compte #}
                         {# </a> #}
+                        <a class="afficher-message">Demander à supprimer mon compte</a>
                     </div>
                 </div>
             </section>
