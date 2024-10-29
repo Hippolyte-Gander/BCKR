@@ -13,61 +13,31 @@
 {% if app.user %}
     <main class="background formulaire-background">
 
-        <h4>Modifier votre profil</h4>
+        <h2>Modifier votre profil</h2>
 
         <div class="formulaire">
             {{ form_start(formEditUser) }}
-            <div class="row-form">
-                <div class="col-form">
-                    {{ form_row(formEditUser.pseudo) }}    
-                </div>
-                <div class="col-form">
-                    {{ form_row(formEditUser.photoProfil) }}    
-                </div>
+            <div class="categorie-formulaire">
+                <h5>Informations du compte</h5>
+                {{ form_row(formEditUser.pseudo) }}    
+                {{ form_row(formEditUser.photoProfil) }}    
+                {{ form_row(formEditUser.email) }}    
             </div>
 
-            <div class="row-form">
-                <div class="col-form">
+            <div class="categorie-formulaire">
+                <h5>Informations personnelles</h5>
                 {{ form_row(formEditUser.nom) }}
-                </div>
-                <div class="col-form">
                 {{ form_row(formEditUser.prenom) }}
-                </div>
-            </div>
-
-            <div class="row-form">
-                <div class="col-form">
                 {{ form_row(formEditUser.numTelephone) }}
-                </div>
-                <div class="col-form">
                 {{ form_row(formEditUser.dateNaissance) }}
-                </div>
-            </div>
-
-            <div class="row-form">
-                <div class="col-form">
                 {{ form_row(formEditUser.adresse) }}
-                </div>
-            </div>
-
-            <div class="row-form">
-                <div class="col-form">
                 {{ form_row(formEditUser.ville) }}
-                </div>
-                <div class="col-form">
                 {{ form_row(formEditUser.cp) }}
+                <div onclick="checker()">
+                    {{ form_row(formEditUser.valider, { 'label': 'Modifier profil' }) }}
                 </div>
             </div>
-
-            <div class="row-form">
-                <div class="col-form">
-                    {{ form_row(formEditUser.valider) }}
-                </div>
-            </div>
-
-            <div class="bouton">
-                {{ form_end(formEditUser) }}
-            </div>
+            {{ form_end(formEditUser) }}
         </div>
 
     </main>

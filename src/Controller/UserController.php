@@ -189,24 +189,27 @@ class UserController extends AbstractController
         }
     }
 
-    // ------------- SUPRIMER UNE PHOTO DE PROFIL -------------
 
     // ------------- SUPRIMER UN USER -------------
 
-    // #[Route('/user/{id}/suppr', name: 'suppr_user')]
-    // public function supprUser(User $user, EvenementRepository $evenementRepository, EntityManagerInterface $entityManager)
+    // #[Route('/user/suppr/', name: 'suppr_user')]
+    // public function supprUser(User $user, EntityManagerInterface $entityManager)
     // {
-    //     // mettre à jour le compteur de places libres
-    //     $participation = $user->getParticipe();
-    //     foreach ($participation as $evenement) {
-    //         $id = $evenement->getId();
-    //         $evenementToUpdate = $evenementRepository->find($id);
-    //         $evenementToUpdate->setPlacesPrises($evenementToUpdate->getPlacesPrises() - 1);
+    //     dd($user);
+    //     // on récupère l'utilisateur connecté
+    //     $userconnecte = $this->getUser();
+    //     //s'il n'y en a pas on redirige sur la page d'accueil
+    //     if (!$user) {
+    //         return $this->redirectToRoute('app_home');
+    //     } else {
+    //         if ($user) {
+    //             $entityManager->remove($user);
+    //             $entityManager->flush();
+                
+    //             return $this->redirectToRoute('app_user', ['id' => $idEvent]);
+    //         } else {
+    //             return $this->redirectToRoute('app_home');
+    //         }
     //     }
-
-    //     $entityManager->remove($user);
-    //     $entityManager->flush();
-
-    //     return $this->redirectToRoute('app_user');
     // }
 }

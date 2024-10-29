@@ -4,3 +4,9 @@ function checker() {
         event.preventDefault();
     }
 }
+function deleteConfirmation() {
+    var result = confirm('Êtes-vous certain(e) de vouloir supprimer votre compte de manière permanente ?');
+    if (result == false) {
+        event.preventDefault();
+    }
+}

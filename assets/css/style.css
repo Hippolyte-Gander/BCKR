@@ -293,8 +293,8 @@ header {
 .btn-blanc {
     height: fit-content;
     background-color: rgb(255, 255, 255);
-    border: solid 1px var(--violetfonce);
     color: var(--violetfonce);
+    border: solid 1px var(--violetfonce);
     border-radius: 8px;
     padding: 8px 16px;
 }
@@ -303,7 +303,7 @@ header {
     height: fit-content;
     background-color: var(--violetlogo);
     color: rgb(255, 255, 255);
-    border: solid 1px #000000;
+    border: solid 1px var(--violetfonce);
     border-radius: 8px;
     padding: 8px 16px;
 }
@@ -669,9 +669,15 @@ footer a i:hover
     margin: 16px;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.4s;
 }
 
-.btn-supprimer-evenement {
+.btn-editer-evenement:hover {
+    background-color: #c09111;
+}
+
+/* .btn-supprimer-evenement  */
+.suppr-btn-formulaire {
     background-color: #FF5353;
     border: 1px solid black;
     border-radius: 8px;
@@ -680,6 +686,10 @@ footer a i:hover
     margin: 16px;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.4s;
+}
+.suppr-btn-formulaire:hover {
+    background-color: #bd0c0c;
 }
 
 /* PARTIE CARROUSEL   */
@@ -1149,7 +1159,7 @@ footer a i:hover
 .nav-login a i:hover
  {
     color: var(--violetfonce);
-    border: solid 1px #var(--violetlogo);
+    border: solid 1px var(--violetlogo);
     border-radius: 8px;
     transition: 0.3s;
 }
@@ -1236,21 +1246,6 @@ footer a i:hover
 
 .titre-colonne {
     font-weight: 600;
-}
-
-td, tr {
-    background-color: rgba(231, 231, 231, 0.7);
-    padding: 16px;
-    border: solid 1px rgb(0, 0, 0);
-    text-align: center;
-    min-width: fit-content;
-}
-
-.btn-editer-profile {
-    color: rgb(255, 255, 255);
-    padding: 10px;
-    background-color: rgb(56, 68, 141);
-    border-radius: 10px;
 }
 
 /* ================================================================ */
@@ -1665,6 +1660,14 @@ td, tr {
     min-height: 85vh;
 }
 
+.formulaire-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
 .evenement-haut {
     display: flex;
     align-items: center;
@@ -1678,14 +1681,44 @@ td, tr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 80%;
+}
+
+.categorie-formulaire {
+    background-color: #dfdfec;
+    border-radius: 8px;
+    margin: 16px;
+}
+
+.categorie-formulaire div {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-formulaire {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.column-formulaire {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 .formulaire form {
-    width: 80%;
+    width: 100%;
+}
+
+.formulaire form label {
+    padding: 8px;
 }
 
 .formulaire form div {
     padding: 16px;
+    font-weight: 500;
 }
 
 .formulaire textarea {
@@ -1693,8 +1726,20 @@ td, tr {
     min-width: 100%;
 }
 
-.upload-btn {
-    padding: 16px 0;
+.btn-editer-profil {
+    background-color: var(--violetlogo);
+    border: 1px solid black;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    padding: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-upload {
+    border:none;
+    width: fit-content;
 }
 
 .texte-formulaire {
@@ -1702,90 +1747,11 @@ td, tr {
     padding: 16px;
 }
 
-/* .formulaire input[type=text] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire input[type=number] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire input[type=email] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire input[type=password] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire textarea {
-    margin-top: 10px;
-    padding: 10px;
-    min-width: 190%;
-    max-width: 190%;
-    min-height: 15lvh;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire input[type=datetime-local] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire input[type=date] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire select {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    border: solid 1px rgb(165, 165, 165);
-    border-radius: 5px;
-}
-
-.formulaire select option{
-    color: rgb(255, 255, 255);
+.grand-texte-formulaire {
+    width: 100%;
+    padding: 16px;
+    min-height: 250px;
+    max-height: 100vh;
 }
 
 /* bouton validation création / édition d'événement */
@@ -1798,25 +1764,6 @@ td, tr {
     text-decoration: none;
     cursor: pointer;
 }
-/* bouton non participation événement */
-.suppr-btn-formulaire {
-    background-color: #FF5353;
-    border: 1px solid black;
-    border-radius: 8px;
-    color: rgb(0, 0, 0);
-    padding: 12px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.valider-btn-formulaire:hover {
-    background-color: #08d48a;
-} */
-
-/* .suppr-btn-formulaire:hover {    marche pas
-    background-color: #351111;
-    transition: 0.4s;
-} */
 
 /* ================================================================ */
 /* --------------- REGISTER ---------------- */

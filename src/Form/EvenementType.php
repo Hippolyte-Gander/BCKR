@@ -45,7 +45,7 @@ class EvenementType extends AbstractType
             ->add('contenu', TextareaType::class, [
                 'label'=>"Contenu de l'événement",
                 'attr'=> [
-                    'class'=> 'texte-formulaire'
+                    'class'=> 'grand-texte-formulaire'
                 ]
             ])
             ->add('dateDebut', DateTimeType::class,[
@@ -80,7 +80,7 @@ class EvenementType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'attr'=> [
-                    'class'=> 'upload-btn',
+                    'class'=> 'btn-upload',
                     'enctype'=> 'multipart/form-data'
                 ],
                 'constraints' => [
@@ -96,9 +96,9 @@ class EvenementType extends AbstractType
                     ])
                 ],
             ])
-            ->add('Valider', SubmitType::class, [
+            ->add('Confirmer', SubmitType::class, [
                 'attr'=> [
-                    'class'=> 'valider-btn-formulaire'
+                    'class'=> 'btn-clair'
                 ]
             ])
         ;

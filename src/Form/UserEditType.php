@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserEditType extends AbstractType
@@ -18,6 +19,9 @@ class UserEditType extends AbstractType
         $builder
             ->add('pseudo', TextType::class, [
                 'label'=>'Pseudo'
+            ])
+            ->add('email', EmailType::class, [
+                'label'=>'Email'
             ])
             ->add('nom', TextType::class, [
                 'label'=>'Nom',
@@ -38,7 +42,7 @@ class UserEditType extends AbstractType
                 'required' => false,
                 'attr'=> [
                     'enctype'=> 'multipart/form-data',
-                    'class' => 'no-border'
+                    'class' => 'btn-upload'
                 ],
                 'constraints' => [
                     new \Symfony\Component\Validator\Constraints\File([
@@ -75,7 +79,7 @@ class UserEditType extends AbstractType
             ])
             ->add('valider', SubmitType::class, [
                 'attr'=> [
-                    'class'=> 'valider-btn-formulaire'
+                    'class'=> 'btn-editer-profil'
                 ]
             ]);
     }

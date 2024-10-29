@@ -12,28 +12,40 @@
 {% block body %}
 
 {% if app.user  and app.user.isAdmin() %}
-    <main class="background evenement-formulaire-background">
-        <div class="evenement-haut">
+    <main class="background formulaire-background">
             {% if edit %}
                 <h2>Modifier un événement</h2>
             {% else %}
                 <h2>Créer un événement</h2>
             {% endif %}
-        </div>
 
 
         <section class="formulaire">
             {{ form_start(formAddEvenement) }}
+            <div class="categorie-formulaire">
+                <div class="row-formulaire">
                     {{ form_row(formAddEvenement.titre) }}    
-                    {{ form_row(formAddEvenement.places) }}    
-                {{ form_row(formAddEvenement.description) }}
-                    {{ form_row(formAddEvenement.contenu) }}
-                    {{ form_row(formAddEvenement.dateDebut) }}
-                    {{ form_row(formAddEvenement.dateFin) }}
+                </div>
+                <div class="row-formulaire">
+                    <div class="column-formulaire">
+                        {{ form_row(formAddEvenement.dateDebut) }}
+                    </div>
+                    <div class="column-formulaire">
+                        {{ form_row(formAddEvenement.dateFin) }}
+                    </div>
+                </div>
+                <div class="column-formulaire">
                     {{ form_row(formAddEvenement.affiche) }}
-                    {{ form_row(formAddEvenement.visibilite) }}
+                </div>
+            </div>
+            <div class="categorie-formulaire">
+                {{ form_row(formAddEvenement.places) }}    
+                {{ form_row(formAddEvenement.description) }}
+                {{ form_row(formAddEvenement.contenu) }}
+                {{ form_row(formAddEvenement.visibilite) }}
+            </div>
                     
-            <div onclick="checker()" class="bouton">
+            <div onclick="checker()">
                 {{ form_end(formAddEvenement) }}
             </div>
         </section>

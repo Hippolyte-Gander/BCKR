@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des événements{% endblock %}
+{% block title %}Événements{% endblock %}
 
 {% block body %}
 
@@ -90,7 +90,7 @@
                     {% if app.user  and app.user.isAdmin() %}
                         <div class="suppr-edit-btns">
                             <a class="btn-editer-evenement" href="{{ path('edit_evenement', {'id': evenement.id}) }}">Éditer</a>
-                            <a onclick="checker()" class="btn-supprimer-evenement" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
+                            <a onclick="checker()" class="suppr-btn-formulaire" href="{{ path('suppr_evenement', {'id': evenement.id}) }}">Supprimer</a>
                         </div>
                     {% else %}
                         <div class="evenement-card-infos">
