@@ -59,7 +59,7 @@
     {# ============= section participation ============= #}
 
     <section class="detail-evenement-participation">
-        {% if app.user.isAdmin() %}
+        {% if app.user and app.user.isAdmin() %}
             <h4>Participants</h4>
 
             <div class="detail-evenement-inscrits">

@@ -440,6 +440,8 @@ footer a i:hover {
 .club-card {
     position: relative;
     text-align: right;
+    width: 30%;
+    overflow: hidden;
 }
 
  .club-card * {
@@ -465,22 +467,22 @@ footer a i:hover {
 
 .club-card figcaption:before {
     position: absolute;
-    top: 50%;
+    top: 75%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    right: 100%;
+    right: 150%;
     content: '';
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 120px 120px 120px 0;
-    border-color: transparent #ffffff transparent transparent;
+    border-color: transparent #ffffffd7 transparent transparent;
 }
 
 .club-card:after {
     position: absolute;
     bottom: 50%;
-    right: 40%;
+    right: 50%;
     content: '';
     width: 0;
     height: 0;
@@ -492,7 +494,6 @@ footer a i:hover {
     -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
 }
-
 .club-card h3,
 .club-card p {
   line-height: 1.5em;
@@ -510,10 +511,47 @@ footer a i:hover {
 .club-card p {
   font-size: 0.8em;
 }
-
-
-
-
+.club-card h3 {
+    margin: 0 0 5px;
+    line-height: 1.1em;
+    font-weight: 900;
+    font-size: 1.4em;
+    opacity: 0.75;
+}
+.rectangle-bottomi {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px 30px;
+    font-size: 44px;
+    color: #ffffff;
+    opacity: 0;
+  }
+.rectangle-bottoma {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.club-card:hover img,
+.club-card.hover img {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+}
+.club-card:hover:after,
+.club-card.hover:after,
+.club-card:hover figcaption,
+.club-card.hover figcaption,
+.club-card:hover .rectangle-bottomi,
+.club-card.hover .rectangle-bottomi {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  opacity: 1;
+}
 
 .card-details {
     position: absolute;
