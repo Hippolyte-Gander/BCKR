@@ -27,8 +27,6 @@ class UserController extends AbstractController
     {
         $users = $userRepository->findBy([], ["pseudo"=> "ASC"]);
 
-
-
         return $this->render('user/index.html.twig', [
             'users' => $users
         ]);
