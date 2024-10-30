@@ -7,6 +7,7 @@
     --noir: #333335;
     --violetlogo: #807FFF;
     --violetfonce: #5757b1;
+    --violettresfonce: #454580;
     --blanc: #f9f9fa;
 }
 
@@ -1590,7 +1591,8 @@ footer a i:hover
 }
 
 .box-infos p {
-    color: black;
+    /* color: black; */
+    color: var(--violettresfonce);
     min-height: 132px;
     padding-top: 32px;
     text-align: center;
@@ -1733,6 +1735,7 @@ footer a i:hover
     background-color: #dfdfec;
     border-radius: 8px;
     margin: 16px;
+    overflow: hidden;
 }
 
 .categorie-formulaire div {
