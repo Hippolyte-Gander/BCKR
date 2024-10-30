@@ -437,26 +437,83 @@ footer a i:hover {
     margin: 0 16px;
 }
 
-.card-club .card-details {
-	/* top: 50%;
-	left: 50%; */
-	transform: rotateY(90deg);
-	transform-origin: 50%;
-	/* background: var(--blanc);	 */
-	opacity: 0;
-	transition: all 0.4s ease-in;
-	
-}
-.card-club:hover .card-details {
-    transform: rotateY(0deg);
-	opacity: 1;
+.club-card {
+    position: relative;
+    text-align: right;
 }
 
-.card-club:hover .club-img {
-    transform: rotateY(180deg);
-	opacity: 0.5;
-    filter: blur(4px);
+ .club-card * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
 }
+
+.club-card figcaption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 1;
+    padding: 30px 0 30px 10px;
+    background-color: #ffffff;
+    width: 40%;
+    -webkit-transform: translateX(150%);
+    transform: translateX(150%);
+}
+
+.club-card figcaption:before {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 100%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 120px 120px 120px 0;
+    border-color: transparent #ffffff transparent transparent;
+}
+
+.club-card:after {
+    position: absolute;
+    bottom: 50%;
+    right: 40%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 120px 120px 0 120px;
+    border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+.club-card h3,
+.club-card p {
+  line-height: 1.5em;
+  -webkit-transform: translateX(-30px);
+  transform: translateX(-30px);
+  margin: 0;
+}
+.club-card h3 {
+  margin: 0 0 5px;
+  line-height: 1.1em;
+  font-weight: 900;
+  font-size: 1.4em;
+  opacity: 0.75;
+}
+.club-card p {
+  font-size: 0.8em;
+}
+
+
+
+
 
 .card-details {
     position: absolute;
@@ -471,20 +528,13 @@ footer a i:hover {
     border-radius: 8px;
 }
 
- .card-club {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    border-radius: 8px;
-    position: relative;
-}
-
 .club-img {
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
     aspect-ratio: 1/1;
     transition: all 0.4s ease-in;
+    backface-visibility: hidden;
 }
 
 .titre-texte {
