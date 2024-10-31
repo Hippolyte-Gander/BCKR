@@ -5,7 +5,7 @@
 {% block body %}
 
 <main class="background club-background">
-    <section class="club-section">
+    <section class="club-section hidden-once hidden-bottom">
         <div class="club-texte">
             <h2>Qui sommes-nous ?</h2>
             <p>
@@ -20,11 +20,11 @@
     </section>
 
     <div class="club-ligne-photos">
-        <img src="{{ asset('img/club/apero.webp')}}" alt="photo d'un apéro">
-        <img src="{{ asset('img/club/hand-shake.webp')}}" alt="photo d'une poignée de mains">
+        <img class=" hidden-once hidden-left" src="{{ asset('img/club/apero.webp')}}" alt="photo d'un apéro">
+        <img class=" hidden-once hidden-right" src="{{ asset('img/club/hand-shake.webp')}}" alt="photo d'une poignée de mains">
     </div>
 
-    <section class="club-section">
+    <section class="club-section hidden-once hidden-fix">
         <div class="club-texte">
             <h2>Que proposons-nous ?</h2>
             <p>
@@ -44,9 +44,9 @@
     </section>
 
     <div class="club-ligne-photos">
-        <img src="{{ asset('img/club/homme-smash.webp')}}" alt="photo d'une personne qui smash en sautant">
-        <img src="{{ asset('img/club/fille-banc-badminton.webp')}}" alt="photo d'une fille sur un banc qui regarde un entraînement de badminton">
-        <img src="{{ asset('img/club/terrain-badminton.webp')}}" alt="photo d'unun terrain de badminton">
+        <img class="hidden-once hidden-left" src="{{ asset('img/club/homme-smash.webp')}}" alt="photo d'une personne qui smash en sautant">
+        <img class="hidden-once hidden-bottom" src="{{ asset('img/club/fille-banc-badminton.webp')}}" alt="photo d'une fille sur un banc qui regarde un entraînement de badminton">
+        <img class="hidden-once hidden-right" src="{{ asset('img/club/terrain-badminton.webp')}}" alt="photo d'unun terrain de badminton">
 
     </div>
 </main>
