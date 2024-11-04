@@ -1,3 +1,4 @@
+// fonction pour afficher les flash messages pendant 5s puis les fait disparaître
 function hideMsg() {
     let alerts = document.getElementsByClassName('alert');
     for (let i = 0; i < alerts.length; i++) {

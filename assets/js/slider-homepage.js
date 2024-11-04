@@ -1,3 +1,4 @@
+// Fichier JS géranr les slides du caroussel de la page d'accueil (source : codepen)
 $(document).ready(function() {
   // SLIDER
   var carouselslider = new Swiper('.carousel-slider', {

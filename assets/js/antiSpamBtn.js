@@ -1,3 +1,4 @@
+// Fonction appliquée à tous les button pour empêcher le spam lors de l'envoie de formulaire (délais de 5s entre 2 clics sur un même bouton)
 const boutons = document.querySelectorAll('button');
 boutons.forEach(bouton => {
   bouton.addEventListener('click', function() {

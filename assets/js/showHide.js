@@ -1,3 +1,5 @@
+// fonction pour afficher un élément après avoir cliqué sur un bouton
+// pour l'instant uniquement utilisé dans l'espace personnel
 const showBtns = document.getElementsByClassName('afficher-message');
 Array.from(showBtns).forEach(showBtn => {
     // sélectionner la div à faire apparaître

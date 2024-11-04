@@ -5,9 +5,9 @@
 {% block body %}
 
 <main class="background contact-background">
-    <div class="wrapper-contact">
-        <h2>Contact</h2>
-        <section class="texte-contact">
+    <div class="wrapper-contact hidden-once hidden-bottom">
+        <h2 class="hidden-once hidden-bottom">Contact</h2>
+        <section class="texte-contact hidden-once hidden-bottom">
             <p>
                 Vous avez des questions, vous voulez faire une suggestion,
                 <br>
@@ -22,7 +22,7 @@
             </p>
         </section>
         
-        <section class="form-contact">
+        <section class="form-contact hidden-once hidden-bottom">
             {{ form_start(form) }}
                 {{ form_widget(form.expediteur) }}
                 {{ form_widget(form.message) }}

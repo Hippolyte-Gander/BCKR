@@ -1,3 +1,4 @@
+// Fonction empêchant la date de fin d'événement d'être avant celle du début 
 document.addEventListener('DOMContentLoaded', function() {
     const dateDebutInput = document.getElementById('evenement_dateDebut'); // Adjust ID based on field name
     const dateFinInput = document.getElementById('evenement_dateFin'); // Adjust ID based on field name

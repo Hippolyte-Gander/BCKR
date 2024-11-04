@@ -1,3 +1,4 @@
+// fonction demandant de confirmer quand on clique sur une action importante (ex: supprimer / modifier un élément etc)
 function checker() {
     var result = confirm('Êtes-vous certain(e) de vouloir faire cette action ?');
     if (result == false) {

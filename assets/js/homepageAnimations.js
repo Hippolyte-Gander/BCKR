@@ -7,6 +7,7 @@
 // });
 
 // ------------------ Fonction pour gérer les classes 'hidden' et 'show' ------------------
+// But: afficher les éléments de la page de manière fluide
 
 // on sélectionne les éléments avec la classe 'hidden'
 const hiddenElements = document.querySelectorAll('.hidden');
