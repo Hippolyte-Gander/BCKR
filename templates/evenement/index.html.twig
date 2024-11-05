@@ -24,11 +24,11 @@
         <div class="evenement-wrapper">
             {% for evenement in pagination %}
                 {% if evenement.visibilite == 'admins' %}
-                    <div class="card-evenement card-admin hidden hidden-left">
+                    <div class="card-evenement card-admin  hidden-once hidden-left grouped-left">
                 {% elseif evenement.visibilite == 'membres' %}
-                    <div class="card-evenement card-membre hidden hidden-left">
+                    <div class="card-evenement card-membre  hidden-once hidden-left grouped-left">
                 {% else %}
-                    <div class="card-evenement hidden hidden-left">
+                    <div class="card-evenement  hidden-once hidden-left grouped-left">
                 {% endif %}
                     <div class="evenement-card-top">
                         <a href=" {{ path('show_evenement', {'id': evenement.id}) }} ">

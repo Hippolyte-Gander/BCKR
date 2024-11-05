@@ -79,7 +79,14 @@
             {% if pagination|length >= 1 %}
                 <div class="evenement-wrapper">
                     {% for evenement in pagination %}
-                        <div class="card-evenement">
+                    {% if evenement.visibilite == 'admins' %}
+                        <div class="card-evenement card-admin  hidden-once hidden-left grouped-left">
+                    {% elseif evenement.visibilite == 'membres' %}
+                        <div class="card-evenement card-membre  hidden-once hidden-left grouped-left">
+                    {% else %}
+                        <div class="card-evenement  hidden-once hidden-left grouped-left">
+                    {% endif %}
+                        {# <div class="card-evenement hidden hidden-left grouped-left"> #}
                             <div class="affiche-event">
                                 {% if evenement.affiche %}
                                 <img src="{{ asset('/uploads/afficheEvenement/'~evenement.affiche) }} " alt="Affiche de l'événement">

@@ -141,7 +141,8 @@ textarea {
 }
 
 /* --------------- effet JS appartition ---------------- */
-
+/* Nom = sens d'apparition
+Grouped = apparition progessive */
 .hidden-fix {
     opacity: 0;
     filter: blur(5px);
@@ -162,9 +163,26 @@ textarea {
 .hidden-left {
     opacity: 0;
     filter: blur(5px);
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     transition: all 1s;
 }
+
+.grouped-left:nth-child(2) {
+    transition-delay: 200ms;
+}
+.grouped-left:nth-child(3) {
+    transition-delay: 400ms;
+}
+.grouped-left:nth-child(4) {
+    transition-delay: 600ms;
+}
+.grouped-left:nth-child(5) {
+    transition-delay: 800ms;
+}
+.grouped-left:nth-child(6) {
+    transition-delay: 1000ms;
+}
+
 .hidden-right {
     opacity: 0;
     filter: blur(5px);
