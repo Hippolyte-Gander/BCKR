@@ -119,7 +119,47 @@
                     
             </a>
 
-            <div class="lien-footer">
+            <section class="partenaires">
+                <div class="separation-parallaxe">
+                    <h2>Ceux qui nous soutiennent</h2>
+                </div>
+                
+                <article class="bandeau-partenaires">
+                    <h3>Merci à nos partenaires</h3>
+                    <div class="barre-sous-titre"></div>
+                    <div class="liste-partenaires">
+                        <div class="card-partenaire">
+                            <a href="https://www.facebook.com/LardesportsIllkirch.fr/?locale=fr_FR" target="_blank">
+                                <img src="{{ asset('img/homepage/lardesport.webp')}}" alt="logo de la marque LardeSports">
+                                <p>Lardesport</p>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="bandeau-partenaires">
+                    <h3>Merci aux mairies</h3>
+                    <div class="barre-sous-titre"></div>
+                    <div class="liste-partenaires">
+                        <div class="card-partenaire">
+                            <a href="http://www.rottelsheim.fr/" target="_blank">
+                                <img src="{{ asset('img/homepage/Blason_Rottelsheim.webp')}}" alt="Blason de la mairie de Rottelsheim">
+                                <p>Mairie de Rottelsheim</p>
+                            </a>
+                        </div>
+                        <div class="card-partenaire">
+                            <a href="https://www.agglo-haguenau.fr/commune/kriegsheim/" target="_blank">
+                                <img src="{{ asset('img/homepage/Blason_Kriegsheim.webp')}}" alt="Blason de la mairie de Kriegsheim">
+                                <p>Mairie de Kriegsheim</p>
+                            </a>
+                        </div>
+                    </div>
+    
+                </article>
+            </section>
+    
+
+            <section class="lien-footer">
                 <div class="liens-internes">
                     <a href="#" class="texte-footer">Retour en haut</a>
                     <a href="{{ path('app_home') }}" class="texte-footer">Accueil</a>
@@ -128,7 +168,7 @@
                     <a href=" {{ path('contact_home') }} " class="texte-footer">Contact</a>
                 </div>
                 <a href="https://www.facebook.com/people/Badminton-Club-Kriegsheim-Rottelsheim/100068341596055/" class="texte-footer" target="_blank"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
-            </div>
+            </section>
             
         </footer>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

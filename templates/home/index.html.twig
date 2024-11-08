@@ -13,14 +13,14 @@
         </section>
         <div class="wrapper-cta">
             <i class="fa-solid fa-angles-right"></i>
-            <a onclick="checker()" href="{{ path('app_register') }}" class="homepage-rejoindre-btn">
+            <a href="{{ path('app_register') }}" class="homepage-rejoindre-btn">
                 Rejoignez-nous !
             </a>
             <i class="fa-solid fa-angles-left"></i>
         </div>
         
         <section class="club">
-            <figure class="club-card hidden hidden-left add-hover-btn">
+            <figure class="club-card hidden-once hidden-left add-hover-btn">
                 <img class="club-img" src="{{ asset('img/homepage/le-club2.webp')}}" alt="photo d'une raquette au sol entourée de volants">
                 <figcaption class="card-details">
                     <a href=" {{ path('entrainements_home') }} ">
@@ -38,7 +38,7 @@
                 <div class="card-triangle-right"></div>
             </figure>
             
-            <figure class="club-card hidden hidden-fix">
+            <figure class="club-card hidden-once hidden-fix">
                 <img class="club-img add-hover-btn" src="{{ asset('img/homepage/le-club1.webp')}}" alt="photo d'une personne avec un volant en main">
                 <figcaption class="card-details">
                     <a href=" {{ path('club_home') }} ">
@@ -57,7 +57,7 @@
                 <div class="card-triangle-right"></div>
             </figure>
 
-            <figure class="club-card hidden hidden-right">
+            <figure class="club-card hidden-once hidden-right">
                 <img class="club-img" src="{{ asset('img/homepage/le-club3.webp')}}" alt="photo de viande en train de cuir sur un barbecue">
                 <figcaption class="card-details add-hover-btn">
                     <a href=" {{ path('app_evenement') }} ">
@@ -177,47 +177,7 @@
                 <div class="swiper-button-next">NEXT</div>
                 <!-- end button-next -->
             </div>
-        </section>
-
-        <section class="partenaires">
-            <div class="separation-parallaxe">
-                <h2>Ceux qui nous soutiennent</h2>
-            </div>
-            
-            <article class="bandeau-partenaires">
-                <h3>Merci à nos partenaires</h3>
-                <div class="barre-sous-titre"></div>
-                <div class="liste-partenaires">
-                    <div class="card-partenaire">
-                        <a href="https://www.facebook.com/LardesportsIllkirch.fr/?locale=fr_FR" target="_blank">
-                            <img src="{{ asset('img/homepage/lardesport.webp')}}" alt="logo de la marque LardeSports">
-                            <p>Lardesport</p>
-                        </a>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="bandeau-partenaires">
-                <h3>Merci aux mairies</h3>
-                <div class="barre-sous-titre"></div>
-                <div class="liste-partenaires">
-                    <div class="card-partenaire">
-                        <a href="http://www.rottelsheim.fr/" target="_blank">
-                            <img src="{{ asset('img/homepage/Blason_Rottelsheim.webp')}}" alt="Blason de la mairie de Rottelsheim">
-                            <p>Mairie de Rottelsheim</p>
-                        </a>
-                    </div>
-                    <div class="card-partenaire">
-                        <a href="https://www.agglo-haguenau.fr/commune/kriegsheim/" target="_blank">
-                            <img src="{{ asset('img/homepage/Blason_Kriegsheim.webp')}}" alt="Blason de la mairie de Kriegsheim">
-                            <p>Mairie de Kriegsheim</p>
-                        </a>
-                    </div>
-                </div>
-
-            </article>
-        </section>
-        
+        </section>        
     </div>
 </main>
 

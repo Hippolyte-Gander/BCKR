@@ -77,7 +77,6 @@
 
 h1 {
     color: rgb(255, 255, 255);
-    font-family: Cinzel;
     font-weight: 600;
     font-size: clamp(2rem, 7.5vw + .5rem, 3.5rem);
     line-height: 58px;
@@ -87,7 +86,6 @@ h1 {
 h2 {
     font-size: clamp(1.5rem, 5vw + 0.5rem, 2rem);
     max-width: fit-content;
-    font-family: Cinzel;
     padding: 16px;
 }
 
@@ -102,6 +100,10 @@ h4 {
 
 h5 {
     font-size: clamp(0.8rem, 5vw, 1.5rem);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Cinzel;
 }
 
 a {
@@ -393,11 +395,65 @@ footer {
     border-top: solid 1px #000000;
     font-size: 1.25rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     background-color: var(--noir);
 }
+
+/* ----------- Section partenaires  ------------ */
+
+.partenaires {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bandeau-partenaires {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bandeau-partenaires p,
+.bandeau-partenaires h3 {
+    margin: 8px;
+}
+
+.barre-sous-titre {
+    height: 4px;
+    width: 128px;
+    background-color: var(--noir);
+    border-radius: 32px;
+}
+
+.liste-partenaires {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card-partenaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-partenaire p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.card-partenaire img {
+    height: 300px;
+    width: 300px;
+    object-fit: fill;
+}
+
+/* ----------- Section liens navigation  ------------ */
 
 .liens-internes {
     display: flex;
@@ -978,56 +1034,7 @@ footer a i:hover {
     }
 }
 
-/* ----------- Section partenaires  ------------ */
 
-.partenaires {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.bandeau-partenaires {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bandeau-partenaires p,
-.bandeau-partenaires h3 {
-    margin: 8px;
-}
-
-.barre-sous-titre {
-    height: 4px;
-    width: 128px;
-    background-color: var(--noir);
-    border-radius: 32px;
-}
-
-.liste-partenaires {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.card-partenaire {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.card-partenaire p {
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.card-partenaire img {
-    height: 300px;
-    width: 300px;
-    object-fit: fill;
-}
 
 /* ================================================================ */
 /* --------------- ESPACE PERSO ---------------- */
