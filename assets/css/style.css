@@ -60,7 +60,7 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: var(--violetlogo);
-    border-radius: 16px;
+    border-radius: 2px;
   }
   
   /* Handle on hover */
@@ -153,7 +153,7 @@ Grouped = apparition progessive */
 .hidden-bottom {
     opacity: 0;
     filter: blur(5px);
-    transform: translateY(100%);
+    transform: translateY(20%);
     transition: all 1s;
 }
 .hidden-top {
@@ -512,6 +512,22 @@ footer a i:hover {
 }
 
 .wrapper-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wrapper-cta1 h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper-cta1 {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper-cta2 {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -1915,7 +1931,7 @@ footer a i:hover {
 .valider-btn-formulaire {
     background-color: #04AA6D;
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 4px;
     color: rgb(0, 0, 0);
     padding: 12px;
     text-decoration: none;
@@ -1980,11 +1996,12 @@ footer a i:hover {
 .login-container {
     width: 420px;
     background: transparent;
-    border:  2px solid white;
+    /* border:  2px solid white; */
+    border:  2px solid var(--violetlogo);
     backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 30px 40px;
     align-items: center;
 }
@@ -2002,8 +2019,9 @@ footer a i:hover {
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
+    border: 2px solid var(--violetlogo);
+    /* border: 2px solid rgba(255, 255, 255, 0.2); */
+    border-radius: 8px;
     font-size: 16px;
     color: white;
     padding: 20px 45px 20px 20px;
@@ -2024,7 +2042,7 @@ footer a i:hover {
 
 .login-btn {
     border: none;
-    border-radius: 40px;
+    border-radius: 8px;
     display: block;
     text-align: center;
     cursor: pointer;
@@ -2033,7 +2051,8 @@ footer a i:hover {
     overflow: hidden;
     position: relative;
     font-weight: 600;
-    background-color: #e7e7e7;
+    /* background-color: #e7e7e7; */
+    background-color: #eeeeff;
     padding: 16px 40px;
     margin: 0 auto;
     box-shadow: 0 5px 15px rgba(0,0,0,0.20);
@@ -2051,7 +2070,8 @@ footer a i:hover {
     top: 0;
     height: 490%;
     width: 140%;
-    background: #a3a3a3;
+    background: var(--violetlogo);
+    /* background: #a3a3a3; */
     -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
     -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);

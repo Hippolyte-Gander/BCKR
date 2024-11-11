@@ -11,13 +11,20 @@
                 <p class="alerte-accueil"> {{ afficher message important ici }} </p>
             </div> #}
         </section>
-        <div class="wrapper-cta">
-            <i class="fa-solid fa-angles-right"></i>
-            <a href="{{ path('app_register') }}" class="homepage-rejoindre-btn">
-                Rejoignez-nous !
-            </a>
-            <i class="fa-solid fa-angles-left"></i>
-        </div>
+
+        <section class="wrapper-cta">
+            <div class="wrapper-cta1">
+                <h3>Envie de nous rejoindre ?</h3>
+            </div>
+            
+            <div class="wrapper-cta2">
+                <i class="fa-solid fa-angles-right"></i>
+                <a href="{{ path('app_register') }}" class="homepage-rejoindre-btn">
+                    Inscrivez vous !
+                </a>
+                <i class="fa-solid fa-angles-left"></i>
+            </div>
+        </section>
         
         <section class="club">
             <figure class="club-card hidden-once hidden-left add-hover-btn">
@@ -38,7 +45,7 @@
                 <div class="card-triangle-right"></div>
             </figure>
             
-            <figure class="club-card hidden-once hidden-fix">
+            <figure class="club-card hidden-once hidden-bottom">
                 <img class="club-img add-hover-btn" src="{{ asset('img/homepage/le-club1.webp')}}" alt="photo d'une personne avec un volant en main">
                 <figcaption class="card-details">
                     <a href=" {{ path('club_home') }} ">
@@ -135,7 +142,7 @@
             </div>
         </section>
 
-        <section class="creative-carousal--hero">
+        <section class="creative-carousal--hero hidden-once hidden-bottom">
             <div class="carousel-slider swiper-container-horizontal">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide" data-background="{{ asset('img/entrainement/rattrapage-amorti.webp')}}" style="background-image: url('{{ asset("img/entrainement/rattrapage-amorti.webp") }}');">
