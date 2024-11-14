@@ -39,7 +39,7 @@ class RegistrationController extends AbstractController
             // role par défaut
             $user->setRoles(['ROLE_USER']);
             
-            // encode the plain password
+            // hasher le mot de passe pour le stocker en BDD
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,

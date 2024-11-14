@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerSTdNRfX\App_KernelDevDebugContainer([
     'container.build_hash' => 'STdNRfX',
-    'container.build_id' => '78783df0',
-    'container.build_time' => 1731570037,
+    'container.build_id' => '40e737b1',
+    'container.build_time' => 1731580486,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerSTdNRfX');

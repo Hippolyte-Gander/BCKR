@@ -1967,7 +1967,7 @@ footer a i:hover {
 }
 
 .register-formulaire-background a {
-    color: #049faa;
+    color: var(--violetfonce);
 }
 
 .register-formulaire-background a:hover {
