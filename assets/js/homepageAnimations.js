@@ -46,3 +46,10 @@ const observer = new IntersectionObserver((entries) => {
 // on observe tous les éléments 'hidden' et 'hidden-once'
 hiddenElements.forEach((element) => observer.observe(element));
 hiddenOnceElements.forEach((element) => observer.observe(element));
+
+// enlever la classe hover une fois l'élément survolé une fois -> il sera affiché de base puis seulement au hover
+$(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  );
