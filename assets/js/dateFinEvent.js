@@ -1,32 +1,34 @@
 // Fonction empêchant la date de fin d'événement d'être avant celle du début 
 document.addEventListener('DOMContentLoaded', function() {
-    const dateDebutInput = document.getElementById('evenement_dateDebut'); // Adjust ID based on field name
-    const dateFinInput = document.getElementById('evenement_dateFin'); // Adjust ID based on field name
+    // Sélectionne la date de début via son ID
+    const dateDebutInput = document.getElementById('evenement_dateDebut');
+    // Sélectionne la date de fin via son ID
+    const dateFinInput = document.getElementById('evenement_dateFin');
 
-    // Listen for changes in the dateDebut input
+    // Vérifie s'il y a un changement du champ "dateDebut"
     dateDebutInput.addEventListener('change', function() {
         const dateDebutValue = new Date(dateDebutInput.value);
 
         if (dateDebutValue) {
-            // Set the minimum date for dateFin to the same as dateDebut
-            dateFinInput.min = dateDebutValue.toISOString().slice(0, 16); // Set the min attribute for dateFin
+            // Oblige la date minimum de fin comme étant la date de début
+            dateFinInput.min = dateDebutValue.toISOString().slice(0, 16);
 
-            // If dateFin is before dateDebut, reset it
+            // Si la date de fin est antérieure à la date de début, reset la saisie de la date de fin
             if (new Date(dateFinInput.value) < dateDebutValue) {
-                dateFinInput.value = ''; // Clear the invalid dateFin value
+                dateFinInput.value = '';
             }
         }
     });
 
-    // Listen for changes in the dateFin input
+    // Vérifier les changement de saisie de la date de fin
     dateFinInput.addEventListener('change', function() {
         const dateFinValue = new Date(dateFinInput.value);
         const dateDebutValue = new Date(dateDebutInput.value);
 
-        // Prevent setting dateFin to a time before dateDebut
+        // Si la date de fin est antérieure à la date de début, reset la saisie de la date de fin
         if (dateFinValue < dateDebutValue) {
             alert('La date de fin ne peut pas être avant la date de début!');
-            dateFinInput.value = ''; // Reset dateFin to prevent invalid selection
+            dateFinInput.value = '';
         }
     });
 });
