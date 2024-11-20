@@ -139,26 +139,26 @@
                         <div class="detail-evenement-auteur-commentaire">
                             {% if commentaire.poste.isVerified() == false %}
                                 <div class="pp-commentaire">
-                                    <i class="fa-regular fa-circle-user"></i>
+                                    <i aria-label="Icône d'utilisateur par défaut" class="fa-regular fa-circle-user"></i>
                                 </div>
                             {% elseif commentaire.poste.photoProfil %}
                                 <div class="photo-pagePerso pp-commentaire">
-                                    <img src="{{ asset('/uploads/photoProfil/'~commentaire.poste.photoProfil) }} " alt="Photo de profil">
+                                    <img aria-label="photo de profil de l'utilisateur" src="{{ asset('/uploads/photoProfil/'~commentaire.poste.photoProfil) }} " alt="Photo de profil">
                                 </div>
                             {% else %}
                                 <div class="pp-commentaire">
-                                    <i class="fa-regular fa-circle-user"></i>
+                                    <i aria-label="Icône d'utilisateur par défaut" class="fa-regular fa-circle-user"></i>
                                 </div>
                             {% endif %}
                             
                             {% if commentaire.poste.isVerified() == false %}
                                 <p class="text-purple">
-                                    Anonyme <i class="fa-regular fa-comment"></i>
+                                    Anonyme <i aria-label="Icône bulle de dialogue" class="fa-regular fa-comment"></i>
                                     {# <i class="fa-regular fa-envelope"></i> #}
                                 </p>
                             {% else %}
                                 <p class="text-purple">
-                                    {{ commentaire.poste.pseudo }} <i class="fa-regular fa-comment"></i>
+                                    {{ commentaire.poste.pseudo }} <i aria-label="Icône bulle de dialogue" class="fa-regular fa-comment"></i>
                                     {# <i class="fa-regular fa-envelope"></i> #}
                                 </p>
                             {% endif %}

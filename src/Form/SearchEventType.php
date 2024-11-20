@@ -21,7 +21,7 @@ class SearchEventType extends AbstractType
                 ]
             ])
             ->add('valider', SubmitType::class, [
-                'label'=> '<i class="fa-solid fa-magnifying-glass"></i>',
+                'label'=> '<i aria-label="Rechercher un événement par titre" class="fa-solid fa-magnifying-glass"></i>',
                 'label_html' => true
             ])
         ;

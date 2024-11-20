@@ -13,7 +13,7 @@ class DeletePhotoProfilType extends AbstractType
     {
         $builder
             ->add('supprimerPP', SubmitType::class, [
-                'label'=>"Supprimer",
+                'label'=>"Supprimer photo",
                 'attr'=> [
                     'class'=> 'suppr-btn-formulaire'
                 ]

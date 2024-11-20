@@ -16,7 +16,7 @@
             {{ form_start(formSearch) }}
                 {{ form_widget(formSearch.recherche) }}
                 {{ form_widget(formSearch.valider) }}
-                <a href="{{ path('app_evenement') }}"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                <a href="{{ path('app_evenement') }}"><i aria-label="Rafraîchir la page" class="fa-solid fa-arrow-rotate-left"></i></a>
             {{ form_end(formSearch) }}
         </div>
     </div>
