@@ -4,15 +4,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Evenement;
+use App\Model\SearchData;
 use App\Entity\Commentaire;
 use App\Form\EvenementType;
 use App\Form\CommentaireType;
+use App\Form\SearchEventType;
 use App\Entity\Participations;
 use App\Form\ParticipationType;
 use Doctrine\ORM\EntityManager;
 use App\Form\DeleteParticipationType;
-use App\Form\SearchEventType;
-use App\Model\SearchData;
 use App\Repository\EvenementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -20,7 +20,9 @@ use App\Repository\ParticipationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\DependencyInjection\Loader\Configurator\request;
 
@@ -193,8 +195,15 @@ class EvenementController extends AbstractController
     // ------------- AFFICHER DÉTAIL EVENEMENT -------------
 
     #[Route('/evenement/{id}', name: 'show_evenement')]
-    public function show(Evenement $evenement, Request $request, EntityManagerInterface $entityManager): Response
+    public function show(Evenement $evenement, Request $request, EntityManagerInterface $entityManager, CsrfTokenManagerInterface $csrfTokenManager): Response
     {
+        // Récupération du token depuis la requête
+        $token = new CsrfToken('formulaire_suppression_commentaire', $request->get('_token'));
+        if (!$csrfTokenManager->isTokenValid(new CsrfToken('formulaire_suppression_commentaire', $token))) {
+            // Redirection vers la page d'accueil si le token est invalide
+            return $this->redirectToRoute('app_home');
+        }
+
         // poster commentaire
         $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire);
@@ -389,6 +398,5 @@ class EvenementController extends AbstractController
                 // si l'utilisateur n'a pas le rôle d'administrateur il est redirigé vers la page d'accueil
                 return $this->redirectToRoute('app_home');
             }
-
         }
 }

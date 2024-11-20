@@ -22,7 +22,7 @@ class CommentaireType extends AbstractType
                 'required'=> true,
                 'attr'=> [
                     'class'=> 'texte-commentaire'
-                ]
+                    ]
                 ])
             ->add('valider', SubmitType::class, [
                 'label'=>"Commenter",
@@ -36,6 +36,12 @@ class CommentaireType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Commentaire::class,
+            // Activé par défaut
+            'csrf_protection' => true,
+            // Nom du champ pour le token CSRF
+            'csrf_field_name' => '_token',
+            // Identifiant unique pour le formulaire
+            'csrf_token_id'   => 'formulaire_suppression_commentaire',
         ]);
     }
 }
