@@ -98,7 +98,7 @@ class EvenementController extends AbstractController
                 } else {
                     $evenements = $evenementRepository->findBySearch($searchData);
                 }
-
+                
                 // pagination des événements à afficher
                 $pagination = $paginator->paginate(
                     $evenements, /* query NOT result */
@@ -198,11 +198,11 @@ class EvenementController extends AbstractController
     public function show(Evenement $evenement, Request $request, EntityManagerInterface $entityManager, CsrfTokenManagerInterface $csrfTokenManager): Response
     {
         // Récupération du token depuis la requête
-        $token = new CsrfToken('formulaire_suppression_commentaire', $request->get('_token'));
-        if (!$csrfTokenManager->isTokenValid(new CsrfToken('formulaire_suppression_commentaire', $token))) {
-            // Redirection vers la page d'accueil si le token est invalide
-            return $this->redirectToRoute('app_home');
-        }
+        // $token = new CsrfToken('formulaire_suppression_commentaire', $request->get('_token'));
+        // if (!$csrfTokenManager->isTokenValid(new CsrfToken('formulaire_suppression_commentaire', $token))) {
+        //     // Redirection vers la page d'accueil si le token est invalide
+        //     return $this->redirectToRoute('app_home');
+        // }
 
         // poster commentaire
         $commentaire = new Commentaire();

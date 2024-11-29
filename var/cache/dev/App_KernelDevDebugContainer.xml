@@ -612,7 +612,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.TuPBpwR"/>
+      <argument type="service" id=".service_locator.xWXe2Sh"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3730,7 +3730,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.TuPBpwR"/>
+      <argument type="service" id=".service_locator.xWXe2Sh"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -9052,6 +9052,14 @@
         <argument key="evenement" type="service_closure" id=".errored..service_locator.JFCU_Ej.App\Entity\Evenement"/>
       </argument>
     </service>
+    <service id=".service_locator.3qTeG9j" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="csrfTokenManager" type="service_closure" id="security.csrf.token_manager"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="evenement" type="service_closure" id=".errored..service_locator.3qTeG9j.App\Entity\Evenement"/>
+      </argument>
+    </service>
     <service id=".service_locator.HrDCg3Q" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9142,7 +9150,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.TuPBpwR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.xWXe2Sh" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Admin\CommentaireCrudController::autocomplete" type="service_closure" id=".service_locator.t9B7cZ4"/>
@@ -9255,7 +9263,7 @@
         <argument key="App\Controller\EvenementController::nePlusParticiper" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\EvenementController::new_edit" type="service_closure" id=".service_locator.EMuVimD"/>
         <argument key="App\Controller\EvenementController::participer" type="service_closure" id=".service_locator.JFCU_Ej"/>
-        <argument key="App\Controller\EvenementController::show" type="service_closure" id=".service_locator.JFCU_Ej"/>
+        <argument key="App\Controller\EvenementController::show" type="service_closure" id=".service_locator.3qTeG9j"/>
         <argument key="App\Controller\EvenementController::supprCommentaire" type="service_closure" id=".service_locator.HrDCg3Q"/>
         <argument key="App\Controller\EvenementController::supprEvenement" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\HomeController::contact" type="service_closure" id=".service_locator.uVvF4gL"/>
@@ -9384,7 +9392,7 @@
         <argument key="App\Controller\EvenementController:nePlusParticiper" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\EvenementController:new_edit" type="service_closure" id=".service_locator.EMuVimD"/>
         <argument key="App\Controller\EvenementController:participer" type="service_closure" id=".service_locator.JFCU_Ej"/>
-        <argument key="App\Controller\EvenementController:show" type="service_closure" id=".service_locator.JFCU_Ej"/>
+        <argument key="App\Controller\EvenementController:show" type="service_closure" id=".service_locator.3qTeG9j"/>
         <argument key="App\Controller\EvenementController:supprCommentaire" type="service_closure" id=".service_locator.HrDCg3Q"/>
         <argument key="App\Controller\EvenementController:supprEvenement" type="service_closure" id=".service_locator.JFCU_Ej"/>
         <argument key="App\Controller\HomeController:contact" type="service_closure" id=".service_locator.uVvF4gL"/>
@@ -10689,6 +10697,9 @@
     <service id=".errored..service_locator.JFCU_Ej.App\Entity\Evenement" class="App\Entity\Evenement">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.JFCU_Ej&quot;: it needs an instance of &quot;App\Entity\Evenement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
+    <service id=".errored..service_locator.3qTeG9j.App\Entity\Evenement" class="App\Entity\Evenement">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.3qTeG9j&quot;: it needs an instance of &quot;App\Entity\Evenement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".errored..service_locator.HrDCg3Q.App\Entity\Commentaire" class="App\Entity\Commentaire">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.HrDCg3Q&quot;: it needs an instance of &quot;App\Entity\Commentaire&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
@@ -11952,7 +11963,7 @@
     <service id="Vich\UploaderBundle\Form\Type\VichImageType" alias="vich_uploader.form.type.image"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.w7.f4fT" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.TuPBpwR"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.xWXe2Sh"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -11984,13 +11995,14 @@
     <service id=".service_locator.oqerleC" alias=".service_locator.zoVzhCf"/>
     <service id=".service_locator.qpV4qDJ" alias=".service_locator.EMuVimD"/>
     <service id=".service_locator.HuHdp3s" alias=".service_locator.JFCU_Ej"/>
+    <service id=".service_locator.LhBu9q2" alias=".service_locator.3qTeG9j"/>
     <service id=".service_locator.lr46L5c" alias=".service_locator.Tj7FrpL"/>
     <service id=".service_locator.900uUd7" alias=".service_locator.yoflbtf"/>
     <service id=".service_locator.OeQRtdy" alias=".service_locator.t9aPEVW"/>
     <service id=".service_locator.4ntabyc" alias=".service_locator.kuUfZEq"/>
     <service id=".service_locator.lQn2Eh1" alias=".service_locator.J4tq98n"/>
     <service id=".service_locator.gjt7tHW" alias=".service_locator.pbtqkCT"/>
-    <service id=".service_locator.P5FZhn7" alias=".service_locator.TuPBpwR"/>
+    <service id=".service_locator.SSYO8Gk" alias=".service_locator.xWXe2Sh"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.JjNIjU0" alias=".service_locator.UY9ig9Y"/>
     <service id=".service_locator.xvo6EYI" alias=".service_locator.EJy82.P"/>
@@ -12032,6 +12044,7 @@
     <service id=".service_locator.2mUS3V4" alias=".service_locator.zoVzhCf"/>
     <service id=".service_locator.owYSAS8" alias=".service_locator.EMuVimD"/>
     <service id=".service_locator.AUCwrUD" alias=".service_locator.JFCU_Ej"/>
+    <service id=".service_locator.75dUS_m" alias=".service_locator.3qTeG9j"/>
     <service id=".service_locator.cSLnqKe" alias=".service_locator.HrDCg3Q"/>
     <service id=".service_locator.W2oDVmy" alias=".service_locator.3viUAbe"/>
     <service id=".service_locator.OJmnvRJ" alias=".service_locator.uVvF4gL"/>

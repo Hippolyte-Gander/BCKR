@@ -31,7 +31,7 @@ class SearchEventType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class'=> SearchData::class,
-            'method'=> 'GET'
+            // 'method'=> 'GET'
         ]);
     }
 }
