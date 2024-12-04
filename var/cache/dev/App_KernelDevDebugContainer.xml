@@ -528,9 +528,6 @@
     <service id="App\Form\MembreRegistrationFormType" class="App\Form\MembreRegistrationFormType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
-    <service id="App\Form\ParticipantEntrainementType" class="App\Form\ParticipantEntrainementType" autowire="true" autoconfigure="true">
-      <tag name="form.type"/>
-    </service>
     <service id="App\Form\ParticipationType" class="App\Form\ParticipationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -1546,7 +1543,6 @@
         <argument>App\Form\EvenementType</argument>
         <argument>App\Form\ImageEvenementType</argument>
         <argument>App\Form\MembreRegistrationFormType</argument>
-        <argument>App\Form\ParticipantEntrainementType</argument>
         <argument>App\Form\ParticipationType</argument>
         <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Form\ResetPasswordFormType</argument>
@@ -4248,7 +4244,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.UY9ig9Y"/>
+      <argument type="service" id=".service_locator.aHgfHgF"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -8440,8 +8436,6 @@
     <service id=".abstract.instanceof.App\Form\ImageEvenementType" class="App\Form\ImageEvenementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MembreRegistrationFormType" class="App\Form\MembreRegistrationFormType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\MembreRegistrationFormType" class="App\Form\MembreRegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ParticipantEntrainementType" class="App\Form\ParticipantEntrainementType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\ParticipantEntrainementType" class="App\Form\ParticipantEntrainementType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ParticipationType" class="App\Form\ParticipationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ParticipationType" class="App\Form\ParticipationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
@@ -9580,7 +9574,7 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.UY9ig9Y" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.aHgfHgF" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
@@ -9590,7 +9584,6 @@
         <argument key="App\Form\EvenementType" type="service_closure" id="App\Form\EvenementType"/>
         <argument key="App\Form\ImageEvenementType" type="service_closure" id="App\Form\ImageEvenementType"/>
         <argument key="App\Form\MembreRegistrationFormType" type="service_closure" id="App\Form\MembreRegistrationFormType"/>
-        <argument key="App\Form\ParticipantEntrainementType" type="service_closure" id="App\Form\ParticipantEntrainementType"/>
         <argument key="App\Form\ParticipationType" type="service_closure" id="App\Form\ParticipationType"/>
         <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="App\Form\ResetPasswordFormType" type="service_closure" id="App\Form\ResetPasswordFormType"/>
@@ -12004,7 +11997,7 @@
     <service id=".service_locator.gjt7tHW" alias=".service_locator.pbtqkCT"/>
     <service id=".service_locator.SSYO8Gk" alias=".service_locator.xWXe2Sh"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
-    <service id=".service_locator.JjNIjU0" alias=".service_locator.UY9ig9Y"/>
+    <service id=".service_locator.POodhes" alias=".service_locator.aHgfHgF"/>
     <service id=".service_locator.xvo6EYI" alias=".service_locator.EJy82.P"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.ZP92gqz" alias=".service_locator.3YFBJbt"/>
