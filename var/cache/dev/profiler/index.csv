@@ -725,3 +725,16 @@ b024c8,127.0.0.1,GET,http://127.0.0.1:8000/admin?routeName=app_home,1733431275,,
 8630e1,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1733432283,,200,request
 867166,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1733432306,,200,request
 25ceb3,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1733432321,,200,request
+cc81b3,127.0.0.1,GET,http://127.0.0.1:8000/,1733432567,,200,request
+0a4edd,127.0.0.1,GET,http://127.0.0.1:8000/?page=2,1733432578,,200,request
+128d5c,127.0.0.1,GET,http://127.0.0.1:8000/?page=1,1733432582,,200,request
+d77c92,127.0.0.1,GET,http://127.0.0.1:8000/club,1733432667,,200,request
+3f0c74,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1733432672,,200,request
+cbcac1,127.0.0.1,GET,http://127.0.0.1:8000/entrainements,1733432677,,200,request
+1b9ab8,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/filet-volant-sombre.webp,1733432678,8cc5c1,404,request
+8cc5c1,127.0.0.1,GET,http://127.0.0.1:8000/assets/img/filet-volant-sombre.webp,1733432678,,404,request
+e6738d,127.0.0.1,GET,http://127.0.0.1:8000/contact,1733432685,,200,request
+aaf60d,127.0.0.1,GET,http://127.0.0.1:8000/espace-perso,1733432715,,200,request
+500536,127.0.0.1,GET,http://127.0.0.1:8000/evenement,1733432719,,200,request
+36e679,127.0.0.1,GET,http://127.0.0.1:8000/,1733432735,,200,request
+7f718e,127.0.0.1,GET,http://127.0.0.1:8000/,1733432842,,200,request
