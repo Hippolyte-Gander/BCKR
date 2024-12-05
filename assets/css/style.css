@@ -214,7 +214,7 @@ header {
     top: 0;
     left: 0;
     height: 116px;
-    width: 100%;
+    width: 100vw;
     align-items: center;
     z-index: 100;
 }
@@ -222,6 +222,7 @@ header {
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 100%;
     font-size: 1.25rem;
@@ -257,10 +258,6 @@ header {
     padding: 0 10px;
 }
 
-.menu-mobile {
-    display: none;
-}
-
 /* --- Bouton barre --- */
 
 .toggle-btn i {
@@ -274,74 +271,33 @@ header {
     color: red;
 }
 
-/* --- animation burger / croix --- */
-.plate4 .x {
-    transition: transform 400ms;
-  }
-  .plate4 .line {
-    transform-origin: 50%;
-    transition: transform 400ms 100ms;
-  }
-  .active.plate4 .line {
-    transition: transform 400ms;
-  }
-  .active.plate4 .line1 {
-    transform: translateX(18px) translateY(-3px) rotate(-45deg) scale(.7);
-  }
-  .active.plate4 .line2 {
-    transform: translateX(-18px) translateY(-3px) rotate(45deg) scale(.7);
-  }
-  .active.plate4 .line3 {
-    transform: translateY(0px) rotate(45deg) scale(.7);
-  }
-  .active.plate4 .line4 {
-    transform: translateY(0px) rotate(-45deg) scale(.7);
-  }
-  .active.plate4 .line5 {
-    transform: translateX(18px) translateY(3px) rotate(45deg) scale(.7);
-  }
-  .active.plate4 .line6 {
-    transform: translateX(-18px) translateY(3px) rotate(-45deg) scale(.7);
-  }
-  .active.plate4 .x {
-    transition: transform 400ms 100ms;
-    transform: scale(1);
-  }
-
-/* Menu mobile */
-
-@media (max-width: 900px) {
-    
-        header {
-            padding: 20px 0 20px 50px;
-            gap: 0;
-            max-height: none;
-            justify-content: left;
-        }
-
-    .menu-mobile {
-        display: flex;
-        flex-direction: column;
-    }
-
-    header .login,
-    header .logo,
-    nav a,
-    .login a {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: none;
-    }
-    
-    .mobile-croix {
-        /* display: none; */
-        text-align: end;
-        width: 100%;
-    }
+/* --- croix menu burger --- */
+.menu-burger {
+    display: none;
+    align-items: center;
+    position: absolute;
+    top: 32px;
+    right: 24px;
+    z-index: 11;
 }
 
+.menu-burger i {
+    font-size: 50px;
+    color: var(--violettresfonce);
+}
+
+.logo-menu,
+.logo-croix {
+    display: none;
+}
+
+.logo-visible {
+    display: flex;
+}
+
+#logo-croix {
+    color: white;
+}
 
 /* --- Boutons connexion --- */
 .nav-login {
@@ -359,8 +315,8 @@ header {
 .btn-blanc {
     height: fit-content;
     background-color: rgb(255, 255, 255);
-    color: var(--violetfonce);
-    border: solid 1px var(--violetfonce);
+    color: var(--violettresfonce);
+    border: solid 1px var(--violettresfonce);
     border-radius: 8px;
     padding: 8px 16px;
 }
@@ -389,6 +345,86 @@ header {
     transition: 0.5s;
     cursor: pointer;
 }
+
+/* Menu mobile */
+
+@media (max-width: 1150px) {
+    .navbar {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .logo {
+        margin-left: 24px;
+    }
+
+    .nav-liens {
+        padding:  88px 0 0 0;
+        margin: 0;
+        display: flex;
+        /* justify-content: baseline;
+        align-items: center;
+        flex-direction: column; */
+        /* background-color: rgba(177, 177, 177, 0.815); */
+        width: 100vw;
+        height: 50vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        margin-left: 100%;
+        transition: all 0.5s ease;
+    }
+
+    .nav-liens ul {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: baseline;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .nav-liens ul li a {
+        color: white;
+        font-size: 1.75rem;
+    }
+
+    .nav-login {
+        margin: 0;
+        padding: 0 0 64px 0;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        flex-direction: column;
+        background-color: #252525e3;
+        backdrop-filter: blur(6px);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        margin-left: 100%;
+        transition: all 0.5s ease;
+    }
+
+    .menu-burger {
+        display: flex;
+    }
+
+    .btn-blanc,
+    .btn-clair {
+        font-size: 1.75rem;
+        padding: 16px 32px;
+    }
+
+    .mobile-menu {
+        margin-left: 0;
+    }
+}
+
+
 
 /* ================================================================ */
 /* --------------- FOOTER ---------------- */
@@ -500,6 +536,15 @@ footer {
 footer a i:hover {
     color:  var(--violetlogo);
     transition: 0.2s;
+}
+
+@media (max-width: 600px) {
+    .partenaires {
+        display: none;
+    }
+    .liens-footer {
+        width: 70%;
+    }
 }
 
 /* ================================================================ */
@@ -690,19 +735,17 @@ footer a i:hover {
         transform: translateX(100%) translateY(-50%);
     }
     .titre-homepage {
-        /* background: url('../img/homepage/fond-titre.webp') no-repeat;
+        background: url('../img/homepage/bg1-terrain-violet-fonce.png') no-repeat;
         background-position-y: 50%;
         background-size: cover;
         min-height: 320px;
         display: flex;
-        align-items: end;
-        justify-content: space-between; */
-    }
-    .titre-homepage h1 {
-        filter: blur(0px);
+        align-items: center;
+        justify-content: space-between;
+    } 
+    /* .titre-homepage h1 {
         color: black;
-        z-index: 1;
-    }
+    } */
 }
 
 /* ====== PARTIE EVENEMENTS ====== */

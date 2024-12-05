@@ -37,20 +37,6 @@
                     </ul>
                 </div>
                 <div class="nav-login">
-                    <div class="plate plate4" onclick="this.classList.toggle('active')">
-                        <svg class="burger" version="1.1" height="100" width="100" viewBox="0 0 100 100">
-                          <path class="line line1" d="M 50,35 H 30" />
-                          <path class="line line2" d="M 50,35 H 70" />
-                          <path class="line line3" d="M 50,50 H 30" />
-                          <path class="line line4" d="M 50,50 H 70" />
-                          <path class="line line5" d="M 50,65 H 30" />
-                          <path class="line line6" d="M 50,65 H 70" />
-                        </svg>
-                        <svg class="x" version="1.1" height="100" width="100" viewBox="0 0 100 100">
-                          <path class="line" d="M 34,32 L 66,68" />
-                          <path class="line" d="M 66,32 L 34,68" />
-                        </svg>
-                    </div>
                     {% if app.user %}
                         {% if app.user  and app.user.isAdmin() %}
                             <a href=" /admin "><i class="fa-solid fa-user-gear"></i></a>
@@ -63,34 +49,12 @@
                         {# <a href="{{ path('app_register_membre') }}" class="btn-blanc">S'inscrire en tant que membre</a> #}
                     {% endif %}
                 </div>
+                <div class="menu-burger">
+                    <i class="fa-solid fa-bars logo-menu logo-visible"></i>
+                    <i id="logo-croix" class="fa-solid fa-xmark logo-croix"></i>
+                </div>
             </nav>
 
-            {# <div class="menu-mobile">
-                <div class="mobile-menu">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <div class="plate plate4" onclick="this.classList.toggle('active')">
-                    <svg class="burger" version="1.1" height="100" width="100" viewBox="0 0 100 100">
-                      <path class="line line1" d="M 50,35 H 30" />
-                      <path class="line line2" d="M 50,35 H 70" />
-                      <path class="line line3" d="M 50,50 H 30" />
-                      <path class="line line4" d="M 50,50 H 70" />
-                      <path class="line line5" d="M 50,65 H 30" />
-                      <path class="line line6" d="M 50,65 H 70" />
-                    </svg>
-                    <svg class="x" version="1.1" height="100" width="100" viewBox="0 0 100 100">
-                      <path class="line" d="M 34,32 L 66,68" />
-                      <path class="line" d="M 66,32 L 34,68" />
-                    </svg>
-                </div>
-                    <a href=" {{ path('app_home') }} ">Home</a>
-                    <a href=" {{ path('new_evenement') }} ">Créer un événement</a>
-                <div class="login">
-                    <a href="#" class="connexion">Se connecter</a>
-                    <a href="#" class="deconnexion">Se déconnecter</a>
-                    <a href="#" class="inscription">S'inscrire</a>
-                </div>
-            </div> #}
             {# ================= FLASHES MESSAGES ================= #}
             {% for message in app.flashes('success') %}
                 <div class="alert flash-success">
@@ -161,6 +125,7 @@
         </footer>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="{{ asset('js/menu-burger.js') }}"></script>
         <script src="{{ asset('js/slider-homepage.js') }}"></script>
         <script src="{{ asset('js/confirm.js') }}"></script>
         <script src="{{ asset('js/notif.js') }}"></script>
