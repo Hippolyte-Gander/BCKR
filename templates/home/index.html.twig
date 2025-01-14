@@ -16,14 +16,19 @@
             {# <div class="wrapper-cta1">
                 <h3>Envie de nous rejoindre ?</h3>
             </div> #}
+
+            {% if app.user %}
             
-            <div class="wrapper-cta2">
-                <i class="fa-solid fa-angles-right"></i>
-                <a href="{{ path('app_register') }}" class="homepage-rejoindre-btn">
-                    Rejoignez-nous !
-                </a>
-                <i class="fa-solid fa-angles-left"></i>
-            </div>
+            {% else %}
+                <div class="wrapper-cta2">
+                    <i class="fa-solid fa-angles-right"></i>
+                    <a href="{{ path('app_register') }}" class="homepage-rejoindre-btn">
+                        Rejoignez-nous !
+                    </a>
+                    <i class="fa-solid fa-angles-left"></i>
+                </div>
+            {% endif %}
+
         </section>
         
         <section class="club">

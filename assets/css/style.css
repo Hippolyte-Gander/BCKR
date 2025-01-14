@@ -2092,17 +2092,41 @@ footer a i:hover {
 
 .register-formulaire-background {
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.register-formulaire-background h4 {
+.register-formulaire-background form {
+    margin: 32px;
+}
+
+.register-formulaire-background h3 {
+    margin-top: 32px;
+    align-items: center;
+}
+
+.register-formulaire-background button {
+    margin-left: 24px;
 }
 
 .register-formulaire-background a {
     color: var(--violetfonce);
+    margin: 0 4px;
 }
 
 .register-formulaire-background a:hover {
     text-decoration: underline;
+}
+
+.row-form label {
+    display: flex;
+    flex-direction: row;
+    /* width: 100%; */
+}
+
+.row-form label input {
+    max-width: 32px;
+    margin: 0 4px;
 }
 
 /* ================================================================ */
